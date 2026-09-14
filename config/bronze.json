@@ -1,0 +1,928 @@
+{
+  "sources": [
+    {
+      "sourceSystem": "engine_test_cell_lubricants",
+      "sourceTable": "ENGINE_TEST_CELL",
+      "fields": [
+        {
+          "name": "testid",
+          "dataType": "text",
+          "stagedColumn": "TEST_ID",
+          "present": true
+        },
+        {
+          "name": "formulationid",
+          "dataType": "text",
+          "stagedColumn": "FORMULATION_ID",
+          "present": true
+        },
+        {
+          "name": "enginetype",
+          "dataType": "text",
+          "stagedColumn": "ENGINE_TYPE",
+          "present": true
+        },
+        {
+          "name": "teststandard",
+          "dataType": "text",
+          "stagedColumn": "TEST_STANDARD",
+          "present": true
+        },
+        {
+          "name": "testcellid",
+          "dataType": "text",
+          "stagedColumn": "TEST_CELL_ID",
+          "present": true
+        },
+        {
+          "name": "testdate",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "TEST_DATE",
+          "present": true
+        },
+        {
+          "name": "testduration_hrs",
+          "dataType": "numeric",
+          "stagedColumn": "TEST_DURATION_HRS",
+          "present": true
+        },
+        {
+          "name": "oilchargevolume_l",
+          "dataType": "numeric",
+          "stagedColumn": "OIL_CHARGE_VOLUME_L",
+          "present": true
+        },
+        {
+          "name": "wearrate_mg",
+          "dataType": "numeric",
+          "stagedColumn": "WEAR_RATE_MG",
+          "present": true
+        },
+        {
+          "name": "fueleconomy_pct_vs_baseline",
+          "dataType": "numeric",
+          "stagedColumn": "FUEL_ECONOMY_PCT_VS_BASELINE",
+          "present": true
+        },
+        {
+          "name": "depositrating_1to10",
+          "dataType": "numeric",
+          "stagedColumn": "DEPOSIT_RATING_1TO10",
+          "present": true
+        },
+        {
+          "name": "viscosityat40c",
+          "dataType": "numeric",
+          "stagedColumn": "VISCOSITY_AT40_C",
+          "present": true
+        },
+        {
+          "name": "viscosityat100c",
+          "dataType": "numeric",
+          "stagedColumn": "VISCOSITY_AT100_C",
+          "present": true
+        },
+        {
+          "name": "oxidationindex",
+          "dataType": "numeric",
+          "stagedColumn": "OXIDATION_INDEX",
+          "present": true
+        },
+        {
+          "name": "tan_mgkohg",
+          "dataType": "numeric",
+          "stagedColumn": "TAN_MG_KOHG",
+          "present": true
+        },
+        {
+          "name": "fueldilution_pct",
+          "dataType": "numeric",
+          "stagedColumn": "FUEL_DILUTION_PCT",
+          "present": true
+        },
+        {
+          "name": "wearmetalsppm",
+          "dataType": "numeric",
+          "stagedColumn": "WEAR_METALS_PPM",
+          "present": true
+        },
+        {
+          "name": "passfail",
+          "dataType": "text",
+          "stagedColumn": "PASS_FAIL",
+          "present": true
+        },
+        {
+          "name": "testengineerid",
+          "dataType": "text",
+          "stagedColumn": "TEST_ENGINEER_ID",
+          "present": true
+        },
+        {
+          "name": "certificationbatch",
+          "dataType": "text",
+          "stagedColumn": "CERTIFICATION_BATCH",
+          "present": true
+        }
+      ]
+    },
+    {
+      "sourceSystem": "fuel_trial_fuels",
+      "sourceTable": "FUEL_TRIAL",
+      "fields": [
+        {
+          "name": "trialid",
+          "dataType": "text",
+          "stagedColumn": "TRIAL_ID",
+          "present": true
+        },
+        {
+          "name": "blendid",
+          "dataType": "text",
+          "stagedColumn": "BLEND_ID",
+          "present": true
+        },
+        {
+          "name": "fueltype",
+          "dataType": "text",
+          "stagedColumn": "FUEL_TYPE",
+          "present": true
+        },
+        {
+          "name": "trialdate",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "TRIAL_DATE",
+          "present": true
+        },
+        {
+          "name": "trialduration_hrs",
+          "dataType": "numeric",
+          "stagedColumn": "TRIAL_DURATION_HRS",
+          "present": true
+        },
+        {
+          "name": "cetanenumber",
+          "dataType": "numeric",
+          "stagedColumn": "CETANE_NUMBER",
+          "present": true
+        },
+        {
+          "name": "emissionsnox_ppm",
+          "dataType": "numeric",
+          "stagedColumn": "EMISSIONS_NOX_PPM",
+          "present": true
+        },
+        {
+          "name": "emissionsco_ppm",
+          "dataType": "numeric",
+          "stagedColumn": "EMISSIONS_CO_PPM",
+          "present": true
+        },
+        {
+          "name": "emissionsparticulate_mgm3",
+          "dataType": "numeric",
+          "stagedColumn": "EMISSIONS_PARTICULATE_MGM3",
+          "present": true
+        },
+        {
+          "name": "combustionefficiency_pct",
+          "dataType": "numeric",
+          "stagedColumn": "COMBUSTION_EFFICIENCY_PCT",
+          "present": true
+        },
+        {
+          "name": "injectorfoulingrating",
+          "dataType": "numeric",
+          "stagedColumn": "INJECTOR_FOULING_RATING",
+          "present": true
+        },
+        {
+          "name": "watercontent_ppm",
+          "dataType": "numeric",
+          "stagedColumn": "WATER_CONTENT_PPM",
+          "present": true
+        },
+        {
+          "name": "sulfurcontent_ppm",
+          "dataType": "numeric",
+          "stagedColumn": "SULFUR_CONTENT_PPM",
+          "present": true
+        },
+        {
+          "name": "density_kgm3",
+          "dataType": "numeric",
+          "stagedColumn": "DENSITY_KGM3",
+          "present": true
+        },
+        {
+          "name": "flashpoint_c",
+          "dataType": "numeric",
+          "stagedColumn": "FLASH_POINT_C",
+          "present": true
+        },
+        {
+          "name": "passfail",
+          "dataType": "text",
+          "stagedColumn": "PASS_FAIL",
+          "present": true
+        },
+        {
+          "name": "testengineerid",
+          "dataType": "text",
+          "stagedColumn": "TEST_ENGINEER_ID",
+          "present": true
+        }
+      ]
+    },
+    {
+      "sourceSystem": "lims_clinton_nj",
+      "sourceTable": "LIMS_CLINTON_SAMPLES",
+      "fields": [
+        {
+          "name": "sample_id",
+          "dataType": "text",
+          "stagedColumn": "SAMPLE_ID",
+          "present": true
+        },
+        {
+          "name": "product_line",
+          "dataType": "text",
+          "stagedColumn": "PRODUCT_LINE",
+          "present": true
+        },
+        {
+          "name": "material_code",
+          "dataType": "text",
+          "stagedColumn": "MATERIAL_CODE",
+          "present": true
+        },
+        {
+          "name": "batch_lot_number",
+          "dataType": "text",
+          "stagedColumn": "BATCH_LOT_NUMBER",
+          "present": true
+        },
+        {
+          "name": "container_id",
+          "dataType": "text",
+          "stagedColumn": "CONTAINER_ID",
+          "present": true
+        },
+        {
+          "name": "test_type",
+          "dataType": "text",
+          "stagedColumn": "TEST_TYPE",
+          "present": true
+        },
+        {
+          "name": "test_method_version",
+          "dataType": "text",
+          "stagedColumn": "TEST_METHOD_VERSION",
+          "present": true
+        },
+        {
+          "name": "instrument_id",
+          "dataType": "text",
+          "stagedColumn": "INSTRUMENT_ID",
+          "present": true
+        },
+        {
+          "name": "analyst_id",
+          "dataType": "text",
+          "stagedColumn": "ANALYST_ID",
+          "present": true
+        },
+        {
+          "name": "reviewer_id",
+          "dataType": "text",
+          "stagedColumn": "QA_APPROVER_ID",
+          "present": true
+        },
+        {
+          "name": "date_requested",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "DATE_REQUESTED",
+          "present": true
+        },
+        {
+          "name": "date_received",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "DATE_RECEIVED",
+          "present": true
+        },
+        {
+          "name": "date_started",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "DATE_STARTED",
+          "present": true
+        },
+        {
+          "name": "date_completed",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "DATE_COMPLETED",
+          "present": true
+        },
+        {
+          "name": "priority",
+          "dataType": "text",
+          "stagedColumn": "PRIORITY",
+          "present": true
+        },
+        {
+          "name": "submitter",
+          "dataType": "text",
+          "stagedColumn": "SUBMITTER",
+          "present": true
+        },
+        {
+          "name": "project_reference",
+          "dataType": "text",
+          "stagedColumn": "PROJECT_REFERENCE",
+          "present": true
+        },
+        {
+          "name": "result_value",
+          "dataType": "numeric",
+          "stagedColumn": "RESULT_VALUE",
+          "present": true
+        },
+        {
+          "name": "result_unit",
+          "dataType": "text",
+          "stagedColumn": "RESULT_UNIT",
+          "present": true
+        },
+        {
+          "name": "spec_lower_limit",
+          "dataType": "numeric",
+          "stagedColumn": "SPEC_LOWER_LIMIT",
+          "present": true
+        },
+        {
+          "name": "spec_upper_limit",
+          "dataType": "numeric",
+          "stagedColumn": "SPEC_UPPER_LIMIT",
+          "present": true
+        },
+        {
+          "name": "sample_status",
+          "dataType": "text",
+          "stagedColumn": "SAMPLE_STATUS",
+          "present": true
+        },
+        {
+          "name": "approval_status",
+          "dataType": "text",
+          "stagedColumn": "APPROVAL_STATUS",
+          "present": true
+        },
+        {
+          "name": "approval_date",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "APPROVAL_DATE",
+          "present": true
+        },
+        {
+          "name": "storage_location",
+          "dataType": "text",
+          "stagedColumn": "STORAGE_LOCATION",
+          "present": true
+        },
+        {
+          "name": "retest_flag",
+          "dataType": "boolean",
+          "stagedColumn": "REPEAT_ANALYSIS_IND",
+          "present": true
+        },
+        {
+          "name": "comments",
+          "dataType": "text",
+          "stagedColumn": "COMMENTS",
+          "present": true
+        },
+        {
+          "name": "site_code",
+          "dataType": "text",
+          "stagedColumn": "SITE_CODE",
+          "present": true
+        },
+        {
+          "name": "lab_notebook_ref",
+          "dataType": "text",
+          "stagedColumn": "LAB_NOTEBOOK_REF",
+          "present": true
+        },
+        {
+          "name": "chain_of_custody_id",
+          "dataType": "text",
+          "stagedColumn": "CHAIN_OF_CUSTODY_ID",
+          "present": true
+        }
+      ]
+    },
+    {
+      "sourceSystem": "lims_houston",
+      "sourceTable": "LIMS_HOUSTON_SAMPLES",
+      "fields": [
+        {
+          "name": "samplenumber",
+          "dataType": "text",
+          "stagedColumn": "SAMPLE_NUMBER",
+          "present": true
+        },
+        {
+          "name": "businessline",
+          "dataType": "text",
+          "stagedColumn": "BUSINESS_LINE",
+          "present": true
+        },
+        {
+          "name": "materialid",
+          "dataType": "text",
+          "stagedColumn": "MATERIAL_ID",
+          "present": true
+        },
+        {
+          "name": "lotnumber",
+          "dataType": "text",
+          "stagedColumn": "LOT_NUMBER",
+          "present": true
+        },
+        {
+          "name": "containerref",
+          "dataType": "text",
+          "stagedColumn": "CONTAINER_REF",
+          "present": true
+        },
+        {
+          "name": "analysistype",
+          "dataType": "text",
+          "stagedColumn": "ANALYSIS_TYPE",
+          "present": true
+        },
+        {
+          "name": "methodversion",
+          "dataType": "text",
+          "stagedColumn": "METHOD_VERSION",
+          "present": true
+        },
+        {
+          "name": "instrumentcode",
+          "dataType": "text",
+          "stagedColumn": "INSTRUMENT_CODE",
+          "present": true
+        },
+        {
+          "name": "testedby",
+          "dataType": "text",
+          "stagedColumn": "TESTED_BY",
+          "present": true
+        },
+        {
+          "name": "reviewedby",
+          "dataType": "text",
+          "stagedColumn": "QA_SIGNOFF_USER",
+          "present": true
+        },
+        {
+          "name": "reqdate",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "REQ_DATE",
+          "present": true
+        },
+        {
+          "name": "receiveddate",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "RECEIVED_DATE",
+          "present": true
+        },
+        {
+          "name": "startdate",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "START_DATE",
+          "present": true
+        },
+        {
+          "name": "compdate",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "COMP_DATE",
+          "present": true
+        },
+        {
+          "name": "prioritylevel",
+          "dataType": "numeric",
+          "stagedColumn": "PRIORITY_LEVEL",
+          "present": true
+        },
+        {
+          "name": "requestedby",
+          "dataType": "text",
+          "stagedColumn": "REQUESTED_BY",
+          "present": true
+        },
+        {
+          "name": "projectcode",
+          "dataType": "text",
+          "stagedColumn": "PROJECT_CODE",
+          "present": true
+        },
+        {
+          "name": "value",
+          "dataType": "numeric",
+          "stagedColumn": "VALUE",
+          "present": true
+        },
+        {
+          "name": "uom",
+          "dataType": "text",
+          "stagedColumn": "UOM",
+          "present": true
+        },
+        {
+          "name": "lowerspeclimit",
+          "dataType": "numeric",
+          "stagedColumn": "LOWER_SPEC_LIMIT",
+          "present": true
+        },
+        {
+          "name": "upperspeclimit",
+          "dataType": "numeric",
+          "stagedColumn": "UPPER_SPEC_LIMIT",
+          "present": true
+        },
+        {
+          "name": "status",
+          "dataType": "text",
+          "stagedColumn": "STATUS",
+          "present": true
+        },
+        {
+          "name": "approvalstate",
+          "dataType": "text",
+          "stagedColumn": "APPROVAL_STATE",
+          "present": true
+        },
+        {
+          "name": "approvaldate",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "APPROVAL_DATE",
+          "present": true
+        },
+        {
+          "name": "storageloc",
+          "dataType": "text",
+          "stagedColumn": "STORAGE_LOC",
+          "present": true
+        },
+        {
+          "name": "retestindicator",
+          "dataType": "boolean",
+          "stagedColumn": "RERUN_FLAG",
+          "present": true
+        },
+        {
+          "name": "notes",
+          "dataType": "text",
+          "stagedColumn": "NOTES",
+          "present": true
+        },
+        {
+          "name": "location",
+          "dataType": "text",
+          "stagedColumn": "LOCATION",
+          "present": true
+        }
+      ]
+    },
+    {
+      "sourceSystem": "pilot_plant_historian",
+      "sourceTable": "PILOT_PLANT_HISTORIAN",
+      "fields": [
+        {
+          "name": "runid",
+          "dataType": "text",
+          "stagedColumn": "RUN_ID",
+          "present": true
+        },
+        {
+          "name": "businessline",
+          "dataType": "text",
+          "stagedColumn": "BUSINESS_LINE",
+          "present": true
+        },
+        {
+          "name": "unit",
+          "dataType": "text",
+          "stagedColumn": "UNIT",
+          "present": true
+        },
+        {
+          "name": "starttimestamp",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "START_TIMESTAMP",
+          "present": true
+        },
+        {
+          "name": "endtimestamp",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "END_TIMESTAMP",
+          "present": true
+        },
+        {
+          "name": "yield_percent",
+          "dataType": "numeric",
+          "stagedColumn": "YIELD_PERCENT",
+          "present": true
+        },
+        {
+          "name": "throughput_kg_hr",
+          "dataType": "numeric",
+          "stagedColumn": "THROUGHPUT_KG_HR",
+          "present": true
+        },
+        {
+          "name": "temperature_c",
+          "dataType": "numeric",
+          "stagedColumn": "TEMPERATURE_C",
+          "present": true
+        },
+        {
+          "name": "pressure_bar",
+          "dataType": "numeric",
+          "stagedColumn": "PRESSURE_BAR",
+          "present": true
+        },
+        {
+          "name": "flowrate_lmin",
+          "dataType": "numeric",
+          "stagedColumn": "FLOW_RATE_LMIN",
+          "present": true
+        },
+        {
+          "name": "ph_level",
+          "dataType": "numeric",
+          "stagedColumn": "P_H_LEVEL",
+          "present": true
+        },
+        {
+          "name": "agitation_rpm",
+          "dataType": "numeric",
+          "stagedColumn": "AGITATION_RPM",
+          "present": true
+        },
+        {
+          "name": "feedstockmaterialid",
+          "dataType": "text",
+          "stagedColumn": "FEEDSTOCK_MATERIAL_ID",
+          "present": true
+        },
+        {
+          "name": "productmaterialid",
+          "dataType": "text",
+          "stagedColumn": "PRODUCT_MATERIAL_ID",
+          "present": true
+        },
+        {
+          "name": "batchoperator",
+          "dataType": "text",
+          "stagedColumn": "BATCH_OPERATOR",
+          "present": true
+        },
+        {
+          "name": "deviationflag",
+          "dataType": "boolean",
+          "stagedColumn": "DEVIATION_FLAG",
+          "present": true
+        },
+        {
+          "name": "deviationdescription",
+          "dataType": "text",
+          "stagedColumn": "DEVIATION_DESCRIPTION",
+          "present": true
+        },
+        {
+          "name": "safetyincidentflag",
+          "dataType": "boolean",
+          "stagedColumn": "SAFETY_INCIDENT_FLAG",
+          "present": true
+        },
+        {
+          "name": "energyconsumption_kwh",
+          "dataType": "numeric",
+          "stagedColumn": "ENERGY_CONSUMPTION_K_WH",
+          "present": true
+        },
+        {
+          "name": "wastegenerated_kg",
+          "dataType": "numeric",
+          "stagedColumn": "WASTE_GENERATED_KG",
+          "present": true
+        }
+      ]
+    },
+    {
+      "sourceSystem": "raw_material_master",
+      "sourceTable": "RAW_MATERIAL_MASTER",
+      "fields": [
+        {
+          "name": "canonicalmaterialname",
+          "dataType": "text",
+          "stagedColumn": "CANONICAL_MATERIAL_NAME",
+          "present": true
+        },
+        {
+          "name": "businessline",
+          "dataType": "text",
+          "stagedColumn": "BUSINESS_LINE",
+          "present": true
+        },
+        {
+          "name": "clintonmaterialcode",
+          "dataType": "text",
+          "stagedColumn": "CLINTON_MATERIAL_CODE",
+          "present": true
+        },
+        {
+          "name": "houstonmaterialid",
+          "dataType": "text",
+          "stagedColumn": "HOUSTON_MATERIAL_ID",
+          "present": true
+        },
+        {
+          "name": "casnumber",
+          "dataType": "text",
+          "stagedColumn": "CASNUMBER",
+          "present": true
+        },
+        {
+          "name": "supplier",
+          "dataType": "text",
+          "stagedColumn": "SUPPLIER",
+          "present": true
+        },
+        {
+          "name": "suppliergrade",
+          "dataType": "text",
+          "stagedColumn": "SUPPLIER_GRADE",
+          "present": true
+        },
+        {
+          "name": "unitofmeasure",
+          "dataType": "text",
+          "stagedColumn": "UNIT_OF_MEASURE",
+          "present": true
+        },
+        {
+          "name": "density",
+          "dataType": "numeric",
+          "stagedColumn": "DENSITY",
+          "present": true
+        },
+        {
+          "name": "viscositygrade",
+          "dataType": "numeric",
+          "stagedColumn": "VISCOSITY_GRADE",
+          "present": true
+        },
+        {
+          "name": "hazardclassification",
+          "dataType": "text",
+          "stagedColumn": "HAZARD_CLASSIFICATION",
+          "present": true
+        },
+        {
+          "name": "safetydatasheetref",
+          "dataType": "text",
+          "stagedColumn": "SAFETY_DATA_SHEET_REF",
+          "present": true
+        },
+        {
+          "name": "shelflifemonths",
+          "dataType": "numeric",
+          "stagedColumn": "SHELF_LIFE_MONTHS",
+          "present": true
+        },
+        {
+          "name": "storageconditions",
+          "dataType": "text",
+          "stagedColumn": "STORAGE_CONDITIONS",
+          "present": true
+        },
+        {
+          "name": "approvedforuse",
+          "dataType": "boolean",
+          "stagedColumn": "APPROVED_FOR_USE",
+          "present": true
+        },
+        {
+          "name": "lastreviewdate",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "LAST_REVIEW_DATE",
+          "present": true
+        }
+      ]
+    },
+    {
+      "sourceSystem": "toxicology_trial_chemicals",
+      "sourceTable": "TOX_TRIAL",
+      "fields": [
+        {
+          "name": "trialid",
+          "dataType": "text",
+          "stagedColumn": "TRIAL_ID",
+          "present": true
+        },
+        {
+          "name": "compoundid",
+          "dataType": "text",
+          "stagedColumn": "COMPOUND_ID",
+          "present": true
+        },
+        {
+          "name": "trialtype",
+          "dataType": "text",
+          "stagedColumn": "TRIAL_TYPE",
+          "present": true
+        },
+        {
+          "name": "cro_name",
+          "dataType": "text",
+          "stagedColumn": "CRO_NAME",
+          "present": true
+        },
+        {
+          "name": "studyprotocolid",
+          "dataType": "text",
+          "stagedColumn": "STUDY_PROTOCOL_ID",
+          "present": true
+        },
+        {
+          "name": "trialdate",
+          "dataType": "timestamp without time zone",
+          "stagedColumn": "TRIAL_DATE",
+          "present": true
+        },
+        {
+          "name": "speciestested",
+          "dataType": "text",
+          "stagedColumn": "SPECIES_TESTED",
+          "present": true
+        },
+        {
+          "name": "exposureroute",
+          "dataType": "text",
+          "stagedColumn": "EXPOSURE_ROUTE",
+          "present": true
+        },
+        {
+          "name": "exposurelevel_mgkg",
+          "dataType": "numeric",
+          "stagedColumn": "EXPOSURE_LEVEL_MGKG",
+          "present": true
+        },
+        {
+          "name": "exposureduration_days",
+          "dataType": "numeric",
+          "stagedColumn": "EXPOSURE_DURATION_DAYS",
+          "present": true
+        },
+        {
+          "name": "toxicityscore_1to5",
+          "dataType": "numeric",
+          "stagedColumn": "TOXICITY_SCORE_1TO5",
+          "present": true
+        },
+        {
+          "name": "ld50_value",
+          "dataType": "numeric",
+          "stagedColumn": "LD50_VALUE",
+          "present": true
+        },
+        {
+          "name": "noael_value",
+          "dataType": "numeric",
+          "stagedColumn": "NOAEL_VALUE",
+          "present": true
+        },
+        {
+          "name": "outcomestatus",
+          "dataType": "text",
+          "stagedColumn": "OUTCOME_STATUS",
+          "present": true
+        },
+        {
+          "name": "regulatoryframework",
+          "dataType": "text",
+          "stagedColumn": "REGULATORY_FRAMEWORK",
+          "present": true
+        },
+        {
+          "name": "reportreference",
+          "dataType": "text",
+          "stagedColumn": "REPORT_REFERENCE",
+          "present": true
+        }
+      ]
+    }
+  ]
+}
