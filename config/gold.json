@@ -1,0 +1,28 @@
+{
+  "tables": [
+    {
+      "name": "dim_material"
+    },
+    {
+      "name": "dim_test_method"
+    },
+    {
+      "name": "dim_lab_site"
+    },
+    {
+      "name": "dim_business_line"
+    },
+    {
+      "name": "dim_date"
+    },
+    {
+      "name": "fact_lab_sample"
+    },
+    {
+      "name": "fact_test_result"
+    },
+    {
+      "name": "fact_pilot_plant_run"
+    }
+  ]
+}
