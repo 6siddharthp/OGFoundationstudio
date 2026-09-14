@@ -1,0 +1,1271 @@
+{
+  "config": {
+    "tables": [
+      {
+        "bronzeTable": "engine_test_cell_lubricants",
+        "sourceSystem": "engine_test_cell_lubricants",
+        "silverTableName": "silver_engine_test_cell_lubricants",
+        "columns": [
+          {
+            "bronzeColumn": "testid",
+            "name": "test_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "formulationid",
+            "name": "formulation_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "enginetype",
+            "name": "engine_type",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "teststandard",
+            "name": "test_standard",
+            "dataType": "text",
+            "nullable": true,
+            "rules": [
+              {
+                "id": "verify_test_standard",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "testcellid",
+            "name": "test_cell_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "testdate",
+            "name": "test_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "testduration_hrs",
+            "name": "test_duration_hrs",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "oilchargevolume_l",
+            "name": "oil_charge_volume_l",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "wearrate_mg",
+            "name": "wear_rate_mg",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "fueleconomy_pct_vs_baseline",
+            "name": "fuel_economy_pct_vs_baseline",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "depositrating_1to10",
+            "name": "deposit_rating_1_to_10",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "viscosityat40c",
+            "name": "viscosity_at_40_c",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "viscosityat100c",
+            "name": "viscosity_at_100_c",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "oxidationindex",
+            "name": "oxidation_index",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "tan_mgkohg",
+            "name": "tan_mgkohg",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "fueldilution_pct",
+            "name": "fuel_dilution_pct",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "wearmetalsppm",
+            "name": "wear_metals_ppm",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "passfail",
+            "name": "pass_fail",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "testengineerid",
+            "name": "test_engineer_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "certificationbatch",
+            "name": "certification_batch",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true
+        },
+        "auditColumns": []
+      },
+      {
+        "bronzeTable": "fuel_trial_fuels",
+        "sourceSystem": "fuel_trial_fuels",
+        "silverTableName": "silver_fuel_trial_fuels",
+        "columns": [
+          {
+            "bronzeColumn": "trialid",
+            "name": "trial_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "blendid",
+            "name": "blend_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "fueltype",
+            "name": "fuel_type",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "trialdate",
+            "name": "trial_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "trialduration_hrs",
+            "name": "trial_duration_hrs",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "cetanenumber",
+            "name": "cetane_number",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "emissionsnox_ppm",
+            "name": "emissions_nox_ppm",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "emissionsco_ppm",
+            "name": "emissions_co_ppm",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "emissionsparticulate_mgm3",
+            "name": "emissions_particulate_mgm3",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "combustionefficiency_pct",
+            "name": "combustion_efficiency_pct",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "injectorfoulingrating",
+            "name": "injector_fouling_rating",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "watercontent_ppm",
+            "name": "water_content_ppm",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "sulfurcontent_ppm",
+            "name": "sulfur_content_ppm",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "density_kgm3",
+            "name": "density_kgm3",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "flashpoint_c",
+            "name": "flash_point_c",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "passfail",
+            "name": "pass_fail",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "testengineerid",
+            "name": "test_engineer_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true
+        },
+        "auditColumns": []
+      },
+      {
+        "bronzeTable": "lims_clinton_nj",
+        "sourceSystem": "lims_clinton_nj",
+        "silverTableName": "silver_lims_clinton_nj",
+        "columns": [
+          {
+            "bronzeColumn": "sample_id",
+            "name": "sample_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "product_line",
+            "name": "product_line",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "material_code",
+            "name": "material_code",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "batch_lot_number",
+            "name": "batch_lot_number",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "container_id",
+            "name": "container_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "test_type",
+            "name": "test_type",
+            "dataType": "text",
+            "nullable": true,
+            "rules": [
+              {
+                "id": "verify_test_type",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "test_method_version",
+            "name": "test_method_version",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "instrument_id",
+            "name": "instrument_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "analyst_id",
+            "name": "analyst_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "reviewer_id",
+            "name": "reviewer_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_requested",
+            "name": "date_requested",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_received",
+            "name": "date_received",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_started",
+            "name": "date_started",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_completed",
+            "name": "date_completed",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "priority",
+            "name": "priority",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "submitter",
+            "name": "submitter",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "project_reference",
+            "name": "project_reference",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "result_value",
+            "name": "result_value",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "result_unit",
+            "name": "result_unit",
+            "dataType": "text",
+            "nullable": true,
+            "rules": [
+              {
+                "id": "verify_result_unit",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_uom_reference",
+                  "lookupKey": "source_unit",
+                  "lookupValue": "governed_unit",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "spec_lower_limit",
+            "name": "spec_lower_limit",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "spec_upper_limit",
+            "name": "spec_upper_limit",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "sample_status",
+            "name": "sample_status",
+            "dataType": "text",
+            "nullable": true,
+            "rules": [
+              {
+                "id": "verify_sample_status",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_sample_status_reference",
+                  "lookupKey": "source_value",
+                  "lookupValue": "governed_status",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "approval_status",
+            "name": "approval_status",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "approval_date",
+            "name": "approval_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "storage_location",
+            "name": "storage_location",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "retest_flag",
+            "name": "retest_flag",
+            "dataType": "boolean",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "comments",
+            "name": "comments",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "site_code",
+            "name": "site_code",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "lab_notebook_ref",
+            "name": "lab_notebook_ref",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "chain_of_custody_id",
+            "name": "chain_of_custody_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true
+        },
+        "auditColumns": []
+      },
+      {
+        "bronzeTable": "lims_houston",
+        "sourceSystem": "lims_houston",
+        "silverTableName": "silver_lims_houston",
+        "columns": [
+          {
+            "bronzeColumn": "samplenumber",
+            "name": "sample_number",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "businessline",
+            "name": "business_line",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "materialid",
+            "name": "material_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "lotnumber",
+            "name": "lot_number",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "containerref",
+            "name": "container_ref",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "analysistype",
+            "name": "analysis_type",
+            "dataType": "text",
+            "nullable": true,
+            "rules": [
+              {
+                "id": "verify_analysis_type",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "methodversion",
+            "name": "method_version",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "instrumentcode",
+            "name": "instrument_code",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "testedby",
+            "name": "tested_by",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "reviewedby",
+            "name": "reviewed_by",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "reqdate",
+            "name": "req_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "receiveddate",
+            "name": "received_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "startdate",
+            "name": "start_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "compdate",
+            "name": "comp_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "prioritylevel",
+            "name": "priority_level",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "requestedby",
+            "name": "requested_by",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "projectcode",
+            "name": "project_code",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "value",
+            "name": "value",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "uom",
+            "name": "uom",
+            "dataType": "text",
+            "nullable": true,
+            "rules": [
+              {
+                "id": "verify_uom",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_uom_reference",
+                  "lookupKey": "source_unit",
+                  "lookupValue": "governed_unit",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "lowerspeclimit",
+            "name": "lower_spec_limit",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "upperspeclimit",
+            "name": "upper_spec_limit",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "status",
+            "name": "status",
+            "dataType": "text",
+            "nullable": true,
+            "rules": [
+              {
+                "id": "verify_status",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_sample_status_reference",
+                  "lookupKey": "source_value",
+                  "lookupValue": "governed_status",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "approvalstate",
+            "name": "approval_state",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "approvaldate",
+            "name": "approval_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "storageloc",
+            "name": "storage_loc",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "retestindicator",
+            "name": "retest_indicator",
+            "dataType": "boolean",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "notes",
+            "name": "notes",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "location",
+            "name": "location",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true
+        },
+        "auditColumns": []
+      },
+      {
+        "bronzeTable": "pilot_plant_historian",
+        "sourceSystem": "pilot_plant_historian",
+        "silverTableName": "silver_pilot_plant_historian",
+        "columns": [
+          {
+            "bronzeColumn": "runid",
+            "name": "run_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "businessline",
+            "name": "business_line",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "unit",
+            "name": "unit",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "starttimestamp",
+            "name": "start_timestamp",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "endtimestamp",
+            "name": "end_timestamp",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "yield_percent",
+            "name": "yield_percent",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "throughput_kg_hr",
+            "name": "throughput_kg_hr",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "temperature_c",
+            "name": "temperature_c",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "pressure_bar",
+            "name": "pressure_bar",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "flowrate_lmin",
+            "name": "flow_rate_lmin",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "ph_level",
+            "name": "ph_level",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "agitation_rpm",
+            "name": "agitation_rpm",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "feedstockmaterialid",
+            "name": "feedstock_material_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "productmaterialid",
+            "name": "product_material_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "batchoperator",
+            "name": "batch_operator",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "deviationflag",
+            "name": "deviation_flag",
+            "dataType": "boolean",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "deviationdescription",
+            "name": "deviation_description",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "safetyincidentflag",
+            "name": "safety_incident_flag",
+            "dataType": "boolean",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "energyconsumption_kwh",
+            "name": "energy_consumption_kwh",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "wastegenerated_kg",
+            "name": "waste_generated_kg",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true
+        },
+        "auditColumns": []
+      },
+      {
+        "bronzeTable": "raw_material_master",
+        "sourceSystem": "raw_material_master",
+        "silverTableName": "silver_raw_material_master",
+        "columns": [
+          {
+            "bronzeColumn": "canonicalmaterialname",
+            "name": "canonical_material_name",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "businessline",
+            "name": "business_line",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "clintonmaterialcode",
+            "name": "clinton_material_code",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "houstonmaterialid",
+            "name": "houston_material_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "casnumber",
+            "name": "cas_number",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "supplier",
+            "name": "supplier",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "suppliergrade",
+            "name": "supplier_grade",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "unitofmeasure",
+            "name": "unit_of_measure",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "density",
+            "name": "density",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "viscositygrade",
+            "name": "viscosity_grade",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "hazardclassification",
+            "name": "hazard_classification",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "safetydatasheetref",
+            "name": "safety_data_sheet_ref",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "shelflifemonths",
+            "name": "shelf_life_months",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "storageconditions",
+            "name": "storage_conditions",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "approvedforuse",
+            "name": "approved_for_use",
+            "dataType": "boolean",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "lastreviewdate",
+            "name": "last_review_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true
+        },
+        "auditColumns": []
+      },
+      {
+        "bronzeTable": "toxicology_trial_chemicals",
+        "sourceSystem": "toxicology_trial_chemicals",
+        "silverTableName": "silver_toxicology_trial_chemicals",
+        "columns": [
+          {
+            "bronzeColumn": "trialid",
+            "name": "trial_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "compoundid",
+            "name": "compound_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "trialtype",
+            "name": "trial_type",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "cro_name",
+            "name": "cro_name",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "studyprotocolid",
+            "name": "study_protocol_id",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "trialdate",
+            "name": "trial_date",
+            "dataType": "timestamp without time zone",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "speciestested",
+            "name": "species_tested",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "exposureroute",
+            "name": "exposure_route",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "exposurelevel_mgkg",
+            "name": "exposure_level_mgkg",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "exposureduration_days",
+            "name": "exposure_duration_days",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "toxicityscore_1to5",
+            "name": "toxicity_score_1_to_5",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "ld50_value",
+            "name": "ld50_value",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "noael_value",
+            "name": "noael_value",
+            "dataType": "numeric",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "outcomestatus",
+            "name": "outcome_status",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "regulatoryframework",
+            "name": "regulatory_framework",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "reportreference",
+            "name": "report_reference",
+            "dataType": "text",
+            "nullable": true,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true
+        },
+        "auditColumns": []
+      }
+    ]
+  },
+  "identity": {
+    "entities": [
+      {
+        "name": "MATERIAL"
+      },
+      {
+        "name": "LAB_SAMPLE"
+      },
+      {
+        "name": "TEST_METHOD"
+      },
+      {
+        "name": "TEST_RESULT"
+      },
+      {
+        "name": "PILOT_PLANT_RUN"
+      }
+    ]
+  }
+}
