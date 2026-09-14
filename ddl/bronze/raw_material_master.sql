@@ -1,0 +1,31 @@
+-- Foundation Studio · PostgreSQL execution SQL
+
+-- foundation:stage 2
+CREATE TABLE bronze."raw_material_master" (
+              source_row_number integer PRIMARY KEY,
+              "canonicalmaterialname" text,
+"businessline" text,
+"clintonmaterialcode" text,
+"houstonmaterialid" text,
+"casnumber" text,
+"supplier" text,
+"suppliergrade" text,
+"unitofmeasure" text,
+"density" numeric,
+"viscositygrade" numeric,
+"hazardclassification" text,
+"safetydatasheetref" text,
+"shelflifemonths" numeric,
+"storageconditions" text,
+"approvedforuse" boolean,
+"lastreviewdate" timestamp,
+              loaded_at timestamptz NOT NULL DEFAULT now()
+            );
+
+-- foundation:stage 2
+COMMENT ON TABLE bronze."raw_material_master" IS 'raw_material_master: 16 fields defined, 16 source columns, 16 auto-mapped, 0 manually mapped, 0 newly added.';
+
+-- foundation:stage 3
+INSERT INTO bronze."raw_material_master" (source_row_number, "canonicalmaterialname", "businessline", "clintonmaterialcode", "houstonmaterialid", "casnumber", "supplier", "suppliergrade", "unitofmeasure", "density", "viscositygrade", "hazardclassification", "safetydatasheetref", "shelflifemonths", "storageconditions", "approvedforuse", "lastreviewdate")
+            SELECT row_number, raw_data ->> 'CANONICAL_MATERIAL_NAME', raw_data ->> 'BUSINESS_LINE', raw_data ->> 'CLINTON_MATERIAL_CODE', raw_data ->> 'HOUSTON_MATERIAL_ID', raw_data ->> 'CASNUMBER', raw_data ->> 'SUPPLIER', raw_data ->> 'SUPPLIER_GRADE', raw_data ->> 'UNIT_OF_MEASURE', NULLIF(raw_data ->> 'DENSITY', '')::numeric, NULLIF(raw_data ->> 'VISCOSITY_GRADE', '')::numeric, raw_data ->> 'HAZARD_CLASSIFICATION', raw_data ->> 'SAFETY_DATA_SHEET_REF', NULLIF(raw_data ->> 'SHELF_LIFE_MONTHS', '')::numeric, raw_data ->> 'STORAGE_CONDITIONS', CASE lower(raw_data ->> 'APPROVED_FOR_USE') WHEN 'true' THEN true WHEN 'false' THEN false ELSE NULL END, NULLIF(raw_data ->> 'LAST_REVIEW_DATE', '')::timestamp
+            FROM foundation_staging_rows WHERE staging_table_id = 8 ORDER BY row_number;
