@@ -42,7 +42,7 @@ INSERT INTO silver."silver_lims_houston" (
             )
             SELECT "row_data"."source_row_number",
   "row_data"."samplenumber" AS "sample_number",
-  "row_data"."businessline" AS "business_line",
+  TRIM("row_data"."businessline") AS "business_line",
   "row_data"."materialid" AS "material_id",
   "row_data"."lotnumber" AS "lot_number",
   "row_data"."containerref" AS "container_ref",
