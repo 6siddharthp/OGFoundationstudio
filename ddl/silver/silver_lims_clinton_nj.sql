@@ -35,7 +35,7 @@ CREATE TABLE silver."silver_lims_clinton_nj" (
               source_row_number integer PRIMARY KEY,
               "sample_id" text,
 "product_line" text,
-"material_code" text,
+"material_codesid" text,
 "batch_lot_number" text,
 "container_id" text,
 "test_type" text,
@@ -69,12 +69,12 @@ CREATE TABLE silver."silver_lims_clinton_nj" (
 
 -- foundation:stage 5
 INSERT INTO silver."silver_lims_clinton_nj" (
-              source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "project_reference", "result_value", "result_unit", "spec_lower_limit", "spec_upper_limit", "sample_status", "approval_status", "approval_date", "storage_location", "retest_flag", "comments", "site_code", "lab_notebook_ref", "chain_of_custody_id", source_table
+              source_row_number, "sample_id", "product_line", "material_codesid", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "project_reference", "result_value", "result_unit", "spec_lower_limit", "spec_upper_limit", "sample_status", "approval_status", "approval_date", "storage_location", "retest_flag", "comments", "site_code", "lab_notebook_ref", "chain_of_custody_id", source_table
             )
             SELECT "row_data"."source_row_number",
   "row_data"."sample_id" AS "sample_id",
   "row_data"."product_line" AS "product_line",
-  TRIM("row_data"."material_code") AS "material_code",
+  "row_data"."material_code" AS "material_codesid",
   "row_data"."batch_lot_number" AS "batch_lot_number",
   "row_data"."container_id" AS "container_id",
   COALESCE((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."test_type" AS VARCHAR)))), NULL) AS "test_type",
