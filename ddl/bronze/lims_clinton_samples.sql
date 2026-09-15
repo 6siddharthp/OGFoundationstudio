@@ -1,6 +1,7 @@
 -- Foundation Studio · PostgreSQL execution SQL
 
--- foundation:stage 2 Trial by Sid
+-- Trial by Sid
+-- foundation:stage 2
 CREATE TABLE bronze."lims_clinton_samples" (
               source_row_number integer PRIMARY KEY,
               "sample_id" text,
