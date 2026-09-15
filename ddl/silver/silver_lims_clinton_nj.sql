@@ -1,6 +1,36 @@
 -- Foundation Studio · PostgreSQL execution SQL
 
 -- foundation:stage 4
+CREATE TABLE silver.quarantine_records (
+          quarantine_id bigserial PRIMARY KEY, source_table text NOT NULL, source_row_number integer NOT NULL,
+          reason text NOT NULL, source_data jsonb NOT NULL, quarantined_at timestamptz NOT NULL DEFAULT now()
+        );
+
+-- foundation:stage 5
+INSERT INTO silver.quarantine_records (source_table, source_row_number, reason, source_data)
+              SELECT 'lims_clinton_samples', "row_data"."source_row_number", CASE WHEN (SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."test_type" AS VARCHAR)))) IS NULL THEN 'Test_Type: Code lookup failed'
+WHEN (SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."result_unit" AS VARCHAR)))) IS NULL THEN 'Result_Unit: Code lookup failed'
+WHEN (SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."sample_status" AS VARCHAR)))) IS NULL THEN 'Sample_Status: Code lookup failed' ELSE 'Silver rule failed' END,
+                to_jsonb("row_data") - 'source_row_number' - 'loaded_at'
+              FROM "bronze"."lims_clinton_samples" AS "row_data"
+              WHERE COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."test_type" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."result_unit" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."sample_status" AS VARCHAR)))) IS NULL), FALSE);
+
+-- foundation:stage 5
+INSERT INTO silver.quarantine_records (source_table, source_row_number, reason, source_data)
+              SELECT 'lims_houston_samples', "row_data"."source_row_number", CASE WHEN (SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."analysistype" AS VARCHAR)))) IS NULL THEN 'AnalysisType: Code lookup failed'
+WHEN (SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."uom" AS VARCHAR)))) IS NULL THEN 'UOM: Code lookup failed'
+WHEN (SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."status" AS VARCHAR)))) IS NULL THEN 'Status: Code lookup failed' ELSE 'Silver rule failed' END,
+                to_jsonb("row_data") - 'source_row_number' - 'loaded_at'
+              FROM "bronze"."lims_houston_samples" AS "row_data"
+              WHERE COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."analysistype" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."uom" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."status" AS VARCHAR)))) IS NULL), FALSE);
+
+-- foundation:stage 5
+INSERT INTO silver.quarantine_records (source_table, source_row_number, reason, source_data)
+              SELECT 'engine_test_cell', "row_data"."source_row_number", CASE WHEN (SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."teststandard" AS VARCHAR)))) IS NULL THEN 'TestStandard: Code lookup failed' ELSE 'Silver rule failed' END,
+                to_jsonb("row_data") - 'source_row_number' - 'loaded_at'
+              FROM "bronze"."engine_test_cell" AS "row_data"
+              WHERE COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."teststandard" AS VARCHAR)))) IS NULL), FALSE);
+-- foundation:stage 4
 CREATE TABLE silver."silver_lims_clinton_nj" (
               source_row_number integer PRIMARY KEY,
               "sample_id" text,
@@ -44,7 +74,7 @@ INSERT INTO silver."silver_lims_clinton_nj" (
             SELECT "row_data"."source_row_number",
   "row_data"."sample_id" AS "sample_id",
   "row_data"."product_line" AS "product_line",
-  "row_data"."material_code" AS "material_code",
+  TRIM("row_data"."material_code") AS "material_code",
   "row_data"."batch_lot_number" AS "batch_lot_number",
   "row_data"."container_id" AS "container_id",
   COALESCE((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."test_type" AS VARCHAR)))), NULL) AS "test_type",
