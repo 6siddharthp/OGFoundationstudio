@@ -1,36 +1,6 @@
 -- Foundation Studio · PostgreSQL execution SQL
 
 -- foundation:stage 4
-CREATE TABLE silver.quarantine_records (
-          quarantine_id bigserial PRIMARY KEY, source_table text NOT NULL, source_row_number integer NOT NULL,
-          reason text NOT NULL, source_data jsonb NOT NULL, quarantined_at timestamptz NOT NULL DEFAULT now()
-        );
-
--- foundation:stage 5
-INSERT INTO silver.quarantine_records (source_table, source_row_number, reason, source_data)
-              SELECT 'engine_test_cell', "row_data"."source_row_number", CASE WHEN (SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."teststandard" AS VARCHAR)))) IS NULL THEN 'TestStandard: Code lookup failed' ELSE 'Silver rule failed' END,
-                to_jsonb("row_data") - 'source_row_number' - 'loaded_at'
-              FROM "bronze"."engine_test_cell" AS "row_data"
-              WHERE COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."teststandard" AS VARCHAR)))) IS NULL), FALSE);
-
--- foundation:stage 5
-INSERT INTO silver.quarantine_records (source_table, source_row_number, reason, source_data)
-              SELECT 'lims_clinton_samples', "row_data"."source_row_number", CASE WHEN (SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."test_type" AS VARCHAR)))) IS NULL THEN 'test_type: Code lookup failed'
-WHEN (SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."result_unit" AS VARCHAR)))) IS NULL THEN 'result_unit: Code lookup failed'
-WHEN (SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."sample_status" AS VARCHAR)))) IS NULL THEN 'sample_status: Code lookup failed' ELSE 'Silver rule failed' END,
-                to_jsonb("row_data") - 'source_row_number' - 'loaded_at'
-              FROM "bronze"."lims_clinton_samples" AS "row_data"
-              WHERE COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."test_type" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."result_unit" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."sample_status" AS VARCHAR)))) IS NULL), FALSE);
-
--- foundation:stage 5
-INSERT INTO silver.quarantine_records (source_table, source_row_number, reason, source_data)
-              SELECT 'lims_houston_samples', "row_data"."source_row_number", CASE WHEN (SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."analysistype" AS VARCHAR)))) IS NULL THEN 'analysistype: Code lookup failed'
-WHEN (SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."uom" AS VARCHAR)))) IS NULL THEN 'uom: Code lookup failed'
-WHEN (SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."status" AS VARCHAR)))) IS NULL THEN 'status: Code lookup failed' ELSE 'Silver rule failed' END,
-                to_jsonb("row_data") - 'source_row_number' - 'loaded_at'
-              FROM "bronze"."lims_houston_samples" AS "row_data"
-              WHERE COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."analysistype" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."uom" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."status" AS VARCHAR)))) IS NULL), FALSE);
--- foundation:stage 4
 CREATE TABLE silver."silver_engine_test_cell_lubricants" (
               source_row_number integer PRIMARY KEY,
               "test_id" text,
@@ -53,14 +23,13 @@ CREATE TABLE silver."silver_engine_test_cell_lubricants" (
 "pass_fail" text,
 "test_engineer_id" text,
 "certification_batch" text,
-"record_hash" text,
               source_table text NOT NULL,
               cleansed_at timestamptz NOT NULL DEFAULT now()
             );
 
 -- foundation:stage 5
 INSERT INTO silver."silver_engine_test_cell_lubricants" (
-              source_row_number, "test_id", "formulation_id", "engine_type", "test_standard", "test_cell_id", "test_date", "test_duration_hrs", "oil_charge_volume_l", "wear_rate_mg", "fuel_economy_pct_vs_baseline", "deposit_rating_1_to_10", "viscosity_at_40_c", "viscosity_at_100_c", "oxidation_index", "tan_mgkohg", "fuel_dilution_pct", "wear_metals_ppm", "pass_fail", "test_engineer_id", "certification_batch", "record_hash", source_table
+              source_row_number, "test_id", "formulation_id", "engine_type", "test_standard", "test_cell_id", "test_date", "test_duration_hrs", "oil_charge_volume_l", "wear_rate_mg", "fuel_economy_pct_vs_baseline", "deposit_rating_1_to_10", "viscosity_at_40_c", "viscosity_at_100_c", "oxidation_index", "tan_mgkohg", "fuel_dilution_pct", "wear_metals_ppm", "pass_fail", "test_engineer_id", "certification_batch", source_table
             )
             SELECT "row_data"."source_row_number",
   "row_data"."testid" AS "test_id",
@@ -83,6 +52,5 @@ INSERT INTO silver."silver_engine_test_cell_lubricants" (
   "row_data"."passfail" AS "pass_fail",
   "row_data"."testengineerid" AS "test_engineer_id",
   "row_data"."certificationbatch" AS "certification_batch",
-  MD5(COALESCE("row_data"."testid", '')) AS "record_hash",
   'engine_test_cell' AS "source_table"
 FROM (SELECT "row_data".* FROM "bronze"."engine_test_cell" AS "row_data" WHERE NOT (COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."teststandard" AS VARCHAR)))) IS NULL), FALSE))) AS "row_data";
