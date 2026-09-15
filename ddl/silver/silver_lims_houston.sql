@@ -1,3 +1,4 @@
+-- HUMAN EDIT VALIDATION: preserve this Git-side comment
 -- Foundation Studio · PostgreSQL execution SQL
 
 -- foundation:stage 4
