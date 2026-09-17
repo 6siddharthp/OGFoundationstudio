@@ -40,7 +40,7 @@ INSERT INTO silver."silver_lims_houston" (
               source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "project_reference", "result_value", "result_unit", "spec_lower_limit", "spec_upper_limit", "sample_status", "approval_status", "approval_date", "storage_location", "retest_flag", "comments", "site_code", source_table
             )
             SELECT "row_data"."source_row_number",
-  TRIM("row_data"."sample_id") AS "sample_id",
+  "row_data"."sample_id" AS "sample_id",
   "row_data"."product_line" AS "product_line",
   "row_data"."material_code" AS "material_code",
   "row_data"."batch_lot_number" AS "batch_lot_number",
@@ -70,5 +70,3 @@ INSERT INTO silver."silver_lims_houston" (
   "row_data"."site_code" AS "site_code",
   'lims_houston_samples' AS "source_table"
 FROM (SELECT "row_data".* FROM "bronze"."lims_houston_samples" AS "row_data" WHERE NOT (COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."test_type" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."result_unit" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."sample_status" AS VARCHAR)))) IS NULL), FALSE))) AS "row_data";
-
--- Human-maintained note: preserve this comment during future rule updates.
