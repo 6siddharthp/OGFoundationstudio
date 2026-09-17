@@ -26,4 +26,40 @@ INSERT INTO silver.conformed_test_result
             (to_jsonb(r)->>'spec_lower_limit')::numeric spec_lower_limit,
             (to_jsonb(r)->>'spec_upper_limit')::numeric spec_upper_limit,
             NULL::boolean within_spec, 'silver_fuel_trial_fuels' source_system
-          FROM silver."silver_fuel_trial_fuels" r;
+          FROM silver."silver_fuel_trial_fuels" r UNION ALL 
+          SELECT 'RES_' || md5('silver_lims_buenos_aires' || ':' || source_row_number) test_result_key,
+            NULL::text lab_sample_key, NULL::text test_method_key, NULL::text material_key,
+            coalesce((to_jsonb(r)->>'test_date')::timestamp, (to_jsonb(r)->>'trial_date')::timestamp) result_date,
+            coalesce((to_jsonb(r)->>'result_value')::numeric, (to_jsonb(r)->>'value')::numeric) result_value,
+            coalesce(to_jsonb(r)->>'result_unit', to_jsonb(r)->>'uom') result_unit,
+            (to_jsonb(r)->>'spec_lower_limit')::numeric spec_lower_limit,
+            (to_jsonb(r)->>'spec_upper_limit')::numeric spec_upper_limit,
+            NULL::boolean within_spec, 'silver_lims_buenos_aires' source_system
+          FROM silver."silver_lims_buenos_aires" r UNION ALL 
+          SELECT 'RES_' || md5('silver_lims_annandale' || ':' || source_row_number) test_result_key,
+            NULL::text lab_sample_key, NULL::text test_method_key, NULL::text material_key,
+            coalesce((to_jsonb(r)->>'test_date')::timestamp, (to_jsonb(r)->>'trial_date')::timestamp) result_date,
+            coalesce((to_jsonb(r)->>'result_value')::numeric, (to_jsonb(r)->>'value')::numeric) result_value,
+            coalesce(to_jsonb(r)->>'result_unit', to_jsonb(r)->>'uom') result_unit,
+            (to_jsonb(r)->>'spec_lower_limit')::numeric spec_lower_limit,
+            (to_jsonb(r)->>'spec_upper_limit')::numeric spec_upper_limit,
+            NULL::boolean within_spec, 'silver_lims_annandale' source_system
+          FROM silver."silver_lims_annandale" r UNION ALL 
+          SELECT 'RES_' || md5('silver_lims_curitiba' || ':' || source_row_number) test_result_key,
+            NULL::text lab_sample_key, NULL::text test_method_key, NULL::text material_key,
+            coalesce((to_jsonb(r)->>'test_date')::timestamp, (to_jsonb(r)->>'trial_date')::timestamp) result_date,
+            coalesce((to_jsonb(r)->>'result_value')::numeric, (to_jsonb(r)->>'value')::numeric) result_value,
+            coalesce(to_jsonb(r)->>'result_unit', to_jsonb(r)->>'uom') result_unit,
+            (to_jsonb(r)->>'spec_lower_limit')::numeric spec_lower_limit,
+            (to_jsonb(r)->>'spec_upper_limit')::numeric spec_upper_limit,
+            NULL::boolean within_spec, 'silver_lims_curitiba' source_system
+          FROM silver."silver_lims_curitiba" r UNION ALL 
+          SELECT 'RES_' || md5('silver_lims_houston' || ':' || source_row_number) test_result_key,
+            NULL::text lab_sample_key, NULL::text test_method_key, NULL::text material_key,
+            coalesce((to_jsonb(r)->>'test_date')::timestamp, (to_jsonb(r)->>'trial_date')::timestamp) result_date,
+            coalesce((to_jsonb(r)->>'result_value')::numeric, (to_jsonb(r)->>'value')::numeric) result_value,
+            coalesce(to_jsonb(r)->>'result_unit', to_jsonb(r)->>'uom') result_unit,
+            (to_jsonb(r)->>'spec_lower_limit')::numeric spec_lower_limit,
+            (to_jsonb(r)->>'spec_upper_limit')::numeric spec_upper_limit,
+            NULL::boolean within_spec, 'silver_lims_houston' source_system
+          FROM silver."silver_lims_houston" r;
