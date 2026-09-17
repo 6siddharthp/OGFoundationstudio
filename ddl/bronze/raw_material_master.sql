@@ -31,5 +31,5 @@ INSERT INTO bronze."raw_material_master" (source_row_number, "canonicalmaterialn
     WHEN NULLIF(raw_data ->> 'LAST_REVIEW_DATE', '') IS NULL THEN NULL
     WHEN raw_data ->> 'LAST_REVIEW_DATE' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
       THEN to_timestamp(raw_data ->> 'LAST_REVIEW_DATE', CASE WHEN length(raw_data ->> 'LAST_REVIEW_DATE') = 10 THEN 'DD/MM/YYYY' WHEN length(raw_data ->> 'LAST_REVIEW_DATE') = 16 THEN 'DD/MM/YYYY HH24:MI' ELSE 'DD/MM/YYYY HH24:MI:SS' END)
-    ELSE raw_data ->> 'LAST_REVIEW_DATE'::timestamp END
+    ELSE (raw_data ->> 'LAST_REVIEW_DATE')::timestamp END
             FROM foundation_staging_rows WHERE staging_table_id = 8 ORDER BY row_number;

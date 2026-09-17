@@ -50,17 +50,17 @@ INSERT INTO bronze."lims_curitiba_amostras" (source_row_number, "sample_id", "pr
     WHEN NULLIF(raw_data ->> 'DATA_SOLICITADA', '') IS NULL THEN NULL
     WHEN raw_data ->> 'DATA_SOLICITADA' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
       THEN to_timestamp(raw_data ->> 'DATA_SOLICITADA', CASE WHEN length(raw_data ->> 'DATA_SOLICITADA') = 10 THEN 'DD/MM/YYYY' WHEN length(raw_data ->> 'DATA_SOLICITADA') = 16 THEN 'DD/MM/YYYY HH24:MI' ELSE 'DD/MM/YYYY HH24:MI:SS' END)
-    ELSE raw_data ->> 'DATA_SOLICITADA'::timestamp END, CASE
+    ELSE (raw_data ->> 'DATA_SOLICITADA')::timestamp END, CASE
     WHEN NULLIF(raw_data ->> 'DATE_RECEIVED', '') IS NULL THEN NULL
     WHEN raw_data ->> 'DATE_RECEIVED' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
       THEN to_timestamp(raw_data ->> 'DATE_RECEIVED', CASE WHEN length(raw_data ->> 'DATE_RECEIVED') = 10 THEN 'DD/MM/YYYY' WHEN length(raw_data ->> 'DATE_RECEIVED') = 16 THEN 'DD/MM/YYYY HH24:MI' ELSE 'DD/MM/YYYY HH24:MI:SS' END)
-    ELSE raw_data ->> 'DATE_RECEIVED'::timestamp END, CASE
+    ELSE (raw_data ->> 'DATE_RECEIVED')::timestamp END, CASE
     WHEN NULLIF(raw_data ->> 'DATE_STARTED', '') IS NULL THEN NULL
     WHEN raw_data ->> 'DATE_STARTED' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
       THEN to_timestamp(raw_data ->> 'DATE_STARTED', CASE WHEN length(raw_data ->> 'DATE_STARTED') = 10 THEN 'DD/MM/YYYY' WHEN length(raw_data ->> 'DATE_STARTED') = 16 THEN 'DD/MM/YYYY HH24:MI' ELSE 'DD/MM/YYYY HH24:MI:SS' END)
-    ELSE raw_data ->> 'DATE_STARTED'::timestamp END, CASE
+    ELSE (raw_data ->> 'DATE_STARTED')::timestamp END, CASE
     WHEN NULLIF(raw_data ->> 'DATE_COMPLETED', '') IS NULL THEN NULL
     WHEN raw_data ->> 'DATE_COMPLETED' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
       THEN to_timestamp(raw_data ->> 'DATE_COMPLETED', CASE WHEN length(raw_data ->> 'DATE_COMPLETED') = 10 THEN 'DD/MM/YYYY' WHEN length(raw_data ->> 'DATE_COMPLETED') = 16 THEN 'DD/MM/YYYY HH24:MI' ELSE 'DD/MM/YYYY HH24:MI:SS' END)
-    ELSE raw_data ->> 'DATE_COMPLETED'::timestamp END, raw_data ->> 'PRIORITY', raw_data ->> 'SUBMITTER', NULLIF(raw_data ->> 'RESULT_VALUE', '')::numeric, raw_data ->> 'RESULT_UNIT', raw_data ->> 'STATUS_AMOSTRA', raw_data ->> 'APPROVAL_STATUS', CASE lower(raw_data ->> 'RETEST_FLAG') WHEN 'true' THEN true WHEN 'false' THEN false ELSE NULL END, raw_data ->> 'COMMENTS', raw_data ->> 'SITE_CODE'
+    ELSE (raw_data ->> 'DATE_COMPLETED')::timestamp END, raw_data ->> 'PRIORITY', raw_data ->> 'SUBMITTER', NULLIF(raw_data ->> 'RESULT_VALUE', '')::numeric, raw_data ->> 'RESULT_UNIT', raw_data ->> 'STATUS_AMOSTRA', raw_data ->> 'APPROVAL_STATUS', CASE lower(raw_data ->> 'RETEST_FLAG') WHEN 'true' THEN true WHEN 'false' THEN false ELSE NULL END, raw_data ->> 'COMMENTS', raw_data ->> 'SITE_CODE'
             FROM foundation_staging_rows WHERE staging_table_id = 12 ORDER BY row_number;
