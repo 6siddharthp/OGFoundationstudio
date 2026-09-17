@@ -2,39 +2,39 @@
   "config": {
     "tables": [
       {
-        "bronzeTable": "engine_test_cell_lubricants",
+        "bronzeTable": "ENGINE_TEST_CELL",
         "sourceSystem": "engine_test_cell_lubricants",
         "silverTableName": "silver_engine_test_cell_lubricants",
         "columns": [
           {
-            "bronzeColumn": "testid",
-            "name": "test_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "TestID",
+            "name": "TestID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "formulationid",
-            "name": "formulation_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "FormulationID",
+            "name": "FormulationID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "enginetype",
-            "name": "engine_type",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "EngineType",
+            "name": "EngineType",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "teststandard",
-            "name": "test_standard",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "TestStandard",
+            "name": "TestStandard",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": [
               {
-                "id": "verify_test_standard",
+                "id": "verify_TestStandard",
                 "pillar": "conform",
                 "type": "code_lookup",
                 "enabled": true,
@@ -48,115 +48,115 @@
             ]
           },
           {
-            "bronzeColumn": "testcellid",
-            "name": "test_cell_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "TestCellID",
+            "name": "TestCellID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "testdate",
-            "name": "test_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "TestDate",
+            "name": "TestDate",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "testduration_hrs",
-            "name": "test_duration_hrs",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "TestDuration_hrs",
+            "name": "TestDuration_hrs",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "oilchargevolume_l",
-            "name": "oil_charge_volume_l",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "OilChargeVolume_L",
+            "name": "OilChargeVolume_L",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "wearrate_mg",
-            "name": "wear_rate_mg",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "WearRate_mg",
+            "name": "WearRate_mg",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "fueleconomy_pct_vs_baseline",
-            "name": "fuel_economy_pct_vs_baseline",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "FuelEconomy_pct_vs_baseline",
+            "name": "FuelEconomy_pct_vs_baseline",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "depositrating_1to10",
-            "name": "deposit_rating_1_to_10",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "DepositRating_1to10",
+            "name": "DepositRating_1to10",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "viscosityat40c",
-            "name": "viscosity_at_40_c",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "ViscosityAt40C",
+            "name": "ViscosityAt40C",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "viscosityat100c",
-            "name": "viscosity_at_100_c",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "ViscosityAt100C",
+            "name": "ViscosityAt100C",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "oxidationindex",
-            "name": "oxidation_index",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "OxidationIndex",
+            "name": "OxidationIndex",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "tan_mgkohg",
-            "name": "tan_mgkohg",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "TAN_mgKOHg",
+            "name": "TAN_mgKOHg",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "fueldilution_pct",
-            "name": "fuel_dilution_pct",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "FuelDilution_pct",
+            "name": "FuelDilution_pct",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "wearmetalsppm",
-            "name": "wear_metals_ppm",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "WearMetalsPPM",
+            "name": "WearMetalsPPM",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "passfail",
-            "name": "pass_fail",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "PassFail",
+            "name": "PassFail",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "testengineerid",
-            "name": "test_engineer_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "TestEngineerID",
+            "name": "TestEngineerID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "certificationbatch",
-            "name": "certification_batch",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "CertificationBatch",
+            "name": "CertificationBatch",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           }
         ],
@@ -173,127 +173,127 @@
         "auditColumns": []
       },
       {
-        "bronzeTable": "fuel_trial_fuels",
+        "bronzeTable": "FUEL_TRIAL",
         "sourceSystem": "fuel_trial_fuels",
         "silverTableName": "silver_fuel_trial_fuels",
         "columns": [
           {
-            "bronzeColumn": "trialid",
-            "name": "trial_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "TrialID",
+            "name": "TrialID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "blendid",
-            "name": "blend_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "BlendID",
+            "name": "BlendID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "fueltype",
-            "name": "fuel_type",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "FuelType",
+            "name": "FuelType",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "trialdate",
-            "name": "trial_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "TrialDate",
+            "name": "TrialDate",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "trialduration_hrs",
-            "name": "trial_duration_hrs",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "TrialDuration_hrs",
+            "name": "TrialDuration_hrs",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "cetanenumber",
-            "name": "cetane_number",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "CetaneNumber",
+            "name": "CetaneNumber",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "emissionsnox_ppm",
-            "name": "emissions_nox_ppm",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "EmissionsNOx_ppm",
+            "name": "EmissionsNOx_ppm",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "emissionsco_ppm",
-            "name": "emissions_co_ppm",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "EmissionsCO_ppm",
+            "name": "EmissionsCO_ppm",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "emissionsparticulate_mgm3",
-            "name": "emissions_particulate_mgm3",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "EmissionsParticulate_mgm3",
+            "name": "EmissionsParticulate_mgm3",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "combustionefficiency_pct",
-            "name": "combustion_efficiency_pct",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "CombustionEfficiency_pct",
+            "name": "CombustionEfficiency_pct",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "injectorfoulingrating",
-            "name": "injector_fouling_rating",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "InjectorFoulingRating",
+            "name": "InjectorFoulingRating",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "watercontent_ppm",
-            "name": "water_content_ppm",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "WaterContent_ppm",
+            "name": "WaterContent_ppm",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "sulfurcontent_ppm",
-            "name": "sulfur_content_ppm",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "SulfurContent_ppm",
+            "name": "SulfurContent_ppm",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "density_kgm3",
-            "name": "density_kgm3",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "Density_kgm3",
+            "name": "Density_kgm3",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "flashpoint_c",
-            "name": "flash_point_c",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "FlashPoint_C",
+            "name": "FlashPoint_C",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "passfail",
-            "name": "pass_fail",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "PassFail",
+            "name": "PassFail",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "testengineerid",
-            "name": "test_engineer_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "TestEngineerID",
+            "name": "TestEngineerID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           }
         ],
@@ -310,50 +310,51 @@
         "auditColumns": []
       },
       {
-        "bronzeTable": "lims_clinton_nj",
-        "sourceSystem": "lims_clinton_nj",
-        "silverTableName": "silver_lims_clinton_nj",
+        "bronzeTable": "LAB_MUESTRAS_BA",
+        "sourceSystem": "lims",
+        "siteId": "buenos_aires",
+        "silverTableName": "silver_lims_buenos_aires",
         "columns": [
           {
             "bronzeColumn": "sample_id",
             "name": "sample_id",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "product_line",
             "name": "product_line",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "material_code",
             "name": "material_code",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "batch_lot_number",
             "name": "batch_lot_number",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "container_id",
             "name": "container_id",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "test_type",
             "name": "test_type",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": [
               {
                 "id": "verify_test_type",
@@ -372,92 +373,92 @@
           {
             "bronzeColumn": "test_method_version",
             "name": "test_method_version",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "instrument_id",
             "name": "instrument_id",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "analyst_id",
             "name": "analyst_id",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "reviewer_id",
             "name": "reviewer_id",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "date_requested",
             "name": "date_requested",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "date_received",
             "name": "date_received",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "date_started",
             "name": "date_started",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "date_completed",
             "name": "date_completed",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "priority",
             "name": "priority",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "submitter",
             "name": "submitter",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "project_reference",
             "name": "project_reference",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "result_value",
             "name": "result_value",
-            "dataType": "numeric",
-            "nullable": true,
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "result_unit",
             "name": "result_unit",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": [
               {
                 "id": "verify_result_unit",
@@ -476,22 +477,22 @@
           {
             "bronzeColumn": "spec_lower_limit",
             "name": "spec_lower_limit",
-            "dataType": "numeric",
-            "nullable": true,
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "spec_upper_limit",
             "name": "spec_upper_limit",
-            "dataType": "numeric",
-            "nullable": true,
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "sample_status",
             "name": "sample_status",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": [
               {
                 "id": "verify_sample_status",
@@ -510,57 +511,44 @@
           {
             "bronzeColumn": "approval_status",
             "name": "approval_status",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "approval_date",
             "name": "approval_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "storage_location",
             "name": "storage_location",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "retest_flag",
             "name": "retest_flag",
-            "dataType": "boolean",
-            "nullable": true,
+            "dataType": "BOOLEAN",
+            "nullable": false,
             "rules": []
           },
           {
             "bronzeColumn": "comments",
             "name": "comments",
-            "dataType": "text",
+            "dataType": "VARCHAR",
             "nullable": true,
+            "sqlOverride": "NULL AS \"comments\"",
             "rules": []
           },
           {
             "bronzeColumn": "site_code",
             "name": "site_code",
-            "dataType": "text",
-            "nullable": true,
-            "rules": []
-          },
-          {
-            "bronzeColumn": "lab_notebook_ref",
-            "name": "lab_notebook_ref",
-            "dataType": "text",
-            "nullable": true,
-            "rules": []
-          },
-          {
-            "bronzeColumn": "chain_of_custody_id",
-            "name": "chain_of_custody_id",
-            "dataType": "text",
-            "nullable": true,
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           }
         ],
@@ -577,53 +565,54 @@
         "auditColumns": []
       },
       {
-        "bronzeTable": "lims_houston",
-        "sourceSystem": "lims_houston",
-        "silverTableName": "silver_lims_houston",
+        "bronzeTable": "LIMS_ANNANDALE_SAMPLES",
+        "sourceSystem": "lims",
+        "siteId": "annandale",
+        "silverTableName": "silver_lims_annandale",
         "columns": [
           {
-            "bronzeColumn": "samplenumber",
-            "name": "sample_number",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "sample_id",
+            "name": "sample_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "businessline",
-            "name": "business_line",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "product_line",
+            "name": "product_line",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "materialid",
-            "name": "material_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "material_code",
+            "name": "material_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "lotnumber",
-            "name": "lot_number",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "batch_lot_number",
+            "name": "batch_lot_number",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "containerref",
-            "name": "container_ref",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "container_id",
+            "name": "container_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "analysistype",
-            "name": "analysis_type",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "test_type",
+            "name": "test_type",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": [
               {
-                "id": "verify_analysis_type",
+                "id": "verify_test_type",
                 "pillar": "conform",
                 "type": "code_lookup",
                 "enabled": true,
@@ -637,97 +626,97 @@
             ]
           },
           {
-            "bronzeColumn": "methodversion",
-            "name": "method_version",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "test_method_version",
+            "name": "test_method_version",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "instrumentcode",
-            "name": "instrument_code",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "instrument_id",
+            "name": "instrument_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "testedby",
-            "name": "tested_by",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "analyst_id",
+            "name": "analyst_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "reviewedby",
-            "name": "reviewed_by",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "reviewer_id",
+            "name": "reviewer_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "reqdate",
-            "name": "req_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "date_requested",
+            "name": "date_requested",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "receiveddate",
-            "name": "received_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "date_received",
+            "name": "date_received",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "startdate",
-            "name": "start_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "date_started",
+            "name": "date_started",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "compdate",
-            "name": "comp_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "date_completed",
+            "name": "date_completed",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "prioritylevel",
-            "name": "priority_level",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "priority",
+            "name": "priority",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "requestedby",
-            "name": "requested_by",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "submitter",
+            "name": "submitter",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "projectcode",
-            "name": "project_code",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "project_reference",
+            "name": "project_reference",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "value",
-            "name": "value",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "result_value",
+            "name": "result_value",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "uom",
-            "name": "uom",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "result_unit",
+            "name": "result_unit",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": [
               {
-                "id": "verify_uom",
+                "id": "verify_result_unit",
                 "pillar": "conform",
                 "type": "code_lookup",
                 "enabled": true,
@@ -741,27 +730,27 @@
             ]
           },
           {
-            "bronzeColumn": "lowerspeclimit",
-            "name": "lower_spec_limit",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "spec_lower_limit",
+            "name": "spec_lower_limit",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "upperspeclimit",
-            "name": "upper_spec_limit",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "spec_upper_limit",
+            "name": "spec_upper_limit",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "status",
-            "name": "status",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "sample_status",
+            "name": "sample_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": [
               {
-                "id": "verify_status",
+                "id": "verify_sample_status",
                 "pillar": "conform",
                 "type": "code_lookup",
                 "enabled": true,
@@ -775,45 +764,71 @@
             ]
           },
           {
-            "bronzeColumn": "approvalstate",
-            "name": "approval_state",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "approval_status",
+            "name": "approval_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "approvaldate",
+            "bronzeColumn": "approval_date",
             "name": "approval_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "storageloc",
-            "name": "storage_loc",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "storage_location",
+            "name": "storage_location",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "retestindicator",
-            "name": "retest_indicator",
-            "dataType": "boolean",
-            "nullable": true,
+            "bronzeColumn": "retest_flag",
+            "name": "retest_flag",
+            "dataType": "BOOLEAN",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "notes",
-            "name": "notes",
-            "dataType": "text",
-            "nullable": true,
-            "rules": []
+            "bronzeColumn": "comments",
+            "name": "comments",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": [
+              {
+                "type": "derive_case",
+                "enabled": true,
+                "params": {
+                  "branches": [
+                    {
+                      "k": "Sample_ID IS NOT NULL",
+                      "v": "  derived  "
+                    }
+                  ],
+                  "else": "missing"
+                }
+              },
+              {
+                "type": "trim",
+                "enabled": true,
+                "params": {}
+              },
+              {
+                "type": "case_normalize",
+                "enabled": true,
+                "params": {
+                  "mode": "upper"
+                }
+              }
+            ]
           },
           {
-            "bronzeColumn": "location",
-            "name": "location",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "site_code",
+            "name": "site_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           }
         ],
@@ -830,148 +845,661 @@
         "auditColumns": []
       },
       {
-        "bronzeTable": "pilot_plant_historian",
+        "bronzeTable": "LIMS_CURITIBA_AMOSTRAS",
+        "sourceSystem": "lims",
+        "siteId": "curitiba",
+        "silverTableName": "silver_lims_curitiba",
+        "columns": [
+          {
+            "bronzeColumn": "sample_id",
+            "name": "sample_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "product_line",
+            "name": "product_line",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "material_code",
+            "name": "material_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "batch_lot_number",
+            "name": "batch_lot_number",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "container_id",
+            "name": "container_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "test_type",
+            "name": "test_type",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": [
+              {
+                "id": "verify_test_type",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "test_method_version",
+            "name": "test_method_version",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "instrument_id",
+            "name": "instrument_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "analyst_id",
+            "name": "analyst_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "reviewer_id",
+            "name": "reviewer_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_requested",
+            "name": "date_requested",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_received",
+            "name": "date_received",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_started",
+            "name": "date_started",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_completed",
+            "name": "date_completed",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "priority",
+            "name": "priority",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "submitter",
+            "name": "submitter",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "project_reference",
+            "name": "project_reference",
+            "dataType": "VARCHAR",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"project_reference\"",
+            "rules": []
+          },
+          {
+            "bronzeColumn": "result_value",
+            "name": "result_value",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "result_unit",
+            "name": "result_unit",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": [
+              {
+                "id": "verify_result_unit",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_uom_reference",
+                  "lookupKey": "source_unit",
+                  "lookupValue": "governed_unit",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "spec_lower_limit",
+            "name": "spec_lower_limit",
+            "dataType": "NUMBER",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"spec_lower_limit\"",
+            "rules": []
+          },
+          {
+            "bronzeColumn": "spec_upper_limit",
+            "name": "spec_upper_limit",
+            "dataType": "NUMBER",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"spec_upper_limit\"",
+            "rules": []
+          },
+          {
+            "bronzeColumn": "sample_status",
+            "name": "sample_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": [
+              {
+                "id": "verify_sample_status",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_sample_status_reference",
+                  "lookupKey": "source_value",
+                  "lookupValue": "governed_status",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "approval_status",
+            "name": "approval_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "approval_date",
+            "name": "approval_date",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"approval_date\"",
+            "rules": []
+          },
+          {
+            "bronzeColumn": "storage_location",
+            "name": "storage_location",
+            "dataType": "VARCHAR",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"storage_location\"",
+            "rules": []
+          },
+          {
+            "bronzeColumn": "retest_flag",
+            "name": "retest_flag",
+            "dataType": "BOOLEAN",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "comments",
+            "name": "comments",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "site_code",
+            "name": "site_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true
+        },
+        "auditColumns": []
+      },
+      {
+        "bronzeTable": "LIMS_HOUSTON_SAMPLES",
+        "sourceSystem": "lims",
+        "siteId": "houston",
+        "silverTableName": "silver_lims_houston",
+        "columns": [
+          {
+            "bronzeColumn": "sample_id",
+            "name": "sample_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "product_line",
+            "name": "product_line",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "material_code",
+            "name": "material_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "batch_lot_number",
+            "name": "batch_lot_number",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "container_id",
+            "name": "container_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "test_type",
+            "name": "test_type",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": [
+              {
+                "id": "verify_test_type",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "test_method_version",
+            "name": "test_method_version",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "instrument_id",
+            "name": "instrument_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "analyst_id",
+            "name": "analyst_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "reviewer_id",
+            "name": "reviewer_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_requested",
+            "name": "date_requested",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_received",
+            "name": "date_received",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_started",
+            "name": "date_started",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_completed",
+            "name": "date_completed",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "priority",
+            "name": "priority",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "submitter",
+            "name": "submitter",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "project_reference",
+            "name": "project_reference",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "result_value",
+            "name": "result_value",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "result_unit",
+            "name": "result_unit",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": [
+              {
+                "id": "verify_result_unit",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_uom_reference",
+                  "lookupKey": "source_unit",
+                  "lookupValue": "governed_unit",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "spec_lower_limit",
+            "name": "spec_lower_limit",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "spec_upper_limit",
+            "name": "spec_upper_limit",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "sample_status",
+            "name": "sample_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": [
+              {
+                "id": "verify_sample_status",
+                "pillar": "conform",
+                "type": "code_lookup",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_sample_status_reference",
+                  "lookupKey": "source_value",
+                  "lookupValue": "governed_status",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "approval_status",
+            "name": "approval_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "approval_date",
+            "name": "approval_date",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "storage_location",
+            "name": "storage_location",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "retest_flag",
+            "name": "retest_flag",
+            "dataType": "BOOLEAN",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "comments",
+            "name": "comments",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "site_code",
+            "name": "site_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true
+        },
+        "auditColumns": []
+      },
+      {
+        "bronzeTable": "PILOT_PLANT_HISTORIAN",
         "sourceSystem": "pilot_plant_historian",
         "silverTableName": "silver_pilot_plant_historian",
         "columns": [
           {
-            "bronzeColumn": "runid",
-            "name": "run_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "RunID",
+            "name": "RunID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "businessline",
-            "name": "business_line",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "BusinessLine",
+            "name": "BusinessLine",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "unit",
-            "name": "unit",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "Unit",
+            "name": "Unit",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "starttimestamp",
-            "name": "start_timestamp",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "StartTimestamp",
+            "name": "StartTimestamp",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "endtimestamp",
-            "name": "end_timestamp",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "EndTimestamp",
+            "name": "EndTimestamp",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "yield_percent",
-            "name": "yield_percent",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "Yield_Percent",
+            "name": "Yield_Percent",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "throughput_kg_hr",
-            "name": "throughput_kg_hr",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "Throughput_kg_hr",
+            "name": "Throughput_kg_hr",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "temperature_c",
-            "name": "temperature_c",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "Temperature_C",
+            "name": "Temperature_C",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "pressure_bar",
-            "name": "pressure_bar",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "Pressure_bar",
+            "name": "Pressure_bar",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "flowrate_lmin",
-            "name": "flow_rate_lmin",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "FlowRate_Lmin",
+            "name": "FlowRate_Lmin",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "ph_level",
-            "name": "ph_level",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "pH_Level",
+            "name": "pH_Level",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "agitation_rpm",
-            "name": "agitation_rpm",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "Agitation_RPM",
+            "name": "Agitation_RPM",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "feedstockmaterialid",
-            "name": "feedstock_material_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "FeedstockMaterialID",
+            "name": "FeedstockMaterialID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "productmaterialid",
-            "name": "product_material_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "ProductMaterialID",
+            "name": "ProductMaterialID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "batchoperator",
-            "name": "batch_operator",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "BatchOperator",
+            "name": "BatchOperator",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "deviationflag",
-            "name": "deviation_flag",
-            "dataType": "boolean",
-            "nullable": true,
+            "bronzeColumn": "DeviationFlag",
+            "name": "DeviationFlag",
+            "dataType": "BOOLEAN",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "deviationdescription",
-            "name": "deviation_description",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "DeviationDescription",
+            "name": "DeviationDescription",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "safetyincidentflag",
-            "name": "safety_incident_flag",
-            "dataType": "boolean",
-            "nullable": true,
+            "bronzeColumn": "SafetyIncidentFlag",
+            "name": "SafetyIncidentFlag",
+            "dataType": "BOOLEAN",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "energyconsumption_kwh",
-            "name": "energy_consumption_kwh",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "EnergyConsumption_kWh",
+            "name": "EnergyConsumption_kWh",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "wastegenerated_kg",
-            "name": "waste_generated_kg",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "WasteGenerated_kg",
+            "name": "WasteGenerated_kg",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           }
         ],
@@ -988,120 +1516,120 @@
         "auditColumns": []
       },
       {
-        "bronzeTable": "raw_material_master",
+        "bronzeTable": "RAW_MATERIAL_MASTER",
         "sourceSystem": "raw_material_master",
         "silverTableName": "silver_raw_material_master",
         "columns": [
           {
-            "bronzeColumn": "canonicalmaterialname",
-            "name": "canonical_material_name",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "CanonicalMaterialName",
+            "name": "CanonicalMaterialName",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "businessline",
-            "name": "business_line",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "BusinessLine",
+            "name": "BusinessLine",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "clintonmaterialcode",
-            "name": "clinton_material_code",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "SourceMaterialCode",
+            "name": "SourceMaterialCode",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "houstonmaterialid",
-            "name": "houston_material_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "LegacyMaterialID",
+            "name": "LegacyMaterialID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "casnumber",
-            "name": "cas_number",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "CASNumber",
+            "name": "CASNumber",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "supplier",
-            "name": "supplier",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "Supplier",
+            "name": "Supplier",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "suppliergrade",
-            "name": "supplier_grade",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "SupplierGrade",
+            "name": "SupplierGrade",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "unitofmeasure",
-            "name": "unit_of_measure",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "UnitOfMeasure",
+            "name": "UnitOfMeasure",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "density",
-            "name": "density",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "Density",
+            "name": "Density",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "viscositygrade",
-            "name": "viscosity_grade",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "ViscosityGrade",
+            "name": "ViscosityGrade",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "hazardclassification",
-            "name": "hazard_classification",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "HazardClassification",
+            "name": "HazardClassification",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "safetydatasheetref",
-            "name": "safety_data_sheet_ref",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "SafetyDataSheetRef",
+            "name": "SafetyDataSheetRef",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "shelflifemonths",
-            "name": "shelf_life_months",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "ShelfLifeMonths",
+            "name": "ShelfLifeMonths",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "storageconditions",
-            "name": "storage_conditions",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "StorageConditions",
+            "name": "StorageConditions",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "approvedforuse",
-            "name": "approved_for_use",
-            "dataType": "boolean",
-            "nullable": true,
+            "bronzeColumn": "ApprovedForUse",
+            "name": "ApprovedForUse",
+            "dataType": "BOOLEAN",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "lastreviewdate",
-            "name": "last_review_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "LastReviewDate",
+            "name": "LastReviewDate",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           }
         ],
@@ -1118,120 +1646,120 @@
         "auditColumns": []
       },
       {
-        "bronzeTable": "toxicology_trial_chemicals",
+        "bronzeTable": "TOX_TRIAL",
         "sourceSystem": "toxicology_trial_chemicals",
         "silverTableName": "silver_toxicology_trial_chemicals",
         "columns": [
           {
-            "bronzeColumn": "trialid",
-            "name": "trial_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "TrialID",
+            "name": "TrialID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "compoundid",
-            "name": "compound_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "CompoundID",
+            "name": "CompoundID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "trialtype",
-            "name": "trial_type",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "TrialType",
+            "name": "TrialType",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "cro_name",
-            "name": "cro_name",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "CRO_Name",
+            "name": "CRO_Name",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "studyprotocolid",
-            "name": "study_protocol_id",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "StudyProtocolID",
+            "name": "StudyProtocolID",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "trialdate",
-            "name": "trial_date",
-            "dataType": "timestamp without time zone",
-            "nullable": true,
+            "bronzeColumn": "TrialDate",
+            "name": "TrialDate",
+            "dataType": "TIMESTAMP_NTZ",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "speciestested",
-            "name": "species_tested",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "SpeciesTested",
+            "name": "SpeciesTested",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "exposureroute",
-            "name": "exposure_route",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "ExposureRoute",
+            "name": "ExposureRoute",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "exposurelevel_mgkg",
-            "name": "exposure_level_mgkg",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "ExposureLevel_mgkg",
+            "name": "ExposureLevel_mgkg",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "exposureduration_days",
-            "name": "exposure_duration_days",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "ExposureDuration_days",
+            "name": "ExposureDuration_days",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "toxicityscore_1to5",
-            "name": "toxicity_score_1_to_5",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "ToxicityScore_1to5",
+            "name": "ToxicityScore_1to5",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "ld50_value",
-            "name": "ld50_value",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "LD50_Value",
+            "name": "LD50_Value",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "noael_value",
-            "name": "noael_value",
-            "dataType": "numeric",
-            "nullable": true,
+            "bronzeColumn": "NOAEL_Value",
+            "name": "NOAEL_Value",
+            "dataType": "NUMBER(18,4)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "outcomestatus",
-            "name": "outcome_status",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "OutcomeStatus",
+            "name": "OutcomeStatus",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "regulatoryframework",
-            "name": "regulatory_framework",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "RegulatoryFramework",
+            "name": "RegulatoryFramework",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           },
           {
-            "bronzeColumn": "reportreference",
-            "name": "report_reference",
-            "dataType": "text",
-            "nullable": true,
+            "bronzeColumn": "ReportReference",
+            "name": "ReportReference",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
             "rules": []
           }
         ],

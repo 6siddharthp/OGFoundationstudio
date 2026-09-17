@@ -5,124 +5,144 @@
       "sourceTable": "ENGINE_TEST_CELL",
       "fields": [
         {
-          "name": "testid",
-          "dataType": "text",
+          "name": "TestID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TEST_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "formulationid",
-          "dataType": "text",
+          "name": "FormulationID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "FORMULATION_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "enginetype",
-          "dataType": "text",
+          "name": "EngineType",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "ENGINE_TYPE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "teststandard",
-          "dataType": "text",
+          "name": "TestStandard",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TEST_STANDARD",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "testcellid",
-          "dataType": "text",
+          "name": "TestCellID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TEST_CELL_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "testdate",
-          "dataType": "timestamp without time zone",
+          "name": "TestDate",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "TEST_DATE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "testduration_hrs",
-          "dataType": "numeric",
+          "name": "TestDuration_hrs",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "TEST_DURATION_HRS",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "oilchargevolume_l",
-          "dataType": "numeric",
+          "name": "OilChargeVolume_L",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "OIL_CHARGE_VOLUME_L",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "wearrate_mg",
-          "dataType": "numeric",
+          "name": "WearRate_mg",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "WEAR_RATE_MG",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "fueleconomy_pct_vs_baseline",
-          "dataType": "numeric",
+          "name": "FuelEconomy_pct_vs_baseline",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "FUEL_ECONOMY_PCT_VS_BASELINE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "depositrating_1to10",
-          "dataType": "numeric",
+          "name": "DepositRating_1to10",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "DEPOSIT_RATING_1TO10",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "viscosityat40c",
-          "dataType": "numeric",
+          "name": "ViscosityAt40C",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "VISCOSITY_AT40_C",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "viscosityat100c",
-          "dataType": "numeric",
+          "name": "ViscosityAt100C",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "VISCOSITY_AT100_C",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "oxidationindex",
-          "dataType": "numeric",
+          "name": "OxidationIndex",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "OXIDATION_INDEX",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "tan_mgkohg",
-          "dataType": "numeric",
+          "name": "TAN_mgKOHg",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "TAN_MG_KOHG",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "fueldilution_pct",
-          "dataType": "numeric",
+          "name": "FuelDilution_pct",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "FUEL_DILUTION_PCT",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "wearmetalsppm",
-          "dataType": "numeric",
+          "name": "WearMetalsPPM",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "WEAR_METALS_PPM",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "passfail",
-          "dataType": "text",
+          "name": "PassFail",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "PASS_FAIL",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "testengineerid",
-          "dataType": "text",
+          "name": "TestEngineerID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TEST_ENGINEER_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "certificationbatch",
-          "dataType": "text",
+          "name": "CertificationBatch",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "CERTIFICATION_BATCH",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         }
       ]
     },
@@ -131,466 +151,929 @@
       "sourceTable": "FUEL_TRIAL",
       "fields": [
         {
-          "name": "trialid",
-          "dataType": "text",
+          "name": "TrialID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TRIAL_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "blendid",
-          "dataType": "text",
+          "name": "BlendID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "BLEND_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "fueltype",
-          "dataType": "text",
+          "name": "FuelType",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "FUEL_TYPE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "trialdate",
-          "dataType": "timestamp without time zone",
+          "name": "TrialDate",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "TRIAL_DATE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "trialduration_hrs",
-          "dataType": "numeric",
+          "name": "TrialDuration_hrs",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "TRIAL_DURATION_HRS",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "cetanenumber",
-          "dataType": "numeric",
+          "name": "CetaneNumber",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "CETANE_NUMBER",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "emissionsnox_ppm",
-          "dataType": "numeric",
+          "name": "EmissionsNOx_ppm",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "EMISSIONS_NOX_PPM",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "emissionsco_ppm",
-          "dataType": "numeric",
+          "name": "EmissionsCO_ppm",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "EMISSIONS_CO_PPM",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "emissionsparticulate_mgm3",
-          "dataType": "numeric",
+          "name": "EmissionsParticulate_mgm3",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "EMISSIONS_PARTICULATE_MGM3",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "combustionefficiency_pct",
-          "dataType": "numeric",
+          "name": "CombustionEfficiency_pct",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "COMBUSTION_EFFICIENCY_PCT",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "injectorfoulingrating",
-          "dataType": "numeric",
+          "name": "InjectorFoulingRating",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "INJECTOR_FOULING_RATING",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "watercontent_ppm",
-          "dataType": "numeric",
+          "name": "WaterContent_ppm",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "WATER_CONTENT_PPM",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "sulfurcontent_ppm",
-          "dataType": "numeric",
+          "name": "SulfurContent_ppm",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "SULFUR_CONTENT_PPM",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "density_kgm3",
-          "dataType": "numeric",
+          "name": "Density_kgm3",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "DENSITY_KGM3",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "flashpoint_c",
-          "dataType": "numeric",
+          "name": "FlashPoint_C",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "FLASH_POINT_C",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "passfail",
-          "dataType": "text",
+          "name": "PassFail",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "PASS_FAIL",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "testengineerid",
-          "dataType": "text",
+          "name": "TestEngineerID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TEST_ENGINEER_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         }
       ]
     },
     {
-      "sourceSystem": "lims_clinton_nj",
-      "sourceTable": "LIMS_CLINTON_SAMPLES",
+      "sourceSystem": "lims",
+      "siteId": "buenos_aires",
+      "sourceTable": "LAB_MUESTRAS_BA",
       "fields": [
         {
           "name": "sample_id",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "SAMPLE_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "product_line",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "PRODUCT_LINE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "material_code",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "MATERIAL_CODE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "batch_lot_number",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "BATCH_LOT_NUMBER",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "container_id",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "CONTAINER_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "test_type",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TEST_TYPE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "test_method_version",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TEST_METHOD_VERSION",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "instrument_id",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "INSTRUMENT_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "analyst_id",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "ANALYST_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "reviewer_id",
-          "dataType": "text",
-          "stagedColumn": "QA_APPROVER_ID",
-          "present": true
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "APROBADOR_CALIDAD",
+          "present": true,
+          "origin": "manually mapped"
         },
         {
           "name": "date_requested",
-          "dataType": "timestamp without time zone",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "DATE_REQUESTED",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "date_received",
-          "dataType": "timestamp without time zone",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "DATE_RECEIVED",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "date_started",
-          "dataType": "timestamp without time zone",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "DATE_STARTED",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "date_completed",
-          "dataType": "timestamp without time zone",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "DATE_COMPLETED",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "priority",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "PRIORITY",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "submitter",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "SUBMITTER",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "project_reference",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "PROJECT_REFERENCE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "result_value",
-          "dataType": "numeric",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "RESULT_VALUE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "result_unit",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "RESULT_UNIT",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "spec_lower_limit",
-          "dataType": "numeric",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "SPEC_LOWER_LIMIT",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "spec_upper_limit",
-          "dataType": "numeric",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "SPEC_UPPER_LIMIT",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "sample_status",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "SAMPLE_STATUS",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "approval_status",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "APPROVAL_STATUS",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "approval_date",
-          "dataType": "timestamp without time zone",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "APPROVAL_DATE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "storage_location",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "STORAGE_LOCATION",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "retest_flag",
-          "dataType": "boolean",
-          "stagedColumn": "REPEAT_ANALYSIS_IND",
-          "present": true
+          "dataType": "BOOLEAN",
+          "stagedColumn": "RETEST_FLAG",
+          "present": true,
+          "origin": "pre-built"
         },
         {
           "name": "comments",
-          "dataType": "text",
-          "stagedColumn": "COMMENTS",
-          "present": true
+          "dataType": "VARCHAR",
+          "present": false,
+          "origin": "pre-built"
         },
         {
           "name": "site_code",
-          "dataType": "text",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "SITE_CODE",
-          "present": true
-        },
-        {
-          "name": "lab_notebook_ref",
-          "dataType": "text",
-          "stagedColumn": "LAB_NOTEBOOK_REF",
-          "present": true
-        },
-        {
-          "name": "chain_of_custody_id",
-          "dataType": "text",
-          "stagedColumn": "CHAIN_OF_CUSTODY_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         }
       ]
     },
     {
-      "sourceSystem": "lims_houston",
+      "sourceSystem": "lims",
+      "siteId": "annandale",
+      "sourceTable": "LIMS_ANNANDALE_SAMPLES",
+      "fields": [
+        {
+          "name": "sample_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SAMPLE_ID",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "product_line",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "PRODUCT_LINE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "material_code",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "MATERIAL_CODE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "batch_lot_number",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "BATCH_LOT_NUMBER",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "container_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "CONTAINER_ID",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "test_type",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "TEST_TYPE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "test_method_version",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "TEST_METHOD_VERSION",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "instrument_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "INSTRUMENT_ID",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "analyst_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "ANALYST_ID",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "reviewer_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "QA_APPROVER_ID",
+          "present": true,
+          "origin": "manually mapped"
+        },
+        {
+          "name": "date_requested",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_REQUESTED",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "date_received",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_RECEIVED",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "date_started",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_STARTED",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "date_completed",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_COMPLETED",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "priority",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "PRIORITY",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "submitter",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SUBMITTER",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "project_reference",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "PROJECT_REFERENCE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "result_value",
+          "dataType": "NUMBER(18,4)",
+          "stagedColumn": "RESULT_VALUE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "result_unit",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "RESULT_UNIT",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "spec_lower_limit",
+          "dataType": "NUMBER(18,4)",
+          "stagedColumn": "SPEC_LOWER_LIMIT",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "spec_upper_limit",
+          "dataType": "NUMBER(18,4)",
+          "stagedColumn": "SPEC_UPPER_LIMIT",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "sample_status",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SAMPLE_STATUS",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "approval_status",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "APPROVAL_STATUS",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "approval_date",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "APPROVAL_DATE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "storage_location",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "STORAGE_LOCATION",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "retest_flag",
+          "dataType": "BOOLEAN",
+          "stagedColumn": "REPEAT_ANALYSIS_IND",
+          "present": true,
+          "origin": "manually mapped"
+        },
+        {
+          "name": "comments",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "COMMENTS",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "site_code",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SITE_CODE",
+          "present": true,
+          "origin": "pre-built"
+        }
+      ]
+    },
+    {
+      "sourceSystem": "lims",
+      "siteId": "curitiba",
+      "sourceTable": "LIMS_CURITIBA_AMOSTRAS",
+      "fields": [
+        {
+          "name": "sample_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "AMOSTRA_ID",
+          "present": true,
+          "origin": "manually mapped"
+        },
+        {
+          "name": "product_line",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "PRODUCT_LINE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "material_code",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "MATERIAL_CODE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "batch_lot_number",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "BATCH_LOT_NUMBER",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "container_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "CONTAINER_ID",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "test_type",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "TEST_TYPE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "test_method_version",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "TEST_METHOD_VERSION",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "instrument_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "INSTRUMENT_ID",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "analyst_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "TECNICO_ID",
+          "present": true,
+          "origin": "manually mapped"
+        },
+        {
+          "name": "reviewer_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "REVIEWER_ID",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "date_requested",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATA_SOLICITADA",
+          "present": true,
+          "origin": "manually mapped"
+        },
+        {
+          "name": "date_received",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_RECEIVED",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "date_started",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_STARTED",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "date_completed",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_COMPLETED",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "priority",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "PRIORITY",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "submitter",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SUBMITTER",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "project_reference",
+          "dataType": "VARCHAR",
+          "present": false,
+          "origin": "pre-built"
+        },
+        {
+          "name": "result_value",
+          "dataType": "NUMBER(18,4)",
+          "stagedColumn": "RESULT_VALUE",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "result_unit",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "RESULT_UNIT",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "spec_lower_limit",
+          "dataType": "NUMBER",
+          "present": false,
+          "origin": "pre-built"
+        },
+        {
+          "name": "spec_upper_limit",
+          "dataType": "NUMBER",
+          "present": false,
+          "origin": "pre-built"
+        },
+        {
+          "name": "sample_status",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "STATUS_AMOSTRA",
+          "present": true,
+          "origin": "manually mapped"
+        },
+        {
+          "name": "approval_status",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "APPROVAL_STATUS",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "approval_date",
+          "dataType": "TIMESTAMP_NTZ",
+          "present": false,
+          "origin": "pre-built"
+        },
+        {
+          "name": "storage_location",
+          "dataType": "VARCHAR",
+          "present": false,
+          "origin": "pre-built"
+        },
+        {
+          "name": "retest_flag",
+          "dataType": "BOOLEAN",
+          "stagedColumn": "RETEST_FLAG",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "comments",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "COMMENTS",
+          "present": true,
+          "origin": "pre-built"
+        },
+        {
+          "name": "site_code",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SITE_CODE",
+          "present": true,
+          "origin": "pre-built"
+        }
+      ]
+    },
+    {
+      "sourceSystem": "lims",
+      "siteId": "houston",
       "sourceTable": "LIMS_HOUSTON_SAMPLES",
       "fields": [
         {
-          "name": "samplenumber",
-          "dataType": "text",
+          "name": "sample_id",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "SAMPLE_NUMBER",
-          "present": true
+          "present": true,
+          "origin": "manually mapped"
         },
         {
-          "name": "businessline",
-          "dataType": "text",
-          "stagedColumn": "BUSINESS_LINE",
-          "present": true
+          "name": "product_line",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "PRODUCT_LINE",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "materialid",
-          "dataType": "text",
-          "stagedColumn": "MATERIAL_ID",
-          "present": true
+          "name": "material_code",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "MATERIAL_CODE",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "lotnumber",
-          "dataType": "text",
-          "stagedColumn": "LOT_NUMBER",
-          "present": true
+          "name": "batch_lot_number",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "BATCH_LOT_NUMBER",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "containerref",
-          "dataType": "text",
-          "stagedColumn": "CONTAINER_REF",
-          "present": true
+          "name": "container_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "CONTAINER_ID",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "analysistype",
-          "dataType": "text",
+          "name": "test_type",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "ANALYSIS_TYPE",
-          "present": true
+          "present": true,
+          "origin": "manually mapped"
         },
         {
-          "name": "methodversion",
-          "dataType": "text",
-          "stagedColumn": "METHOD_VERSION",
-          "present": true
+          "name": "test_method_version",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "TEST_METHOD_VERSION",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "instrumentcode",
-          "dataType": "text",
-          "stagedColumn": "INSTRUMENT_CODE",
-          "present": true
+          "name": "instrument_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "INSTRUMENT_ID",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "testedby",
-          "dataType": "text",
-          "stagedColumn": "TESTED_BY",
-          "present": true
+          "name": "analyst_id",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "ANALYST_ID",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "reviewedby",
-          "dataType": "text",
+          "name": "reviewer_id",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "QA_SIGNOFF_USER",
-          "present": true
+          "present": true,
+          "origin": "manually mapped"
         },
         {
-          "name": "reqdate",
-          "dataType": "timestamp without time zone",
-          "stagedColumn": "REQ_DATE",
-          "present": true
+          "name": "date_requested",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_REQUESTED",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "receiveddate",
-          "dataType": "timestamp without time zone",
-          "stagedColumn": "RECEIVED_DATE",
-          "present": true
+          "name": "date_received",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_RECEIVED",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "startdate",
-          "dataType": "timestamp without time zone",
-          "stagedColumn": "START_DATE",
-          "present": true
+          "name": "date_started",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_STARTED",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "compdate",
-          "dataType": "timestamp without time zone",
-          "stagedColumn": "COMP_DATE",
-          "present": true
+          "name": "date_completed",
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "DATE_COMPLETED",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "prioritylevel",
-          "dataType": "numeric",
-          "stagedColumn": "PRIORITY_LEVEL",
-          "present": true
+          "name": "priority",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "PRIORITY",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "requestedby",
-          "dataType": "text",
-          "stagedColumn": "REQUESTED_BY",
-          "present": true
+          "name": "submitter",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SUBMITTER",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "projectcode",
-          "dataType": "text",
-          "stagedColumn": "PROJECT_CODE",
-          "present": true
+          "name": "project_reference",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "PROJECT_REFERENCE",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "value",
-          "dataType": "numeric",
-          "stagedColumn": "VALUE",
-          "present": true
+          "name": "result_value",
+          "dataType": "NUMBER(18,4)",
+          "stagedColumn": "RESULT_VALUE",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "uom",
-          "dataType": "text",
+          "name": "result_unit",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "UOM",
-          "present": true
+          "present": true,
+          "origin": "manually mapped"
         },
         {
-          "name": "lowerspeclimit",
-          "dataType": "numeric",
-          "stagedColumn": "LOWER_SPEC_LIMIT",
-          "present": true
+          "name": "spec_lower_limit",
+          "dataType": "NUMBER(18,4)",
+          "stagedColumn": "SPEC_LOWER_LIMIT",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "upperspeclimit",
-          "dataType": "numeric",
-          "stagedColumn": "UPPER_SPEC_LIMIT",
-          "present": true
+          "name": "spec_upper_limit",
+          "dataType": "NUMBER(18,4)",
+          "stagedColumn": "SPEC_UPPER_LIMIT",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "status",
-          "dataType": "text",
-          "stagedColumn": "STATUS",
-          "present": true
+          "name": "sample_status",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SAMPLE_STATUS",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "approvalstate",
-          "dataType": "text",
-          "stagedColumn": "APPROVAL_STATE",
-          "present": true
+          "name": "approval_status",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "APPROVAL_STATUS",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "approvaldate",
-          "dataType": "timestamp without time zone",
+          "name": "approval_date",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "APPROVAL_DATE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "storageloc",
-          "dataType": "text",
-          "stagedColumn": "STORAGE_LOC",
-          "present": true
+          "name": "storage_location",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "STORAGE_LOCATION",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "retestindicator",
-          "dataType": "boolean",
+          "name": "retest_flag",
+          "dataType": "BOOLEAN",
           "stagedColumn": "RERUN_FLAG",
-          "present": true
+          "present": true,
+          "origin": "manually mapped"
         },
         {
-          "name": "notes",
-          "dataType": "text",
-          "stagedColumn": "NOTES",
-          "present": true
+          "name": "comments",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "COMMENTS",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "location",
-          "dataType": "text",
-          "stagedColumn": "LOCATION",
-          "present": true
+          "name": "site_code",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SITE_CODE",
+          "present": true,
+          "origin": "pre-built"
         }
       ]
     },
@@ -599,124 +1082,144 @@
       "sourceTable": "PILOT_PLANT_HISTORIAN",
       "fields": [
         {
-          "name": "runid",
-          "dataType": "text",
+          "name": "RunID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "RUN_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "businessline",
-          "dataType": "text",
+          "name": "BusinessLine",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "BUSINESS_LINE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "unit",
-          "dataType": "text",
+          "name": "Unit",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "UNIT",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "starttimestamp",
-          "dataType": "timestamp without time zone",
+          "name": "StartTimestamp",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "START_TIMESTAMP",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "endtimestamp",
-          "dataType": "timestamp without time zone",
+          "name": "EndTimestamp",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "END_TIMESTAMP",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "yield_percent",
-          "dataType": "numeric",
+          "name": "Yield_Percent",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "YIELD_PERCENT",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "throughput_kg_hr",
-          "dataType": "numeric",
+          "name": "Throughput_kg_hr",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "THROUGHPUT_KG_HR",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "temperature_c",
-          "dataType": "numeric",
+          "name": "Temperature_C",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "TEMPERATURE_C",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "pressure_bar",
-          "dataType": "numeric",
+          "name": "Pressure_bar",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "PRESSURE_BAR",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "flowrate_lmin",
-          "dataType": "numeric",
+          "name": "FlowRate_Lmin",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "FLOW_RATE_LMIN",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "ph_level",
-          "dataType": "numeric",
+          "name": "pH_Level",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "P_H_LEVEL",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "agitation_rpm",
-          "dataType": "numeric",
+          "name": "Agitation_RPM",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "AGITATION_RPM",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "feedstockmaterialid",
-          "dataType": "text",
+          "name": "FeedstockMaterialID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "FEEDSTOCK_MATERIAL_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "productmaterialid",
-          "dataType": "text",
+          "name": "ProductMaterialID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "PRODUCT_MATERIAL_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "batchoperator",
-          "dataType": "text",
+          "name": "BatchOperator",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "BATCH_OPERATOR",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "deviationflag",
-          "dataType": "boolean",
+          "name": "DeviationFlag",
+          "dataType": "BOOLEAN",
           "stagedColumn": "DEVIATION_FLAG",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "deviationdescription",
-          "dataType": "text",
+          "name": "DeviationDescription",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "DEVIATION_DESCRIPTION",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "safetyincidentflag",
-          "dataType": "boolean",
+          "name": "SafetyIncidentFlag",
+          "dataType": "BOOLEAN",
           "stagedColumn": "SAFETY_INCIDENT_FLAG",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "energyconsumption_kwh",
-          "dataType": "numeric",
+          "name": "EnergyConsumption_kWh",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "ENERGY_CONSUMPTION_K_WH",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "wastegenerated_kg",
-          "dataType": "numeric",
+          "name": "WasteGenerated_kg",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "WASTE_GENERATED_KG",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         }
       ]
     },
@@ -725,100 +1228,116 @@
       "sourceTable": "RAW_MATERIAL_MASTER",
       "fields": [
         {
-          "name": "canonicalmaterialname",
-          "dataType": "text",
+          "name": "CanonicalMaterialName",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "CANONICAL_MATERIAL_NAME",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "businessline",
-          "dataType": "text",
+          "name": "BusinessLine",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "BUSINESS_LINE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "clintonmaterialcode",
-          "dataType": "text",
-          "stagedColumn": "CLINTON_MATERIAL_CODE",
-          "present": true
+          "name": "SourceMaterialCode",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "SOURCE_MATERIAL_CODE",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "houstonmaterialid",
-          "dataType": "text",
-          "stagedColumn": "HOUSTON_MATERIAL_ID",
-          "present": true
+          "name": "LegacyMaterialID",
+          "dataType": "VARCHAR(255)",
+          "stagedColumn": "LEGACY_MATERIAL_ID",
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "casnumber",
-          "dataType": "text",
+          "name": "CASNumber",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "CASNUMBER",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "supplier",
-          "dataType": "text",
+          "name": "Supplier",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "SUPPLIER",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "suppliergrade",
-          "dataType": "text",
+          "name": "SupplierGrade",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "SUPPLIER_GRADE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "unitofmeasure",
-          "dataType": "text",
+          "name": "UnitOfMeasure",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "UNIT_OF_MEASURE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "density",
-          "dataType": "numeric",
+          "name": "Density",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "DENSITY",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "viscositygrade",
-          "dataType": "numeric",
+          "name": "ViscosityGrade",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "VISCOSITY_GRADE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "hazardclassification",
-          "dataType": "text",
+          "name": "HazardClassification",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "HAZARD_CLASSIFICATION",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "safetydatasheetref",
-          "dataType": "text",
+          "name": "SafetyDataSheetRef",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "SAFETY_DATA_SHEET_REF",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "shelflifemonths",
-          "dataType": "numeric",
+          "name": "ShelfLifeMonths",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "SHELF_LIFE_MONTHS",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "storageconditions",
-          "dataType": "text",
+          "name": "StorageConditions",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "STORAGE_CONDITIONS",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "approvedforuse",
-          "dataType": "boolean",
+          "name": "ApprovedForUse",
+          "dataType": "BOOLEAN",
           "stagedColumn": "APPROVED_FOR_USE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "lastreviewdate",
-          "dataType": "timestamp without time zone",
+          "name": "LastReviewDate",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "LAST_REVIEW_DATE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         }
       ]
     },
@@ -827,100 +1346,116 @@
       "sourceTable": "TOX_TRIAL",
       "fields": [
         {
-          "name": "trialid",
-          "dataType": "text",
+          "name": "TrialID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TRIAL_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "compoundid",
-          "dataType": "text",
+          "name": "CompoundID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "COMPOUND_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "trialtype",
-          "dataType": "text",
+          "name": "TrialType",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "TRIAL_TYPE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "cro_name",
-          "dataType": "text",
+          "name": "CRO_Name",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "CRO_NAME",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "studyprotocolid",
-          "dataType": "text",
+          "name": "StudyProtocolID",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "STUDY_PROTOCOL_ID",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "trialdate",
-          "dataType": "timestamp without time zone",
+          "name": "TrialDate",
+          "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "TRIAL_DATE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "speciestested",
-          "dataType": "text",
+          "name": "SpeciesTested",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "SPECIES_TESTED",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "exposureroute",
-          "dataType": "text",
+          "name": "ExposureRoute",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "EXPOSURE_ROUTE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "exposurelevel_mgkg",
-          "dataType": "numeric",
+          "name": "ExposureLevel_mgkg",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "EXPOSURE_LEVEL_MGKG",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "exposureduration_days",
-          "dataType": "numeric",
+          "name": "ExposureDuration_days",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "EXPOSURE_DURATION_DAYS",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "toxicityscore_1to5",
-          "dataType": "numeric",
+          "name": "ToxicityScore_1to5",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "TOXICITY_SCORE_1TO5",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "ld50_value",
-          "dataType": "numeric",
+          "name": "LD50_Value",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "LD50_VALUE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "noael_value",
-          "dataType": "numeric",
+          "name": "NOAEL_Value",
+          "dataType": "NUMBER(18,4)",
           "stagedColumn": "NOAEL_VALUE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "outcomestatus",
-          "dataType": "text",
+          "name": "OutcomeStatus",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "OUTCOME_STATUS",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "regulatoryframework",
-          "dataType": "text",
+          "name": "RegulatoryFramework",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "REGULATORY_FRAMEWORK",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         },
         {
-          "name": "reportreference",
-          "dataType": "text",
+          "name": "ReportReference",
+          "dataType": "VARCHAR(255)",
           "stagedColumn": "REPORT_REFERENCE",
-          "present": true
+          "present": true,
+          "origin": "pre-built"
         }
       ]
     }
