@@ -34,10 +34,16 @@ INSERT INTO bronze."pilot_plant_historian" (source_row_number, "runid", "busines
             SELECT row_number, raw_data ->> 'RUN_ID', raw_data ->> 'BUSINESS_LINE', raw_data ->> 'UNIT', CASE
     WHEN NULLIF(raw_data ->> 'START_TIMESTAMP', '') IS NULL THEN NULL
     WHEN raw_data ->> 'START_TIMESTAMP' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
-      THEN to_timestamp(raw_data ->> 'START_TIMESTAMP', CASE WHEN length(raw_data ->> 'START_TIMESTAMP') = 10 THEN 'DD/MM/YYYY' WHEN length(raw_data ->> 'START_TIMESTAMP') = 16 THEN 'DD/MM/YYYY HH24:MI' ELSE 'DD/MM/YYYY HH24:MI:SS' END)
+      THEN to_timestamp(raw_data ->> 'START_TIMESTAMP', (CASE
+    WHEN split_part(raw_data ->> 'START_TIMESTAMP', '/', 1)::integer > 12 THEN 'DD/MM/YYYY'
+    WHEN split_part(raw_data ->> 'START_TIMESTAMP', '/', 2)::integer > 12 THEN 'MM/DD/YYYY'
+    ELSE 'DD/MM/YYYY' END) || CASE WHEN length(raw_data ->> 'START_TIMESTAMP') = 10 THEN '' WHEN length(raw_data ->> 'START_TIMESTAMP') = 16 THEN ' HH24:MI' ELSE ' HH24:MI:SS' END)
     ELSE (raw_data ->> 'START_TIMESTAMP')::timestamp END, CASE
     WHEN NULLIF(raw_data ->> 'END_TIMESTAMP', '') IS NULL THEN NULL
     WHEN raw_data ->> 'END_TIMESTAMP' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
-      THEN to_timestamp(raw_data ->> 'END_TIMESTAMP', CASE WHEN length(raw_data ->> 'END_TIMESTAMP') = 10 THEN 'DD/MM/YYYY' WHEN length(raw_data ->> 'END_TIMESTAMP') = 16 THEN 'DD/MM/YYYY HH24:MI' ELSE 'DD/MM/YYYY HH24:MI:SS' END)
+      THEN to_timestamp(raw_data ->> 'END_TIMESTAMP', (CASE
+    WHEN split_part(raw_data ->> 'END_TIMESTAMP', '/', 1)::integer > 12 THEN 'DD/MM/YYYY'
+    WHEN split_part(raw_data ->> 'END_TIMESTAMP', '/', 2)::integer > 12 THEN 'MM/DD/YYYY'
+    ELSE 'DD/MM/YYYY' END) || CASE WHEN length(raw_data ->> 'END_TIMESTAMP') = 10 THEN '' WHEN length(raw_data ->> 'END_TIMESTAMP') = 16 THEN ' HH24:MI' ELSE ' HH24:MI:SS' END)
     ELSE (raw_data ->> 'END_TIMESTAMP')::timestamp END, NULLIF(raw_data ->> 'YIELD_PERCENT', '')::numeric, NULLIF(raw_data ->> 'THROUGHPUT_KG_HR', '')::numeric, NULLIF(raw_data ->> 'TEMPERATURE_C', '')::numeric, NULLIF(raw_data ->> 'PRESSURE_BAR', '')::numeric, NULLIF(raw_data ->> 'FLOW_RATE_LMIN', '')::numeric, NULLIF(raw_data ->> 'P_H_LEVEL', '')::numeric, NULLIF(raw_data ->> 'AGITATION_RPM', '')::numeric, raw_data ->> 'FEEDSTOCK_MATERIAL_ID', raw_data ->> 'PRODUCT_MATERIAL_ID', raw_data ->> 'BATCH_OPERATOR', CASE lower(raw_data ->> 'DEVIATION_FLAG') WHEN 'true' THEN true WHEN 'false' THEN false ELSE NULL END, raw_data ->> 'DEVIATION_DESCRIPTION', CASE lower(raw_data ->> 'SAFETY_INCIDENT_FLAG') WHEN 'true' THEN true WHEN 'false' THEN false ELSE NULL END, NULLIF(raw_data ->> 'ENERGY_CONSUMPTION_K_WH', '')::numeric, NULLIF(raw_data ->> 'WASTE_GENERATED_KG', '')::numeric
             FROM foundation_staging_rows WHERE staging_table_id = 9 ORDER BY row_number;

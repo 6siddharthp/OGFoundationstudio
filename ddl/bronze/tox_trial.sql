@@ -30,6 +30,9 @@ INSERT INTO bronze."tox_trial" (source_row_number, "trialid", "compoundid", "tri
             SELECT row_number, raw_data ->> 'TRIAL_ID', raw_data ->> 'COMPOUND_ID', raw_data ->> 'TRIAL_TYPE', raw_data ->> 'CRO_NAME', raw_data ->> 'STUDY_PROTOCOL_ID', CASE
     WHEN NULLIF(raw_data ->> 'TRIAL_DATE', '') IS NULL THEN NULL
     WHEN raw_data ->> 'TRIAL_DATE' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
-      THEN to_timestamp(raw_data ->> 'TRIAL_DATE', CASE WHEN length(raw_data ->> 'TRIAL_DATE') = 10 THEN 'DD/MM/YYYY' WHEN length(raw_data ->> 'TRIAL_DATE') = 16 THEN 'DD/MM/YYYY HH24:MI' ELSE 'DD/MM/YYYY HH24:MI:SS' END)
+      THEN to_timestamp(raw_data ->> 'TRIAL_DATE', (CASE
+    WHEN split_part(raw_data ->> 'TRIAL_DATE', '/', 1)::integer > 12 THEN 'DD/MM/YYYY'
+    WHEN split_part(raw_data ->> 'TRIAL_DATE', '/', 2)::integer > 12 THEN 'MM/DD/YYYY'
+    ELSE 'DD/MM/YYYY' END) || CASE WHEN length(raw_data ->> 'TRIAL_DATE') = 10 THEN '' WHEN length(raw_data ->> 'TRIAL_DATE') = 16 THEN ' HH24:MI' ELSE ' HH24:MI:SS' END)
     ELSE (raw_data ->> 'TRIAL_DATE')::timestamp END, raw_data ->> 'SPECIES_TESTED', raw_data ->> 'EXPOSURE_ROUTE', NULLIF(raw_data ->> 'EXPOSURE_LEVEL_MGKG', '')::numeric, NULLIF(raw_data ->> 'EXPOSURE_DURATION_DAYS', '')::numeric, NULLIF(raw_data ->> 'TOXICITY_SCORE_1TO5', '')::numeric, NULLIF(raw_data ->> 'LD50_VALUE', '')::numeric, NULLIF(raw_data ->> 'NOAEL_VALUE', '')::numeric, raw_data ->> 'OUTCOME_STATUS', raw_data ->> 'REGULATORY_FRAMEWORK', raw_data ->> 'REPORT_REFERENCE'
             FROM foundation_staging_rows WHERE staging_table_id = 10 ORDER BY row_number;

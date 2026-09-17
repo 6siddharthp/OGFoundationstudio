@@ -34,6 +34,9 @@ INSERT INTO bronze."engine_test_cell" (source_row_number, "testid", "formulation
             SELECT row_number, raw_data ->> 'TEST_ID', raw_data ->> 'FORMULATION_ID', raw_data ->> 'ENGINE_TYPE', raw_data ->> 'TEST_STANDARD', raw_data ->> 'TEST_CELL_ID', CASE
     WHEN NULLIF(raw_data ->> 'TEST_DATE', '') IS NULL THEN NULL
     WHEN raw_data ->> 'TEST_DATE' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
-      THEN to_timestamp(raw_data ->> 'TEST_DATE', CASE WHEN length(raw_data ->> 'TEST_DATE') = 10 THEN 'DD/MM/YYYY' WHEN length(raw_data ->> 'TEST_DATE') = 16 THEN 'DD/MM/YYYY HH24:MI' ELSE 'DD/MM/YYYY HH24:MI:SS' END)
+      THEN to_timestamp(raw_data ->> 'TEST_DATE', (CASE
+    WHEN split_part(raw_data ->> 'TEST_DATE', '/', 1)::integer > 12 THEN 'DD/MM/YYYY'
+    WHEN split_part(raw_data ->> 'TEST_DATE', '/', 2)::integer > 12 THEN 'MM/DD/YYYY'
+    ELSE 'DD/MM/YYYY' END) || CASE WHEN length(raw_data ->> 'TEST_DATE') = 10 THEN '' WHEN length(raw_data ->> 'TEST_DATE') = 16 THEN ' HH24:MI' ELSE ' HH24:MI:SS' END)
     ELSE (raw_data ->> 'TEST_DATE')::timestamp END, NULLIF(raw_data ->> 'TEST_DURATION_HRS', '')::numeric, NULLIF(raw_data ->> 'OIL_CHARGE_VOLUME_L', '')::numeric, NULLIF(raw_data ->> 'WEAR_RATE_MG', '')::numeric, NULLIF(raw_data ->> 'FUEL_ECONOMY_PCT_VS_BASELINE', '')::numeric, NULLIF(raw_data ->> 'DEPOSIT_RATING_1TO10', '')::numeric, NULLIF(raw_data ->> 'VISCOSITY_AT40_C', '')::numeric, NULLIF(raw_data ->> 'VISCOSITY_AT100_C', '')::numeric, NULLIF(raw_data ->> 'OXIDATION_INDEX', '')::numeric, NULLIF(raw_data ->> 'TAN_MG_KOHG', '')::numeric, NULLIF(raw_data ->> 'FUEL_DILUTION_PCT', '')::numeric, NULLIF(raw_data ->> 'WEAR_METALS_PPM', '')::numeric, raw_data ->> 'PASS_FAIL', raw_data ->> 'TEST_ENGINEER_ID', raw_data ->> 'CERTIFICATION_BATCH'
             FROM foundation_staging_rows WHERE staging_table_id = 5 ORDER BY row_number;
