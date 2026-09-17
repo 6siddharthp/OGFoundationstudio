@@ -5,8 +5,8 @@ CREATE TABLE silver."silver_raw_material_master" (
               source_row_number integer PRIMARY KEY,
               "canonical_material_name" text,
 "business_line" text,
-"clinton_material_code" text,
-"houston_material_id" text,
+"source_material_code" text,
+"legacy_material_id" text,
 "cas_number" text,
 "supplier" text,
 "supplier_grade" text,
@@ -25,13 +25,13 @@ CREATE TABLE silver."silver_raw_material_master" (
 
 -- foundation:stage 5
 INSERT INTO silver."silver_raw_material_master" (
-              source_row_number, "canonical_material_name", "business_line", "clinton_material_code", "houston_material_id", "cas_number", "supplier", "supplier_grade", "unit_of_measure", "density", "viscosity_grade", "hazard_classification", "safety_data_sheet_ref", "shelf_life_months", "storage_conditions", "approved_for_use", "last_review_date", source_table
+              source_row_number, "canonical_material_name", "business_line", "source_material_code", "legacy_material_id", "cas_number", "supplier", "supplier_grade", "unit_of_measure", "density", "viscosity_grade", "hazard_classification", "safety_data_sheet_ref", "shelf_life_months", "storage_conditions", "approved_for_use", "last_review_date", source_table
             )
             SELECT "row_data"."source_row_number",
   "row_data"."canonicalmaterialname" AS "canonical_material_name",
   "row_data"."businessline" AS "business_line",
-  "row_data"."clintonmaterialcode" AS "clinton_material_code",
-  "row_data"."houstonmaterialid" AS "houston_material_id",
+  "row_data"."sourcematerialcode" AS "source_material_code",
+  "row_data"."legacymaterialid" AS "legacy_material_id",
   "row_data"."casnumber" AS "cas_number",
   "row_data"."supplier" AS "supplier",
   "row_data"."suppliergrade" AS "supplier_grade",
