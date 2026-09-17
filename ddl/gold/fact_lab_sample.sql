@@ -6,7 +6,7 @@ CREATE TABLE gold."fact_lab_sample" (lab_sample_key text PRIMARY KEY, material_k
 -- foundation:stage 9
 INSERT INTO gold.fact_lab_sample
           SELECT lab_sample_key, material_key, test_method_key,
-            CASE upper(site_code) WHEN 'CLINTON' THEN 'SITE_CLINTON' WHEN 'HOUSTON' THEN 'SITE_HOUSTON' END,
+            'SITE_' || upper(site_code),
             CASE lower(business_line) WHEN 'lubricants' THEN 'BIZ_LUBRICANTS' WHEN 'fuels' THEN 'BIZ_FUELS' WHEN 'chemicals' THEN 'BIZ_CHEMICALS' END,
             to_char(completion_date,'YYYYMMDD')::integer,
             extract(epoch from (completion_date-requested_date))/86400, sample_status, source_system_count
