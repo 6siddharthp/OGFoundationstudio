@@ -36,12 +36,9 @@ CREATE TABLE bronze."lab_muestras_ba" (
 -- foundation:stage 2
 COMMENT ON TABLE bronze."lab_muestras_ba" IS 'lims: 27 fields defined, 27 source columns, 26 auto-mapped, 1 manually mapped, 0 newly added.';
 
--- foundation:stage 2
-COMMENT ON COLUMN bronze."lab_muestras_ba"."reviewer_id" IS 'Manually mapped from APROBADOR_CALIDAD';
-
 -- foundation:stage 3
 INSERT INTO bronze."lab_muestras_ba" (source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "project_reference", "result_value", "result_unit", "spec_lower_limit", "spec_upper_limit", "sample_status", "approval_status", "approval_date", "storage_location", "retest_flag", "site_code")
-            SELECT row_number, raw_data ->> 'SAMPLE_ID', raw_data ->> 'PRODUCT_LINE', raw_data ->> 'MATERIAL_CODE', raw_data ->> 'BATCH_LOT_NUMBER', raw_data ->> 'CONTAINER_ID', raw_data ->> 'TEST_TYPE', raw_data ->> 'TEST_METHOD_VERSION', raw_data ->> 'INSTRUMENT_ID', raw_data ->> 'ANALYST_ID', raw_data ->> 'APROBADOR_CALIDAD', CASE
+            SELECT row_number, raw_data ->> 'SAMPLE_ID', raw_data ->> 'PRODUCT_LINE', raw_data ->> 'MATERIAL_CODE', raw_data ->> 'BATCH_LOT_NUMBER', raw_data ->> 'CONTAINER_ID', raw_data ->> 'TEST_TYPE', raw_data ->> 'TEST_METHOD_VERSION', raw_data ->> 'INSTRUMENT_ID', raw_data ->> 'ANALYST_ID', raw_data ->> 'REVISOR_USUARIO', CASE
     WHEN NULLIF(raw_data ->> 'DATE_REQUESTED', '') IS NULL THEN NULL
     WHEN raw_data ->> 'DATE_REQUESTED' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
       THEN to_timestamp(raw_data ->> 'DATE_REQUESTED', (CASE

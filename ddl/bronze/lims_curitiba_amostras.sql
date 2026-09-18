@@ -32,18 +32,6 @@ CREATE TABLE bronze."lims_curitiba_amostras" (
 -- foundation:stage 2
 COMMENT ON TABLE bronze."lims_curitiba_amostras" IS 'lims: 23 fields defined, 23 source columns, 19 auto-mapped, 4 manually mapped, 0 newly added.';
 
--- foundation:stage 2
-COMMENT ON COLUMN bronze."lims_curitiba_amostras"."sample_id" IS 'Manually mapped from AMOSTRA_ID';
-
--- foundation:stage 2
-COMMENT ON COLUMN bronze."lims_curitiba_amostras"."analyst_id" IS 'Manually mapped from TECNICO_ID';
-
--- foundation:stage 2
-COMMENT ON COLUMN bronze."lims_curitiba_amostras"."date_requested" IS 'Manually mapped from DATA_SOLICITADA';
-
--- foundation:stage 2
-COMMENT ON COLUMN bronze."lims_curitiba_amostras"."sample_status" IS 'Manually mapped from STATUS_AMOSTRA';
-
 -- foundation:stage 3
 INSERT INTO bronze."lims_curitiba_amostras" (source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "result_value", "result_unit", "sample_status", "approval_status", "retest_flag", "comments", "site_code")
             SELECT row_number, raw_data ->> 'AMOSTRA_ID', raw_data ->> 'PRODUCT_LINE', raw_data ->> 'MATERIAL_CODE', raw_data ->> 'BATCH_LOT_NUMBER', raw_data ->> 'CONTAINER_ID', raw_data ->> 'TEST_TYPE', raw_data ->> 'TEST_METHOD_VERSION', raw_data ->> 'INSTRUMENT_ID', raw_data ->> 'TECNICO_ID', raw_data ->> 'REVIEWER_ID', CASE

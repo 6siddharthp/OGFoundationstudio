@@ -37,12 +37,6 @@ CREATE TABLE bronze."lims_annandale_samples" (
 -- foundation:stage 2
 COMMENT ON TABLE bronze."lims_annandale_samples" IS 'lims: 28 fields defined, 28 source columns, 26 auto-mapped, 2 manually mapped, 0 newly added.';
 
--- foundation:stage 2
-COMMENT ON COLUMN bronze."lims_annandale_samples"."reviewer_id" IS 'Manually mapped from QA_APPROVER_ID';
-
--- foundation:stage 2
-COMMENT ON COLUMN bronze."lims_annandale_samples"."retest_flag" IS 'Manually mapped from REPEAT_ANALYSIS_IND';
-
 -- foundation:stage 3
 INSERT INTO bronze."lims_annandale_samples" (source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "project_reference", "result_value", "result_unit", "spec_lower_limit", "spec_upper_limit", "sample_status", "approval_status", "approval_date", "storage_location", "retest_flag", "comments", "site_code")
             SELECT row_number, raw_data ->> 'SAMPLE_ID', raw_data ->> 'PRODUCT_LINE', raw_data ->> 'MATERIAL_CODE', raw_data ->> 'BATCH_LOT_NUMBER', raw_data ->> 'CONTAINER_ID', raw_data ->> 'TEST_TYPE', raw_data ->> 'TEST_METHOD_VERSION', raw_data ->> 'INSTRUMENT_ID', raw_data ->> 'ANALYST_ID', raw_data ->> 'QA_APPROVER_ID', CASE
