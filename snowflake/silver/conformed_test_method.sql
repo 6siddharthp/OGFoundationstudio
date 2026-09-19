@@ -1,12 +1,12 @@
 -- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_test_method AS
-WITH methods AS (SELECT "test_type" test_type FROM OGFS_DEMO.SILVER.silver_lims_annandale_samples
+WITH methods AS (SELECT s."test_type" test_type FROM OGFS_DEMO.SILVER.silver_lims_annandale_samples
 UNION ALL
-SELECT "test_type" test_type FROM OGFS_DEMO.SILVER.silver_lims_houston_samples
+SELECT s."test_type" test_type FROM OGFS_DEMO.SILVER.silver_lims_houston_samples
 UNION ALL
-SELECT "test_type" test_type FROM OGFS_DEMO.SILVER.silver_lims_curitiba_amostras
+SELECT s."test_type" test_type FROM OGFS_DEMO.SILVER.silver_lims_curitiba_amostras
 UNION ALL
-SELECT "test_type" test_type FROM OGFS_DEMO.SILVER.silver_lab_muestras_ba)
+SELECT s."test_type" test_type FROM OGFS_DEMO.SILVER.silver_lab_muestras_ba)
 SELECT 'MTH_' || MD5(COALESCE(r.governed_standard_reference, m.test_type)) test_method_key,
  COALESCE(r.governed_standard_reference, m.test_type) governed_standard_reference,
  MIN(r.standard_body) standard_body, MIN(r.method_title) method_title,
