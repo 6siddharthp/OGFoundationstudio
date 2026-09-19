@@ -3,7 +3,7 @@ INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
 FROM (SELECT 'LIMS_ANNANDALE_SAMPLES' source_table,
-      b."source_row_number", 'status_vocabulary' rule_name,
+      b."source_row_number" source_row_number, 'status_vocabulary' rule_name,
       'Sample status is not present in the governed status vocabulary' reason,
       'annandale' site_code,
       'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
@@ -14,7 +14,7 @@ FROM (SELECT 'LIMS_ANNANDALE_SAMPLES' source_table,
     WHERE b."sample_status" IS NOT NULL AND r.source_value IS NULL
 UNION ALL
 SELECT 'LIMS_HOUSTON_SAMPLES' source_table,
-      b."source_row_number", 'status_vocabulary' rule_name,
+      b."source_row_number" source_row_number, 'status_vocabulary' rule_name,
       'Sample status is not present in the governed status vocabulary' reason,
       'houston' site_code,
       'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
@@ -25,7 +25,7 @@ SELECT 'LIMS_HOUSTON_SAMPLES' source_table,
     WHERE b."sample_status" IS NOT NULL AND r.source_value IS NULL
 UNION ALL
 SELECT 'LIMS_CURITIBA_AMOSTRAS' source_table,
-      b."source_row_number", 'status_vocabulary' rule_name,
+      b."source_row_number" source_row_number, 'status_vocabulary' rule_name,
       'Sample status is not present in the governed status vocabulary' reason,
       'curitiba' site_code,
       'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
@@ -36,7 +36,7 @@ SELECT 'LIMS_CURITIBA_AMOSTRAS' source_table,
     WHERE b."sample_status" IS NOT NULL AND r.source_value IS NULL
 UNION ALL
 SELECT 'LAB_MUESTRAS_BA' source_table,
-      b."source_row_number", 'status_vocabulary' rule_name,
+      b."source_row_number" source_row_number, 'status_vocabulary' rule_name,
       'Sample status is not present in the governed status vocabulary' reason,
       'buenos-aires' site_code,
       'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
@@ -47,7 +47,7 @@ SELECT 'LAB_MUESTRAS_BA' source_table,
     WHERE b."sample_status" IS NOT NULL AND r.source_value IS NULL
 UNION ALL
 SELECT 'LIMS_ANNANDALE_SAMPLES' source_table,
-      b."source_row_number", 'material_master_reference' rule_name,
+      b."source_row_number" source_row_number, 'material_master_reference' rule_name,
       'Material code is missing from RAW_MATERIAL_MASTER and requires review' reason,
       'annandale' site_code,
       'flagged_for_review' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
@@ -57,7 +57,7 @@ SELECT 'LIMS_ANNANDALE_SAMPLES' source_table,
     WHERE b."material_code" IS NOT NULL AND m.material_key IS NULL
 UNION ALL
 SELECT 'LIMS_HOUSTON_SAMPLES' source_table,
-      b."source_row_number", 'material_master_reference' rule_name,
+      b."source_row_number" source_row_number, 'material_master_reference' rule_name,
       'Material code is missing from RAW_MATERIAL_MASTER and requires review' reason,
       'houston' site_code,
       'flagged_for_review' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
@@ -67,7 +67,7 @@ SELECT 'LIMS_HOUSTON_SAMPLES' source_table,
     WHERE b."material_code" IS NOT NULL AND m.material_key IS NULL
 UNION ALL
 SELECT 'LIMS_CURITIBA_AMOSTRAS' source_table,
-      b."source_row_number", 'material_master_reference' rule_name,
+      b."source_row_number" source_row_number, 'material_master_reference' rule_name,
       'Material code is missing from RAW_MATERIAL_MASTER and requires review' reason,
       'curitiba' site_code,
       'flagged_for_review' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
@@ -77,7 +77,7 @@ SELECT 'LIMS_CURITIBA_AMOSTRAS' source_table,
     WHERE b."material_code" IS NOT NULL AND m.material_key IS NULL
 UNION ALL
 SELECT 'LAB_MUESTRAS_BA' source_table,
-      b."source_row_number", 'material_master_reference' rule_name,
+      b."source_row_number" source_row_number, 'material_master_reference' rule_name,
       'Material code is missing from RAW_MATERIAL_MASTER and requires review' reason,
       'buenos-aires' site_code,
       'flagged_for_review' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
