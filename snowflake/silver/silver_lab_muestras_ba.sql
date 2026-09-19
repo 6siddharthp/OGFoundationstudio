@@ -1,5 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
-CREATE OR REPLACE TABLE OGFS_DEMO.SILVER."silver_lab_muestras_ba" AS
+CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lab_muestras_ba AS
 SELECT "row_data"."source_row_number",
   "row_data"."sample_id" AS "sample_id",
   "row_data"."product_line" AS "product_line",
