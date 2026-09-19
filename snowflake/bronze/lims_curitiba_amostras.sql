@@ -17,7 +17,7 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        TRY_TO_DECIMAL(TO_VARCHAR("RESULT_VALUE"), 38, 10)::NUMBER AS "result_value",
        "RESULT_UNIT"::VARCHAR AS "result_unit",
        "APPROVAL_STATUS"::VARCHAR AS "approval_status",
-       TRY_TO_BOOLEAN("RETEST_FLAG")::BOOLEAN AS "retest_flag",
+       TRY_TO_BOOLEAN(TO_VARCHAR("RETEST_FLAG"))::BOOLEAN AS "retest_flag",
        "COMMENTS"::VARCHAR AS "comments",
        "SITE_CODE"::VARCHAR AS "site_code",
        CURRENT_TIMESTAMP() AS loaded_at
