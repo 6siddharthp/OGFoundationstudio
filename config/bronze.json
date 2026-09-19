@@ -1,5 +1,5 @@
 {
-  "lockedAt": "2026-09-19T20:55:56.733Z",
+  "lockedAt": "2026-09-19T20:56:40.875Z",
   "sources": [
     {
       "sourceSystem": "lims",
@@ -159,7 +159,8 @@
         {
           "name": "retest_flag",
           "dataType": "BOOLEAN",
-          "present": false
+          "snowflakeColumn": "REPEAT_ANALYSIS_IND",
+          "present": true
         },
         {
           "name": "comments",
@@ -183,7 +184,8 @@
         {
           "name": "sample_id",
           "dataType": "VARCHAR",
-          "present": false
+          "snowflakeColumn": "SAMPLE_NUMBER",
+          "present": true
         },
         {
           "name": "product_line",
@@ -212,7 +214,8 @@
         {
           "name": "test_type",
           "dataType": "VARCHAR",
-          "present": false
+          "snowflakeColumn": "ANALYSIS_TYPE",
+          "present": true
         },
         {
           "name": "test_method_version",
@@ -235,7 +238,8 @@
         {
           "name": "reviewer_id",
           "dataType": "VARCHAR",
-          "present": false
+          "snowflakeColumn": "REVIEWED_BY",
+          "present": true
         },
         {
           "name": "date_requested",
@@ -288,7 +292,8 @@
         {
           "name": "result_unit",
           "dataType": "VARCHAR",
-          "present": false
+          "snowflakeColumn": "UOM",
+          "present": true
         },
         {
           "name": "spec_lower_limit",
@@ -329,7 +334,8 @@
         {
           "name": "retest_flag",
           "dataType": "BOOLEAN",
-          "present": false
+          "snowflakeColumn": "RERUN_FLAG",
+          "present": true
         },
         {
           "name": "comments",
@@ -353,7 +359,8 @@
         {
           "name": "sample_id",
           "dataType": "VARCHAR",
-          "present": false
+          "snowflakeColumn": "AMOSTRA_ID",
+          "present": true
         },
         {
           "name": "product_line",
@@ -400,7 +407,8 @@
         {
           "name": "analyst_id",
           "dataType": "VARCHAR",
-          "present": false
+          "snowflakeColumn": "TECNICO_ID",
+          "present": true
         },
         {
           "name": "reviewer_id",
@@ -411,7 +419,8 @@
         {
           "name": "date_requested",
           "dataType": "TIMESTAMP_NTZ",
-          "present": false
+          "snowflakeColumn": "DATA_SOLICITADA",
+          "present": true
         },
         {
           "name": "date_received",
@@ -473,7 +482,8 @@
         {
           "name": "sample_status",
           "dataType": "VARCHAR",
-          "present": false
+          "snowflakeColumn": "STATUS_AMOSTRA",
+          "present": true
         },
         {
           "name": "approval_status",

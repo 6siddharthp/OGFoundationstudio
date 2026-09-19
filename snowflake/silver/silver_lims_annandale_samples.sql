@@ -26,6 +26,7 @@ SELECT "row_data"."source_row_number",
   "row_data"."approval_status" AS "approval_status",
   "row_data"."approval_date" AS "approval_date",
   "row_data"."storage_location" AS "storage_location",
+  "row_data"."retest_flag" AS "retest_flag",
   "row_data"."comments" AS "comments",
   "row_data"."site_code" AS "site_code",
   'lims_annandale_samples' AS "source_table"

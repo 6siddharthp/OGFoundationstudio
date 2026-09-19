@@ -1,5 +1,5 @@
 {
-  "lockedAt": "2026-09-19T20:55:56.734Z",
+  "lockedAt": "2026-09-19T20:56:40.875Z",
   "config": {
     "tables": [
       {
@@ -159,6 +159,12 @@
             "rules": []
           },
           {
+            "name": "retest_flag",
+            "bronzeColumn": "retest_flag",
+            "dataType": "BOOLEAN",
+            "rules": []
+          },
+          {
             "name": "comments",
             "bronzeColumn": "comments",
             "dataType": "VARCHAR",
@@ -178,6 +184,12 @@
         "siteId": "houston",
         "silverTableName": "silver_lims_houston_samples",
         "columns": [
+          {
+            "name": "sample_id",
+            "bronzeColumn": "sample_id",
+            "dataType": "VARCHAR",
+            "rules": []
+          },
           {
             "name": "product_line",
             "bronzeColumn": "product_line",
@@ -203,6 +215,12 @@
             "rules": []
           },
           {
+            "name": "test_type",
+            "bronzeColumn": "test_type",
+            "dataType": "VARCHAR",
+            "rules": []
+          },
+          {
             "name": "test_method_version",
             "bronzeColumn": "test_method_version",
             "dataType": "VARCHAR",
@@ -217,6 +235,12 @@
           {
             "name": "analyst_id",
             "bronzeColumn": "analyst_id",
+            "dataType": "VARCHAR",
+            "rules": []
+          },
+          {
+            "name": "reviewer_id",
+            "bronzeColumn": "reviewer_id",
             "dataType": "VARCHAR",
             "rules": []
           },
@@ -269,6 +293,12 @@
             "rules": []
           },
           {
+            "name": "result_unit",
+            "bronzeColumn": "result_unit",
+            "dataType": "VARCHAR",
+            "rules": []
+          },
+          {
             "name": "spec_lower_limit",
             "bronzeColumn": "spec_lower_limit",
             "dataType": "NUMBER",
@@ -305,6 +335,12 @@
             "rules": []
           },
           {
+            "name": "retest_flag",
+            "bronzeColumn": "retest_flag",
+            "dataType": "BOOLEAN",
+            "rules": []
+          },
+          {
             "name": "comments",
             "bronzeColumn": "comments",
             "dataType": "VARCHAR",
@@ -324,6 +360,12 @@
         "siteId": "curitiba",
         "silverTableName": "silver_lims_curitiba_amostras",
         "columns": [
+          {
+            "name": "sample_id",
+            "bronzeColumn": "sample_id",
+            "dataType": "VARCHAR",
+            "rules": []
+          },
           {
             "name": "product_line",
             "bronzeColumn": "product_line",
@@ -367,9 +409,21 @@
             "rules": []
           },
           {
+            "name": "analyst_id",
+            "bronzeColumn": "analyst_id",
+            "dataType": "VARCHAR",
+            "rules": []
+          },
+          {
             "name": "reviewer_id",
             "bronzeColumn": "reviewer_id",
             "dataType": "VARCHAR",
+            "rules": []
+          },
+          {
+            "name": "date_requested",
+            "bronzeColumn": "date_requested",
+            "dataType": "TIMESTAMP_NTZ",
             "rules": []
           },
           {
@@ -411,6 +465,12 @@
           {
             "name": "result_unit",
             "bronzeColumn": "result_unit",
+            "dataType": "VARCHAR",
+            "rules": []
+          },
+          {
+            "name": "sample_status",
+            "bronzeColumn": "sample_status",
             "dataType": "VARCHAR",
             "rules": []
           },

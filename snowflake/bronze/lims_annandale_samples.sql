@@ -26,6 +26,7 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS "source_row_number",
        "APPROVAL_STATUS"::VARCHAR AS "approval_status",
        COALESCE(TRY_TO_TIMESTAMP_NTZ("APPROVAL_DATE", 'MM/DD/YYYY'), TRY_TO_TIMESTAMP_NTZ("APPROVAL_DATE"))::TIMESTAMP_NTZ AS "approval_date",
        "STORAGE_LOCATION"::VARCHAR AS "storage_location",
+       TRY_TO_BOOLEAN(TO_VARCHAR("REPEAT_ANALYSIS_IND"))::BOOLEAN AS "retest_flag",
        "COMMENTS"::VARCHAR AS "comments",
        "SITE_CODE"::VARCHAR AS "site_code",
        CURRENT_TIMESTAMP() AS "loaded_at"
