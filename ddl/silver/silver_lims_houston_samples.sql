@@ -1,7 +1,7 @@
 -- Foundation Studio · PostgreSQL execution SQL
 
 -- foundation:stage 4
-CREATE TABLE silver."silver_lims_houston" (
+CREATE TABLE silver."silver_lims_houston_samples" (
               source_row_number integer PRIMARY KEY,
               "sample_id" text,
 "product_line" text,
@@ -36,7 +36,7 @@ CREATE TABLE silver."silver_lims_houston" (
             );
 
 -- foundation:stage 5
-INSERT INTO silver."silver_lims_houston" (
+INSERT INTO silver."silver_lims_houston_samples" (
               source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "project_reference", "result_value", "result_unit", "spec_lower_limit", "spec_upper_limit", "sample_status", "approval_status", "approval_date", "storage_location", "retest_flag", "comments", "site_code", source_table
             )
             SELECT "row_data"."source_row_number",

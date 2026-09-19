@@ -1,5 +1,5 @@
 {
-  "lockedAt": "2026-09-19T20:58:20.840Z",
+  "lockedAt": "2026-09-19T22:38:59.029Z",
   "config": {
     "tables": [
       {
@@ -42,7 +42,20 @@
             "name": "test_type",
             "bronzeColumn": "test_type",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_test_type_test_method",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "test_method_version",
@@ -120,7 +133,20 @@
             "name": "result_unit",
             "bronzeColumn": "result_unit",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_result_unit_uom",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_uom_reference",
+                  "lookupKey": "source_unit",
+                  "lookupValue": "governed_unit",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "spec_lower_limit",
@@ -138,7 +164,20 @@
             "name": "sample_status",
             "bronzeColumn": "sample_status",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_sample_status_status",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_sample_status_reference",
+                  "lookupKey": "source_value",
+                  "lookupValue": "governed_status",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "approval_status",
@@ -176,7 +215,20 @@
             "dataType": "VARCHAR",
             "rules": []
           }
-        ]
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true,
+          "sinkTable": "silver.quarantine_records",
+          "failThresholdPct": 5
+        },
+        "auditColumns": []
       },
       {
         "bronzeTable": "LIMS_HOUSTON_SAMPLES",
@@ -218,7 +270,20 @@
             "name": "test_type",
             "bronzeColumn": "test_type",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_test_type_test_method",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "test_method_version",
@@ -296,7 +361,20 @@
             "name": "result_unit",
             "bronzeColumn": "result_unit",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_result_unit_uom",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_uom_reference",
+                  "lookupKey": "source_unit",
+                  "lookupValue": "governed_unit",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "spec_lower_limit",
@@ -314,7 +392,20 @@
             "name": "sample_status",
             "bronzeColumn": "sample_status",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_sample_status_status",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_sample_status_reference",
+                  "lookupKey": "source_value",
+                  "lookupValue": "governed_status",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "approval_status",
@@ -352,7 +443,20 @@
             "dataType": "VARCHAR",
             "rules": []
           }
-        ]
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true,
+          "sinkTable": "silver.quarantine_records",
+          "failThresholdPct": 5
+        },
+        "auditColumns": []
       },
       {
         "bronzeTable": "LIMS_CURITIBA_AMOSTRAS",
@@ -394,7 +498,20 @@
             "name": "test_type",
             "bronzeColumn": "test_type",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_test_type_test_method",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "test_method_version",
@@ -466,13 +583,39 @@
             "name": "result_unit",
             "bronzeColumn": "result_unit",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_result_unit_uom",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_uom_reference",
+                  "lookupKey": "source_unit",
+                  "lookupValue": "governed_unit",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "sample_status",
             "bronzeColumn": "sample_status",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_sample_status_status",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_sample_status_reference",
+                  "lookupKey": "source_value",
+                  "lookupValue": "governed_status",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "approval_status",
@@ -498,7 +641,20 @@
             "dataType": "VARCHAR",
             "rules": []
           }
-        ]
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true,
+          "sinkTable": "silver.quarantine_records",
+          "failThresholdPct": 5
+        },
+        "auditColumns": []
       },
       {
         "bronzeTable": "LAB_MUESTRAS_BA",
@@ -540,7 +696,20 @@
             "name": "test_type",
             "bronzeColumn": "test_type",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_test_type_test_method",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "test_method_version",
@@ -612,7 +781,20 @@
             "name": "result_unit",
             "bronzeColumn": "result_unit",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_result_unit_uom",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_uom_reference",
+                  "lookupKey": "source_unit",
+                  "lookupValue": "governed_unit",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "spec_lower_limit",
@@ -630,7 +812,20 @@
             "name": "sample_status",
             "bronzeColumn": "sample_status",
             "dataType": "VARCHAR",
-            "rules": []
+            "rules": [
+              {
+                "id": "prebuilt_lims_sample_status_status",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_sample_status_reference",
+                  "lookupKey": "source_value",
+                  "lookupValue": "governed_status",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
           },
           {
             "name": "approval_status",
@@ -662,7 +857,20 @@
             "dataType": "VARCHAR",
             "rules": []
           }
-        ]
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true,
+          "sinkTable": "silver.quarantine_records",
+          "failThresholdPct": 5
+        },
+        "auditColumns": []
       },
       {
         "bronzeTable": "RAW_MATERIAL_MASTER",
@@ -670,106 +878,241 @@
         "silverTableName": "silver_raw_material_master",
         "columns": [
           {
-            "name": "CanonicalMaterialName",
+            "name": "canonical_material_name",
             "bronzeColumn": "CanonicalMaterialName",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "BusinessLine",
+            "name": "business_line",
             "bronzeColumn": "BusinessLine",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "SourceMaterialCode",
+            "name": "source_material_code",
             "bronzeColumn": "SourceMaterialCode",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "LegacyMaterialID",
+            "name": "legacy_material_id",
             "bronzeColumn": "LegacyMaterialID",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "CASNumber",
+            "name": "cas_number",
             "bronzeColumn": "CASNumber",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "Supplier",
+            "name": "supplier",
             "bronzeColumn": "Supplier",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "SupplierGrade",
+            "name": "supplier_grade",
             "bronzeColumn": "SupplierGrade",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "UnitOfMeasure",
+            "name": "unit_of_measure",
             "bronzeColumn": "UnitOfMeasure",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "Density",
+            "name": "density",
             "bronzeColumn": "Density",
             "dataType": "DECIMAL",
             "rules": []
           },
           {
-            "name": "ViscosityGrade",
+            "name": "viscosity_grade",
             "bronzeColumn": "ViscosityGrade",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "HazardClassification",
+            "name": "hazard_classification",
             "bronzeColumn": "HazardClassification",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "SafetyDataSheetRef",
+            "name": "safety_data_sheet_ref",
             "bronzeColumn": "SafetyDataSheetRef",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "ShelfLifeMonths",
+            "name": "shelf_life_months",
             "bronzeColumn": "ShelfLifeMonths",
             "dataType": "INTEGER",
             "rules": []
           },
           {
-            "name": "StorageConditions",
+            "name": "storage_conditions",
             "bronzeColumn": "StorageConditions",
             "dataType": "VARCHAR",
             "rules": []
           },
           {
-            "name": "ApprovedForUse",
+            "name": "approved_for_use",
             "bronzeColumn": "ApprovedForUse",
             "dataType": "BOOLEAN",
             "rules": []
           },
           {
-            "name": "LastReviewDate",
+            "name": "last_review_date",
             "bronzeColumn": "LastReviewDate",
             "dataType": "DATE",
             "rules": []
           }
-        ]
+        ],
+        "dedup": {
+          "keys": [],
+          "strategy": "replace"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true,
+          "sinkTable": "silver.quarantine_records",
+          "failThresholdPct": 5
+        },
+        "auditColumns": []
       }
     ]
   },
   "identity": {
-    "entities": []
+    "entities": [
+      {
+        "id": "za1el6an",
+        "name": "lims_annandale_samples",
+        "contributingTables": [
+          "LIMS_ANNANDALE_SAMPLES"
+        ],
+        "naturalKeys": [
+          {
+            "table": "LIMS_ANNANDALE_SAMPLES",
+            "columns": [
+              "id"
+            ]
+          }
+        ],
+        "surrogateKey": {
+          "strategy": "hash",
+          "prefix": "LIMS_",
+          "hashColumns": [
+            "id"
+          ]
+        },
+        "matchRules": [],
+        "survivorship": []
+      },
+      {
+        "id": "08yzxcjo",
+        "name": "lims_houston_samples",
+        "contributingTables": [
+          "LIMS_HOUSTON_SAMPLES"
+        ],
+        "naturalKeys": [
+          {
+            "table": "LIMS_HOUSTON_SAMPLES",
+            "columns": [
+              "id"
+            ]
+          }
+        ],
+        "surrogateKey": {
+          "strategy": "hash",
+          "prefix": "LIMS_",
+          "hashColumns": [
+            "id"
+          ]
+        },
+        "matchRules": [],
+        "survivorship": []
+      },
+      {
+        "id": "bwy0z4s8",
+        "name": "lims_curitiba_amostras",
+        "contributingTables": [
+          "LIMS_CURITIBA_AMOSTRAS"
+        ],
+        "naturalKeys": [
+          {
+            "table": "LIMS_CURITIBA_AMOSTRAS",
+            "columns": [
+              "id"
+            ]
+          }
+        ],
+        "surrogateKey": {
+          "strategy": "hash",
+          "prefix": "LIMS_",
+          "hashColumns": [
+            "id"
+          ]
+        },
+        "matchRules": [],
+        "survivorship": []
+      },
+      {
+        "id": "i72jj015",
+        "name": "lab_muestras_ba",
+        "contributingTables": [
+          "LAB_MUESTRAS_BA"
+        ],
+        "naturalKeys": [
+          {
+            "table": "LAB_MUESTRAS_BA",
+            "columns": [
+              "id"
+            ]
+          }
+        ],
+        "surrogateKey": {
+          "strategy": "hash",
+          "prefix": "LAB__",
+          "hashColumns": [
+            "id"
+          ]
+        },
+        "matchRules": [],
+        "survivorship": []
+      },
+      {
+        "id": "arbgz3fo",
+        "name": "raw_material_master",
+        "contributingTables": [
+          "RAW_MATERIAL_MASTER"
+        ],
+        "naturalKeys": [
+          {
+            "table": "RAW_MATERIAL_MASTER",
+            "columns": [
+              "id"
+            ]
+          }
+        ],
+        "surrogateKey": {
+          "strategy": "hash",
+          "prefix": "RAW__",
+          "hashColumns": [
+            "id"
+          ]
+        },
+        "matchRules": [],
+        "survivorship": []
+      }
+    ],
+    "referenceData": []
   }
 }

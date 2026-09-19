@@ -1,7 +1,7 @@
 -- Foundation Studio · PostgreSQL execution SQL
 
 -- foundation:stage 4
-CREATE TABLE silver."silver_lims_annandale" (
+CREATE TABLE silver."silver_lims_curitiba_amostras" (
               source_row_number integer PRIMARY KEY,
               "sample_id" text,
 "product_line" text,
@@ -19,15 +19,10 @@ CREATE TABLE silver."silver_lims_annandale" (
 "date_completed" timestamp,
 "priority" text,
 "submitter" text,
-"project_reference" text,
 "result_value" numeric,
 "result_unit" text,
-"spec_lower_limit" numeric,
-"spec_upper_limit" numeric,
 "sample_status" text,
 "approval_status" text,
-"approval_date" timestamp,
-"storage_location" text,
 "retest_flag" boolean,
 "comments" text,
 "site_code" text,
@@ -36,8 +31,8 @@ CREATE TABLE silver."silver_lims_annandale" (
             );
 
 -- foundation:stage 5
-INSERT INTO silver."silver_lims_annandale" (
-              source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "project_reference", "result_value", "result_unit", "spec_lower_limit", "spec_upper_limit", "sample_status", "approval_status", "approval_date", "storage_location", "retest_flag", "comments", "site_code", source_table
+INSERT INTO silver."silver_lims_curitiba_amostras" (
+              source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "result_value", "result_unit", "sample_status", "approval_status", "retest_flag", "comments", "site_code", source_table
             )
             SELECT "row_data"."source_row_number",
   "row_data"."sample_id" AS "sample_id",
@@ -56,17 +51,12 @@ INSERT INTO silver."silver_lims_annandale" (
   "row_data"."date_completed" AS "date_completed",
   "row_data"."priority" AS "priority",
   "row_data"."submitter" AS "submitter",
-  "row_data"."project_reference" AS "project_reference",
   "row_data"."result_value" AS "result_value",
   COALESCE((SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."result_unit" AS VARCHAR)))), NULL) AS "result_unit",
-  "row_data"."spec_lower_limit" AS "spec_lower_limit",
-  "row_data"."spec_upper_limit" AS "spec_upper_limit",
   COALESCE((SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."sample_status" AS VARCHAR)))), NULL) AS "sample_status",
   "row_data"."approval_status" AS "approval_status",
-  "row_data"."approval_date" AS "approval_date",
-  "row_data"."storage_location" AS "storage_location",
   "row_data"."retest_flag" AS "retest_flag",
-  UPPER(TRIM(CASE WHEN "row_data"."sample_id" IS NOT NULL THEN '  derived  ' ELSE 'missing' END)) AS "comments",
+  "row_data"."comments" AS "comments",
   "row_data"."site_code" AS "site_code",
-  'lims_annandale_samples' AS "source_table"
-FROM (SELECT "row_data".* FROM "bronze"."lims_annandale_samples" AS "row_data" WHERE NOT (COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."test_type" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."result_unit" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."sample_status" AS VARCHAR)))) IS NULL), FALSE))) AS "row_data";
+  'lims_curitiba_amostras' AS "source_table"
+FROM (SELECT "row_data".* FROM "bronze"."lims_curitiba_amostras" AS "row_data" WHERE NOT (COALESCE(((SELECT "ref"."governed_standard_reference" FROM "reference_data"."governed_astm_ilsac_test_method_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_method_name" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."test_type" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_unit" FROM "reference_data"."governed_uom_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_unit" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."result_unit" AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT "ref"."governed_status" FROM "reference_data"."governed_sample_status_reference" AS "ref" WHERE LOWER(TRIM(CAST("ref"."source_value" AS VARCHAR))) = LOWER(TRIM(CAST("row_data"."sample_status" AS VARCHAR)))) IS NULL), FALSE))) AS "row_data";
