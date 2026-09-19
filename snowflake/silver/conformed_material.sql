@@ -5,5 +5,5 @@ SELECT 'MAT_' || MD5(LOWER(TRIM(canonical_material_name))) AS material_key,
  MIN(supplier) supplier, MIN(unit_of_measure) unit_of_measure,
  MIN(hazard_classification) hazard_classification, MIN(source_material_code) source_material_code,
  COUNT(*) source_record_count
-FROM OGFS_DEMO.SILVER."silver_raw_material_master"
+FROM OGFS_DEMO.SILVER.silver_raw_material_master
 GROUP BY canonical_material_name;
