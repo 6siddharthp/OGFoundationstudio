@@ -1,6 +1,6 @@
 -- Foundation Studio · PostgreSQL execution SQL
 
--- foundation:stage 7
+-- foundation:stage 7 Sid 9 19 update gold
 CREATE TABLE gold."dim_material" (material_key text PRIMARY KEY, canonical_material_name text, business_line text, cas_number text, supplier text, unit_of_measure text, hazard_classification text);
 
 -- foundation:stage 8
