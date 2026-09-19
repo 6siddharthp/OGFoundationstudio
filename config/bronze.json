@@ -1,478 +1,6 @@
 {
+  "lockedAt": "2026-09-19T20:50:18.922Z",
   "sources": [
-    {
-      "sourceSystem": "engine_test_cell_lubricants",
-      "sourceTable": "ENGINE_TEST_CELL",
-      "fields": [
-        {
-          "name": "TestID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "FormulationID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "FORMULATION_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "EngineType",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "ENGINE_TYPE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TestStandard",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_STANDARD",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TestCellID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_CELL_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TestDate",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "TEST_DATE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TestDuration_hrs",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "TEST_DURATION_HRS",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "OilChargeVolume_L",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "OIL_CHARGE_VOLUME_L",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "WearRate_mg",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "WEAR_RATE_MG",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "FuelEconomy_pct_vs_baseline",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "FUEL_ECONOMY_PCT_VS_BASELINE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "DepositRating_1to10",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "DEPOSIT_RATING_1TO10",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "ViscosityAt40C",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "VISCOSITY_AT40_C",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "ViscosityAt100C",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "VISCOSITY_AT100_C",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "OxidationIndex",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "OXIDATION_INDEX",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TAN_mgKOHg",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "TAN_MG_KOHG",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "FuelDilution_pct",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "FUEL_DILUTION_PCT",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "WearMetalsPPM",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "WEAR_METALS_PPM",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "PassFail",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PASS_FAIL",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TestEngineerID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_ENGINEER_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "CertificationBatch",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "CERTIFICATION_BATCH",
-          "present": true,
-          "origin": "pre-built"
-        }
-      ]
-    },
-    {
-      "sourceSystem": "fuel_trial_fuels",
-      "sourceTable": "FUEL_TRIAL",
-      "fields": [
-        {
-          "name": "TrialID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TRIAL_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "BlendID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "BLEND_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "FuelType",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "FUEL_TYPE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TrialDate",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "TRIAL_DATE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TrialDuration_hrs",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "TRIAL_DURATION_HRS",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "CetaneNumber",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "CETANE_NUMBER",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "EmissionsNOx_ppm",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "EMISSIONS_NOX_PPM",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "EmissionsCO_ppm",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "EMISSIONS_CO_PPM",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "EmissionsParticulate_mgm3",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "EMISSIONS_PARTICULATE_MGM3",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "CombustionEfficiency_pct",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "COMBUSTION_EFFICIENCY_PCT",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "InjectorFoulingRating",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "INJECTOR_FOULING_RATING",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "WaterContent_ppm",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "WATER_CONTENT_PPM",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "SulfurContent_ppm",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "SULFUR_CONTENT_PPM",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "Density_kgm3",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "DENSITY_KGM3",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "FlashPoint_C",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "FLASH_POINT_C",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "PassFail",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PASS_FAIL",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TestEngineerID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_ENGINEER_ID",
-          "present": true,
-          "origin": "pre-built"
-        }
-      ]
-    },
-    {
-      "sourceSystem": "lims",
-      "siteId": "buenos_aires",
-      "sourceTable": "LAB_MUESTRAS_BA",
-      "fields": [
-        {
-          "name": "sample_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SAMPLE_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "product_line",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PRODUCT_LINE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "material_code",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "batch_lot_number",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "BATCH_LOT_NUMBER",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "container_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "CONTAINER_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "test_type",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_TYPE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "test_method_version",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_METHOD_VERSION",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "instrument_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "INSTRUMENT_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "analyst_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "ANALYST_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "reviewer_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "APROBADOR_CALIDAD",
-          "present": true,
-          "origin": "manually mapped"
-        },
-        {
-          "name": "date_requested",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_REQUESTED",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "date_received",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_RECEIVED",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "date_started",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_STARTED",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "date_completed",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_COMPLETED",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "priority",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PRIORITY",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "submitter",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SUBMITTER",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "project_reference",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PROJECT_REFERENCE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "result_value",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "RESULT_VALUE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "result_unit",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "RESULT_UNIT",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "spec_lower_limit",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "SPEC_LOWER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "spec_upper_limit",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "SPEC_UPPER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "sample_status",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SAMPLE_STATUS",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "approval_status",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "APPROVAL_STATUS",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "approval_date",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "APPROVAL_DATE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "storage_location",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "STORAGE_LOCATION",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "retest_flag",
-          "dataType": "BOOLEAN",
-          "stagedColumn": "RETEST_FLAG",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "comments",
-          "dataType": "VARCHAR",
-          "present": false,
-          "origin": "pre-built"
-        },
-        {
-          "name": "site_code",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SITE_CODE",
-          "present": true,
-          "origin": "pre-built"
-        }
-      ]
-    },
     {
       "sourceSystem": "lims",
       "siteId": "annandale",
@@ -480,397 +8,170 @@
       "fields": [
         {
           "name": "sample_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SAMPLE_ID",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SAMPLE_ID",
+          "present": true
         },
         {
           "name": "product_line",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PRODUCT_LINE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PRODUCT_LINE",
+          "present": true
         },
         {
           "name": "material_code",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "MATERIAL_CODE",
+          "present": true
         },
         {
           "name": "batch_lot_number",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "BATCH_LOT_NUMBER",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "BATCH_LOT_NUMBER",
+          "present": true
         },
         {
           "name": "container_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "CONTAINER_ID",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "CONTAINER_ID",
+          "present": true
         },
         {
           "name": "test_type",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_TYPE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "TEST_TYPE",
+          "present": true
         },
         {
           "name": "test_method_version",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_METHOD_VERSION",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "TEST_METHOD_VERSION",
+          "present": true
         },
         {
           "name": "instrument_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "INSTRUMENT_ID",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "INSTRUMENT_ID",
+          "present": true
         },
         {
           "name": "analyst_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "ANALYST_ID",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "ANALYST_ID",
+          "present": true
         },
         {
           "name": "reviewer_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "QA_APPROVER_ID",
-          "present": true,
-          "origin": "manually mapped"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "QA_APPROVER_ID",
+          "present": true
         },
         {
           "name": "date_requested",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_REQUESTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_REQUESTED",
+          "present": true
         },
         {
           "name": "date_received",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_RECEIVED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_RECEIVED",
+          "present": true
         },
         {
           "name": "date_started",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_STARTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_STARTED",
+          "present": true
         },
         {
           "name": "date_completed",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_COMPLETED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_COMPLETED",
+          "present": true
         },
         {
           "name": "priority",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PRIORITY",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PRIORITY",
+          "present": true
         },
         {
           "name": "submitter",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SUBMITTER",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "project_reference",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PROJECT_REFERENCE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "result_value",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "RESULT_VALUE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "result_unit",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "RESULT_UNIT",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "spec_lower_limit",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "SPEC_LOWER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "spec_upper_limit",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "SPEC_UPPER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "sample_status",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SAMPLE_STATUS",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "approval_status",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "APPROVAL_STATUS",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "approval_date",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "APPROVAL_DATE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "storage_location",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "STORAGE_LOCATION",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "retest_flag",
-          "dataType": "BOOLEAN",
-          "stagedColumn": "REPEAT_ANALYSIS_IND",
-          "present": true,
-          "origin": "manually mapped"
-        },
-        {
-          "name": "comments",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "COMMENTS",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "site_code",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SITE_CODE",
-          "present": true,
-          "origin": "pre-built"
-        }
-      ]
-    },
-    {
-      "sourceSystem": "lims",
-      "siteId": "curitiba",
-      "sourceTable": "LIMS_CURITIBA_AMOSTRAS",
-      "fields": [
-        {
-          "name": "sample_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "AMOSTRA_ID",
-          "present": true,
-          "origin": "manually mapped"
-        },
-        {
-          "name": "product_line",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PRODUCT_LINE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "material_code",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "batch_lot_number",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "BATCH_LOT_NUMBER",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "container_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "CONTAINER_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "test_type",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_TYPE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "test_method_version",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_METHOD_VERSION",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "instrument_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "INSTRUMENT_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "analyst_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TECNICO_ID",
-          "present": true,
-          "origin": "manually mapped"
-        },
-        {
-          "name": "reviewer_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "REVIEWER_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "date_requested",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATA_SOLICITADA",
-          "present": true,
-          "origin": "manually mapped"
-        },
-        {
-          "name": "date_received",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_RECEIVED",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "date_started",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_STARTED",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "date_completed",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_COMPLETED",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "priority",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PRIORITY",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "submitter",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SUBMITTER",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SUBMITTER",
+          "present": true
         },
         {
           "name": "project_reference",
           "dataType": "VARCHAR",
-          "present": false,
-          "origin": "pre-built"
+          "snowflakeColumn": "PROJECT_REFERENCE",
+          "present": true
         },
         {
           "name": "result_value",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "RESULT_VALUE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "NUMBER",
+          "snowflakeColumn": "RESULT_VALUE",
+          "present": true
         },
         {
           "name": "result_unit",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "RESULT_UNIT",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "RESULT_UNIT",
+          "present": true
         },
         {
           "name": "spec_lower_limit",
           "dataType": "NUMBER",
-          "present": false,
-          "origin": "pre-built"
+          "snowflakeColumn": "SPEC_LOWER_LIMIT",
+          "present": true
         },
         {
           "name": "spec_upper_limit",
           "dataType": "NUMBER",
-          "present": false,
-          "origin": "pre-built"
+          "snowflakeColumn": "SPEC_UPPER_LIMIT",
+          "present": true
         },
         {
           "name": "sample_status",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "STATUS_AMOSTRA",
-          "present": true,
-          "origin": "manually mapped"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SAMPLE_STATUS",
+          "present": true
         },
         {
           "name": "approval_status",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "APPROVAL_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "APPROVAL_STATUS",
+          "present": true
         },
         {
           "name": "approval_date",
           "dataType": "TIMESTAMP_NTZ",
-          "present": false,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVAL_DATE",
+          "present": true
         },
         {
           "name": "storage_location",
           "dataType": "VARCHAR",
-          "present": false,
-          "origin": "pre-built"
+          "snowflakeColumn": "STORAGE_LOCATION",
+          "present": true
         },
         {
           "name": "retest_flag",
           "dataType": "BOOLEAN",
-          "stagedColumn": "RETEST_FLAG",
-          "present": true,
-          "origin": "pre-built"
+          "present": false
         },
         {
           "name": "comments",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "COMMENTS",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "COMMENTS",
+          "present": true
         },
         {
           "name": "site_code",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SITE_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SITE_CODE",
+          "present": true
         }
       ]
     },
@@ -881,345 +182,505 @@
       "fields": [
         {
           "name": "sample_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SAMPLE_NUMBER",
-          "present": true,
-          "origin": "manually mapped"
+          "dataType": "VARCHAR",
+          "present": false
         },
         {
           "name": "product_line",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PRODUCT_LINE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PRODUCT_LINE",
+          "present": true
         },
         {
           "name": "material_code",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "MATERIAL_CODE",
+          "present": true
         },
         {
           "name": "batch_lot_number",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "BATCH_LOT_NUMBER",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "BATCH_LOT_NUMBER",
+          "present": true
         },
         {
           "name": "container_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "CONTAINER_ID",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "CONTAINER_ID",
+          "present": true
         },
         {
           "name": "test_type",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "ANALYSIS_TYPE",
-          "present": true,
-          "origin": "manually mapped"
+          "dataType": "VARCHAR",
+          "present": false
         },
         {
           "name": "test_method_version",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TEST_METHOD_VERSION",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "TEST_METHOD_VERSION",
+          "present": true
         },
         {
           "name": "instrument_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "INSTRUMENT_ID",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "INSTRUMENT_ID",
+          "present": true
         },
         {
           "name": "analyst_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "ANALYST_ID",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "ANALYST_ID",
+          "present": true
         },
         {
           "name": "reviewer_id",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "QA_SIGNOFF_USER",
-          "present": true,
-          "origin": "manually mapped"
+          "dataType": "VARCHAR",
+          "present": false
         },
         {
           "name": "date_requested",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_REQUESTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_REQUESTED",
+          "present": true
         },
         {
           "name": "date_received",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_RECEIVED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_RECEIVED",
+          "present": true
         },
         {
           "name": "date_started",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_STARTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_STARTED",
+          "present": true
         },
         {
           "name": "date_completed",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "DATE_COMPLETED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_COMPLETED",
+          "present": true
         },
         {
           "name": "priority",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PRIORITY",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PRIORITY",
+          "present": true
         },
         {
           "name": "submitter",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SUBMITTER",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SUBMITTER",
+          "present": true
         },
         {
           "name": "project_reference",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PROJECT_REFERENCE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PROJECT_REFERENCE",
+          "present": true
         },
         {
           "name": "result_value",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "RESULT_VALUE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "NUMBER",
+          "snowflakeColumn": "RESULT_VALUE",
+          "present": true
         },
         {
           "name": "result_unit",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "UOM",
-          "present": true,
-          "origin": "manually mapped"
+          "dataType": "VARCHAR",
+          "present": false
         },
         {
           "name": "spec_lower_limit",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "SPEC_LOWER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "NUMBER",
+          "snowflakeColumn": "SPEC_LOWER_LIMIT",
+          "present": true
         },
         {
           "name": "spec_upper_limit",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "SPEC_UPPER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "NUMBER",
+          "snowflakeColumn": "SPEC_UPPER_LIMIT",
+          "present": true
         },
         {
           "name": "sample_status",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SAMPLE_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SAMPLE_STATUS",
+          "present": true
         },
         {
           "name": "approval_status",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "APPROVAL_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "APPROVAL_STATUS",
+          "present": true
         },
         {
           "name": "approval_date",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "APPROVAL_DATE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVAL_DATE",
+          "present": true
         },
         {
           "name": "storage_location",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "STORAGE_LOCATION",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "STORAGE_LOCATION",
+          "present": true
         },
         {
           "name": "retest_flag",
           "dataType": "BOOLEAN",
-          "stagedColumn": "RERUN_FLAG",
-          "present": true,
-          "origin": "manually mapped"
+          "present": false
         },
         {
           "name": "comments",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "COMMENTS",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "COMMENTS",
+          "present": true
         },
         {
           "name": "site_code",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SITE_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SITE_CODE",
+          "present": true
         }
       ]
     },
     {
-      "sourceSystem": "pilot_plant_historian",
-      "sourceTable": "PILOT_PLANT_HISTORIAN",
+      "sourceSystem": "lims",
+      "siteId": "curitiba",
+      "sourceTable": "LIMS_CURITIBA_AMOSTRAS",
       "fields": [
         {
-          "name": "RunID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "RUN_ID",
-          "present": true,
-          "origin": "pre-built"
+          "name": "sample_id",
+          "dataType": "VARCHAR",
+          "present": false
         },
         {
-          "name": "BusinessLine",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "BUSINESS_LINE",
-          "present": true,
-          "origin": "pre-built"
+          "name": "product_line",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PRODUCT_LINE",
+          "present": true
         },
         {
-          "name": "Unit",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "UNIT",
-          "present": true,
-          "origin": "pre-built"
+          "name": "material_code",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "MATERIAL_CODE",
+          "present": true
         },
         {
-          "name": "StartTimestamp",
+          "name": "batch_lot_number",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "BATCH_LOT_NUMBER",
+          "present": true
+        },
+        {
+          "name": "container_id",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "CONTAINER_ID",
+          "present": true
+        },
+        {
+          "name": "test_type",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "TEST_TYPE",
+          "present": true
+        },
+        {
+          "name": "test_method_version",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "TEST_METHOD_VERSION",
+          "present": true
+        },
+        {
+          "name": "instrument_id",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "INSTRUMENT_ID",
+          "present": true
+        },
+        {
+          "name": "analyst_id",
+          "dataType": "VARCHAR",
+          "present": false
+        },
+        {
+          "name": "reviewer_id",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "REVIEWER_ID",
+          "present": true
+        },
+        {
+          "name": "date_requested",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "START_TIMESTAMP",
-          "present": true,
-          "origin": "pre-built"
+          "present": false
         },
         {
-          "name": "EndTimestamp",
+          "name": "date_received",
           "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "END_TIMESTAMP",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_RECEIVED",
+          "present": true
         },
         {
-          "name": "Yield_Percent",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "YIELD_PERCENT",
-          "present": true,
-          "origin": "pre-built"
+          "name": "date_started",
+          "dataType": "TIMESTAMP_NTZ",
+          "snowflakeColumn": "DATE_STARTED",
+          "present": true
         },
         {
-          "name": "Throughput_kg_hr",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "THROUGHPUT_KG_HR",
-          "present": true,
-          "origin": "pre-built"
+          "name": "date_completed",
+          "dataType": "TIMESTAMP_NTZ",
+          "snowflakeColumn": "DATE_COMPLETED",
+          "present": true
         },
         {
-          "name": "Temperature_C",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "TEMPERATURE_C",
-          "present": true,
-          "origin": "pre-built"
+          "name": "priority",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PRIORITY",
+          "present": true
         },
         {
-          "name": "Pressure_bar",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "PRESSURE_BAR",
-          "present": true,
-          "origin": "pre-built"
+          "name": "submitter",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SUBMITTER",
+          "present": true
         },
         {
-          "name": "FlowRate_Lmin",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "FLOW_RATE_LMIN",
-          "present": true,
-          "origin": "pre-built"
+          "name": "project_reference",
+          "dataType": "VARCHAR",
+          "present": false
         },
         {
-          "name": "pH_Level",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "P_H_LEVEL",
-          "present": true,
-          "origin": "pre-built"
+          "name": "result_value",
+          "dataType": "NUMBER",
+          "snowflakeColumn": "RESULT_VALUE",
+          "present": true
         },
         {
-          "name": "Agitation_RPM",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "AGITATION_RPM",
-          "present": true,
-          "origin": "pre-built"
+          "name": "result_unit",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "RESULT_UNIT",
+          "present": true
         },
         {
-          "name": "FeedstockMaterialID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "FEEDSTOCK_MATERIAL_ID",
-          "present": true,
-          "origin": "pre-built"
+          "name": "spec_lower_limit",
+          "dataType": "NUMBER",
+          "present": false
         },
         {
-          "name": "ProductMaterialID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "PRODUCT_MATERIAL_ID",
-          "present": true,
-          "origin": "pre-built"
+          "name": "spec_upper_limit",
+          "dataType": "NUMBER",
+          "present": false
         },
         {
-          "name": "BatchOperator",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "BATCH_OPERATOR",
-          "present": true,
-          "origin": "pre-built"
+          "name": "sample_status",
+          "dataType": "VARCHAR",
+          "present": false
         },
         {
-          "name": "DeviationFlag",
+          "name": "approval_status",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "APPROVAL_STATUS",
+          "present": true
+        },
+        {
+          "name": "approval_date",
+          "dataType": "TIMESTAMP_NTZ",
+          "present": false
+        },
+        {
+          "name": "storage_location",
+          "dataType": "VARCHAR",
+          "present": false
+        },
+        {
+          "name": "retest_flag",
           "dataType": "BOOLEAN",
-          "stagedColumn": "DEVIATION_FLAG",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "RETEST_FLAG",
+          "present": true
         },
         {
-          "name": "DeviationDescription",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "DEVIATION_DESCRIPTION",
-          "present": true,
-          "origin": "pre-built"
+          "name": "comments",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "COMMENTS",
+          "present": true
         },
         {
-          "name": "SafetyIncidentFlag",
+          "name": "site_code",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SITE_CODE",
+          "present": true
+        }
+      ]
+    },
+    {
+      "sourceSystem": "lims",
+      "siteId": "buenos-aires",
+      "sourceTable": "LAB_MUESTRAS_BA",
+      "fields": [
+        {
+          "name": "sample_id",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SAMPLE_ID",
+          "present": true
+        },
+        {
+          "name": "product_line",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PRODUCT_LINE",
+          "present": true
+        },
+        {
+          "name": "material_code",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "MATERIAL_CODE",
+          "present": true
+        },
+        {
+          "name": "batch_lot_number",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "BATCH_LOT_NUMBER",
+          "present": true
+        },
+        {
+          "name": "container_id",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "CONTAINER_ID",
+          "present": true
+        },
+        {
+          "name": "test_type",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "TEST_TYPE",
+          "present": true
+        },
+        {
+          "name": "test_method_version",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "TEST_METHOD_VERSION",
+          "present": true
+        },
+        {
+          "name": "instrument_id",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "INSTRUMENT_ID",
+          "present": true
+        },
+        {
+          "name": "analyst_id",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "ANALYST_ID",
+          "present": true
+        },
+        {
+          "name": "reviewer_id",
+          "dataType": "VARCHAR",
+          "present": false
+        },
+        {
+          "name": "date_requested",
+          "dataType": "TIMESTAMP_NTZ",
+          "snowflakeColumn": "DATE_REQUESTED",
+          "present": true
+        },
+        {
+          "name": "date_received",
+          "dataType": "TIMESTAMP_NTZ",
+          "snowflakeColumn": "DATE_RECEIVED",
+          "present": true
+        },
+        {
+          "name": "date_started",
+          "dataType": "TIMESTAMP_NTZ",
+          "snowflakeColumn": "DATE_STARTED",
+          "present": true
+        },
+        {
+          "name": "date_completed",
+          "dataType": "TIMESTAMP_NTZ",
+          "snowflakeColumn": "DATE_COMPLETED",
+          "present": true
+        },
+        {
+          "name": "priority",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PRIORITY",
+          "present": true
+        },
+        {
+          "name": "submitter",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SUBMITTER",
+          "present": true
+        },
+        {
+          "name": "project_reference",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "PROJECT_REFERENCE",
+          "present": true
+        },
+        {
+          "name": "result_value",
+          "dataType": "NUMBER",
+          "snowflakeColumn": "RESULT_VALUE",
+          "present": true
+        },
+        {
+          "name": "result_unit",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "RESULT_UNIT",
+          "present": true
+        },
+        {
+          "name": "spec_lower_limit",
+          "dataType": "NUMBER",
+          "snowflakeColumn": "SPEC_LOWER_LIMIT",
+          "present": true
+        },
+        {
+          "name": "spec_upper_limit",
+          "dataType": "NUMBER",
+          "snowflakeColumn": "SPEC_UPPER_LIMIT",
+          "present": true
+        },
+        {
+          "name": "sample_status",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SAMPLE_STATUS",
+          "present": true
+        },
+        {
+          "name": "approval_status",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "APPROVAL_STATUS",
+          "present": true
+        },
+        {
+          "name": "approval_date",
+          "dataType": "TIMESTAMP_NTZ",
+          "snowflakeColumn": "APPROVAL_DATE",
+          "present": true
+        },
+        {
+          "name": "storage_location",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "STORAGE_LOCATION",
+          "present": true
+        },
+        {
+          "name": "retest_flag",
           "dataType": "BOOLEAN",
-          "stagedColumn": "SAFETY_INCIDENT_FLAG",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "RETEST_FLAG",
+          "present": true
         },
         {
-          "name": "EnergyConsumption_kWh",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "ENERGY_CONSUMPTION_K_WH",
-          "present": true,
-          "origin": "pre-built"
+          "name": "comments",
+          "dataType": "VARCHAR",
+          "present": false
         },
         {
-          "name": "WasteGenerated_kg",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "WASTE_GENERATED_KG",
-          "present": true,
-          "origin": "pre-built"
+          "name": "site_code",
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SITE_CODE",
+          "present": true
         }
       ]
     },
@@ -1229,233 +690,99 @@
       "fields": [
         {
           "name": "CanonicalMaterialName",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "CANONICAL_MATERIAL_NAME",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "CANONICAL_MATERIAL_NAME",
+          "present": true
         },
         {
           "name": "BusinessLine",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "BUSINESS_LINE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "BUSINESS_LINE",
+          "present": true
         },
         {
           "name": "SourceMaterialCode",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SOURCE_MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SOURCE_MATERIAL_CODE",
+          "present": true
         },
         {
           "name": "LegacyMaterialID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "LEGACY_MATERIAL_ID",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "LEGACY_MATERIAL_ID",
+          "present": true
         },
         {
           "name": "CASNumber",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "CASNUMBER",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "CASNUMBER",
+          "present": true
         },
         {
           "name": "Supplier",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SUPPLIER",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SUPPLIER",
+          "present": true
         },
         {
           "name": "SupplierGrade",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SUPPLIER_GRADE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SUPPLIER_GRADE",
+          "present": true
         },
         {
           "name": "UnitOfMeasure",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "UNIT_OF_MEASURE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "UNIT_OF_MEASURE",
+          "present": true
         },
         {
           "name": "Density",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "DENSITY",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "DECIMAL",
+          "snowflakeColumn": "DENSITY",
+          "present": true
         },
         {
           "name": "ViscosityGrade",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "VISCOSITY_GRADE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "VISCOSITY_GRADE",
+          "present": true
         },
         {
           "name": "HazardClassification",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "HAZARD_CLASSIFICATION",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "HAZARD_CLASSIFICATION",
+          "present": true
         },
         {
           "name": "SafetyDataSheetRef",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SAFETY_DATA_SHEET_REF",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "SAFETY_DATA_SHEET_REF",
+          "present": true
         },
         {
           "name": "ShelfLifeMonths",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "SHELF_LIFE_MONTHS",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "INTEGER",
+          "snowflakeColumn": "SHELF_LIFE_MONTHS",
+          "present": true
         },
         {
           "name": "StorageConditions",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "STORAGE_CONDITIONS",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "VARCHAR",
+          "snowflakeColumn": "STORAGE_CONDITIONS",
+          "present": true
         },
         {
           "name": "ApprovedForUse",
           "dataType": "BOOLEAN",
-          "stagedColumn": "APPROVED_FOR_USE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVED_FOR_USE",
+          "present": true
         },
         {
           "name": "LastReviewDate",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "LAST_REVIEW_DATE",
-          "present": true,
-          "origin": "pre-built"
-        }
-      ]
-    },
-    {
-      "sourceSystem": "toxicology_trial_chemicals",
-      "sourceTable": "TOX_TRIAL",
-      "fields": [
-        {
-          "name": "TrialID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TRIAL_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "CompoundID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "COMPOUND_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TrialType",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "TRIAL_TYPE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "CRO_Name",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "CRO_NAME",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "StudyProtocolID",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "STUDY_PROTOCOL_ID",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "TrialDate",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "TRIAL_DATE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "SpeciesTested",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "SPECIES_TESTED",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "ExposureRoute",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "EXPOSURE_ROUTE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "ExposureLevel_mgkg",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "EXPOSURE_LEVEL_MGKG",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "ExposureDuration_days",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "EXPOSURE_DURATION_DAYS",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "ToxicityScore_1to5",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "TOXICITY_SCORE_1TO5",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "LD50_Value",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "LD50_VALUE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "NOAEL_Value",
-          "dataType": "NUMBER(18,4)",
-          "stagedColumn": "NOAEL_VALUE",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "OutcomeStatus",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "OUTCOME_STATUS",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "RegulatoryFramework",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "REGULATORY_FRAMEWORK",
-          "present": true,
-          "origin": "pre-built"
-        },
-        {
-          "name": "ReportReference",
-          "dataType": "VARCHAR(255)",
-          "stagedColumn": "REPORT_REFERENCE",
-          "present": true,
-          "origin": "pre-built"
+          "dataType": "DATE",
+          "snowflakeColumn": "LAST_REVIEW_DATE",
+          "present": true
         }
       ]
     }

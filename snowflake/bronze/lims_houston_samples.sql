@@ -1,0 +1,28 @@
+-- Foundation Studio · Snowflake execution SQL
+CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE."lims_houston_samples" AS
+SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
+       "PRODUCT_LINE"::VARCHAR AS "product_line",
+       "MATERIAL_CODE"::VARCHAR AS "material_code",
+       "BATCH_LOT_NUMBER"::VARCHAR AS "batch_lot_number",
+       "CONTAINER_ID"::VARCHAR AS "container_id",
+       "TEST_METHOD_VERSION"::VARCHAR AS "test_method_version",
+       "INSTRUMENT_ID"::VARCHAR AS "instrument_id",
+       "ANALYST_ID"::VARCHAR AS "analyst_id",
+       COALESCE(TRY_TO_TIMESTAMP_NTZ("DATE_REQUESTED", 'YYYY-MM-DD'), TRY_TO_TIMESTAMP_NTZ("DATE_REQUESTED"))::TIMESTAMP_NTZ AS "date_requested",
+       COALESCE(TRY_TO_TIMESTAMP_NTZ("DATE_RECEIVED", 'YYYY-MM-DD'), TRY_TO_TIMESTAMP_NTZ("DATE_RECEIVED"))::TIMESTAMP_NTZ AS "date_received",
+       COALESCE(TRY_TO_TIMESTAMP_NTZ("DATE_STARTED", 'YYYY-MM-DD'), TRY_TO_TIMESTAMP_NTZ("DATE_STARTED"))::TIMESTAMP_NTZ AS "date_started",
+       COALESCE(TRY_TO_TIMESTAMP_NTZ("DATE_COMPLETED", 'YYYY-MM-DD'), TRY_TO_TIMESTAMP_NTZ("DATE_COMPLETED"))::TIMESTAMP_NTZ AS "date_completed",
+       "PRIORITY"::VARCHAR AS "priority",
+       "SUBMITTER"::VARCHAR AS "submitter",
+       "PROJECT_REFERENCE"::VARCHAR AS "project_reference",
+       TRY_TO_NUMBER("RESULT_VALUE")::NUMBER AS "result_value",
+       TRY_TO_NUMBER("SPEC_LOWER_LIMIT")::NUMBER AS "spec_lower_limit",
+       TRY_TO_NUMBER("SPEC_UPPER_LIMIT")::NUMBER AS "spec_upper_limit",
+       "SAMPLE_STATUS"::VARCHAR AS "sample_status",
+       "APPROVAL_STATUS"::VARCHAR AS "approval_status",
+       COALESCE(TRY_TO_TIMESTAMP_NTZ("APPROVAL_DATE", 'YYYY-MM-DD'), TRY_TO_TIMESTAMP_NTZ("APPROVAL_DATE"))::TIMESTAMP_NTZ AS "approval_date",
+       "STORAGE_LOCATION"::VARCHAR AS "storage_location",
+       "COMMENTS"::VARCHAR AS "comments",
+       "SITE_CODE"::VARCHAR AS "site_code",
+       CURRENT_TIMESTAMP() AS loaded_at
+FROM OGFS_DEMO.SOURCE."LIMS_HOUSTON_SAMPLES";

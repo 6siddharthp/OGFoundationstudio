@@ -1,0 +1,24 @@
+-- Foundation Studio · Snowflake execution SQL
+CREATE OR REPLACE TABLE OGFS_DEMO.SILVER."silver_lims_curitiba_amostras" AS
+SELECT "row_data"."source_row_number",
+  "row_data"."product_line" AS "product_line",
+  "row_data"."material_code" AS "material_code",
+  "row_data"."batch_lot_number" AS "batch_lot_number",
+  "row_data"."container_id" AS "container_id",
+  "row_data"."test_type" AS "test_type",
+  "row_data"."test_method_version" AS "test_method_version",
+  "row_data"."instrument_id" AS "instrument_id",
+  "row_data"."reviewer_id" AS "reviewer_id",
+  "row_data"."date_received" AS "date_received",
+  "row_data"."date_started" AS "date_started",
+  "row_data"."date_completed" AS "date_completed",
+  "row_data"."priority" AS "priority",
+  "row_data"."submitter" AS "submitter",
+  "row_data"."result_value" AS "result_value",
+  "row_data"."result_unit" AS "result_unit",
+  "row_data"."approval_status" AS "approval_status",
+  "row_data"."retest_flag" AS "retest_flag",
+  "row_data"."comments" AS "comments",
+  "row_data"."site_code" AS "site_code",
+  'lims_curitiba_amostras' AS "source_table"
+FROM (SELECT "row_data".* FROM OGFS_DEMO.BRONZE."lims_curitiba_amostras" AS "row_data" WHERE NOT (FALSE)) AS "row_data";

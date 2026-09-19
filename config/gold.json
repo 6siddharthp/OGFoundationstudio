@@ -1,28 +1,23 @@
 {
-  "tables": [
-    {
-      "name": "dim_material"
-    },
-    {
-      "name": "dim_test_method"
-    },
-    {
-      "name": "dim_lab_site"
-    },
-    {
-      "name": "dim_business_line"
-    },
-    {
-      "name": "dim_date"
-    },
-    {
-      "name": "fact_lab_sample"
-    },
-    {
-      "name": "fact_test_result"
-    },
-    {
-      "name": "fact_pilot_plant_run"
-    }
+  "confirmedAt": "2026-09-19T20:50:18.922Z",
+  "tables": [],
+  "transformations": [],
+  "selectedKpis": [
+    "Cross-Lab Data Standardization Rate",
+    "Cross-Lab Reproducibility Index",
+    "Cross-Site Result Correlation",
+    "Duplicate Test Rate Across Labs",
+    "Inter-Site Result Deviation",
+    "Site-Pair Agreement by Method",
+    "Test Method Standardization Rate",
+    "Unmatched Sample Rate",
+    "Backlog Aging Index",
+    "First-Time-Right Rate",
+    "Instrument Throughput",
+    "LIMS Data Completeness",
+    "Lab Capacity Utilization",
+    "Retest Rate",
+    "Sample Turnaround Time",
+    "Sample Volume Trend"
   ]
 }
