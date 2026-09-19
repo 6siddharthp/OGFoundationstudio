@@ -1,7 +1,6 @@
 -- Foundation Studio · Snowflake execution SQL
-CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.governed_test_method_reference AS
-SELECT column1::VARCHAR source_method_name, column2::VARCHAR governed_standard_reference,
-column3::VARCHAR standard_body, column4::VARCHAR method_title, column5::VARCHAR applies_to_business_line
+CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS
+SELECT column1::VARCHAR source_method_name, column2::VARCHAR governed_standard_reference, column3::VARCHAR standard_body, column4::VARCHAR method_title, column5::VARCHAR applies_to_business_line
 FROM VALUES ('Viscosity','ASTM D445','ASTM','Kinematic Viscosity of Transparent and Opaque Liquids','Lubricants'),
 ('Kinematic Viscosity','ASTM D445','ASTM','Kinematic Viscosity of Transparent and Opaque Liquids','Lubricants'),
 ('Kinematic Viscosity @ 100C','ASTM D445','ASTM','Kinematic Viscosity of Transparent and Opaque Liquids','Lubricants'),
