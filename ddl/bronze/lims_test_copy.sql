@@ -1,7 +1,7 @@
 -- Foundation Studio · PostgreSQL execution SQL
 
 -- foundation:stage 2
-CREATE TABLE bronze."lab_muestras_ba" (
+CREATE TABLE bronze."lims_test_copy" (
               source_row_number integer PRIMARY KEY,
               "sample_id" text,
 "product_line" text,
@@ -29,9 +29,10 @@ CREATE TABLE bronze."lab_muestras_ba" (
 "approval_date" text,
 "storage_location" text,
 "retest_flag" boolean,
+"comments" text,
 "site_code" text,
               loaded_at timestamptz NOT NULL DEFAULT now()
             );
 
 -- foundation:stage 2
-COMMENT ON TABLE bronze."lab_muestras_ba" IS 'lims: 27 fields defined, 27 source columns, 26 auto-mapped, 1 manually mapped, 0 newly added.';
+COMMENT ON TABLE bronze."lims_test_copy" IS 'lims: 28 fields defined, 28 source columns, 23 auto-mapped, 5 manually mapped, 0 newly added.';

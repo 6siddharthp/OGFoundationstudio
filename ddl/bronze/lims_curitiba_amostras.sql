@@ -13,10 +13,10 @@ CREATE TABLE bronze."lims_curitiba_amostras" (
 "instrument_id" text,
 "analyst_id" text,
 "reviewer_id" text,
-"date_requested" timestamp,
-"date_received" timestamp,
-"date_started" timestamp,
-"date_completed" timestamp,
+"date_requested" text,
+"date_received" text,
+"date_started" text,
+"date_completed" text,
 "priority" text,
 "submitter" text,
 "result_value" numeric,
@@ -31,36 +31,3 @@ CREATE TABLE bronze."lims_curitiba_amostras" (
 
 -- foundation:stage 2
 COMMENT ON TABLE bronze."lims_curitiba_amostras" IS 'lims: 23 fields defined, 23 source columns, 19 auto-mapped, 4 manually mapped, 0 newly added.';
-
--- foundation:stage 3
-INSERT INTO bronze."lims_curitiba_amostras" (source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "result_value", "result_unit", "sample_status", "approval_status", "retest_flag", "comments", "site_code")
-            SELECT row_number, raw_data ->> 'AMOSTRA_ID', raw_data ->> 'PRODUCT_LINE', raw_data ->> 'MATERIAL_CODE', raw_data ->> 'BATCH_LOT_NUMBER', raw_data ->> 'CONTAINER_ID', raw_data ->> 'TEST_TYPE', raw_data ->> 'TEST_METHOD_VERSION', raw_data ->> 'INSTRUMENT_ID', raw_data ->> 'TECNICO_ID', raw_data ->> 'REVIEWER_ID', CASE
-    WHEN NULLIF(raw_data ->> 'DATA_SOLICITADA', '') IS NULL THEN NULL
-    WHEN raw_data ->> 'DATA_SOLICITADA' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
-      THEN to_timestamp(raw_data ->> 'DATA_SOLICITADA', (CASE
-    WHEN split_part(raw_data ->> 'DATA_SOLICITADA', '/', 1)::integer > 12 THEN 'DD/MM/YYYY'
-    WHEN split_part(raw_data ->> 'DATA_SOLICITADA', '/', 2)::integer > 12 THEN 'MM/DD/YYYY'
-    ELSE 'DD/MM/YYYY' END) || CASE WHEN length(raw_data ->> 'DATA_SOLICITADA') = 10 THEN '' WHEN length(raw_data ->> 'DATA_SOLICITADA') = 16 THEN ' HH24:MI' ELSE ' HH24:MI:SS' END)
-    ELSE (raw_data ->> 'DATA_SOLICITADA')::timestamp END, CASE
-    WHEN NULLIF(raw_data ->> 'DATE_RECEIVED', '') IS NULL THEN NULL
-    WHEN raw_data ->> 'DATE_RECEIVED' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
-      THEN to_timestamp(raw_data ->> 'DATE_RECEIVED', (CASE
-    WHEN split_part(raw_data ->> 'DATE_RECEIVED', '/', 1)::integer > 12 THEN 'DD/MM/YYYY'
-    WHEN split_part(raw_data ->> 'DATE_RECEIVED', '/', 2)::integer > 12 THEN 'MM/DD/YYYY'
-    ELSE 'DD/MM/YYYY' END) || CASE WHEN length(raw_data ->> 'DATE_RECEIVED') = 10 THEN '' WHEN length(raw_data ->> 'DATE_RECEIVED') = 16 THEN ' HH24:MI' ELSE ' HH24:MI:SS' END)
-    ELSE (raw_data ->> 'DATE_RECEIVED')::timestamp END, CASE
-    WHEN NULLIF(raw_data ->> 'DATE_STARTED', '') IS NULL THEN NULL
-    WHEN raw_data ->> 'DATE_STARTED' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
-      THEN to_timestamp(raw_data ->> 'DATE_STARTED', (CASE
-    WHEN split_part(raw_data ->> 'DATE_STARTED', '/', 1)::integer > 12 THEN 'DD/MM/YYYY'
-    WHEN split_part(raw_data ->> 'DATE_STARTED', '/', 2)::integer > 12 THEN 'MM/DD/YYYY'
-    ELSE 'DD/MM/YYYY' END) || CASE WHEN length(raw_data ->> 'DATE_STARTED') = 10 THEN '' WHEN length(raw_data ->> 'DATE_STARTED') = 16 THEN ' HH24:MI' ELSE ' HH24:MI:SS' END)
-    ELSE (raw_data ->> 'DATE_STARTED')::timestamp END, CASE
-    WHEN NULLIF(raw_data ->> 'DATE_COMPLETED', '') IS NULL THEN NULL
-    WHEN raw_data ->> 'DATE_COMPLETED' ~ '^\d{2}/\d{2}/\d{4}([ T]\d{2}:\d{2}(:\d{2})?)?$'
-      THEN to_timestamp(raw_data ->> 'DATE_COMPLETED', (CASE
-    WHEN split_part(raw_data ->> 'DATE_COMPLETED', '/', 1)::integer > 12 THEN 'DD/MM/YYYY'
-    WHEN split_part(raw_data ->> 'DATE_COMPLETED', '/', 2)::integer > 12 THEN 'MM/DD/YYYY'
-    ELSE 'DD/MM/YYYY' END) || CASE WHEN length(raw_data ->> 'DATE_COMPLETED') = 10 THEN '' WHEN length(raw_data ->> 'DATE_COMPLETED') = 16 THEN ' HH24:MI' ELSE ' HH24:MI:SS' END)
-    ELSE (raw_data ->> 'DATE_COMPLETED')::timestamp END, raw_data ->> 'PRIORITY', raw_data ->> 'SUBMITTER', NULLIF(raw_data ->> 'RESULT_VALUE', '')::numeric, raw_data ->> 'RESULT_UNIT', raw_data ->> 'STATUS_AMOSTRA', raw_data ->> 'APPROVAL_STATUS', CASE lower(raw_data ->> 'RETEST_FLAG') WHEN 'true' THEN true WHEN 'false' THEN false ELSE NULL END, raw_data ->> 'COMMENTS', raw_data ->> 'SITE_CODE'
-            FROM foundation_staging_rows WHERE staging_table_id = 12 ORDER BY row_number;
