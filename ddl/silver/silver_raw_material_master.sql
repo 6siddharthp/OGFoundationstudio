@@ -12,13 +12,13 @@ CREATE TABLE silver."silver_raw_material_master" (
 "supplier_grade" text,
 "unit_of_measure" text,
 "density" numeric,
-"viscosity_grade" numeric,
+"viscosity_grade" text,
 "hazard_classification" text,
 "safety_data_sheet_ref" text,
 "shelf_life_months" numeric,
 "storage_conditions" text,
 "approved_for_use" boolean,
-"last_review_date" timestamp,
+"last_review_date" date,
               source_table text NOT NULL,
               cleansed_at timestamptz NOT NULL DEFAULT now()
             );
