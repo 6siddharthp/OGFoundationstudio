@@ -1,6 +1,6 @@
 -- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE."raw_material_master" AS
-SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
+SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS "source_row_number",
        "CANONICAL_MATERIAL_NAME"::VARCHAR AS "canonical_material_name",
        "BUSINESS_LINE"::VARCHAR AS "business_line",
        "SOURCE_MATERIAL_CODE"::VARCHAR AS "source_material_code",
@@ -17,5 +17,5 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        "STORAGE_CONDITIONS"::VARCHAR AS "storage_conditions",
        TRY_TO_BOOLEAN(TO_VARCHAR("APPROVED_FOR_USE"))::BOOLEAN AS "approved_for_use",
        COALESCE(TRY_TO_DATE(TO_VARCHAR("LAST_REVIEW_DATE"), 'YYYY-MM-DD'), TRY_TO_DATE(TO_VARCHAR("LAST_REVIEW_DATE")))::DATE AS "last_review_date",
-       CURRENT_TIMESTAMP() AS loaded_at
+       CURRENT_TIMESTAMP() AS "loaded_at"
 FROM OGFS_DEMO.SOURCE."RAW_MATERIAL_MASTER";

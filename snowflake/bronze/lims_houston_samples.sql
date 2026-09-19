@@ -1,6 +1,6 @@
 -- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE."lims_houston_samples" AS
-SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
+SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS "source_row_number",
        "PRODUCT_LINE"::VARCHAR AS "product_line",
        "MATERIAL_CODE"::VARCHAR AS "material_code",
        "BATCH_LOT_NUMBER"::VARCHAR AS "batch_lot_number",
@@ -24,5 +24,5 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        "STORAGE_LOCATION"::VARCHAR AS "storage_location",
        "COMMENTS"::VARCHAR AS "comments",
        "SITE_CODE"::VARCHAR AS "site_code",
-       CURRENT_TIMESTAMP() AS loaded_at
+       CURRENT_TIMESTAMP() AS "loaded_at"
 FROM OGFS_DEMO.SOURCE."LIMS_HOUSTON_SAMPLES";
