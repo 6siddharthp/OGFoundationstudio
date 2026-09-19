@@ -1,6 +1,6 @@
 -- Foundation Studio · PostgreSQL execution SQL
 
--- foundation:stage 4
+-- foundation:stage 4 - Sid 9-19 update
 CREATE TABLE silver.quarantine_records (
           quarantine_id bigserial PRIMARY KEY, source_table text NOT NULL, source_row_number integer NOT NULL,
           reason text NOT NULL, source_data jsonb NOT NULL, quarantined_at timestamptz NOT NULL DEFAULT now()
