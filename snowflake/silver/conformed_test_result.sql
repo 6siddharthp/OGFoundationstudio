@@ -1,7 +1,7 @@
 -- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_test_result AS SELECT 'RES_' || MD5('silver_lims_annandale_samples:' || s.source_row_number) test_result_key,
  'SMP_' || MD5('annandale:' || s.source_row_number) lab_sample_key,
- tm.test_method_key, m.material_key, s.date_completed result_date,
+ tm.test_method_key, m.material_key, TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) result_date,
  s.result_value result_value, s.result_unit result_unit, s.spec_lower_limit spec_lower_limit, s.spec_upper_limit spec_upper_limit,
  IFF(s.result_value BETWEEN s.spec_lower_limit AND s.spec_upper_limit,TRUE,FALSE) within_spec,
  'silver_lims_annandale_samples' source_system
@@ -13,7 +13,7 @@ CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_test_result AS SELECT 'RES_' 
 UNION ALL
 SELECT 'RES_' || MD5('silver_lims_houston_samples:' || s.source_row_number) test_result_key,
  'SMP_' || MD5('houston:' || s.source_row_number) lab_sample_key,
- tm.test_method_key, m.material_key, s.date_completed result_date,
+ tm.test_method_key, m.material_key, TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) result_date,
  s.result_value result_value, s.result_unit result_unit, s.spec_lower_limit spec_lower_limit, s.spec_upper_limit spec_upper_limit,
  IFF(s.result_value BETWEEN s.spec_lower_limit AND s.spec_upper_limit,TRUE,FALSE) within_spec,
  'silver_lims_houston_samples' source_system
@@ -25,7 +25,7 @@ SELECT 'RES_' || MD5('silver_lims_houston_samples:' || s.source_row_number) test
 UNION ALL
 SELECT 'RES_' || MD5('silver_lims_curitiba_amostras:' || s.source_row_number) test_result_key,
  'SMP_' || MD5('curitiba:' || s.source_row_number) lab_sample_key,
- tm.test_method_key, m.material_key, s.date_completed result_date,
+ tm.test_method_key, m.material_key, TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) result_date,
  s.result_value result_value, s.result_unit result_unit, NULL::NUMBER spec_lower_limit, NULL::NUMBER spec_upper_limit,
  IFF(s.result_value BETWEEN NULL::NUMBER AND NULL::NUMBER,TRUE,FALSE) within_spec,
  'silver_lims_curitiba_amostras' source_system
@@ -37,7 +37,7 @@ SELECT 'RES_' || MD5('silver_lims_curitiba_amostras:' || s.source_row_number) te
 UNION ALL
 SELECT 'RES_' || MD5('silver_lab_muestras_ba:' || s.source_row_number) test_result_key,
  'SMP_' || MD5('buenos-aires:' || s.source_row_number) lab_sample_key,
- tm.test_method_key, m.material_key, s.date_completed result_date,
+ tm.test_method_key, m.material_key, TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) result_date,
  s.result_value result_value, s.result_unit result_unit, s.spec_lower_limit spec_lower_limit, s.spec_upper_limit spec_upper_limit,
  IFF(s.result_value BETWEEN s.spec_lower_limit AND s.spec_upper_limit,TRUE,FALSE) within_spec,
  'silver_lab_muestras_ba' source_system

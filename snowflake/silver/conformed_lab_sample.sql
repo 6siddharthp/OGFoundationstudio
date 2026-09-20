@@ -1,7 +1,9 @@
 -- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_lab_sample AS SELECT 'SMP_' || MD5('annandale:' || s.source_row_number) lab_sample_key,
  m.material_key, tm.test_method_key, 'annandale' site_code, s.product_line business_line,
- s.date_completed completion_date, s.date_requested requested_date, s.sample_status sample_status, 1 source_system_count
+ TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) completion_date,
+ TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_requested)) requested_date,
+ s.sample_status sample_status, 1 source_system_count
  FROM OGFS_DEMO.SILVER.silver_lims_annandale_samples s
  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
@@ -10,7 +12,9 @@ CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_lab_sample AS SELECT 'SMP_' |
 UNION ALL
 SELECT 'SMP_' || MD5('houston:' || s.source_row_number) lab_sample_key,
  m.material_key, tm.test_method_key, 'houston' site_code, s.product_line business_line,
- s.date_completed completion_date, s.date_requested requested_date, s.sample_status sample_status, 1 source_system_count
+ TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) completion_date,
+ TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_requested)) requested_date,
+ s.sample_status sample_status, 1 source_system_count
  FROM OGFS_DEMO.SILVER.silver_lims_houston_samples s
  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
@@ -19,7 +23,9 @@ SELECT 'SMP_' || MD5('houston:' || s.source_row_number) lab_sample_key,
 UNION ALL
 SELECT 'SMP_' || MD5('curitiba:' || s.source_row_number) lab_sample_key,
  m.material_key, tm.test_method_key, 'curitiba' site_code, s.product_line business_line,
- s.date_completed completion_date, s.date_requested requested_date, s.sample_status sample_status, 1 source_system_count
+ TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) completion_date,
+ TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_requested)) requested_date,
+ s.sample_status sample_status, 1 source_system_count
  FROM OGFS_DEMO.SILVER.silver_lims_curitiba_amostras s
  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
@@ -28,7 +34,9 @@ SELECT 'SMP_' || MD5('curitiba:' || s.source_row_number) lab_sample_key,
 UNION ALL
 SELECT 'SMP_' || MD5('buenos-aires:' || s.source_row_number) lab_sample_key,
  m.material_key, tm.test_method_key, 'buenos-aires' site_code, s.product_line business_line,
- s.date_completed completion_date, s.date_requested requested_date, s.sample_status sample_status, 1 source_system_count
+ TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) completion_date,
+ TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_requested)) requested_date,
+ s.sample_status sample_status, 1 source_system_count
  FROM OGFS_DEMO.SILVER.silver_lab_muestras_ba s
  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
