@@ -512,57 +512,64 @@ FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.raw_material_master AS row_data WH
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.material_identity_map AS
 WITH base AS (
-  SELECT DISTINCT source_material_code, canonical_material_name, cas_number,
+  SELECT DISTINCT source_material_code, legacy_material_id, canonical_material_name, cas_number,
     REGEXP_REPLACE(UPPER(TRIM(canonical_material_name)), ''[^A-Z0-9]'', '''') normalized_name,
     NULLIF(REGEXP_REPLACE(UPPER(TRIM(cas_number)), ''[^A-Z0-9]'', ''''), '''') normalized_cas
   FROM OGFS_DEMO.SILVER.silver_raw_material_master
   WHERE source_material_code IS NOT NULL AND canonical_material_name IS NOT NULL
 ),
-scored_pairs AS (
-  SELECT l.source_material_code left_code, r.source_material_code right_code,
-    IFF(l.normalized_cas IS NOT NULL AND l.normalized_cas=r.normalized_cas, 100,
-      JAROWINKLER_SIMILARITY(l.normalized_name,r.normalized_name)) similarity_score,
-    IFF(l.normalized_cas IS NOT NULL AND l.normalized_cas=r.normalized_cas, ''cas_number'', ''canonical_name_similarity'') match_rule
-  FROM base l JOIN base r ON l.source_material_code < r.source_material_code
+canonical_targets AS (
+  SELECT * FROM base WHERE legacy_material_id LIKE ''MAT-%''
 ),
-automatic_pairs AS (
-  SELECT * FROM scored_pairs WHERE match_rule=''cas_number'' OR similarity_score >= 85
+ranked_targets AS (
+  SELECT b.source_material_code,t.normalized_name target_name,
+    JAROWINKLER_SIMILARITY(b.normalized_name,t.normalized_name) similarity_score,
+    CASE WHEN b.legacy_material_id=t.legacy_material_id THEN ''raw_material_master_xref''
+         WHEN b.normalized_cas=t.normalized_cas THEN ''cas_number''
+         ELSE ''canonical_name_similarity'' END match_rule,
+    ROW_NUMBER() OVER (PARTITION BY b.source_material_code ORDER BY
+      IFF(b.legacy_material_id=t.legacy_material_id,1,0) DESC,
+      IFF(b.normalized_cas IS NOT NULL AND b.normalized_cas=t.normalized_cas,1,0) DESC,
+      JAROWINKLER_SIMILARITY(b.normalized_name,t.normalized_name) DESC,
+      t.normalized_name) target_rank
+  FROM base b JOIN canonical_targets t ON
+    b.legacy_material_id=t.legacy_material_id
+    OR (b.legacy_material_id LIKE ''LGC-%'' AND b.normalized_cas IS NOT NULL AND b.normalized_cas=t.normalized_cas)
+    OR ((b.normalized_cas IS NULL OR t.normalized_cas IS NULL)
+      AND JAROWINKLER_SIMILARITY(b.normalized_name,t.normalized_name) >= 85)
 ),
-peers AS (
-  SELECT left_code source_material_code,right_code peer_code,match_rule FROM automatic_pairs
-  UNION ALL SELECT right_code,left_code,match_rule FROM automatic_pairs
-),
-anchors AS (
-  SELECT b.source_material_code,
-    LEAST(b.source_material_code,COALESCE(MIN(p.peer_code),b.source_material_code)) group_anchor,
-    IFF(COUNT_IF(p.match_rule=''cas_number'')>0,''cas_number'',
-      IFF(COUNT(p.peer_code)>0,''canonical_name_similarity'',''raw_material_master_xref'')) match_rule
-  FROM base b LEFT JOIN peers p ON p.source_material_code=b.source_material_code
-  GROUP BY b.source_material_code
+resolved AS (
+  SELECT b.*,r.target_name,r.match_rule
+  FROM base b LEFT JOIN ranked_targets r ON r.source_material_code=b.source_material_code AND r.target_rank=1
 )
-SELECT b.source_material_code,b.canonical_material_name,b.cas_number,
-  ''MAT_''||MD5(a.group_anchor) material_key,a.match_rule,85 similarity_threshold
-FROM base b JOIN anchors a USING (source_material_code)';
+SELECT source_material_code,canonical_material_name,cas_number,
+  ''MAT_''||MD5(COALESCE(target_name,normalized_name)) material_key,
+  COALESCE(match_rule,''unmatched_source_record'') match_rule,85 similarity_threshold
+FROM resolved';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.material_match_candidates AS
 WITH base AS (
-  SELECT DISTINCT source_material_code,canonical_material_name,
+  SELECT DISTINCT i.material_key,m.source_material_code,m.canonical_material_name,
     REGEXP_REPLACE(UPPER(TRIM(canonical_material_name)), ''[^A-Z0-9]'', '''') normalized_name,
     NULLIF(REGEXP_REPLACE(UPPER(TRIM(cas_number)), ''[^A-Z0-9]'', ''''), '''') normalized_cas
-  FROM OGFS_DEMO.SILVER.silver_raw_material_master
-  WHERE source_material_code IS NOT NULL AND canonical_material_name IS NOT NULL
+  FROM OGFS_DEMO.SILVER.silver_raw_material_master m JOIN OGFS_DEMO.SILVER.material_identity_map i USING (source_material_code)
+  WHERE m.source_material_code IS NOT NULL AND m.canonical_material_name IS NOT NULL
 ),
 pairs AS (
-  SELECT l.source_material_code left_code,r.source_material_code right_code,
+  SELECT l.material_key left_material_key,r.material_key right_material_key,
+    l.source_material_code left_code,r.source_material_code right_code,
     l.canonical_material_name left_name,r.canonical_material_name right_name,
     JAROWINKLER_SIMILARITY(l.normalized_name,r.normalized_name) similarity_score
-  FROM base l JOIN base r ON l.source_material_code < r.source_material_code
+  FROM base l JOIN base r ON l.material_key < r.material_key
   WHERE NOT (l.normalized_cas IS NOT NULL AND l.normalized_cas=r.normalized_cas)
 )
-SELECT left_code,right_code,left_name,right_name,similarity_score,85 similarity_threshold,''candidate_review'' review_status
+SELECT left_material_key,right_material_key,MIN(left_code) left_code,MIN(right_code) right_code,
+  MIN(left_name) left_name,MIN(right_name) right_name,MAX(similarity_score) similarity_score,
+  85 similarity_threshold,''candidate_review'' review_status
 FROM pairs
 WHERE similarity_score < 85 AND similarity_score >= 85*0.75
-QUALIFY ROW_NUMBER() OVER (PARTITION BY left_code ORDER BY similarity_score DESC,right_code)=1';
+GROUP BY left_material_key,right_material_key
+QUALIFY ROW_NUMBER() OVER (PARTITION BY left_material_key ORDER BY MAX(similarity_score) DESC,right_material_key)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_material AS
 SELECT i.material_key,
