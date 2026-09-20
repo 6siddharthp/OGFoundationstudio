@@ -1,15 +1,16 @@
 -- Foundation Studio · Snowflake execution SQL
-CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE."lims_annandale_samples" AS
+CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE."lims_test_copy" AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS "source_row_number",
-       "SAMPLE_ID"::VARCHAR AS "sample_id",
+       "SAMPLE_NUMBER"::VARCHAR AS "sample_id",
        "PRODUCT_LINE"::VARCHAR AS "product_line",
        "MATERIAL_CODE"::VARCHAR AS "material_code",
        "BATCH_LOT_NUMBER"::VARCHAR AS "batch_lot_number",
        "CONTAINER_ID"::VARCHAR AS "container_id",
-       "TEST_TYPE"::VARCHAR AS "test_type",
+       "ANALYSIS_TYPE"::VARCHAR AS "test_type",
        "TEST_METHOD_VERSION"::VARCHAR AS "test_method_version",
        "INSTRUMENT_ID"::VARCHAR AS "instrument_id",
        "ANALYST_ID"::VARCHAR AS "analyst_id",
+       "REVIEWED_BY"::VARCHAR AS "reviewer_id",
        "DATE_REQUESTED"::VARCHAR AS "date_requested",
        "DATE_RECEIVED"::VARCHAR AS "date_received",
        "DATE_STARTED"::VARCHAR AS "date_started",
@@ -18,15 +19,15 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS "source_row_number",
        "SUBMITTER"::VARCHAR AS "submitter",
        "PROJECT_REFERENCE"::VARCHAR AS "project_reference",
        TRY_TO_DECIMAL(TO_VARCHAR("RESULT_VALUE"), 38, 10)::NUMBER AS "result_value",
-       "RESULT_UNIT"::VARCHAR AS "result_unit",
+       "UOM"::VARCHAR AS "result_unit",
        TRY_TO_DECIMAL(TO_VARCHAR("SPEC_LOWER_LIMIT"), 38, 10)::NUMBER AS "spec_lower_limit",
        TRY_TO_DECIMAL(TO_VARCHAR("SPEC_UPPER_LIMIT"), 38, 10)::NUMBER AS "spec_upper_limit",
        "SAMPLE_STATUS"::VARCHAR AS "sample_status",
        "APPROVAL_STATUS"::VARCHAR AS "approval_status",
        "APPROVAL_DATE"::VARCHAR AS "approval_date",
        "STORAGE_LOCATION"::VARCHAR AS "storage_location",
-       TRY_TO_BOOLEAN(TO_VARCHAR("REPEAT_ANALYSIS_IND"))::BOOLEAN AS "retest_flag",
+       TRY_TO_BOOLEAN(TO_VARCHAR("RERUN_FLAG"))::BOOLEAN AS "retest_flag",
        "COMMENTS"::VARCHAR AS "comments",
        "SITE_CODE"::VARCHAR AS "site_code",
        CURRENT_TIMESTAMP() AS "loaded_at"
-FROM OGFS_DEMO.SOURCE."LIMS_ANNANDALE_SAMPLES";
+FROM OGFS_DEMO.SOURCE."LIMS_TEST_COPY";

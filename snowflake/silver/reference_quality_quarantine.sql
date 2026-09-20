@@ -38,9 +38,20 @@ UNION ALL
 SELECT 'LAB_MUESTRAS_BA' source_table,
       b."source_row_number" source_row_number, 'status_vocabulary' rule_name,
       'Sample status is not present in the governed status vocabulary' reason,
-      'buenos-aires' site_code,
+      'buenos_aires' site_code,
       'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
     FROM OGFS_DEMO.BRONZE."lab_muestras_ba" b
+    LEFT JOIN OGFS_DEMO.SILVER.governed_sample_status_reference r
+      ON REGEXP_REPLACE(UPPER(TRIM(b."sample_status")), '[^A-Z0-9]', '') =
+         REGEXP_REPLACE(UPPER(TRIM(r.source_value)), '[^A-Z0-9]', '')
+    WHERE b."sample_status" IS NOT NULL AND r.source_value IS NULL
+UNION ALL
+SELECT 'LIMS_TEST_COPY' source_table,
+      b."source_row_number" source_row_number, 'status_vocabulary' rule_name,
+      'Sample status is not present in the governed status vocabulary' reason,
+      'lims_test-copy' site_code,
+      'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
+    FROM OGFS_DEMO.BRONZE."lims_test_copy" b
     LEFT JOIN OGFS_DEMO.SILVER.governed_sample_status_reference r
       ON REGEXP_REPLACE(UPPER(TRIM(b."sample_status")), '[^A-Z0-9]', '') =
          REGEXP_REPLACE(UPPER(TRIM(r.source_value)), '[^A-Z0-9]', '')
@@ -79,9 +90,19 @@ UNION ALL
 SELECT 'LAB_MUESTRAS_BA' source_table,
       b."source_row_number" source_row_number, 'material_master_reference' rule_name,
       'Material code is missing from RAW_MATERIAL_MASTER and requires review' reason,
-      'buenos-aires' site_code,
+      'buenos_aires' site_code,
       'flagged_for_review' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
     FROM OGFS_DEMO.BRONZE."lab_muestras_ba" b
+    LEFT JOIN OGFS_DEMO.SILVER.silver_raw_material_master m
+      ON LOWER(TRIM(m."source_material_code")) = LOWER(TRIM(b."material_code"))
+    WHERE b."material_code" IS NOT NULL AND m."source_material_code" IS NULL
+UNION ALL
+SELECT 'LIMS_TEST_COPY' source_table,
+      b."source_row_number" source_row_number, 'material_master_reference' rule_name,
+      'Material code is missing from RAW_MATERIAL_MASTER and requires review' reason,
+      'lims_test-copy' site_code,
+      'flagged_for_review' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
+    FROM OGFS_DEMO.BRONZE."lims_test_copy" b
     LEFT JOIN OGFS_DEMO.SILVER.silver_raw_material_master m
       ON LOWER(TRIM(m."source_material_code")) = LOWER(TRIM(b."material_code"))
     WHERE b."material_code" IS NOT NULL AND m."source_material_code" IS NULL);
