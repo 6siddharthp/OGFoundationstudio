@@ -279,6 +279,24 @@ CREATE OR REPLACE TASK OGFS_DEMO.BRONZE.load_raw_material_master_task
   USER_TASK_TIMEOUT_MS = 3600000
   SUSPEND_TASK_AFTER_NUM_FAILURES = 2 WHEN SYSTEM$STREAM_HAS_DATA('OGFS_DEMO.BRONZE.source_raw_material_master_stream')
 AS CALL OGFS_DEMO.BRONZE.run_raw_material_master();
+INSERT INTO OGFS_DEMO.BRONZE.orchestration_run_log(step_name,source_table,status,rows_written,started_at,completed_at,query_id)
+SELECT 'initial_deploy','LIMS_ANNANDALE_SAMPLES','SUCCEEDED',COUNT(*),CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),LAST_QUERY_ID()
+FROM OGFS_DEMO.BRONZE.lims_annandale_samples;
+INSERT INTO OGFS_DEMO.BRONZE.orchestration_run_log(step_name,source_table,status,rows_written,started_at,completed_at,query_id)
+SELECT 'initial_deploy','LIMS_HOUSTON_SAMPLES','SUCCEEDED',COUNT(*),CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),LAST_QUERY_ID()
+FROM OGFS_DEMO.BRONZE.lims_houston_samples;
+INSERT INTO OGFS_DEMO.BRONZE.orchestration_run_log(step_name,source_table,status,rows_written,started_at,completed_at,query_id)
+SELECT 'initial_deploy','LIMS_CURITIBA_AMOSTRAS','SUCCEEDED',COUNT(*),CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),LAST_QUERY_ID()
+FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras;
+INSERT INTO OGFS_DEMO.BRONZE.orchestration_run_log(step_name,source_table,status,rows_written,started_at,completed_at,query_id)
+SELECT 'initial_deploy','LAB_MUESTRAS_BA','SUCCEEDED',COUNT(*),CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),LAST_QUERY_ID()
+FROM OGFS_DEMO.BRONZE.lab_muestras_ba;
+INSERT INTO OGFS_DEMO.BRONZE.orchestration_run_log(step_name,source_table,status,rows_written,started_at,completed_at,query_id)
+SELECT 'initial_deploy','LIMS_TEST_COPY','SUCCEEDED',COUNT(*),CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),LAST_QUERY_ID()
+FROM OGFS_DEMO.BRONZE.lims_test_copy;
+INSERT INTO OGFS_DEMO.BRONZE.orchestration_run_log(step_name,source_table,status,rows_written,started_at,completed_at,query_id)
+SELECT 'initial_deploy','RAW_MATERIAL_MASTER','SUCCEEDED',COUNT(*),CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),LAST_QUERY_ID()
+FROM OGFS_DEMO.BRONZE.raw_material_master;
 
 CREATE OR REPLACE PROCEDURE OGFS_DEMO.BRONZE.run_full_pipeline()
 RETURNS VARCHAR LANGUAGE SQL EXECUTE AS OWNER AS $$
