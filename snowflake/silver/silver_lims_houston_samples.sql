@@ -34,24 +34,28 @@ FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data W
 
 INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT 'LIMS_HOUSTON_SAMPLES', row_data.source_row_number,
-       'silver_rule', 'test_type: Code lookup failed', 'houston',
-       'quarantined', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
+FROM (
+SELECT 'LIMS_HOUSTON_SAMPLES' source_table, row_data.source_row_number,
+       'test_method_vocabulary' rule_name, 'test_type: Code lookup failed' reason,
+       'houston' site_code,
+       'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data
-WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL;
+WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL
+UNION ALL
 
-INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT 'LIMS_HOUSTON_SAMPLES', row_data.source_row_number,
-       'silver_rule', 'result_unit: Code lookup failed', 'houston',
-       'quarantined', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+SELECT 'LIMS_HOUSTON_SAMPLES' source_table, row_data.source_row_number,
+       'uom_vocabulary' rule_name, 'result_unit: Code lookup failed' reason,
+       'houston' site_code,
+       'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data
-WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL;
+WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL
+UNION ALL
 
-INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT 'LIMS_HOUSTON_SAMPLES', row_data.source_row_number,
-       'silver_rule', 'sample_status: Code lookup failed', 'houston',
-       'quarantined', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+SELECT 'LIMS_HOUSTON_SAMPLES' source_table, row_data.source_row_number,
+       'status_vocabulary' rule_name, 'sample_status: Code lookup failed' reason,
+       'houston' site_code,
+       'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data
-WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL;
+WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
+QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1;

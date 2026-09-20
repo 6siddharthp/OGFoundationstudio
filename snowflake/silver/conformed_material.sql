@@ -1,9 +1,11 @@
 -- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_material AS
-SELECT 'MAT_' || MD5(LOWER(TRIM(canonical_material_name))) AS material_key,
- canonical_material_name canonical_material_name, MIN(business_line) business_line, MIN(cas_number) cas_number,
- MIN(supplier) supplier, MIN(unit_of_measure) unit_of_measure,
- MIN(hazard_classification) hazard_classification, MIN(source_material_code) source_material_code,
- COUNT(*) source_record_count
-FROM OGFS_DEMO.SILVER.silver_raw_material_master
-GROUP BY canonical_material_name;
+SELECT i.material_key,
+ MAX_BY(m.canonical_material_name,LENGTH(m.canonical_material_name)) canonical_material_name,
+ MIN(m.business_line) business_line, MIN(m.cas_number) cas_number,
+ MIN(m.supplier) supplier, MIN(m.unit_of_measure) unit_of_measure,
+ MIN(m.hazard_classification) hazard_classification, MIN(m.source_material_code) source_material_code,
+ COUNT(*) source_record_count, COUNT(DISTINCT m.canonical_material_name) source_name_count
+FROM OGFS_DEMO.SILVER.silver_raw_material_master m
+JOIN OGFS_DEMO.SILVER.material_identity_map i ON i.source_material_code=m.source_material_code
+GROUP BY i.material_key;

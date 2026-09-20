@@ -290,25 +290,31 @@ SELECT row_data.source_row_number,
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_annandale_samples AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data';
   EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LIMS_ANNANDALE_SAMPLES'', row_data.source_row_number,
-       ''silver_rule'', ''test_type: Code lookup failed'', ''annandale'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
+FROM (
+SELECT ''LIMS_ANNANDALE_SAMPLES'' source_table, row_data.source_row_number,
+       ''test_method_vocabulary'' rule_name, ''test_type: Code lookup failed'' reason,
+       ''annandale'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_annandale_samples AS row_data
-WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LIMS_ANNANDALE_SAMPLES'', row_data.source_row_number,
-       ''silver_rule'', ''result_unit: Code lookup failed'', ''annandale'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL
+UNION ALL
+
+SELECT ''LIMS_ANNANDALE_SAMPLES'' source_table, row_data.source_row_number,
+       ''uom_vocabulary'' rule_name, ''result_unit: Code lookup failed'' reason,
+       ''annandale'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_annandale_samples AS row_data
-WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LIMS_ANNANDALE_SAMPLES'', row_data.source_row_number,
-       ''silver_rule'', ''sample_status: Code lookup failed'', ''annandale'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL
+UNION ALL
+
+SELECT ''LIMS_ANNANDALE_SAMPLES'' source_table, row_data.source_row_number,
+       ''status_vocabulary'' rule_name, ''sample_status: Code lookup failed'' reason,
+       ''annandale'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_annandale_samples AS row_data
-WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL';
+WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
+QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lims_houston_samples AS
 SELECT row_data.source_row_number,
@@ -344,25 +350,31 @@ SELECT row_data.source_row_number,
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data';
   EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LIMS_HOUSTON_SAMPLES'', row_data.source_row_number,
-       ''silver_rule'', ''test_type: Code lookup failed'', ''houston'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
+FROM (
+SELECT ''LIMS_HOUSTON_SAMPLES'' source_table, row_data.source_row_number,
+       ''test_method_vocabulary'' rule_name, ''test_type: Code lookup failed'' reason,
+       ''houston'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data
-WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LIMS_HOUSTON_SAMPLES'', row_data.source_row_number,
-       ''silver_rule'', ''result_unit: Code lookup failed'', ''houston'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL
+UNION ALL
+
+SELECT ''LIMS_HOUSTON_SAMPLES'' source_table, row_data.source_row_number,
+       ''uom_vocabulary'' rule_name, ''result_unit: Code lookup failed'' reason,
+       ''houston'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data
-WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LIMS_HOUSTON_SAMPLES'', row_data.source_row_number,
-       ''silver_rule'', ''sample_status: Code lookup failed'', ''houston'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL
+UNION ALL
+
+SELECT ''LIMS_HOUSTON_SAMPLES'' source_table, row_data.source_row_number,
+       ''status_vocabulary'' rule_name, ''sample_status: Code lookup failed'' reason,
+       ''houston'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data
-WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL';
+WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
+QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lims_curitiba_amostras AS
 SELECT row_data.source_row_number,
@@ -393,25 +405,31 @@ SELECT row_data.source_row_number,
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data';
   EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LIMS_CURITIBA_AMOSTRAS'', row_data.source_row_number,
-       ''silver_rule'', ''test_type: Code lookup failed'', ''curitiba'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
+FROM (
+SELECT ''LIMS_CURITIBA_AMOSTRAS'' source_table, row_data.source_row_number,
+       ''test_method_vocabulary'' rule_name, ''test_type: Code lookup failed'' reason,
+       ''curitiba'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data
-WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LIMS_CURITIBA_AMOSTRAS'', row_data.source_row_number,
-       ''silver_rule'', ''result_unit: Code lookup failed'', ''curitiba'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL
+UNION ALL
+
+SELECT ''LIMS_CURITIBA_AMOSTRAS'' source_table, row_data.source_row_number,
+       ''uom_vocabulary'' rule_name, ''result_unit: Code lookup failed'' reason,
+       ''curitiba'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data
-WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LIMS_CURITIBA_AMOSTRAS'', row_data.source_row_number,
-       ''silver_rule'', ''sample_status: Code lookup failed'', ''curitiba'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL
+UNION ALL
+
+SELECT ''LIMS_CURITIBA_AMOSTRAS'' source_table, row_data.source_row_number,
+       ''status_vocabulary'' rule_name, ''sample_status: Code lookup failed'' reason,
+       ''curitiba'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data
-WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL';
+WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
+QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lab_muestras_ba AS
 SELECT row_data.source_row_number,
@@ -445,25 +463,31 @@ SELECT row_data.source_row_number,
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lab_muestras_ba AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data';
   EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LAB_MUESTRAS_BA'', row_data.source_row_number,
-       ''silver_rule'', ''test_type: Code lookup failed'', ''buenos_aires'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
+FROM (
+SELECT ''LAB_MUESTRAS_BA'' source_table, row_data.source_row_number,
+       ''test_method_vocabulary'' rule_name, ''test_type: Code lookup failed'' reason,
+       ''buenos_aires'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lab_muestras_ba AS row_data
-WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LAB_MUESTRAS_BA'', row_data.source_row_number,
-       ''silver_rule'', ''result_unit: Code lookup failed'', ''buenos_aires'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL
+UNION ALL
+
+SELECT ''LAB_MUESTRAS_BA'' source_table, row_data.source_row_number,
+       ''uom_vocabulary'' rule_name, ''result_unit: Code lookup failed'' reason,
+       ''buenos_aires'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lab_muestras_ba AS row_data
-WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
-  (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
-SELECT ''LAB_MUESTRAS_BA'', row_data.source_row_number,
-       ''silver_rule'', ''sample_status: Code lookup failed'', ''buenos_aires'',
-       ''quarantined'', OBJECT_CONSTRUCT_KEEP_NULL(row_data.*), CURRENT_TIMESTAMP()
+WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL
+UNION ALL
+
+SELECT ''LAB_MUESTRAS_BA'' source_table, row_data.source_row_number,
+       ''status_vocabulary'' rule_name, ''sample_status: Code lookup failed'' reason,
+       ''buenos_aires'' site_code,
+       ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lab_muestras_ba AS row_data
-WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL';
+WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
+QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_raw_material_master AS
 SELECT row_data.source_row_number,
@@ -486,63 +510,75 @@ SELECT row_data.source_row_number,
   ''raw_material_master'' AS source_table
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.raw_material_master AS row_data WHERE NOT (FALSE)) AS row_data';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.material_identity_map AS
+WITH base AS (
+  SELECT DISTINCT source_material_code, canonical_material_name, cas_number,
+    REGEXP_REPLACE(UPPER(TRIM(canonical_material_name)), ''[^A-Z0-9]'', '''') normalized_name,
+    NULLIF(REGEXP_REPLACE(UPPER(TRIM(cas_number)), ''[^A-Z0-9]'', ''''), '''') normalized_cas
+  FROM OGFS_DEMO.SILVER.silver_raw_material_master
+  WHERE source_material_code IS NOT NULL AND canonical_material_name IS NOT NULL
+),
+scored_pairs AS (
+  SELECT l.source_material_code left_code, r.source_material_code right_code,
+    IFF(l.normalized_cas IS NOT NULL AND l.normalized_cas=r.normalized_cas, 100,
+      JAROWINKLER_SIMILARITY(l.normalized_name,r.normalized_name)) similarity_score,
+    IFF(l.normalized_cas IS NOT NULL AND l.normalized_cas=r.normalized_cas, ''cas_number'', ''canonical_name_similarity'') match_rule
+  FROM base l JOIN base r ON l.source_material_code < r.source_material_code
+),
+automatic_pairs AS (
+  SELECT * FROM scored_pairs WHERE match_rule=''cas_number'' OR similarity_score >= 85
+),
+peers AS (
+  SELECT left_code source_material_code,right_code peer_code,match_rule FROM automatic_pairs
+  UNION ALL SELECT right_code,left_code,match_rule FROM automatic_pairs
+),
+anchors AS (
+  SELECT b.source_material_code,
+    LEAST(b.source_material_code,COALESCE(MIN(p.peer_code),b.source_material_code)) group_anchor,
+    IFF(COUNT_IF(p.match_rule=''cas_number'')>0,''cas_number'',
+      IFF(COUNT(p.peer_code)>0,''canonical_name_similarity'',''raw_material_master_xref'')) match_rule
+  FROM base b LEFT JOIN peers p ON p.source_material_code=b.source_material_code
+  GROUP BY b.source_material_code
+)
+SELECT b.source_material_code,b.canonical_material_name,b.cas_number,
+  ''MAT_''||MD5(a.group_anchor) material_key,a.match_rule,85 similarity_threshold
+FROM base b JOIN anchors a USING (source_material_code)';
+  EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.material_match_candidates AS
+WITH base AS (
+  SELECT DISTINCT source_material_code,canonical_material_name,
+    REGEXP_REPLACE(UPPER(TRIM(canonical_material_name)), ''[^A-Z0-9]'', '''') normalized_name,
+    NULLIF(REGEXP_REPLACE(UPPER(TRIM(cas_number)), ''[^A-Z0-9]'', ''''), '''') normalized_cas
+  FROM OGFS_DEMO.SILVER.silver_raw_material_master
+  WHERE source_material_code IS NOT NULL AND canonical_material_name IS NOT NULL
+),
+pairs AS (
+  SELECT l.source_material_code left_code,r.source_material_code right_code,
+    l.canonical_material_name left_name,r.canonical_material_name right_name,
+    JAROWINKLER_SIMILARITY(l.normalized_name,r.normalized_name) similarity_score
+  FROM base l JOIN base r ON l.source_material_code < r.source_material_code
+  WHERE NOT (l.normalized_cas IS NOT NULL AND l.normalized_cas=r.normalized_cas)
+)
+SELECT left_code,right_code,left_name,right_name,similarity_score,85 similarity_threshold,''candidate_review'' review_status
+FROM pairs
+WHERE similarity_score < 85 AND similarity_score >= 85*0.75
+QUALIFY ROW_NUMBER() OVER (PARTITION BY left_code ORDER BY similarity_score DESC,right_code)=1';
+  EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_material AS
-SELECT ''MAT_'' || MD5(LOWER(TRIM(canonical_material_name))) AS material_key,
- canonical_material_name canonical_material_name, MIN(business_line) business_line, MIN(cas_number) cas_number,
- MIN(supplier) supplier, MIN(unit_of_measure) unit_of_measure,
- MIN(hazard_classification) hazard_classification, MIN(source_material_code) source_material_code,
- COUNT(*) source_record_count
-FROM OGFS_DEMO.SILVER.silver_raw_material_master
-GROUP BY canonical_material_name';
+SELECT i.material_key,
+ MAX_BY(m.canonical_material_name,LENGTH(m.canonical_material_name)) canonical_material_name,
+ MIN(m.business_line) business_line, MIN(m.cas_number) cas_number,
+ MIN(m.supplier) supplier, MIN(m.unit_of_measure) unit_of_measure,
+ MIN(m.hazard_classification) hazard_classification, MIN(m.source_material_code) source_material_code,
+ COUNT(*) source_record_count, COUNT(DISTINCT m.canonical_material_name) source_name_count
+FROM OGFS_DEMO.SILVER.silver_raw_material_master m
+JOIN OGFS_DEMO.SILVER.material_identity_map i ON i.source_material_code=m.source_material_code
+GROUP BY i.material_key';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
 FROM (SELECT ''LIMS_ANNANDALE_SAMPLES'' source_table,
-      b.source_row_number source_row_number, ''status_vocabulary'' rule_name,
-      ''Sample status is not present in the governed status vocabulary'' reason,
-      ''annandale'' site_code,
-      ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
-    FROM OGFS_DEMO.BRONZE.lims_annandale_samples b
-    LEFT JOIN OGFS_DEMO.SILVER.governed_sample_status_reference r
-      ON REGEXP_REPLACE(UPPER(TRIM(b.sample_status)), ''[^A-Z0-9]'', '''') =
-         REGEXP_REPLACE(UPPER(TRIM(r.source_value)), ''[^A-Z0-9]'', '''')
-    WHERE b.sample_status IS NOT NULL AND r.source_value IS NULL
-UNION ALL
-SELECT ''LIMS_HOUSTON_SAMPLES'' source_table,
-      b.source_row_number source_row_number, ''status_vocabulary'' rule_name,
-      ''Sample status is not present in the governed status vocabulary'' reason,
-      ''houston'' site_code,
-      ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
-    FROM OGFS_DEMO.BRONZE.lims_houston_samples b
-    LEFT JOIN OGFS_DEMO.SILVER.governed_sample_status_reference r
-      ON REGEXP_REPLACE(UPPER(TRIM(b.sample_status)), ''[^A-Z0-9]'', '''') =
-         REGEXP_REPLACE(UPPER(TRIM(r.source_value)), ''[^A-Z0-9]'', '''')
-    WHERE b.sample_status IS NOT NULL AND r.source_value IS NULL
-UNION ALL
-SELECT ''LIMS_CURITIBA_AMOSTRAS'' source_table,
-      b.source_row_number source_row_number, ''status_vocabulary'' rule_name,
-      ''Sample status is not present in the governed status vocabulary'' reason,
-      ''curitiba'' site_code,
-      ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
-    FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras b
-    LEFT JOIN OGFS_DEMO.SILVER.governed_sample_status_reference r
-      ON REGEXP_REPLACE(UPPER(TRIM(b.sample_status)), ''[^A-Z0-9]'', '''') =
-         REGEXP_REPLACE(UPPER(TRIM(r.source_value)), ''[^A-Z0-9]'', '''')
-    WHERE b.sample_status IS NOT NULL AND r.source_value IS NULL
-UNION ALL
-SELECT ''LAB_MUESTRAS_BA'' source_table,
-      b.source_row_number source_row_number, ''status_vocabulary'' rule_name,
-      ''Sample status is not present in the governed status vocabulary'' reason,
-      ''buenos_aires'' site_code,
-      ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
-    FROM OGFS_DEMO.BRONZE.lab_muestras_ba b
-    LEFT JOIN OGFS_DEMO.SILVER.governed_sample_status_reference r
-      ON REGEXP_REPLACE(UPPER(TRIM(b.sample_status)), ''[^A-Z0-9]'', '''') =
-         REGEXP_REPLACE(UPPER(TRIM(r.source_value)), ''[^A-Z0-9]'', '''')
-    WHERE b.sample_status IS NOT NULL AND r.source_value IS NULL
-UNION ALL
-SELECT ''LIMS_ANNANDALE_SAMPLES'' source_table,
       b.source_row_number source_row_number, ''material_master_reference'' rule_name,
       ''Material code is missing from RAW_MATERIAL_MASTER and requires review'' reason,
       ''annandale'' site_code,
@@ -600,45 +636,49 @@ FROM methods m LEFT JOIN OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_refere
 GROUP BY COALESCE(r.governed_standard_reference, m.test_type)';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_lab_sample AS SELECT ''SMP_'' || MD5(''annandale:'' || s.source_row_number) lab_sample_key,
- m.material_key, tm.test_method_key, ''annandale'' site_code, s.product_line business_line,
+  m.material_key, tm.test_method_key, ''annandale'' site_code, s.product_line business_line,
  TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) completion_date,
  TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_requested)) requested_date,
  s.sample_status sample_status, 1 source_system_count
  FROM OGFS_DEMO.SILVER.silver_lims_annandale_samples s
- LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.material_identity_map mi ON LOWER(mi.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON m.material_key=mi.material_key
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')
 UNION ALL
 SELECT ''SMP_'' || MD5(''houston:'' || s.source_row_number) lab_sample_key,
- m.material_key, tm.test_method_key, ''houston'' site_code, s.product_line business_line,
+  m.material_key, tm.test_method_key, ''houston'' site_code, s.product_line business_line,
  TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) completion_date,
  TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_requested)) requested_date,
  s.sample_status sample_status, 1 source_system_count
  FROM OGFS_DEMO.SILVER.silver_lims_houston_samples s
- LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.material_identity_map mi ON LOWER(mi.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON m.material_key=mi.material_key
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')
 UNION ALL
 SELECT ''SMP_'' || MD5(''curitiba:'' || s.source_row_number) lab_sample_key,
- m.material_key, tm.test_method_key, ''curitiba'' site_code, s.product_line business_line,
+  m.material_key, tm.test_method_key, ''curitiba'' site_code, s.product_line business_line,
  TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) completion_date,
  TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_requested)) requested_date,
  s.sample_status sample_status, 1 source_system_count
  FROM OGFS_DEMO.SILVER.silver_lims_curitiba_amostras s
- LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.material_identity_map mi ON LOWER(mi.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON m.material_key=mi.material_key
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')
 UNION ALL
 SELECT ''SMP_'' || MD5(''buenos-aires:'' || s.source_row_number) lab_sample_key,
- m.material_key, tm.test_method_key, ''buenos-aires'' site_code, s.product_line business_line,
+  m.material_key, tm.test_method_key, ''buenos-aires'' site_code, s.product_line business_line,
  TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) completion_date,
  TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_requested)) requested_date,
  s.sample_status sample_status, 1 source_system_count
  FROM OGFS_DEMO.SILVER.silver_lab_muestras_ba s
- LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.material_identity_map mi ON LOWER(mi.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON m.material_key=mi.material_key
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')';
@@ -650,7 +690,8 @@ CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_test_result AS SELECT ''RES_'
  IFF(s.result_value BETWEEN s.spec_lower_limit AND s.spec_upper_limit,TRUE,FALSE) within_spec,
  ''silver_lims_annandale_samples'' source_system
  FROM OGFS_DEMO.SILVER.silver_lims_annandale_samples s
- LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.material_identity_map mi ON LOWER(mi.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON m.material_key=mi.material_key
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')
@@ -662,7 +703,8 @@ SELECT ''RES_'' || MD5(''silver_lims_houston_samples:'' || s.source_row_number) 
  IFF(s.result_value BETWEEN s.spec_lower_limit AND s.spec_upper_limit,TRUE,FALSE) within_spec,
  ''silver_lims_houston_samples'' source_system
  FROM OGFS_DEMO.SILVER.silver_lims_houston_samples s
- LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.material_identity_map mi ON LOWER(mi.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON m.material_key=mi.material_key
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')
@@ -674,7 +716,8 @@ SELECT ''RES_'' || MD5(''silver_lims_curitiba_amostras:'' || s.source_row_number
  IFF(s.result_value BETWEEN NULL::NUMBER AND NULL::NUMBER,TRUE,FALSE) within_spec,
  ''silver_lims_curitiba_amostras'' source_system
  FROM OGFS_DEMO.SILVER.silver_lims_curitiba_amostras s
- LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.material_identity_map mi ON LOWER(mi.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON m.material_key=mi.material_key
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')
@@ -686,7 +729,8 @@ SELECT ''RES_'' || MD5(''silver_lab_muestras_ba:'' || s.source_row_number) test_
  IFF(s.result_value BETWEEN s.spec_lower_limit AND s.spec_upper_limit,TRUE,FALSE) within_spec,
  ''silver_lab_muestras_ba'' source_system
  FROM OGFS_DEMO.SILVER.silver_lab_muestras_ba s
- LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON LOWER(m.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.material_identity_map mi ON LOWER(mi.source_material_code)=LOWER(s.material_code)
+  LEFT JOIN OGFS_DEMO.SILVER.conformed_material m ON m.material_key=mi.material_key
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')';
