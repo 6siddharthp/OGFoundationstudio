@@ -149,39 +149,6 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        CURRENT_TIMESTAMP() AS loaded_at
 FROM OGFS_DEMO.SOURCE.LAB_MUESTRAS_BA';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
-CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.lims_test_copy AS
-SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
-       SAMPLE_NUMBER::VARCHAR AS sample_id,
-       PRODUCT_LINE::VARCHAR AS product_line,
-       MATERIAL_CODE::VARCHAR AS material_code,
-       BATCH_LOT_NUMBER::VARCHAR AS batch_lot_number,
-       CONTAINER_ID::VARCHAR AS container_id,
-       ANALYSIS_TYPE::VARCHAR AS test_type,
-       TEST_METHOD_VERSION::VARCHAR AS test_method_version,
-       INSTRUMENT_ID::VARCHAR AS instrument_id,
-       ANALYST_ID::VARCHAR AS analyst_id,
-       REVIEWED_BY::VARCHAR AS reviewer_id,
-       DATE_REQUESTED::VARCHAR AS date_requested,
-       DATE_RECEIVED::VARCHAR AS date_received,
-       DATE_STARTED::VARCHAR AS date_started,
-       DATE_COMPLETED::VARCHAR AS date_completed,
-       PRIORITY::VARCHAR AS priority,
-       SUBMITTER::VARCHAR AS submitter,
-       PROJECT_REFERENCE::VARCHAR AS project_reference,
-       TRY_TO_DECIMAL(TO_VARCHAR(RESULT_VALUE), 38, 10)::NUMBER AS result_value,
-       UOM::VARCHAR AS result_unit,
-       TRY_TO_DECIMAL(TO_VARCHAR(SPEC_LOWER_LIMIT), 38, 10)::NUMBER AS spec_lower_limit,
-       TRY_TO_DECIMAL(TO_VARCHAR(SPEC_UPPER_LIMIT), 38, 10)::NUMBER AS spec_upper_limit,
-       SAMPLE_STATUS::VARCHAR AS sample_status,
-       APPROVAL_STATUS::VARCHAR AS approval_status,
-       APPROVAL_DATE::VARCHAR AS approval_date,
-       STORAGE_LOCATION::VARCHAR AS storage_location,
-       TRY_TO_BOOLEAN(TO_VARCHAR(RERUN_FLAG))::BOOLEAN AS retest_flag,
-       COMMENTS::VARCHAR AS comments,
-       SITE_CODE::VARCHAR AS site_code,
-       CURRENT_TIMESTAMP() AS loaded_at
-FROM OGFS_DEMO.SOURCE.LIMS_TEST_COPY';
-  EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.raw_material_master AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        CANONICAL_MATERIAL_NAME::VARCHAR AS canonical_material_name,
@@ -575,17 +542,6 @@ SELECT ''LAB_MUESTRAS_BA'' source_table,
          REGEXP_REPLACE(UPPER(TRIM(r.source_value)), ''[^A-Z0-9]'', '''')
     WHERE b.sample_status IS NOT NULL AND r.source_value IS NULL
 UNION ALL
-SELECT ''LIMS_TEST_COPY'' source_table,
-      b.source_row_number source_row_number, ''status_vocabulary'' rule_name,
-      ''Sample status is not present in the governed status vocabulary'' reason,
-      ''lims_test-copy'' site_code,
-      ''quarantined'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
-    FROM OGFS_DEMO.BRONZE.lims_test_copy b
-    LEFT JOIN OGFS_DEMO.SILVER.governed_sample_status_reference r
-      ON REGEXP_REPLACE(UPPER(TRIM(b.sample_status)), ''[^A-Z0-9]'', '''') =
-         REGEXP_REPLACE(UPPER(TRIM(r.source_value)), ''[^A-Z0-9]'', '''')
-    WHERE b.sample_status IS NOT NULL AND r.source_value IS NULL
-UNION ALL
 SELECT ''LIMS_ANNANDALE_SAMPLES'' source_table,
       b.source_row_number source_row_number, ''material_master_reference'' rule_name,
       ''Material code is missing from RAW_MATERIAL_MASTER and requires review'' reason,
@@ -622,16 +578,6 @@ SELECT ''LAB_MUESTRAS_BA'' source_table,
       ''buenos_aires'' site_code,
       ''flagged_for_review'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
     FROM OGFS_DEMO.BRONZE.lab_muestras_ba b
-    LEFT JOIN OGFS_DEMO.SILVER.silver_raw_material_master m
-      ON LOWER(TRIM(m.source_material_code)) = LOWER(TRIM(b.material_code))
-    WHERE b.material_code IS NOT NULL AND m.source_material_code IS NULL
-UNION ALL
-SELECT ''LIMS_TEST_COPY'' source_table,
-      b.source_row_number source_row_number, ''material_master_reference'' rule_name,
-      ''Material code is missing from RAW_MATERIAL_MASTER and requires review'' reason,
-      ''lims_test-copy'' site_code,
-      ''flagged_for_review'' review_status, OBJECT_CONSTRUCT_KEEP_NULL(b.*) source_data
-    FROM OGFS_DEMO.BRONZE.lims_test_copy b
     LEFT JOIN OGFS_DEMO.SILVER.silver_raw_material_master m
       ON LOWER(TRIM(m.source_material_code)) = LOWER(TRIM(b.material_code))
     WHERE b.material_code IS NOT NULL AND m.source_material_code IS NULL)';
@@ -749,7 +695,7 @@ CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_material AS SELECT material_key,canon
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_test_method AS SELECT test_method_key,governed_standard_reference,standard_body,method_title,applies_to_business_line FROM OGFS_DEMO.SILVER.conformed_test_method';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
-CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_lab_site AS SELECT column1::VARCHAR site_key,column2::VARCHAR site_code,column3::VARCHAR site_name FROM VALUES (''SITE_ANNANDALE'',''annandale'',''Annandale''),(''SITE_HOUSTON'',''houston'',''Houston''),(''SITE_CURITIBA'',''curitiba'',''Curitiba''),(''SITE_BUENOS_AIRES'',''buenos_aires'',''Buenos Aires''),(''SITE_LIMS_TEST_COPY'',''lims_test-copy'',''LIMS_TEST_COPY'')';
+CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_lab_site AS SELECT column1::VARCHAR site_key,column2::VARCHAR site_code,column3::VARCHAR site_name FROM VALUES (''SITE_ANNANDALE'',''annandale'',''Annandale''),(''SITE_HOUSTON'',''houston'',''Houston''),(''SITE_CURITIBA'',''curitiba'',''Curitiba''),(''SITE_BUENOS_AIRES'',''buenos_aires'',''Buenos Aires'')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_business_line AS SELECT column1::VARCHAR business_line_key,column2::VARCHAR business_line_name FROM VALUES (''BIZ_LUBRICANTS'',''Lubricants''),(''BIZ_FUELS'',''Fuels''),(''BIZ_CHEMICALS'',''Chemicals'')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
@@ -764,7 +710,7 @@ SELECT value::VARCHAR AS kpi_name, TRUE AS included, NULL::VARCHAR AS skip_reaso
 FROM TABLE(FLATTEN(INPUT => PARSE_JSON(''["Cross-Lab Data Standardization Rate","Cross-Lab Reproducibility Index","Cross-Site Result Correlation","Duplicate Test Rate Across Labs","Inter-Site Result Deviation","Site-Pair Agreement by Method","Test Method Standardization Rate","Unmatched Sample Rate","Backlog Aging Index","First-Time-Right Rate","Instrument Throughput","LIMS Data Completeness","Lab Capacity Utilization","Retest Rate","Sample Turnaround Time","Sample Volume Trend"]'')))
 UNION ALL
 SELECT value::VARCHAR, FALSE, ''Inputs are outside the chosen process tables''
-FROM TABLE(FLATTEN(INPUT => PARSE_JSON(''["Business Line Activity Growth","Cycle Time by Gate"]'')))';
+FROM TABLE(FLATTEN(INPUT => PARSE_JSON(''[]'')))';
   RETURN 'ok';
 END;
 $$;
@@ -773,3 +719,4 @@ CREATE OR REPLACE TASK OGFS_DEMO.BRONZE.full_pipeline_task
   USER_TASK_TIMEOUT_MS = 3600000
   SUSPEND_TASK_AFTER_NUM_FAILURES = 2
 AS CALL OGFS_DEMO.BRONZE.run_full_pipeline();
+ALTER TASK OGFS_DEMO.BRONZE.full_pipeline_task RESUME;

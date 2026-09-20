@@ -7,7 +7,7 @@
     "cron": "0 6 * * *",
     "timeZone": "America/Chicago"
   },
-  "initialState": "paused",
+  "initialState": "active",
   "retries": 1,
   "warehouse": "OGFS_DEMO_WH",
   "cadenceGroups": [
@@ -50,6 +50,7 @@
     "windowHours": 24
   },
   "exceptions": {},
+  "lockedAt": "2026-09-20T21:57:34.357Z",
   "graph": {
     "nodes": [
       {
@@ -450,9 +451,7 @@
         "to": "gold:fact_test_result"
       }
     ],
-    "staleSources": [
-      "LIMS_TEST_COPY"
-    ],
+    "staleSources": [],
     "stages": {
       "source": [
         "LIMS_ANNANDALE_SAMPLES",
@@ -491,6 +490,5 @@
         "fact_test_result"
       ]
     }
-  },
-  "lockedAt": "2026-09-20T12:43:34.947Z"
+  }
 }
