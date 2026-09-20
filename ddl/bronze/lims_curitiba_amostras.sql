@@ -31,8 +31,3 @@ CREATE TABLE bronze."lims_curitiba_amostras" (
 
 -- foundation:stage 2
 COMMENT ON TABLE bronze."lims_curitiba_amostras" IS 'lims: 23 fields defined, 23 source columns, 19 auto-mapped, 4 manually mapped, 0 newly added.';
-
--- foundation:stage 3
-INSERT INTO bronze."lims_curitiba_amostras" (source_row_number, "sample_id", "product_line", "material_code", "batch_lot_number", "container_id", "test_type", "test_method_version", "instrument_id", "analyst_id", "reviewer_id", "date_requested", "date_received", "date_started", "date_completed", "priority", "submitter", "result_value", "result_unit", "sample_status", "approval_status", "retest_flag", "comments", "site_code")
-            SELECT row_number, raw_data ->> 'AMOSTRA_ID', raw_data ->> 'PRODUCT_LINE', raw_data ->> 'MATERIAL_CODE', raw_data ->> 'BATCH_LOT_NUMBER', raw_data ->> 'CONTAINER_ID', raw_data ->> 'TEST_TYPE', raw_data ->> 'TEST_METHOD_VERSION', raw_data ->> 'INSTRUMENT_ID', raw_data ->> 'TECNICO_ID', raw_data ->> 'REVIEWER_ID', raw_data ->> 'DATA_SOLICITADA', raw_data ->> 'DATE_RECEIVED', raw_data ->> 'DATE_STARTED', raw_data ->> 'DATE_COMPLETED', raw_data ->> 'PRIORITY', raw_data ->> 'SUBMITTER', NULLIF(raw_data ->> 'RESULT_VALUE', '')::numeric, raw_data ->> 'RESULT_UNIT', raw_data ->> 'STATUS_AMOSTRA', raw_data ->> 'APPROVAL_STATUS', CASE lower(raw_data ->> 'RETEST_FLAG') WHEN 'true' THEN true WHEN 'false' THEN false ELSE NULL END, raw_data ->> 'COMMENTS', raw_data ->> 'SITE_CODE'
-            FROM foundation_staging_rows WHERE staging_table_id = 23 ORDER BY row_number;
