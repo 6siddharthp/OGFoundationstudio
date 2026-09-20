@@ -10,8 +10,16 @@
   "initialState": "paused",
   "retries": 1,
   "warehouse": "OGFS_DEMO_WH",
-  "sources": {
-    "LIMS_ANNANDALE_SAMPLES": {
+  "cadenceGroups": [
+    {
+      "id": "lims-1",
+      "name": "Lab results",
+      "sourceTables": [
+        "LIMS_ANNANDALE_SAMPLES",
+        "LIMS_HOUSTON_SAMPLES",
+        "LIMS_CURITIBA_AMOSTRAS",
+        "LAB_MUESTRAS_BA"
+      ],
       "trigger": "arrival",
       "schedule": {
         "kind": "daily",
@@ -19,166 +27,65 @@
         "cron": "0 6 * * *",
         "timeZone": "America/Chicago"
       },
-      "freshnessHours": 24
+      "freshnessHours": 4
     },
-    "LIMS_HOUSTON_SAMPLES": {
-      "trigger": "arrival",
+    {
+      "id": "raw-material-master-2",
+      "name": "Reference data",
+      "sourceTables": [
+        "RAW_MATERIAL_MASTER"
+      ],
+      "trigger": "schedule",
       "schedule": {
         "kind": "daily",
-        "time": "06:00",
-        "cron": "0 6 * * *",
-        "timeZone": "America/Chicago"
-      },
-      "freshnessHours": 24
-    },
-    "LIMS_CURITIBA_AMOSTRAS": {
-      "trigger": "arrival",
-      "schedule": {
-        "kind": "daily",
-        "time": "06:00",
-        "cron": "0 6 * * *",
-        "timeZone": "America/Chicago"
-      },
-      "freshnessHours": 24
-    },
-    "LAB_MUESTRAS_BA": {
-      "trigger": "arrival",
-      "schedule": {
-        "kind": "daily",
-        "time": "06:00",
-        "cron": "0 6 * * *",
-        "timeZone": "America/Chicago"
-      },
-      "freshnessHours": 24
-    },
-    "LIMS_TEST_COPY": {
-      "trigger": "arrival",
-      "schedule": {
-        "kind": "daily",
-        "time": "06:00",
-        "cron": "0 6 * * *",
-        "timeZone": "America/Chicago"
-      },
-      "freshnessHours": 24
-    },
-    "RAW_MATERIAL_MASTER": {
-      "trigger": "arrival",
-      "schedule": {
-        "kind": "daily",
-        "time": "06:00",
-        "cron": "0 6 * * *",
+        "time": "02:00",
+        "cron": "0 2 * * *",
         "timeZone": "America/Chicago"
       },
       "freshnessHours": 24
     }
+  ],
+  "downstreamPolicy": {
+    "policy": "any",
+    "windowHours": 24
   },
-  "policies": {
-    "silver:silver_lims_annandale_samples": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "silver:silver_lims_houston_samples": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "silver:silver_lims_curitiba_amostras": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "silver:silver_lab_muestras_ba": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "silver:silver_raw_material_master": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "conformed:lims_annandale_samples": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "conformed:lims_houston_samples": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "conformed:lims_curitiba_amostras": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "conformed:lab_muestras_ba": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "conformed:raw_material_master": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "gold:dim_material": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "gold:dim_test_method": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "gold:dim_lab_site": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "gold:dim_business_line": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "gold:dim_date": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "gold:fact_lab_sample": {
-      "policy": "any",
-      "windowHours": 24
-    },
-    "gold:fact_test_result": {
-      "policy": "any",
-      "windowHours": 24
-    }
-  },
+  "exceptions": {},
   "graph": {
     "nodes": [
       {
         "id": "source:LIMS_ANNANDALE_SAMPLES",
         "label": "LIMS_ANNANDALE_SAMPLES",
         "type": "source",
-        "sourceTable": "LIMS_ANNANDALE_SAMPLES"
+        "sourceTable": "LIMS_ANNANDALE_SAMPLES",
+        "templateKey": "lims"
       },
       {
         "id": "source:LIMS_HOUSTON_SAMPLES",
         "label": "LIMS_HOUSTON_SAMPLES",
         "type": "source",
-        "sourceTable": "LIMS_HOUSTON_SAMPLES"
+        "sourceTable": "LIMS_HOUSTON_SAMPLES",
+        "templateKey": "lims"
       },
       {
         "id": "source:LIMS_CURITIBA_AMOSTRAS",
         "label": "LIMS_CURITIBA_AMOSTRAS",
         "type": "source",
-        "sourceTable": "LIMS_CURITIBA_AMOSTRAS"
+        "sourceTable": "LIMS_CURITIBA_AMOSTRAS",
+        "templateKey": "lims"
       },
       {
         "id": "source:LAB_MUESTRAS_BA",
         "label": "LAB_MUESTRAS_BA",
         "type": "source",
-        "sourceTable": "LAB_MUESTRAS_BA"
-      },
-      {
-        "id": "source:LIMS_TEST_COPY",
-        "label": "LIMS_TEST_COPY",
-        "type": "source",
-        "sourceTable": "LIMS_TEST_COPY"
+        "sourceTable": "LAB_MUESTRAS_BA",
+        "templateKey": "lims"
       },
       {
         "id": "source:RAW_MATERIAL_MASTER",
         "label": "RAW_MATERIAL_MASTER",
         "type": "source",
-        "sourceTable": "RAW_MATERIAL_MASTER"
+        "sourceTable": "RAW_MATERIAL_MASTER",
+        "templateKey": "raw_material_master"
       },
       {
         "id": "bronze:lims_annandale_samples",
@@ -203,12 +110,6 @@
         "label": "lab_muestras_ba",
         "type": "bronze",
         "sourceTable": "LAB_MUESTRAS_BA"
-      },
-      {
-        "id": "bronze:lims_test_copy",
-        "label": "lims_test_copy",
-        "type": "bronze",
-        "sourceTable": "LIMS_TEST_COPY"
       },
       {
         "id": "bronze:raw_material_master",
@@ -250,31 +151,41 @@
         "id": "conformed:lims_annandale_samples",
         "label": "conformed_lims_annandale_samples",
         "type": "conformed",
-        "inputs": []
+        "inputs": [
+          "silver:silver_lims_annandale_samples"
+        ]
       },
       {
         "id": "conformed:lims_houston_samples",
         "label": "conformed_lims_houston_samples",
         "type": "conformed",
-        "inputs": []
+        "inputs": [
+          "silver:silver_lims_houston_samples"
+        ]
       },
       {
         "id": "conformed:lims_curitiba_amostras",
         "label": "conformed_lims_curitiba_amostras",
         "type": "conformed",
-        "inputs": []
+        "inputs": [
+          "silver:silver_lims_curitiba_amostras"
+        ]
       },
       {
         "id": "conformed:lab_muestras_ba",
         "label": "conformed_lab_muestras_ba",
         "type": "conformed",
-        "inputs": []
+        "inputs": [
+          "silver:silver_lab_muestras_ba"
+        ]
       },
       {
         "id": "conformed:raw_material_master",
         "label": "conformed_raw_material_master",
         "type": "conformed",
-        "inputs": []
+        "inputs": [
+          "silver:silver_raw_material_master"
+        ]
       },
       {
         "id": "gold:dim_material",
@@ -355,10 +266,6 @@
         "to": "bronze:lab_muestras_ba"
       },
       {
-        "from": "source:LIMS_TEST_COPY",
-        "to": "bronze:lims_test_copy"
-      },
-      {
         "from": "source:RAW_MATERIAL_MASTER",
         "to": "bronze:raw_material_master"
       },
@@ -381,6 +288,26 @@
       {
         "from": "bronze:raw_material_master",
         "to": "silver:silver_raw_material_master"
+      },
+      {
+        "from": "silver:silver_lims_annandale_samples",
+        "to": "conformed:lims_annandale_samples"
+      },
+      {
+        "from": "silver:silver_lims_houston_samples",
+        "to": "conformed:lims_houston_samples"
+      },
+      {
+        "from": "silver:silver_lims_curitiba_amostras",
+        "to": "conformed:lims_curitiba_amostras"
+      },
+      {
+        "from": "silver:silver_lab_muestras_ba",
+        "to": "conformed:lab_muestras_ba"
+      },
+      {
+        "from": "silver:silver_raw_material_master",
+        "to": "conformed:raw_material_master"
       },
       {
         "from": "conformed:lims_annandale_samples",
@@ -522,7 +449,48 @@
         "from": "conformed:raw_material_master",
         "to": "gold:fact_test_result"
       }
-    ]
+    ],
+    "staleSources": [
+      "LIMS_TEST_COPY"
+    ],
+    "stages": {
+      "source": [
+        "LIMS_ANNANDALE_SAMPLES",
+        "LIMS_HOUSTON_SAMPLES",
+        "LIMS_CURITIBA_AMOSTRAS",
+        "LAB_MUESTRAS_BA",
+        "RAW_MATERIAL_MASTER"
+      ],
+      "bronze": [
+        "lims_annandale_samples",
+        "lims_houston_samples",
+        "lims_curitiba_amostras",
+        "lab_muestras_ba",
+        "raw_material_master"
+      ],
+      "silver": [
+        "silver_lims_annandale_samples",
+        "silver_lims_houston_samples",
+        "silver_lims_curitiba_amostras",
+        "silver_lab_muestras_ba",
+        "silver_raw_material_master"
+      ],
+      "conformed": [
+        "material",
+        "test_method",
+        "lab_sample",
+        "test_result"
+      ],
+      "gold": [
+        "dim_material",
+        "dim_test_method",
+        "dim_lab_site",
+        "dim_business_line",
+        "dim_date",
+        "fact_lab_sample",
+        "fact_test_result"
+      ]
+    }
   },
-  "lockedAt": "2026-09-20T12:29:17.947Z"
+  "lockedAt": "2026-09-20T12:43:34.947Z"
 }
