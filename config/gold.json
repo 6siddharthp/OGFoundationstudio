@@ -1,5 +1,5 @@
 {
-  "confirmedAt": "2026-09-19T22:40:13.432Z",
+  "confirmedAt": "2026-09-20T21:56:54.502Z",
   "selectedKpis": [
     "Cross-Lab Data Standardization Rate",
     "Cross-Lab Reproducibility Index",
@@ -16,14 +16,12 @@
     "Lab Capacity Utilization",
     "Retest Rate",
     "Sample Turnaround Time",
-    "Sample Volume Trend",
-    "Business Line Activity Growth",
-    "Cycle Time by Gate"
+    "Sample Volume Trend"
   ],
   "tables": [
     {
       "name": "Dim_Material",
-      "description": "Silver-2 conformed entity MATERIAL. Grain: one row per canonical material.",
+      "description": "Conformed entity Material. Grain: one row per canonical material.",
       "entityRef": "MATERIAL",
       "columns": [
         {
@@ -79,7 +77,7 @@
     },
     {
       "name": "Dim_Test_Method",
-      "description": "Silver-2 conformed entity TEST_METHOD. Grain: one row per governed test standard.",
+      "description": "Conformed entity Test Method. Grain: one row per governed test standard.",
       "entityRef": "TEST_METHOD",
       "columns": [
         {
@@ -121,7 +119,7 @@
     },
     {
       "name": "Dim_Lab_Site",
-      "description": "Derived from site codes across four LIMS Silver tables. Grain: one row per governed laboratory site.",
+      "description": "Derived from site codes across the governed LIMS sources. Grain: one row per governed laboratory site.",
       "columns": [
         {
           "name": "site_key",
@@ -148,7 +146,7 @@
     },
     {
       "name": "Dim_Business_Line",
-      "description": "Derived governed set: Lubricants, Fuels, Chemicals. Grain: one row per governed business line.",
+      "description": "Derived from governed business-line values. Grain: one row per governed business line.",
       "columns": [
         {
           "name": "business_line_key",
@@ -230,7 +228,7 @@
     },
     {
       "name": "Fact_Lab_Sample",
-      "description": "Silver-2 conformed entity LAB_SAMPLE. Grain: one row per conformed sample.",
+      "description": "Conformed entity Lab Sample. Grain: one row per conformed sample.",
       "entityRef": "LAB_SAMPLE",
       "columns": [
         {
@@ -305,7 +303,7 @@
     },
     {
       "name": "Fact_Test_Result",
-      "description": "Silver-2 conformed entity TEST_RESULT. Grain: one row per result.",
+      "description": "Conformed entity Test Result. Grain: one row per result.",
       "entityRef": "TEST_RESULT",
       "columns": [
         {
