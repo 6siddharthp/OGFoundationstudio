@@ -9,6 +9,10 @@ WITH base AS (
 ),
 canonical_targets AS (
   SELECT * FROM base WHERE legacy_material_id LIKE 'MAT-%'
+  QUALIFY ROW_NUMBER() OVER (
+    PARTITION BY legacy_material_id
+    ORDER BY LENGTH(canonical_material_name) DESC,normalized_name,source_material_code
+  )=1
 ),
 ranked_targets AS (
   SELECT b.source_material_code,t.normalized_name target_name,
