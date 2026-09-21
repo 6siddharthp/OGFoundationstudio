@@ -13,20 +13,20 @@ INSERT INTO silver.conformed_lab_sample (
             requested_date, sample_status, source_system_count
           )
           
+          SELECT 'SMP_' || md5('buenos_aires:' || source_row_number), 
+            material.material_key,
+            'MTH_' || md5(test_type) test_method_key,
+            'buenos_aires' site_code, product_line business_line, date_completed completion_date,
+            date_requested requested_date, sample_status, 1 source_system_count
+          FROM silver."silver_lims_buenos_aires" sample
+          LEFT JOIN silver.conformed_material material
+            ON lower(material.source_material_code) = lower(sample.material_code) UNION ALL 
           SELECT 'SMP_' || md5('annandale:' || source_row_number), 
             material.material_key,
             'MTH_' || md5(test_type) test_method_key,
             'annandale' site_code, product_line business_line, date_completed completion_date,
             date_requested requested_date, sample_status, 1 source_system_count
-          FROM silver."silver_lims_annandale_samples" sample
-          LEFT JOIN silver.conformed_material material
-            ON lower(material.source_material_code) = lower(sample.material_code) UNION ALL 
-          SELECT 'SMP_' || md5('houston:' || source_row_number), 
-            material.material_key,
-            'MTH_' || md5(test_type) test_method_key,
-            'houston' site_code, product_line business_line, date_completed completion_date,
-            date_requested requested_date, sample_status, 1 source_system_count
-          FROM silver."silver_lims_houston_samples" sample
+          FROM silver."silver_lims_annandale" sample
           LEFT JOIN silver.conformed_material material
             ON lower(material.source_material_code) = lower(sample.material_code) UNION ALL 
           SELECT 'SMP_' || md5('curitiba:' || source_row_number), 
@@ -34,14 +34,14 @@ INSERT INTO silver.conformed_lab_sample (
             'MTH_' || md5(test_type) test_method_key,
             'curitiba' site_code, product_line business_line, date_completed completion_date,
             date_requested requested_date, sample_status, 1 source_system_count
-          FROM silver."silver_lims_curitiba_amostras" sample
+          FROM silver."silver_lims_curitiba" sample
           LEFT JOIN silver.conformed_material material
             ON lower(material.source_material_code) = lower(sample.material_code) UNION ALL 
-          SELECT 'SMP_' || md5('buenos_aires:' || source_row_number), 
+          SELECT 'SMP_' || md5('houston:' || source_row_number), 
             material.material_key,
             'MTH_' || md5(test_type) test_method_key,
-            'buenos_aires' site_code, product_line business_line, date_completed completion_date,
+            'houston' site_code, product_line business_line, date_completed completion_date,
             date_requested requested_date, sample_status, 1 source_system_count
-          FROM silver."silver_lab_muestras_ba" sample
+          FROM silver."silver_lims_houston" sample
           LEFT JOIN silver.conformed_material material
             ON lower(material.source_material_code) = lower(sample.material_code);

@@ -1,47 +1,423 @@
 {
-  "lockedAt": "2026-09-20T22:57:09.939Z",
+  "lockedAt": "2026-09-21T18:48:19.489Z",
   "config": {
     "tables": [
+      {
+        "bronzeTable": "LAB_MUESTRAS_BA",
+        "sourceSystem": "lims",
+        "siteId": "buenos-aires",
+        "silverTableName": "silver_lims_buenos_aires",
+        "description": "Standardized lims buenos-aires",
+        "columns": [
+          {
+            "bronzeColumn": "sample_id",
+            "name": "sample_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SAMPLE_ID",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "product_line",
+            "name": "product_line",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PRODUCT_LINE",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "material_code",
+            "name": "material_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from MATERIAL_CODE",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "batch_lot_number",
+            "name": "batch_lot_number",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from BATCH_LOT_NUMBER",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "container_id",
+            "name": "container_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from CONTAINER_ID",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "test_type",
+            "name": "test_type",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from TEST_TYPE",
+            "pii": false,
+            "rules": [
+              {
+                "id": "prebuilt_lims_test_type_test_method",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
+                  "lookupKey": "source_method_name",
+                  "lookupValue": "governed_standard_reference",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "test_method_version",
+            "name": "test_method_version",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from TEST_METHOD_VERSION",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "instrument_id",
+            "name": "instrument_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from INSTRUMENT_ID",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "analyst_id",
+            "name": "analyst_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from ANALYST_ID",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "reviewer_id",
+            "name": "reviewer_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_REQUESTED",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_requested",
+            "name": "date_requested",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_RECEIVED",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_received",
+            "name": "date_received",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_STARTED",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_started",
+            "name": "date_started",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_COMPLETED",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "date_completed",
+            "name": "date_completed",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PRIORITY",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "priority",
+            "name": "priority",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SUBMITTER",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "submitter",
+            "name": "submitter",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PROJECT_REFERENCE",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "project_reference",
+            "name": "project_reference",
+            "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RESULT_VALUE",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "result_value",
+            "name": "result_value",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RESULT_UNIT",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "result_unit",
+            "name": "result_unit",
+            "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SPEC_LOWER_LIMIT",
+            "pii": false,
+            "rules": [
+              {
+                "id": "prebuilt_lims_result_unit_uom",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_uom_reference",
+                  "lookupKey": "source_unit",
+                  "lookupValue": "governed_unit",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "spec_lower_limit",
+            "name": "spec_lower_limit",
+            "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SPEC_UPPER_LIMIT",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "spec_upper_limit",
+            "name": "spec_upper_limit",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SAMPLE_STATUS",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "sample_status",
+            "name": "sample_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from APPROVAL_STATUS",
+            "pii": false,
+            "rules": [
+              {
+                "id": "prebuilt_lims_sample_status_status",
+                "type": "code_lookup",
+                "pillar": "conform",
+                "enabled": true,
+                "params": {
+                  "referenceTable": "reference_data.governed_sample_status_reference",
+                  "lookupKey": "source_value",
+                  "lookupValue": "governed_status",
+                  "onMissing": "quarantine"
+                }
+              }
+            ]
+          },
+          {
+            "bronzeColumn": "approval_status",
+            "name": "approval_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from APPROVAL_DATE",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "approval_date",
+            "name": "approval_date",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from STORAGE_LOCATION",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "storage_location",
+            "name": "storage_location",
+            "dataType": "BOOLEAN",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RETEST_FLAG",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "retest_flag",
+            "name": "retest_flag",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SITE_CODE",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "comments",
+            "name": "comments",
+            "dataType": "VARCHAR(255)",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"comments\"",
+            "sourceCaptured": false,
+            "absenceReason": "Not captured at source",
+            "description": "Not captured at source",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "site_code",
+            "name": "site_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from REVISOR_USUARIO",
+            "pii": false,
+            "rules": []
+          }
+        ],
+        "dedup": {
+          "keys": [
+            "sample_id"
+          ],
+          "strategy": "merge"
+        },
+        "refresh": {
+          "mode": "full"
+        },
+        "quarantine": {
+          "enabled": true,
+          "sinkTable": "quarantine_lims_buenos_aires",
+          "failThresholdPct": 5
+        },
+        "auditColumns": [
+          "_ingest_ts",
+          "_source_system",
+          "_source_file",
+          "_batch_id",
+          "_record_hash"
+        ]
+      },
       {
         "bronzeTable": "LIMS_ANNANDALE_SAMPLES",
         "sourceSystem": "lims",
         "siteId": "annandale",
-        "silverTableName": "silver_lims_annandale_samples",
+        "silverTableName": "silver_lims_annandale",
+        "description": "Standardized lims annandale",
         "columns": [
           {
-            "name": "sample_id",
             "bronzeColumn": "sample_id",
-            "dataType": "VARCHAR",
+            "name": "sample_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SAMPLE_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "product_line",
             "bronzeColumn": "product_line",
-            "dataType": "VARCHAR",
+            "name": "product_line",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PRODUCT_LINE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "material_code",
             "bronzeColumn": "material_code",
-            "dataType": "VARCHAR",
+            "name": "material_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from MATERIAL_CODE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "batch_lot_number",
             "bronzeColumn": "batch_lot_number",
-            "dataType": "VARCHAR",
+            "name": "batch_lot_number",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from BATCH_LOT_NUMBER",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "container_id",
             "bronzeColumn": "container_id",
-            "dataType": "VARCHAR",
+            "name": "container_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from CONTAINER_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "test_type",
             "bronzeColumn": "test_type",
-            "dataType": "VARCHAR",
+            "name": "test_type",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from TEST_TYPE",
+            "pii": false,
             "rules": [
               {
                 "id": "prebuilt_lims_test_type_test_method",
@@ -58,81 +434,133 @@
             ]
           },
           {
-            "name": "test_method_version",
             "bronzeColumn": "test_method_version",
-            "dataType": "VARCHAR",
+            "name": "test_method_version",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from TEST_METHOD_VERSION",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "instrument_id",
             "bronzeColumn": "instrument_id",
-            "dataType": "VARCHAR",
+            "name": "instrument_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from INSTRUMENT_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "analyst_id",
             "bronzeColumn": "analyst_id",
-            "dataType": "VARCHAR",
+            "name": "analyst_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from ANALYST_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "reviewer_id",
             "bronzeColumn": "reviewer_id",
-            "dataType": "VARCHAR",
+            "name": "reviewer_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from TECH_REVIEWER_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_requested",
             "bronzeColumn": "date_requested",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_requested",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_REQUESTED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_received",
             "bronzeColumn": "date_received",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_received",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_RECEIVED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_started",
             "bronzeColumn": "date_started",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_started",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_STARTED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_completed",
             "bronzeColumn": "date_completed",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_completed",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_COMPLETED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "priority",
             "bronzeColumn": "priority",
-            "dataType": "VARCHAR",
+            "name": "priority",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PRIORITY",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "submitter",
             "bronzeColumn": "submitter",
-            "dataType": "VARCHAR",
+            "name": "submitter",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SUBMITTER",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "project_reference",
             "bronzeColumn": "project_reference",
-            "dataType": "VARCHAR",
+            "name": "project_reference",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PROJECT_REFERENCE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "result_value",
             "bronzeColumn": "result_value",
+            "name": "result_value",
             "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RESULT_VALUE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "result_unit",
             "bronzeColumn": "result_unit",
-            "dataType": "VARCHAR",
+            "name": "result_unit",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RESULT_UNIT",
+            "pii": false,
             "rules": [
               {
                 "id": "prebuilt_lims_result_unit_uom",
@@ -149,21 +577,33 @@
             ]
           },
           {
-            "name": "spec_lower_limit",
             "bronzeColumn": "spec_lower_limit",
+            "name": "spec_lower_limit",
             "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SPEC_LOWER_LIMIT",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "spec_upper_limit",
             "bronzeColumn": "spec_upper_limit",
+            "name": "spec_upper_limit",
             "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SPEC_UPPER_LIMIT",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "sample_status",
             "bronzeColumn": "sample_status",
-            "dataType": "VARCHAR",
+            "name": "sample_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SAMPLE_STATUS",
+            "pii": false,
             "rules": [
               {
                 "id": "prebuilt_lims_sample_status_status",
@@ -180,324 +620,153 @@
             ]
           },
           {
-            "name": "approval_status",
             "bronzeColumn": "approval_status",
-            "dataType": "VARCHAR",
+            "name": "approval_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from APPROVAL_STATUS",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "approval_date",
             "bronzeColumn": "approval_date",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "approval_date",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from APPROVAL_DATE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "storage_location",
             "bronzeColumn": "storage_location",
-            "dataType": "VARCHAR",
+            "name": "storage_location",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from STORAGE_LOCATION",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "retest_flag",
             "bronzeColumn": "retest_flag",
+            "name": "retest_flag",
             "dataType": "BOOLEAN",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from REPEAT_ANALYSIS_IND",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "comments",
             "bronzeColumn": "comments",
-            "dataType": "VARCHAR",
+            "name": "comments",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from COMMENTS",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "site_code",
             "bronzeColumn": "site_code",
-            "dataType": "VARCHAR",
+            "name": "site_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SITE_CODE",
+            "pii": false,
             "rules": []
           }
         ],
         "dedup": {
-          "keys": [],
-          "strategy": "replace"
+          "keys": [
+            "sample_id"
+          ],
+          "strategy": "merge"
         },
         "refresh": {
           "mode": "full"
         },
         "quarantine": {
           "enabled": true,
-          "sinkTable": "silver.quarantine_records",
+          "sinkTable": "quarantine_lims_annandale",
           "failThresholdPct": 5
         },
-        "auditColumns": []
-      },
-      {
-        "bronzeTable": "LIMS_HOUSTON_SAMPLES",
-        "sourceSystem": "lims",
-        "siteId": "houston",
-        "silverTableName": "silver_lims_houston_samples",
-        "columns": [
-          {
-            "name": "sample_id",
-            "bronzeColumn": "sample_id",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "product_line",
-            "bronzeColumn": "product_line",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "material_code",
-            "bronzeColumn": "material_code",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "batch_lot_number",
-            "bronzeColumn": "batch_lot_number",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "container_id",
-            "bronzeColumn": "container_id",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "test_type",
-            "bronzeColumn": "test_type",
-            "dataType": "VARCHAR",
-            "rules": [
-              {
-                "id": "prebuilt_lims_test_type_test_method",
-                "type": "code_lookup",
-                "pillar": "conform",
-                "enabled": true,
-                "params": {
-                  "referenceTable": "reference_data.governed_astm_ilsac_test_method_reference",
-                  "lookupKey": "source_method_name",
-                  "lookupValue": "governed_standard_reference",
-                  "onMissing": "quarantine"
-                }
-              }
-            ]
-          },
-          {
-            "name": "test_method_version",
-            "bronzeColumn": "test_method_version",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "instrument_id",
-            "bronzeColumn": "instrument_id",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "analyst_id",
-            "bronzeColumn": "analyst_id",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "reviewer_id",
-            "bronzeColumn": "reviewer_id",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "date_requested",
-            "bronzeColumn": "date_requested",
-            "dataType": "TIMESTAMP_NTZ",
-            "rules": []
-          },
-          {
-            "name": "date_received",
-            "bronzeColumn": "date_received",
-            "dataType": "TIMESTAMP_NTZ",
-            "rules": []
-          },
-          {
-            "name": "date_started",
-            "bronzeColumn": "date_started",
-            "dataType": "TIMESTAMP_NTZ",
-            "rules": []
-          },
-          {
-            "name": "date_completed",
-            "bronzeColumn": "date_completed",
-            "dataType": "TIMESTAMP_NTZ",
-            "rules": []
-          },
-          {
-            "name": "priority",
-            "bronzeColumn": "priority",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "submitter",
-            "bronzeColumn": "submitter",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "project_reference",
-            "bronzeColumn": "project_reference",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "result_value",
-            "bronzeColumn": "result_value",
-            "dataType": "NUMBER",
-            "rules": []
-          },
-          {
-            "name": "result_unit",
-            "bronzeColumn": "result_unit",
-            "dataType": "VARCHAR",
-            "rules": [
-              {
-                "id": "prebuilt_lims_result_unit_uom",
-                "type": "code_lookup",
-                "pillar": "conform",
-                "enabled": true,
-                "params": {
-                  "referenceTable": "reference_data.governed_uom_reference",
-                  "lookupKey": "source_unit",
-                  "lookupValue": "governed_unit",
-                  "onMissing": "quarantine"
-                }
-              }
-            ]
-          },
-          {
-            "name": "spec_lower_limit",
-            "bronzeColumn": "spec_lower_limit",
-            "dataType": "NUMBER",
-            "rules": []
-          },
-          {
-            "name": "spec_upper_limit",
-            "bronzeColumn": "spec_upper_limit",
-            "dataType": "NUMBER",
-            "rules": []
-          },
-          {
-            "name": "sample_status",
-            "bronzeColumn": "sample_status",
-            "dataType": "VARCHAR",
-            "rules": [
-              {
-                "id": "prebuilt_lims_sample_status_status",
-                "type": "code_lookup",
-                "pillar": "conform",
-                "enabled": true,
-                "params": {
-                  "referenceTable": "reference_data.governed_sample_status_reference",
-                  "lookupKey": "source_value",
-                  "lookupValue": "governed_status",
-                  "onMissing": "quarantine"
-                }
-              }
-            ]
-          },
-          {
-            "name": "approval_status",
-            "bronzeColumn": "approval_status",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "approval_date",
-            "bronzeColumn": "approval_date",
-            "dataType": "TIMESTAMP_NTZ",
-            "rules": []
-          },
-          {
-            "name": "storage_location",
-            "bronzeColumn": "storage_location",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "retest_flag",
-            "bronzeColumn": "retest_flag",
-            "dataType": "BOOLEAN",
-            "rules": []
-          },
-          {
-            "name": "comments",
-            "bronzeColumn": "comments",
-            "dataType": "VARCHAR",
-            "rules": []
-          },
-          {
-            "name": "site_code",
-            "bronzeColumn": "site_code",
-            "dataType": "VARCHAR",
-            "rules": []
-          }
-        ],
-        "dedup": {
-          "keys": [],
-          "strategy": "replace"
-        },
-        "refresh": {
-          "mode": "full"
-        },
-        "quarantine": {
-          "enabled": true,
-          "sinkTable": "silver.quarantine_records",
-          "failThresholdPct": 5
-        },
-        "auditColumns": []
+        "auditColumns": [
+          "_ingest_ts",
+          "_source_system",
+          "_source_file",
+          "_batch_id",
+          "_record_hash"
+        ]
       },
       {
         "bronzeTable": "LIMS_CURITIBA_AMOSTRAS",
         "sourceSystem": "lims",
         "siteId": "curitiba",
-        "silverTableName": "silver_lims_curitiba_amostras",
+        "silverTableName": "silver_lims_curitiba",
+        "description": "Standardized lims curitiba",
         "columns": [
           {
-            "name": "sample_id",
             "bronzeColumn": "sample_id",
-            "dataType": "VARCHAR",
+            "name": "sample_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from AMOSTRA_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "product_line",
             "bronzeColumn": "product_line",
-            "dataType": "VARCHAR",
+            "name": "product_line",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PRODUCT_LINE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "material_code",
             "bronzeColumn": "material_code",
-            "dataType": "VARCHAR",
+            "name": "material_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from MATERIAL_CODE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "batch_lot_number",
             "bronzeColumn": "batch_lot_number",
-            "dataType": "VARCHAR",
+            "name": "batch_lot_number",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from BATCH_LOT_NUMBER",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "container_id",
             "bronzeColumn": "container_id",
-            "dataType": "VARCHAR",
+            "name": "container_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from CONTAINER_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "test_type",
             "bronzeColumn": "test_type",
-            "dataType": "VARCHAR",
+            "name": "test_type",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from TEST_TYPE",
+            "pii": false,
             "rules": [
               {
                 "id": "prebuilt_lims_test_type_test_method",
@@ -514,75 +783,135 @@
             ]
           },
           {
-            "name": "test_method_version",
             "bronzeColumn": "test_method_version",
-            "dataType": "VARCHAR",
+            "name": "test_method_version",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from TEST_METHOD_VERSION",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "instrument_id",
             "bronzeColumn": "instrument_id",
-            "dataType": "VARCHAR",
+            "name": "instrument_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from INSTRUMENT_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "analyst_id",
             "bronzeColumn": "analyst_id",
-            "dataType": "VARCHAR",
+            "name": "analyst_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from TECNICO_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "reviewer_id",
             "bronzeColumn": "reviewer_id",
-            "dataType": "VARCHAR",
+            "name": "reviewer_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from REVIEWER_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_requested",
             "bronzeColumn": "date_requested",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_requested",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATA_SOLICITADA",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_received",
             "bronzeColumn": "date_received",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_received",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_RECEIVED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_started",
             "bronzeColumn": "date_started",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_started",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_STARTED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_completed",
             "bronzeColumn": "date_completed",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_completed",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_COMPLETED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "priority",
             "bronzeColumn": "priority",
-            "dataType": "VARCHAR",
+            "name": "priority",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PRIORITY",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "submitter",
             "bronzeColumn": "submitter",
-            "dataType": "VARCHAR",
+            "name": "submitter",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SUBMITTER",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "result_value",
+            "bronzeColumn": "project_reference",
+            "name": "project_reference",
+            "dataType": "VARCHAR(255)",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"project_reference\"",
+            "sourceCaptured": false,
+            "absenceReason": "Not captured at source",
+            "description": "Not captured at source",
+            "pii": false,
+            "rules": []
+          },
+          {
             "bronzeColumn": "result_value",
+            "name": "result_value",
             "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RESULT_VALUE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "result_unit",
             "bronzeColumn": "result_unit",
-            "dataType": "VARCHAR",
+            "name": "result_unit",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RESULT_UNIT",
+            "pii": false,
             "rules": [
               {
                 "id": "prebuilt_lims_result_unit_uom",
@@ -599,9 +928,37 @@
             ]
           },
           {
-            "name": "sample_status",
+            "bronzeColumn": "spec_lower_limit",
+            "name": "spec_lower_limit",
+            "dataType": "NUMBER",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"spec_lower_limit\"",
+            "sourceCaptured": false,
+            "absenceReason": "Not captured at source",
+            "description": "Not captured at source",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "spec_upper_limit",
+            "name": "spec_upper_limit",
+            "dataType": "NUMBER",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"spec_upper_limit\"",
+            "sourceCaptured": false,
+            "absenceReason": "Not captured at source",
+            "description": "Not captured at source",
+            "pii": false,
+            "rules": []
+          },
+          {
             "bronzeColumn": "sample_status",
-            "dataType": "VARCHAR",
+            "name": "sample_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from STATUS_AMOSTRA",
+            "pii": false,
             "rules": [
               {
                 "id": "prebuilt_lims_sample_status_status",
@@ -618,84 +975,157 @@
             ]
           },
           {
-            "name": "approval_status",
             "bronzeColumn": "approval_status",
-            "dataType": "VARCHAR",
+            "name": "approval_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from APPROVAL_STATUS",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "retest_flag",
+            "bronzeColumn": "approval_date",
+            "name": "approval_date",
+            "dataType": "TIMESTAMP",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"approval_date\"",
+            "sourceCaptured": false,
+            "absenceReason": "Not captured at source",
+            "description": "Not captured at source",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "storage_location",
+            "name": "storage_location",
+            "dataType": "VARCHAR(255)",
+            "nullable": true,
+            "sqlOverride": "NULL AS \"storage_location\"",
+            "sourceCaptured": false,
+            "absenceReason": "Not captured at source",
+            "description": "Not captured at source",
+            "pii": false,
+            "rules": []
+          },
+          {
             "bronzeColumn": "retest_flag",
+            "name": "retest_flag",
             "dataType": "BOOLEAN",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RETEST_FLAG",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "comments",
             "bronzeColumn": "comments",
-            "dataType": "VARCHAR",
+            "name": "comments",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from COMMENTS",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "site_code",
             "bronzeColumn": "site_code",
-            "dataType": "VARCHAR",
+            "name": "site_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SITE_CODE",
+            "pii": false,
             "rules": []
           }
         ],
         "dedup": {
-          "keys": [],
-          "strategy": "replace"
+          "keys": [
+            "sample_id"
+          ],
+          "strategy": "merge"
         },
         "refresh": {
           "mode": "full"
         },
         "quarantine": {
           "enabled": true,
-          "sinkTable": "silver.quarantine_records",
+          "sinkTable": "quarantine_lims_curitiba",
           "failThresholdPct": 5
         },
-        "auditColumns": []
+        "auditColumns": [
+          "_ingest_ts",
+          "_source_system",
+          "_source_file",
+          "_batch_id",
+          "_record_hash"
+        ]
       },
       {
-        "bronzeTable": "LAB_MUESTRAS_BA",
+        "bronzeTable": "LIMS_HOUSTON_SAMPLES",
         "sourceSystem": "lims",
-        "siteId": "buenos-aires",
-        "silverTableName": "silver_lab_muestras_ba",
+        "siteId": "houston",
+        "silverTableName": "silver_lims_houston",
+        "description": "Standardized lims houston",
         "columns": [
           {
-            "name": "sample_id",
             "bronzeColumn": "sample_id",
-            "dataType": "VARCHAR",
+            "name": "sample_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SAMPLE_NUMBER",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "product_line",
             "bronzeColumn": "product_line",
-            "dataType": "VARCHAR",
+            "name": "product_line",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PRODUCT_LINE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "material_code",
             "bronzeColumn": "material_code",
-            "dataType": "VARCHAR",
+            "name": "material_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from MATERIAL_CODE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "batch_lot_number",
             "bronzeColumn": "batch_lot_number",
-            "dataType": "VARCHAR",
+            "name": "batch_lot_number",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from BATCH_LOT_NUMBER",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "container_id",
             "bronzeColumn": "container_id",
-            "dataType": "VARCHAR",
+            "name": "container_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from CONTAINER_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "test_type",
             "bronzeColumn": "test_type",
-            "dataType": "VARCHAR",
+            "name": "test_type",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from ANALYSIS_TYPE",
+            "pii": false,
             "rules": [
               {
                 "id": "prebuilt_lims_test_type_test_method",
@@ -712,75 +1142,133 @@
             ]
           },
           {
-            "name": "test_method_version",
             "bronzeColumn": "test_method_version",
-            "dataType": "VARCHAR",
+            "name": "test_method_version",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from TEST_METHOD_VERSION",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "instrument_id",
             "bronzeColumn": "instrument_id",
-            "dataType": "VARCHAR",
+            "name": "instrument_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from INSTRUMENT_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "analyst_id",
             "bronzeColumn": "analyst_id",
-            "dataType": "VARCHAR",
+            "name": "analyst_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from ANALYST_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_requested",
+            "bronzeColumn": "reviewer_id",
+            "name": "reviewer_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from REVIEWED_BY",
+            "pii": false,
+            "rules": []
+          },
+          {
             "bronzeColumn": "date_requested",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_requested",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_REQUESTED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_received",
             "bronzeColumn": "date_received",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_received",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_RECEIVED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_started",
             "bronzeColumn": "date_started",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_started",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_STARTED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "date_completed",
             "bronzeColumn": "date_completed",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "date_completed",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DATE_COMPLETED",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "priority",
             "bronzeColumn": "priority",
-            "dataType": "VARCHAR",
+            "name": "priority",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PRIORITY",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "submitter",
             "bronzeColumn": "submitter",
-            "dataType": "VARCHAR",
+            "name": "submitter",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SUBMITTER",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "project_reference",
             "bronzeColumn": "project_reference",
-            "dataType": "VARCHAR",
+            "name": "project_reference",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PROJECT_REFERENCE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "result_value",
             "bronzeColumn": "result_value",
+            "name": "result_value",
             "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RESULT_VALUE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "result_unit",
             "bronzeColumn": "result_unit",
-            "dataType": "VARCHAR",
+            "name": "result_unit",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from UOM",
+            "pii": false,
             "rules": [
               {
                 "id": "prebuilt_lims_result_unit_uom",
@@ -797,21 +1285,33 @@
             ]
           },
           {
-            "name": "spec_lower_limit",
             "bronzeColumn": "spec_lower_limit",
+            "name": "spec_lower_limit",
             "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SPEC_LOWER_LIMIT",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "spec_upper_limit",
             "bronzeColumn": "spec_upper_limit",
+            "name": "spec_upper_limit",
             "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SPEC_UPPER_LIMIT",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "sample_status",
             "bronzeColumn": "sample_status",
-            "dataType": "VARCHAR",
+            "name": "sample_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SAMPLE_STATUS",
+            "pii": false,
             "rules": [
               {
                 "id": "prebuilt_lims_sample_status_status",
@@ -828,245 +1328,292 @@
             ]
           },
           {
-            "name": "approval_status",
             "bronzeColumn": "approval_status",
-            "dataType": "VARCHAR",
+            "name": "approval_status",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from APPROVAL_STATUS",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "approval_date",
             "bronzeColumn": "approval_date",
-            "dataType": "TIMESTAMP_NTZ",
+            "name": "approval_date",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from APPROVAL_DATE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "storage_location",
             "bronzeColumn": "storage_location",
-            "dataType": "VARCHAR",
+            "name": "storage_location",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from STORAGE_LOCATION",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "retest_flag",
             "bronzeColumn": "retest_flag",
+            "name": "retest_flag",
             "dataType": "BOOLEAN",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from RERUN_FLAG",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "site_code",
+            "bronzeColumn": "comments",
+            "name": "comments",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from COMMENTS",
+            "pii": false,
+            "rules": []
+          },
+          {
             "bronzeColumn": "site_code",
-            "dataType": "VARCHAR",
+            "name": "site_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SITE_CODE",
+            "pii": false,
             "rules": []
           }
         ],
         "dedup": {
-          "keys": [],
-          "strategy": "replace"
+          "keys": [
+            "sample_id"
+          ],
+          "strategy": "merge"
         },
         "refresh": {
           "mode": "full"
         },
         "quarantine": {
           "enabled": true,
-          "sinkTable": "silver.quarantine_records",
+          "sinkTable": "quarantine_lims_houston",
           "failThresholdPct": 5
         },
-        "auditColumns": []
+        "auditColumns": [
+          "_ingest_ts",
+          "_source_system",
+          "_source_file",
+          "_batch_id",
+          "_record_hash"
+        ]
       },
       {
-        "bronzeTable": "RAW_MATERIAL_MASTER",
+        "bronzeTable": "raw_material_master",
         "sourceSystem": "raw_material_master",
         "silverTableName": "silver_raw_material_master",
+        "description": "Standardized raw material master",
         "columns": [
           {
-            "name": "canonical_material_name",
             "bronzeColumn": "CanonicalMaterialName",
-            "dataType": "VARCHAR",
+            "name": "canonical_material_name",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from CANONICAL_MATERIAL_NAME",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "business_line",
             "bronzeColumn": "BusinessLine",
-            "dataType": "VARCHAR",
+            "name": "business_line",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from BUSINESS_LINE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "source_material_code",
             "bronzeColumn": "SourceMaterialCode",
-            "dataType": "VARCHAR",
+            "name": "source_material_code",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SOURCE_MATERIAL_CODE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "legacy_material_id",
             "bronzeColumn": "LegacyMaterialID",
-            "dataType": "VARCHAR",
+            "name": "legacy_material_id",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from LEGACY_MATERIAL_ID",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "cas_number",
             "bronzeColumn": "CASNumber",
-            "dataType": "VARCHAR",
+            "name": "cas_number",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from CASNUMBER",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "supplier",
             "bronzeColumn": "Supplier",
-            "dataType": "VARCHAR",
+            "name": "supplier",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SUPPLIER",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "supplier_grade",
             "bronzeColumn": "SupplierGrade",
-            "dataType": "VARCHAR",
+            "name": "supplier_grade",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SUPPLIER_GRADE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "unit_of_measure",
             "bronzeColumn": "UnitOfMeasure",
-            "dataType": "VARCHAR",
+            "name": "unit_of_measure",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from UNIT_OF_MEASURE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "density",
             "bronzeColumn": "Density",
-            "dataType": "DECIMAL",
+            "name": "density",
+            "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from DENSITY",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "viscosity_grade",
             "bronzeColumn": "ViscosityGrade",
-            "dataType": "VARCHAR",
+            "name": "viscosity_grade",
+            "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from VISCOSITY_GRADE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "hazard_classification",
             "bronzeColumn": "HazardClassification",
-            "dataType": "VARCHAR",
+            "name": "hazard_classification",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from HAZARD_CLASSIFICATION",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "safety_data_sheet_ref",
             "bronzeColumn": "SafetyDataSheetRef",
-            "dataType": "VARCHAR",
+            "name": "safety_data_sheet_ref",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SAFETY_DATA_SHEET_REF",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "shelf_life_months",
             "bronzeColumn": "ShelfLifeMonths",
-            "dataType": "INTEGER",
+            "name": "shelf_life_months",
+            "dataType": "NUMBER",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from SHELF_LIFE_MONTHS",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "storage_conditions",
             "bronzeColumn": "StorageConditions",
-            "dataType": "VARCHAR",
+            "name": "storage_conditions",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from STORAGE_CONDITIONS",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "approved_for_use",
             "bronzeColumn": "ApprovedForUse",
+            "name": "approved_for_use",
             "dataType": "BOOLEAN",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from APPROVED_FOR_USE",
+            "pii": false,
             "rules": []
           },
           {
-            "name": "last_review_date",
             "bronzeColumn": "LastReviewDate",
-            "dataType": "DATE",
+            "name": "last_review_date",
+            "dataType": "TIMESTAMP",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from LAST_REVIEW_DATE",
+            "pii": false,
             "rules": []
           }
         ],
         "dedup": {
-          "keys": [],
-          "strategy": "replace"
+          "keys": [
+            "legacy_material_id"
+          ],
+          "strategy": "merge"
         },
         "refresh": {
           "mode": "full"
         },
         "quarantine": {
           "enabled": true,
-          "sinkTable": "silver.quarantine_records",
+          "sinkTable": "quarantine_raw_material_master_",
           "failThresholdPct": 5
         },
-        "auditColumns": []
+        "auditColumns": [
+          "_ingest_ts",
+          "_source_system",
+          "_source_file",
+          "_batch_id",
+          "_record_hash"
+        ]
       }
+    ],
+    "defaultAuditColumns": [
+      "_ingest_ts",
+      "_source_system",
+      "_source_file",
+      "_batch_id",
+      "_record_hash"
     ]
   },
   "identity": {
     "entities": [
       {
-        "id": "za1el6an",
-        "name": "lims_annandale_samples",
-        "contributingTables": [
-          "LIMS_ANNANDALE_SAMPLES"
-        ],
-        "naturalKeys": [
-          {
-            "table": "LIMS_ANNANDALE_SAMPLES",
-            "columns": [
-              "id"
-            ]
-          }
-        ],
-        "surrogateKey": {
-          "strategy": "hash",
-          "prefix": "LIMS_",
-          "hashColumns": [
-            "id"
-          ]
-        },
-        "matchRules": [],
-        "survivorship": []
-      },
-      {
-        "id": "08yzxcjo",
-        "name": "lims_houston_samples",
-        "contributingTables": [
-          "LIMS_HOUSTON_SAMPLES"
-        ],
-        "naturalKeys": [
-          {
-            "table": "LIMS_HOUSTON_SAMPLES",
-            "columns": [
-              "id"
-            ]
-          }
-        ],
-        "surrogateKey": {
-          "strategy": "hash",
-          "prefix": "LIMS_",
-          "hashColumns": [
-            "id"
-          ]
-        },
-        "matchRules": [],
-        "survivorship": []
-      },
-      {
-        "id": "bwy0z4s8",
-        "name": "lims_curitiba_amostras",
-        "contributingTables": [
-          "LIMS_CURITIBA_AMOSTRAS"
-        ],
-        "naturalKeys": [
-          {
-            "table": "LIMS_CURITIBA_AMOSTRAS",
-            "columns": [
-              "id"
-            ]
-          }
-        ],
-        "surrogateKey": {
-          "strategy": "hash",
-          "prefix": "LIMS_",
-          "hashColumns": [
-            "id"
-          ]
-        },
-        "matchRules": [],
-        "survivorship": []
-      },
-      {
-        "id": "i72jj015",
-        "name": "lab_muestras_ba",
+        "id": "wpry776t",
+        "name": "lims_buenos_aires",
+        "description": "Standardized lims buenos-aires",
         "contributingTables": [
           "LAB_MUESTRAS_BA"
         ],
@@ -1074,31 +1621,107 @@
           {
             "table": "LAB_MUESTRAS_BA",
             "columns": [
-              "id"
+              "sample_id"
             ]
           }
         ],
         "surrogateKey": {
           "strategy": "hash",
-          "prefix": "LAB__",
+          "prefix": "LIMS_",
           "hashColumns": [
-            "id"
+            "sample_id"
           ]
         },
         "matchRules": [],
         "survivorship": []
       },
       {
-        "id": "arbgz3fo",
-        "name": "raw_material_master",
+        "id": "o0iepvjz",
+        "name": "lims_annandale",
+        "description": "Standardized lims annandale",
         "contributingTables": [
-          "RAW_MATERIAL_MASTER"
+          "LIMS_ANNANDALE_SAMPLES"
         ],
         "naturalKeys": [
           {
-            "table": "RAW_MATERIAL_MASTER",
+            "table": "LIMS_ANNANDALE_SAMPLES",
             "columns": [
-              "id"
+              "sample_id"
+            ]
+          }
+        ],
+        "surrogateKey": {
+          "strategy": "hash",
+          "prefix": "LIMS_",
+          "hashColumns": [
+            "sample_id"
+          ]
+        },
+        "matchRules": [],
+        "survivorship": []
+      },
+      {
+        "id": "28462r7m",
+        "name": "lims_curitiba",
+        "description": "Standardized lims curitiba",
+        "contributingTables": [
+          "LIMS_CURITIBA_AMOSTRAS"
+        ],
+        "naturalKeys": [
+          {
+            "table": "LIMS_CURITIBA_AMOSTRAS",
+            "columns": [
+              "sample_id"
+            ]
+          }
+        ],
+        "surrogateKey": {
+          "strategy": "hash",
+          "prefix": "LIMS_",
+          "hashColumns": [
+            "sample_id"
+          ]
+        },
+        "matchRules": [],
+        "survivorship": []
+      },
+      {
+        "id": "2wqrjq7g",
+        "name": "lims_houston",
+        "description": "Standardized lims houston",
+        "contributingTables": [
+          "LIMS_HOUSTON_SAMPLES"
+        ],
+        "naturalKeys": [
+          {
+            "table": "LIMS_HOUSTON_SAMPLES",
+            "columns": [
+              "sample_id"
+            ]
+          }
+        ],
+        "surrogateKey": {
+          "strategy": "hash",
+          "prefix": "LIMS_",
+          "hashColumns": [
+            "sample_id"
+          ]
+        },
+        "matchRules": [],
+        "survivorship": []
+      },
+      {
+        "id": "d2y5kr4n",
+        "name": "raw_material_master",
+        "description": "Standardized raw material master",
+        "contributingTables": [
+          "raw_material_master"
+        ],
+        "naturalKeys": [
+          {
+            "table": "raw_material_master",
+            "columns": [
+              "legacy_material_id"
             ]
           }
         ],
@@ -1106,7 +1729,7 @@
           "strategy": "hash",
           "prefix": "RAW__",
           "hashColumns": [
-            "id"
+            "legacy_material_id"
           ]
         },
         "matchRules": [],
@@ -1114,5 +1737,8 @@
       }
     ],
     "referenceData": []
+  },
+  "_foundation": {
+    "changeReason": "Silver configuration was locked."
   }
 }
