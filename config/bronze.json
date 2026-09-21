@@ -1,8 +1,8 @@
 {
   "sourceMode": "snowflake",
-  "reconciledAt": "2026-09-21T18:32:31.203Z",
+  "reconciledAt": "2026-09-21T18:35:58.103Z",
   "reconciledBy": "Foundation E2E",
-  "lockedAt": "2026-09-21T18:32:33.017Z",
+  "lockedAt": "2026-09-21T18:35:59.948Z",
   "lockedBy": "Foundation E2E",
   "sources": [
     {
@@ -82,136 +82,142 @@
         {
           "name": "reviewer_id",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
-        },
-        {
-          "name": "date_requested",
-          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_REQUESTED",
           "snowflakeColumn": "DATE_REQUESTED"
         },
         {
-          "name": "date_received",
-          "origin": "pre-built",
+          "name": "date_requested",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "YYYY-MM-DD HH24:MI:SS",
           "stagedColumn": "DATE_RECEIVED",
           "snowflakeColumn": "DATE_RECEIVED"
         },
         {
-          "name": "date_started",
-          "origin": "pre-built",
+          "name": "date_received",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "YYYY-MM-DD HH24:MI:SS",
           "stagedColumn": "DATE_STARTED",
           "snowflakeColumn": "DATE_STARTED"
         },
         {
-          "name": "date_completed",
-          "origin": "pre-built",
+          "name": "date_started",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "YYYY-MM-DD HH24:MI:SS",
           "stagedColumn": "DATE_COMPLETED",
           "snowflakeColumn": "DATE_COMPLETED"
         },
         {
-          "name": "priority",
-          "origin": "pre-built",
+          "name": "date_completed",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "YYYY-MM-DD HH24:MI:SS",
           "stagedColumn": "PRIORITY",
           "snowflakeColumn": "PRIORITY"
         },
         {
-          "name": "submitter",
-          "origin": "pre-built",
+          "name": "priority",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SUBMITTER",
           "snowflakeColumn": "SUBMITTER"
         },
         {
-          "name": "project_reference",
-          "origin": "pre-built",
+          "name": "submitter",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PROJECT_REFERENCE",
           "snowflakeColumn": "PROJECT_REFERENCE"
         },
         {
-          "name": "result_value",
-          "origin": "pre-built",
+          "name": "project_reference",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "RESULT_VALUE",
           "snowflakeColumn": "RESULT_VALUE"
         },
         {
-          "name": "result_unit",
-          "origin": "pre-built",
+          "name": "result_value",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "RESULT_UNIT",
           "snowflakeColumn": "RESULT_UNIT"
         },
         {
-          "name": "spec_lower_limit",
-          "origin": "pre-built",
+          "name": "result_unit",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "SPEC_LOWER_LIMIT",
           "snowflakeColumn": "SPEC_LOWER_LIMIT"
         },
         {
-          "name": "spec_upper_limit",
-          "origin": "pre-built",
+          "name": "spec_lower_limit",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "SPEC_UPPER_LIMIT",
           "snowflakeColumn": "SPEC_UPPER_LIMIT"
         },
         {
-          "name": "sample_status",
-          "origin": "pre-built",
+          "name": "spec_upper_limit",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SAMPLE_STATUS",
           "snowflakeColumn": "SAMPLE_STATUS"
         },
         {
-          "name": "approval_status",
-          "origin": "pre-built",
+          "name": "sample_status",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "APPROVAL_STATUS",
           "snowflakeColumn": "APPROVAL_STATUS"
         },
         {
-          "name": "approval_date",
-          "origin": "pre-built",
+          "name": "approval_status",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "APPROVAL_DATE",
           "snowflakeColumn": "APPROVAL_DATE"
         },
         {
-          "name": "storage_location",
-          "origin": "pre-built",
+          "name": "approval_date",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "STORAGE_LOCATION",
           "snowflakeColumn": "STORAGE_LOCATION"
         },
         {
-          "name": "retest_flag",
-          "origin": "pre-built",
+          "name": "storage_location",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "BOOLEAN",
           "stagedColumn": "RETEST_FLAG",
           "snowflakeColumn": "RETEST_FLAG"
+        },
+        {
+          "name": "retest_flag",
+          "origin": "manually overridden",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SITE_CODE",
+          "snowflakeColumn": "SITE_CODE"
         },
         {
           "name": "comments",
@@ -221,15 +227,22 @@
         },
         {
           "name": "site_code",
-          "origin": "pre-built",
+          "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
-          "stagedColumn": "SITE_CODE",
-          "snowflakeColumn": "SITE_CODE"
+          "stagedColumn": "REVISOR_USUARIO",
+          "snowflakeColumn": "REVISOR_USUARIO"
         }
       ],
-      "siteId": "lab_muestras_ba",
-      "siteName": "LAB_MUESTRAS_BA",
+      "siteId": "buenos-aires",
+      "siteName": "Buenos Aires",
+      "dateFormats": {
+        "date_started": "YYYY-MM-DD HH24:MI:SS",
+        "approval_date": "YYYY-MM-DD HH24:MI:SS",
+        "date_received": "YYYY-MM-DD HH24:MI:SS",
+        "date_completed": "YYYY-MM-DD HH24:MI:SS",
+        "date_requested": "YYYY-MM-DD HH24:MI:SS"
+      },
       "sourceTable": "LAB_MUESTRAS_BA",
       "sourceSystem": "lims"
     },
@@ -310,14 +323,17 @@
         {
           "name": "reviewer_id",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "TECH_REVIEWER_ID",
+          "snowflakeColumn": "TECH_REVIEWER_ID"
         },
         {
           "name": "date_requested",
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "MM/DD/YYYY",
           "stagedColumn": "DATE_REQUESTED",
           "snowflakeColumn": "DATE_REQUESTED"
         },
@@ -326,6 +342,7 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "MM/DD/YYYY",
           "stagedColumn": "DATE_RECEIVED",
           "snowflakeColumn": "DATE_RECEIVED"
         },
@@ -334,6 +351,7 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "MM/DD/YYYY",
           "stagedColumn": "DATE_STARTED",
           "snowflakeColumn": "DATE_STARTED"
         },
@@ -342,6 +360,7 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "MM/DD/YYYY",
           "stagedColumn": "DATE_COMPLETED",
           "snowflakeColumn": "DATE_COMPLETED"
         },
@@ -436,8 +455,10 @@
         {
           "name": "retest_flag",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "BOOLEAN"
+          "present": true,
+          "dataType": "BOOLEAN",
+          "stagedColumn": "REPEAT_ANALYSIS_IND",
+          "snowflakeColumn": "REPEAT_ANALYSIS_IND"
         },
         {
           "name": "comments",
@@ -456,8 +477,15 @@
           "snowflakeColumn": "SITE_CODE"
         }
       ],
-      "siteId": "lims_annandale_samples",
-      "siteName": "LIMS_ANNANDALE_SAMPLES",
+      "siteId": "annandale",
+      "siteName": "Annandale",
+      "dateFormats": {
+        "date_started": "MM/DD/YYYY",
+        "approval_date": "MM/DD/YYYY",
+        "date_received": "MM/DD/YYYY",
+        "date_completed": "MM/DD/YYYY",
+        "date_requested": "MM/DD/YYYY"
+      },
       "sourceTable": "LIMS_ANNANDALE_SAMPLES",
       "sourceSystem": "lims"
     },
@@ -466,8 +494,10 @@
         {
           "name": "sample_id",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "AMOSTRA_ID",
+          "snowflakeColumn": "AMOSTRA_ID"
         },
         {
           "name": "product_line",
@@ -528,8 +558,10 @@
         {
           "name": "analyst_id",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "TECNICO_ID",
+          "snowflakeColumn": "TECNICO_ID"
         },
         {
           "name": "reviewer_id",
@@ -542,14 +574,18 @@
         {
           "name": "date_requested",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "TIMESTAMP_NTZ"
+          "present": true,
+          "dataType": "TEXT",
+          "inputFormat": "DD/MM/YYYY",
+          "stagedColumn": "DATA_SOLICITADA",
+          "snowflakeColumn": "DATA_SOLICITADA"
         },
         {
           "name": "date_received",
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "DD/MM/YYYY",
           "stagedColumn": "DATE_RECEIVED",
           "snowflakeColumn": "DATE_RECEIVED"
         },
@@ -558,6 +594,7 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "DD/MM/YYYY",
           "stagedColumn": "DATE_STARTED",
           "snowflakeColumn": "DATE_STARTED"
         },
@@ -566,6 +603,7 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "DD/MM/YYYY",
           "stagedColumn": "DATE_COMPLETED",
           "snowflakeColumn": "DATE_COMPLETED"
         },
@@ -622,8 +660,10 @@
         {
           "name": "sample_status",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "STATUS_AMOSTRA",
+          "snowflakeColumn": "STATUS_AMOSTRA"
         },
         {
           "name": "approval_status",
@@ -670,8 +710,15 @@
           "snowflakeColumn": "SITE_CODE"
         }
       ],
-      "siteId": "lims_curitiba_amostras",
-      "siteName": "LIMS_CURITIBA_AMOSTRAS",
+      "siteId": "curitiba",
+      "siteName": "Curitiba",
+      "dateFormats": {
+        "date_started": "DD/MM/YYYY",
+        "approval_date": "DD/MM/YYYY",
+        "date_received": "DD/MM/YYYY",
+        "date_completed": "DD/MM/YYYY",
+        "date_requested": "DD/MM/YYYY"
+      },
       "sourceTable": "LIMS_CURITIBA_AMOSTRAS",
       "sourceSystem": "lims"
     },
@@ -680,8 +727,10 @@
         {
           "name": "sample_id",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SAMPLE_NUMBER",
+          "snowflakeColumn": "SAMPLE_NUMBER"
         },
         {
           "name": "product_line",
@@ -718,8 +767,10 @@
         {
           "name": "test_type",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "ANALYSIS_TYPE",
+          "snowflakeColumn": "ANALYSIS_TYPE"
         },
         {
           "name": "test_method_version",
@@ -748,14 +799,17 @@
         {
           "name": "reviewer_id",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "REVIEWED_BY",
+          "snowflakeColumn": "REVIEWED_BY"
         },
         {
           "name": "date_requested",
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "YYYY-MM-DD",
           "stagedColumn": "DATE_REQUESTED",
           "snowflakeColumn": "DATE_REQUESTED"
         },
@@ -764,6 +818,7 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "YYYY-MM-DD",
           "stagedColumn": "DATE_RECEIVED",
           "snowflakeColumn": "DATE_RECEIVED"
         },
@@ -772,6 +827,7 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "YYYY-MM-DD",
           "stagedColumn": "DATE_STARTED",
           "snowflakeColumn": "DATE_STARTED"
         },
@@ -780,6 +836,7 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
+          "inputFormat": "YYYY-MM-DD",
           "stagedColumn": "DATE_COMPLETED",
           "snowflakeColumn": "DATE_COMPLETED"
         },
@@ -818,8 +875,10 @@
         {
           "name": "result_unit",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "UOM",
+          "snowflakeColumn": "UOM"
         },
         {
           "name": "spec_lower_limit",
@@ -872,8 +931,10 @@
         {
           "name": "retest_flag",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "BOOLEAN"
+          "present": true,
+          "dataType": "BOOLEAN",
+          "stagedColumn": "RERUN_FLAG",
+          "snowflakeColumn": "RERUN_FLAG"
         },
         {
           "name": "comments",
@@ -892,8 +953,15 @@
           "snowflakeColumn": "SITE_CODE"
         }
       ],
-      "siteId": "lims_houston_samples",
-      "siteName": "LIMS_HOUSTON_SAMPLES",
+      "siteId": "houston",
+      "siteName": "Houston",
+      "dateFormats": {
+        "date_started": "YYYY-MM-DD",
+        "approval_date": "YYYY-MM-DD",
+        "date_received": "YYYY-MM-DD",
+        "date_completed": "YYYY-MM-DD",
+        "date_requested": "YYYY-MM-DD"
+      },
       "sourceTable": "LIMS_HOUSTON_SAMPLES",
       "sourceSystem": "lims"
     },
@@ -902,26 +970,34 @@
         {
           "name": "CanonicalMaterialName",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "CANONICAL_MATERIAL_NAME",
+          "snowflakeColumn": "CANONICAL_MATERIAL_NAME"
         },
         {
           "name": "BusinessLine",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "BUSINESS_LINE",
+          "snowflakeColumn": "BUSINESS_LINE"
         },
         {
           "name": "SourceMaterialCode",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SOURCE_MATERIAL_CODE",
+          "snowflakeColumn": "SOURCE_MATERIAL_CODE"
         },
         {
           "name": "LegacyMaterialID",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "LEGACY_MATERIAL_ID",
+          "snowflakeColumn": "LEGACY_MATERIAL_ID"
         },
         {
           "name": "CASNumber",
@@ -942,14 +1018,18 @@
         {
           "name": "SupplierGrade",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SUPPLIER_GRADE",
+          "snowflakeColumn": "SUPPLIER_GRADE"
         },
         {
           "name": "UnitOfMeasure",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "UNIT_OF_MEASURE",
+          "snowflakeColumn": "UNIT_OF_MEASURE"
         },
         {
           "name": "Density",
@@ -962,44 +1042,58 @@
         {
           "name": "ViscosityGrade",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "NUMBER",
+          "stagedColumn": "VISCOSITY_GRADE",
+          "snowflakeColumn": "VISCOSITY_GRADE"
         },
         {
           "name": "HazardClassification",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "HAZARD_CLASSIFICATION",
+          "snowflakeColumn": "HAZARD_CLASSIFICATION"
         },
         {
           "name": "SafetyDataSheetRef",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SAFETY_DATA_SHEET_REF",
+          "snowflakeColumn": "SAFETY_DATA_SHEET_REF"
         },
         {
           "name": "ShelfLifeMonths",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "INTEGER"
+          "present": true,
+          "dataType": "NUMBER",
+          "stagedColumn": "SHELF_LIFE_MONTHS",
+          "snowflakeColumn": "SHELF_LIFE_MONTHS"
         },
         {
           "name": "StorageConditions",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "STORAGE_CONDITIONS",
+          "snowflakeColumn": "STORAGE_CONDITIONS"
         },
         {
           "name": "ApprovedForUse",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "BOOLEAN"
+          "present": true,
+          "dataType": "BOOLEAN",
+          "stagedColumn": "APPROVED_FOR_USE",
+          "snowflakeColumn": "APPROVED_FOR_USE"
         },
         {
           "name": "LastReviewDate",
           "origin": "manually overridden",
-          "present": false,
-          "dataType": "DATE"
+          "present": true,
+          "dataType": "TIMESTAMP_NTZ",
+          "stagedColumn": "LAST_REVIEW_DATE",
+          "snowflakeColumn": "LAST_REVIEW_DATE"
         }
       ],
       "siteName": "RAW_MATERIAL_MASTER",

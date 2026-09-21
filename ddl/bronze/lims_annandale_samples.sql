@@ -12,6 +12,7 @@ CREATE TABLE bronze."lims_annandale_samples" (
 "test_method_version" text,
 "instrument_id" text,
 "analyst_id" text,
+"reviewer_id" text,
 "date_requested" text,
 "date_received" text,
 "date_started" text,
@@ -27,10 +28,11 @@ CREATE TABLE bronze."lims_annandale_samples" (
 "approval_status" text,
 "approval_date" text,
 "storage_location" text,
+"retest_flag" boolean,
 "comments" text,
 "site_code" text,
               loaded_at timestamptz NOT NULL DEFAULT now()
             );
 
 -- foundation:stage 2
-COMMENT ON TABLE bronze."lims_annandale_samples" IS 'lims: 26 fields defined, 26 source columns, 26 auto-mapped, 0 manually mapped, 0 newly added.';
+COMMENT ON TABLE bronze."lims_annandale_samples" IS 'lims: 28 fields defined, 28 source columns, 26 auto-mapped, 2 manually mapped, 0 newly added.';
