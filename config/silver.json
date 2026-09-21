@@ -1,5 +1,5 @@
 {
-  "lockedAt": "2026-09-21T22:54:04.654Z",
+  "lockedAt": "2026-09-21T23:10:43.779Z",
   "config": {
     "tables": [
       {
@@ -380,7 +380,7 @@
             "pii": false,
             "rules": [
               {
-                "id": "r_nfao9aib",
+                "id": "r_tfcinoch",
                 "type": "case_normalize",
                 "pillar": "cleanse",
                 "params": {
@@ -1621,7 +1621,7 @@
   "identity": {
     "entities": [
       {
-        "id": "yxkbxc9c",
+        "id": "vslx0jxx",
         "name": "lims_buenos_aires",
         "description": "Standardized lims buenos-aires",
         "contributingTables": [
@@ -1646,7 +1646,7 @@
         "survivorship": []
       },
       {
-        "id": "21ur45cl",
+        "id": "1uv89esz",
         "name": "lims_annandale",
         "description": "Standardized lims annandale",
         "contributingTables": [
@@ -1671,7 +1671,7 @@
         "survivorship": []
       },
       {
-        "id": "jjbbynpx",
+        "id": "i36ed00a",
         "name": "lims_curitiba",
         "description": "Standardized lims curitiba",
         "contributingTables": [
@@ -1696,7 +1696,7 @@
         "survivorship": []
       },
       {
-        "id": "aklvyj0y",
+        "id": "uw6kxc1l",
         "name": "lims_houston",
         "description": "Standardized lims houston",
         "contributingTables": [
@@ -1721,7 +1721,7 @@
         "survivorship": []
       },
       {
-        "id": "seekd2rg",
+        "id": "xlmllil7",
         "name": "raw_material_master",
         "description": "Standardized raw material master",
         "contributingTables": [
