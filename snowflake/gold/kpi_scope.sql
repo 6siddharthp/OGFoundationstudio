@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.kpi_scope AS
 SELECT column1::VARCHAR kpi_name,column2::BOOLEAN included,column3::VARCHAR skip_reason,
        PARSE_JSON(BASE64_DECODE_STRING(column4))::VARIANT site_policy,column5::VARCHAR policy_summary
