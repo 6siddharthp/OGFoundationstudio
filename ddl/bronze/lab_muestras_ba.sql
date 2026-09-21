@@ -19,19 +19,19 @@ CREATE TABLE bronze."lab_muestras_ba" (
 "date_completed" text,
 "priority" text,
 "submitter" text,
-"project_reference" numeric,
-"result_value" text,
-"result_unit" numeric,
+"project_reference" text,
+"result_value" numeric,
+"result_unit" text,
 "spec_lower_limit" numeric,
-"spec_upper_limit" text,
+"spec_upper_limit" numeric,
 "sample_status" text,
 "approval_status" text,
 "approval_date" text,
-"storage_location" boolean,
-"retest_flag" text,
+"storage_location" text,
+"retest_flag" boolean,
 "site_code" text,
               loaded_at timestamptz NOT NULL DEFAULT now()
             );
 
 -- foundation:stage 2
-COMMENT ON TABLE bronze."lab_muestras_ba" IS 'lims: 27 fields defined, 27 source columns, 9 auto-mapped, 18 manually mapped, 0 newly added.';
+COMMENT ON TABLE bronze."lab_muestras_ba" IS 'lims: 27 fields defined, 27 source columns, 26 auto-mapped, 1 manually mapped, 0 newly added.';
