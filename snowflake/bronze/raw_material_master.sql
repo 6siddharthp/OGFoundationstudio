@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.raw_material_master AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        CANONICAL_MATERIAL_NAME::VARCHAR AS canonical_material_name,

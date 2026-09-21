@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.lims_curitiba_amostras AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        AMOSTRA_ID::VARCHAR AS sample_id,
