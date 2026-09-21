@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_test_result AS SELECT 'RES_' || MD5('silver_lims_buenos_aires:' || s.source_row_number) test_result_key,
  'SMP_' || MD5('buenos-aires:' || s.source_row_number) lab_sample_key,
  tm.test_method_key, m.material_key, TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) result_date,

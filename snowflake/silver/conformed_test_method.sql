@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_test_method AS
 WITH methods AS (SELECT test_type test_type FROM OGFS_DEMO.SILVER.silver_lims_buenos_aires
 UNION ALL

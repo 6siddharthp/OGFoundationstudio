@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lims_houston AS
 SELECT row_data.source_row_number,
   row_data.sample_id AS sample_id,
@@ -32,6 +33,7 @@ SELECT row_data.source_row_number,
   'lims_houston_samples' AS source_table
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data;
 
+-- foundation:stage 3
 INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()

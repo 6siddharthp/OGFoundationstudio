@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()

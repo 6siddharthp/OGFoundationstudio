@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_material AS
 SELECT i.material_key,
  MAX_BY(m.canonical_material_name,LENGTH(m.canonical_material_name)) canonical_material_name,

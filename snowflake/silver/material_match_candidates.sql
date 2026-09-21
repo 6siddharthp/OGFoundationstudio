@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.material_match_candidates AS
 WITH base AS (
   SELECT DISTINCT i.material_key,m.source_material_code,m.canonical_material_name,

@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.material_identity_map AS
 WITH base AS (
   SELECT DISTINCT source_material_code, legacy_material_id, canonical_material_name, cas_number,

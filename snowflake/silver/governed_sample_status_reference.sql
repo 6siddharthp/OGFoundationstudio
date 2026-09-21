@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.governed_sample_status_reference AS
 SELECT column1::VARCHAR source_value, column2::VARCHAR source_system, column3::VARCHAR governed_status
 FROM VALUES ('Complete','Annandale','Completed'),

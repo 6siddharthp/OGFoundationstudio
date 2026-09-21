@@ -1,4 +1,5 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.governed_uom_reference AS
 SELECT column1::VARCHAR source_unit, column2::VARCHAR governed_unit, column3::VARCHAR measure_type
 FROM VALUES ('cSt','mm2/s','Kinematic viscosity'),
