@@ -25,6 +25,7 @@ CREATE OR REPLACE PROCEDURE OGFS_DEMO.BRONZE.run_full_pipeline()
 RETURNS VARCHAR LANGUAGE SQL EXECUTE AS OWNER AS $$
 BEGIN
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.lab_muestras_ba AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        SAMPLE_ID::VARCHAR AS sample_id,
@@ -57,6 +58,7 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        CURRENT_TIMESTAMP() AS loaded_at
 FROM OGFS_DEMO.SOURCE.LAB_MUESTRAS_BA';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.lims_annandale_samples AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        SAMPLE_ID::VARCHAR AS sample_id,
@@ -90,6 +92,7 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        CURRENT_TIMESTAMP() AS loaded_at
 FROM OGFS_DEMO.SOURCE.LIMS_ANNANDALE_SAMPLES';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.lims_curitiba_amostras AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        AMOSTRA_ID::VARCHAR AS sample_id,
@@ -118,6 +121,7 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        CURRENT_TIMESTAMP() AS loaded_at
 FROM OGFS_DEMO.SOURCE.LIMS_CURITIBA_AMOSTRAS';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.lims_houston_samples AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        SAMPLE_NUMBER::VARCHAR AS sample_id,
@@ -151,6 +155,7 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        CURRENT_TIMESTAMP() AS loaded_at
 FROM OGFS_DEMO.SOURCE.LIMS_HOUSTON_SAMPLES';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.raw_material_master AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        CANONICAL_MATERIAL_NAME::VARCHAR AS canonical_material_name,
@@ -172,12 +177,14 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        CURRENT_TIMESTAMP() AS loaded_at
 FROM OGFS_DEMO.SOURCE.RAW_MATERIAL_MASTER';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.quarantine_records (
   quarantine_id NUMBER AUTOINCREMENT, source_table VARCHAR, source_row_number NUMBER,
   rule_name VARCHAR, reason VARCHAR, site_code VARCHAR, review_status VARCHAR,
   source_data VARIANT, quarantined_at TIMESTAMP_TZ DEFAULT CURRENT_TIMESTAMP()
 )';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.not_captured_at_source AS
 SELECT column1::VARCHAR source_table,column2::VARCHAR site_code,column3::VARCHAR site_name,
        column4::VARCHAR canonical_field,column5::VARCHAR reason
@@ -188,11 +195,13 @@ FROM VALUES (''LAB_MUESTRAS_BA'',''buenos-aires'',''Buenos Aires'',''comments'',
 (''LIMS_CURITIBA_AMOSTRAS'',''curitiba'',''Curitiba'',''approval_date'',''Not captured at source''),
 (''LIMS_CURITIBA_AMOSTRAS'',''curitiba'',''Curitiba'',''storage_location'',''Not captured at source'')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.rule_skips (
   source_table VARCHAR,site_code VARCHAR,canonical_field VARCHAR,rule_type VARCHAR,
   unavailable_inputs ARRAY,reason VARCHAR,recorded_at TIMESTAMP_TZ DEFAULT CURRENT_TIMESTAMP()
 )';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS
 SELECT column1::VARCHAR source_method_name, column2::VARCHAR governed_standard_reference, column3::VARCHAR standard_body, column4::VARCHAR method_title, column5::VARCHAR applies_to_business_line
 FROM VALUES (''Viscosity'',''ASTM D445'',''ASTM'',''Kinematic Viscosity of Transparent and Opaque Liquids'',''Lubricants''),
@@ -245,6 +254,7 @@ FROM VALUES (''Viscosity'',''ASTM D445'',''ASTM'',''Kinematic Viscosity of Trans
 (''ILSAC GF-6'',''ILSAC GF-6'',''ILSAC'',''Passenger Car Engine Oil Performance Specification'',''Lubricants''),
 (''API SP'',''API SP'',''API'',''API Service Category SP'',''Lubricants'')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.governed_sample_status_reference AS
 SELECT column1::VARCHAR source_value, column2::VARCHAR source_system, column3::VARCHAR governed_status
 FROM VALUES (''Complete'',''Annandale'',''Completed''),
@@ -260,6 +270,7 @@ FROM VALUES (''Complete'',''Annandale'',''Completed''),
 (''En Progreso'',''Buenos Aires'',''In Progress''),
 (''Pendiente Revision'',''Buenos Aires'',''Pending Review'')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.governed_uom_reference AS
 SELECT column1::VARCHAR source_unit, column2::VARCHAR governed_unit, column3::VARCHAR measure_type
 FROM VALUES (''cSt'',''mm2/s'',''Kinematic viscosity''),
@@ -273,6 +284,7 @@ FROM VALUES (''cSt'',''mm2/s'',''Kinematic viscosity''),
 (''kPa'',''bar'',''Pressure''),
 (''kg/m3'',''kg/m3'',''Density'')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lims_buenos_aires AS
 SELECT row_data.source_row_number,
   row_data.sample_id AS sample_id,
@@ -305,7 +317,8 @@ SELECT row_data.source_row_number,
   row_data.site_code AS site_code,
   ''lab_muestras_ba'' AS source_table
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lab_muestras_ba AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
+  EXECUTE IMMEDIATE '-- foundation:stage 3
+INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
 FROM (
@@ -333,6 +346,7 @@ FROM OGFS_DEMO.BRONZE.lab_muestras_ba AS row_data
 WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
 QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lims_annandale AS
 SELECT row_data.source_row_number,
   row_data.sample_id AS sample_id,
@@ -365,7 +379,8 @@ SELECT row_data.source_row_number,
   row_data.site_code AS site_code,
   ''lims_annandale_samples'' AS source_table
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_annandale_samples AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
+  EXECUTE IMMEDIATE '-- foundation:stage 3
+INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
 FROM (
@@ -393,6 +408,7 @@ FROM OGFS_DEMO.BRONZE.lims_annandale_samples AS row_data
 WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
 QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lims_curitiba AS
 SELECT row_data.source_row_number,
   row_data.sample_id AS sample_id,
@@ -425,7 +441,8 @@ SELECT row_data.source_row_number,
   row_data.site_code AS site_code,
   ''lims_curitiba_amostras'' AS source_table
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
+  EXECUTE IMMEDIATE '-- foundation:stage 3
+INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
 FROM (
@@ -453,6 +470,7 @@ FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data
 WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
 QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lims_houston AS
 SELECT row_data.source_row_number,
   row_data.sample_id AS sample_id,
@@ -485,7 +503,8 @@ SELECT row_data.source_row_number,
   row_data.site_code AS site_code,
   ''lims_houston_samples'' AS source_table
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data';
-  EXECUTE IMMEDIATE 'INSERT INTO OGFS_DEMO.SILVER.quarantine_records
+  EXECUTE IMMEDIATE '-- foundation:stage 3
+INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
 FROM (
@@ -513,6 +532,7 @@ FROM OGFS_DEMO.BRONZE.lims_houston_samples AS row_data
 WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
 QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_raw_material_master AS
 SELECT row_data.source_row_number,
   row_data.canonical_material_name AS canonical_material_name,
@@ -534,6 +554,7 @@ SELECT row_data.source_row_number,
   ''raw_material_master'' AS source_table
 FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.raw_material_master AS row_data WHERE NOT (FALSE)) AS row_data';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.material_identity_map AS
 WITH base AS (
   SELECT DISTINCT source_material_code, legacy_material_id, canonical_material_name, cas_number,
@@ -575,6 +596,7 @@ SELECT source_material_code,canonical_material_name,cas_number,
   COALESCE(match_rule,''unmatched_source_record'') match_rule,85 similarity_threshold
 FROM resolved';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.material_match_candidates AS
 WITH base AS (
   SELECT DISTINCT i.material_key,m.source_material_code,m.canonical_material_name,
@@ -599,6 +621,7 @@ WHERE similarity_score < 85 AND similarity_score >= 85*0.75
 GROUP BY left_material_key,right_material_key
 QUALIFY ROW_NUMBER() OVER (PARTITION BY left_material_key ORDER BY MAX(similarity_score) DESC,right_material_key)=1';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_material AS
 SELECT i.material_key,
  MAX_BY(m.canonical_material_name,LENGTH(m.canonical_material_name)) canonical_material_name,
@@ -610,6 +633,7 @@ FROM OGFS_DEMO.SILVER.silver_raw_material_master m
 JOIN OGFS_DEMO.SILVER.material_identity_map i ON i.source_material_code=m.source_material_code
 GROUP BY i.material_key';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 INSERT INTO OGFS_DEMO.SILVER.quarantine_records
   (source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,quarantined_at)
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
@@ -653,6 +677,7 @@ SELECT ''LIMS_HOUSTON_SAMPLES'' source_table,
       ON LOWER(TRIM(m.source_material_code)) = LOWER(TRIM(b.material_code))
     WHERE b.material_code IS NOT NULL AND m.source_material_code IS NULL)';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_test_method AS
 WITH methods AS (SELECT test_type test_type FROM OGFS_DEMO.SILVER.silver_lims_buenos_aires
 UNION ALL
@@ -670,6 +695,7 @@ FROM methods m LEFT JOIN OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_refere
     REGEXP_REPLACE(UPPER(TRIM(r.source_method_name)), ''[^A-Z0-9]'', '''')
 GROUP BY COALESCE(r.governed_standard_reference, m.test_type)';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_lab_sample AS SELECT ''SMP_'' || MD5(''buenos-aires:'' || s.source_row_number) lab_sample_key,
   m.material_key, tm.test_method_key, ''buenos-aires'' site_code, s.product_line business_line,
  TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) completion_date,
@@ -718,6 +744,7 @@ SELECT ''SMP_'' || MD5(''houston:'' || s.source_row_number) lab_sample_key,
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.conformed_test_result AS SELECT ''RES_'' || MD5(''silver_lims_buenos_aires:'' || s.source_row_number) test_result_key,
  ''SMP_'' || MD5(''buenos-aires:'' || s.source_row_number) lab_sample_key,
  tm.test_method_key, m.material_key, TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(s.date_completed)) result_date,
@@ -770,20 +797,28 @@ SELECT ''RES_'' || MD5(''silver_lims_houston:'' || s.source_row_number) test_res
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), ''[^A-Z0-9]'', '''') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), ''[^A-Z0-9]'', '''')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_material AS SELECT material_key,canonical_material_name,business_line,cas_number,supplier,unit_of_measure,hazard_classification FROM OGFS_DEMO.SILVER.conformed_material';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_test_method AS SELECT test_method_key,governed_standard_reference,standard_body,method_title,applies_to_business_line FROM OGFS_DEMO.SILVER.conformed_test_method';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_lab_site AS SELECT column1::VARCHAR site_key,column2::VARCHAR site_code,column3::VARCHAR site_name FROM VALUES (''SITE_BUENOS_AIRES'',''buenos-aires'',''Buenos Aires''),(''SITE_ANNANDALE'',''annandale'',''Annandale''),(''SITE_CURITIBA'',''curitiba'',''Curitiba''),(''SITE_HOUSTON'',''houston'',''Houston'')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_business_line AS SELECT column1::VARCHAR business_line_key,column2::VARCHAR business_line_name FROM VALUES (''BIZ_LUBRICANTS'',''Lubricants''),(''BIZ_FUELS'',''Fuels''),(''BIZ_CHEMICALS'',''Chemicals'')';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.dim_date AS SELECT TO_NUMBER(TO_CHAR(day,''YYYYMMDD'')) date_key,day full_date,YEAR(day) year,QUARTER(day) quarter,MONTH(day) month,MONTHNAME(day) month_name,WEEKOFYEAR(day) week_of_year,DAYNAME(day) day_of_week FROM (SELECT DATEADD(day,SEQ4(),''2026-01-01''::DATE) day FROM TABLE(GENERATOR(ROWCOUNT=>365)))';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.fact_lab_sample AS SELECT lab_sample_key,material_key,test_method_key,''SITE_''||UPPER(site_code) site_key,CASE LOWER(business_line) WHEN ''lubricants'' THEN ''BIZ_LUBRICANTS'' WHEN ''fuels'' THEN ''BIZ_FUELS'' WHEN ''chemicals'' THEN ''BIZ_CHEMICALS'' END business_line_key,TO_NUMBER(TO_CHAR(TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(completion_date)),''YYYYMMDD'')) date_key,DATEDIFF(day,TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(requested_date)),TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(completion_date))) turnaround_days,sample_status,source_system_count FROM OGFS_DEMO.SILVER.conformed_lab_sample';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.fact_test_result AS SELECT test_result_key,lab_sample_key,test_method_key,material_key,TO_NUMBER(TO_CHAR(TRY_TO_TIMESTAMP_NTZ(TO_VARCHAR(result_date)),''YYYYMMDD'')) date_key,result_value,result_unit,spec_lower_limit,spec_upper_limit,within_spec FROM OGFS_DEMO.SILVER.conformed_test_result';
   EXECUTE IMMEDIATE '-- Foundation Studio · Snowflake execution SQL
+-- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.GOLD.kpi_scope AS
 SELECT column1::VARCHAR kpi_name,column2::BOOLEAN included,column3::VARCHAR skip_reason,
        PARSE_JSON(BASE64_DECODE_STRING(column4))::VARIANT site_policy,column5::VARCHAR policy_summary
