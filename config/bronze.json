@@ -1,1082 +1,1013 @@
 {
-  "lockedAt": "2026-09-20T22:57:08.939Z",
-  "reconciledAt": "2026-09-20T13:03:05.353Z",
-  "lockedBy": "studioadmin@polestaranalytics.com",
+  "sourceMode": "snowflake",
+  "reconciledAt": "2026-09-21T18:32:31.203Z",
+  "reconciledBy": "Foundation E2E",
+  "lockedAt": "2026-09-21T18:32:33.017Z",
+  "lockedBy": "Foundation E2E",
   "sources": [
     {
-      "sourceSystem": "lims",
-      "siteId": "annandale",
-      "siteName": "Annandale",
-      "sourceTable": "LIMS_ANNANDALE_SAMPLES",
-      "dateFormats": {
-        "date_requested": "MM/DD/YYYY",
-        "date_received": "MM/DD/YYYY",
-        "date_started": "MM/DD/YYYY",
-        "date_completed": "MM/DD/YYYY",
-        "approval_date": "MM/DD/YYYY"
-      },
       "fields": [
         {
           "name": "sample_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SAMPLE_ID",
-          "snowflakeColumn": "SAMPLE_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SAMPLE_ID"
         },
         {
           "name": "product_line",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PRODUCT_LINE",
-          "snowflakeColumn": "PRODUCT_LINE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PRODUCT_LINE"
         },
         {
           "name": "material_code",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "MATERIAL_CODE",
-          "snowflakeColumn": "MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "MATERIAL_CODE"
         },
         {
           "name": "batch_lot_number",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "BATCH_LOT_NUMBER",
-          "snowflakeColumn": "BATCH_LOT_NUMBER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "BATCH_LOT_NUMBER"
         },
         {
           "name": "container_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "CONTAINER_ID",
-          "snowflakeColumn": "CONTAINER_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "CONTAINER_ID"
         },
         {
           "name": "test_type",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "TEST_TYPE",
-          "snowflakeColumn": "TEST_TYPE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "TEST_TYPE"
         },
         {
           "name": "test_method_version",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "TEST_METHOD_VERSION",
-          "snowflakeColumn": "TEST_METHOD_VERSION",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "TEST_METHOD_VERSION"
         },
         {
           "name": "instrument_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "INSTRUMENT_ID",
-          "snowflakeColumn": "INSTRUMENT_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "INSTRUMENT_ID"
         },
         {
           "name": "analyst_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "ANALYST_ID",
-          "snowflakeColumn": "ANALYST_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "ANALYST_ID"
         },
         {
           "name": "reviewer_id",
-          "dataType": "VARCHAR",
+          "origin": "manually overridden",
           "present": false,
-          "origin": "manually overridden"
+          "dataType": "VARCHAR"
         },
         {
           "name": "date_requested",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_REQUESTED",
-          "snowflakeColumn": "DATE_REQUESTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_REQUESTED"
         },
         {
           "name": "date_received",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_RECEIVED",
-          "snowflakeColumn": "DATE_RECEIVED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_RECEIVED"
         },
         {
           "name": "date_started",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_STARTED",
-          "snowflakeColumn": "DATE_STARTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_STARTED"
         },
         {
           "name": "date_completed",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_COMPLETED",
-          "snowflakeColumn": "DATE_COMPLETED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_COMPLETED"
         },
         {
           "name": "priority",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PRIORITY",
-          "snowflakeColumn": "PRIORITY",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PRIORITY"
         },
         {
           "name": "submitter",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SUBMITTER",
-          "snowflakeColumn": "SUBMITTER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SUBMITTER"
         },
         {
           "name": "project_reference",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PROJECT_REFERENCE",
-          "snowflakeColumn": "PROJECT_REFERENCE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PROJECT_REFERENCE"
         },
         {
           "name": "result_value",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "RESULT_VALUE",
-          "snowflakeColumn": "RESULT_VALUE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "RESULT_VALUE"
         },
         {
           "name": "result_unit",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "RESULT_UNIT",
-          "snowflakeColumn": "RESULT_UNIT",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "RESULT_UNIT"
         },
         {
           "name": "spec_lower_limit",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "SPEC_LOWER_LIMIT",
-          "snowflakeColumn": "SPEC_LOWER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SPEC_LOWER_LIMIT"
         },
         {
           "name": "spec_upper_limit",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "SPEC_UPPER_LIMIT",
-          "snowflakeColumn": "SPEC_UPPER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SPEC_UPPER_LIMIT"
         },
         {
           "name": "sample_status",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SAMPLE_STATUS",
-          "snowflakeColumn": "SAMPLE_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SAMPLE_STATUS"
         },
         {
           "name": "approval_status",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "APPROVAL_STATUS",
-          "snowflakeColumn": "APPROVAL_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVAL_STATUS"
         },
         {
           "name": "approval_date",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "APPROVAL_DATE",
-          "snowflakeColumn": "APPROVAL_DATE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVAL_DATE"
         },
         {
           "name": "storage_location",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "STORAGE_LOCATION",
-          "snowflakeColumn": "STORAGE_LOCATION",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "STORAGE_LOCATION"
         },
         {
           "name": "retest_flag",
-          "dataType": "BOOLEAN",
-          "stagedColumn": "REPEAT_ANALYSIS_IND",
-          "snowflakeColumn": "REPEAT_ANALYSIS_IND",
+          "origin": "pre-built",
           "present": true,
-          "origin": "manually overridden"
+          "dataType": "BOOLEAN",
+          "stagedColumn": "RETEST_FLAG",
+          "snowflakeColumn": "RETEST_FLAG"
         },
         {
           "name": "comments",
-          "dataType": "TEXT",
-          "stagedColumn": "COMMENTS",
-          "snowflakeColumn": "COMMENTS",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "site_code",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SITE_CODE",
-          "snowflakeColumn": "SITE_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SITE_CODE"
         }
-      ]
+      ],
+      "siteId": "lab_muestras_ba",
+      "siteName": "LAB_MUESTRAS_BA",
+      "sourceTable": "LAB_MUESTRAS_BA",
+      "sourceSystem": "lims"
     },
     {
-      "sourceSystem": "lims",
-      "siteId": "houston",
-      "siteName": "Houston",
-      "sourceTable": "LIMS_HOUSTON_SAMPLES",
-      "dateFormats": {
-        "date_requested": "YYYY-MM-DD",
-        "date_received": "YYYY-MM-DD",
-        "date_started": "YYYY-MM-DD",
-        "date_completed": "YYYY-MM-DD",
-        "approval_date": "YYYY-MM-DD"
-      },
       "fields": [
         {
           "name": "sample_id",
-          "dataType": "TEXT",
-          "stagedColumn": "SAMPLE_NUMBER",
-          "snowflakeColumn": "SAMPLE_NUMBER",
+          "origin": "pre-built",
           "present": true,
-          "origin": "manually overridden"
+          "dataType": "TEXT",
+          "stagedColumn": "SAMPLE_ID",
+          "snowflakeColumn": "SAMPLE_ID"
         },
         {
           "name": "product_line",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PRODUCT_LINE",
-          "snowflakeColumn": "PRODUCT_LINE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PRODUCT_LINE"
         },
         {
           "name": "material_code",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "MATERIAL_CODE",
-          "snowflakeColumn": "MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "MATERIAL_CODE"
         },
         {
           "name": "batch_lot_number",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "BATCH_LOT_NUMBER",
-          "snowflakeColumn": "BATCH_LOT_NUMBER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "BATCH_LOT_NUMBER"
         },
         {
           "name": "container_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "CONTAINER_ID",
-          "snowflakeColumn": "CONTAINER_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "CONTAINER_ID"
         },
         {
           "name": "test_type",
-          "dataType": "TEXT",
-          "stagedColumn": "ANALYSIS_TYPE",
-          "snowflakeColumn": "ANALYSIS_TYPE",
+          "origin": "pre-built",
           "present": true,
-          "origin": "manually overridden"
+          "dataType": "TEXT",
+          "stagedColumn": "TEST_TYPE",
+          "snowflakeColumn": "TEST_TYPE"
         },
         {
           "name": "test_method_version",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "TEST_METHOD_VERSION",
-          "snowflakeColumn": "TEST_METHOD_VERSION",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "TEST_METHOD_VERSION"
         },
         {
           "name": "instrument_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "INSTRUMENT_ID",
-          "snowflakeColumn": "INSTRUMENT_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "INSTRUMENT_ID"
         },
         {
           "name": "analyst_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "ANALYST_ID",
-          "snowflakeColumn": "ANALYST_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "ANALYST_ID"
         },
         {
           "name": "reviewer_id",
-          "dataType": "VARCHAR",
+          "origin": "manually overridden",
           "present": false,
-          "origin": "manually overridden"
+          "dataType": "VARCHAR"
         },
         {
           "name": "date_requested",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_REQUESTED",
-          "snowflakeColumn": "DATE_REQUESTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_REQUESTED"
         },
         {
           "name": "date_received",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_RECEIVED",
-          "snowflakeColumn": "DATE_RECEIVED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_RECEIVED"
         },
         {
           "name": "date_started",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_STARTED",
-          "snowflakeColumn": "DATE_STARTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_STARTED"
         },
         {
           "name": "date_completed",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_COMPLETED",
-          "snowflakeColumn": "DATE_COMPLETED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_COMPLETED"
         },
         {
           "name": "priority",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PRIORITY",
-          "snowflakeColumn": "PRIORITY",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PRIORITY"
         },
         {
           "name": "submitter",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SUBMITTER",
-          "snowflakeColumn": "SUBMITTER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SUBMITTER"
         },
         {
           "name": "project_reference",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PROJECT_REFERENCE",
-          "snowflakeColumn": "PROJECT_REFERENCE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PROJECT_REFERENCE"
         },
         {
           "name": "result_value",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "RESULT_VALUE",
-          "snowflakeColumn": "RESULT_VALUE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "RESULT_VALUE"
         },
         {
           "name": "result_unit",
-          "dataType": "TEXT",
-          "stagedColumn": "UOM",
-          "snowflakeColumn": "UOM",
+          "origin": "pre-built",
           "present": true,
-          "origin": "manually overridden"
+          "dataType": "TEXT",
+          "stagedColumn": "RESULT_UNIT",
+          "snowflakeColumn": "RESULT_UNIT"
         },
         {
           "name": "spec_lower_limit",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "SPEC_LOWER_LIMIT",
-          "snowflakeColumn": "SPEC_LOWER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SPEC_LOWER_LIMIT"
         },
         {
           "name": "spec_upper_limit",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "SPEC_UPPER_LIMIT",
-          "snowflakeColumn": "SPEC_UPPER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SPEC_UPPER_LIMIT"
         },
         {
           "name": "sample_status",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SAMPLE_STATUS",
-          "snowflakeColumn": "SAMPLE_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SAMPLE_STATUS"
         },
         {
           "name": "approval_status",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "APPROVAL_STATUS",
-          "snowflakeColumn": "APPROVAL_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVAL_STATUS"
         },
         {
           "name": "approval_date",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "APPROVAL_DATE",
-          "snowflakeColumn": "APPROVAL_DATE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVAL_DATE"
         },
         {
           "name": "storage_location",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "STORAGE_LOCATION",
-          "snowflakeColumn": "STORAGE_LOCATION",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "STORAGE_LOCATION"
         },
         {
           "name": "retest_flag",
-          "dataType": "BOOLEAN",
-          "stagedColumn": "RERUN_FLAG",
-          "snowflakeColumn": "RERUN_FLAG",
-          "present": true,
-          "origin": "manually overridden"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "BOOLEAN"
         },
         {
           "name": "comments",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "COMMENTS",
-          "snowflakeColumn": "COMMENTS",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "COMMENTS"
         },
         {
           "name": "site_code",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SITE_CODE",
-          "snowflakeColumn": "SITE_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SITE_CODE"
         }
-      ]
+      ],
+      "siteId": "lims_annandale_samples",
+      "siteName": "LIMS_ANNANDALE_SAMPLES",
+      "sourceTable": "LIMS_ANNANDALE_SAMPLES",
+      "sourceSystem": "lims"
     },
     {
-      "sourceSystem": "lims",
-      "siteId": "curitiba",
-      "siteName": "Curitiba",
-      "sourceTable": "LIMS_CURITIBA_AMOSTRAS",
-      "dateFormats": {
-        "date_requested": "DD/MM/YYYY",
-        "date_received": "DD/MM/YYYY",
-        "date_started": "DD/MM/YYYY",
-        "date_completed": "DD/MM/YYYY",
-        "approval_date": "DD/MM/YYYY"
-      },
       "fields": [
         {
           "name": "sample_id",
-          "dataType": "TEXT",
-          "stagedColumn": "AMOSTRA_ID",
-          "snowflakeColumn": "AMOSTRA_ID",
-          "present": true,
-          "origin": "manually overridden"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "product_line",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PRODUCT_LINE",
-          "snowflakeColumn": "PRODUCT_LINE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PRODUCT_LINE"
         },
         {
           "name": "material_code",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "MATERIAL_CODE",
-          "snowflakeColumn": "MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "MATERIAL_CODE"
         },
         {
           "name": "batch_lot_number",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "BATCH_LOT_NUMBER",
-          "snowflakeColumn": "BATCH_LOT_NUMBER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "BATCH_LOT_NUMBER"
         },
         {
           "name": "container_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "CONTAINER_ID",
-          "snowflakeColumn": "CONTAINER_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "CONTAINER_ID"
         },
         {
           "name": "test_type",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "TEST_TYPE",
-          "snowflakeColumn": "TEST_TYPE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "TEST_TYPE"
         },
         {
           "name": "test_method_version",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "TEST_METHOD_VERSION",
-          "snowflakeColumn": "TEST_METHOD_VERSION",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "TEST_METHOD_VERSION"
         },
         {
           "name": "instrument_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "INSTRUMENT_ID",
-          "snowflakeColumn": "INSTRUMENT_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "INSTRUMENT_ID"
         },
         {
           "name": "analyst_id",
-          "dataType": "TEXT",
-          "stagedColumn": "TECNICO_ID",
-          "snowflakeColumn": "TECNICO_ID",
-          "present": true,
-          "origin": "manually overridden"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "reviewer_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "REVIEWER_ID",
-          "snowflakeColumn": "REVIEWER_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "REVIEWER_ID"
         },
         {
           "name": "date_requested",
-          "dataType": "TEXT",
-          "stagedColumn": "DATA_SOLICITADA",
-          "snowflakeColumn": "DATA_SOLICITADA",
-          "present": true,
-          "origin": "manually overridden"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "TIMESTAMP_NTZ"
         },
         {
           "name": "date_received",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_RECEIVED",
-          "snowflakeColumn": "DATE_RECEIVED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_RECEIVED"
         },
         {
           "name": "date_started",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_STARTED",
-          "snowflakeColumn": "DATE_STARTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_STARTED"
         },
         {
           "name": "date_completed",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_COMPLETED",
-          "snowflakeColumn": "DATE_COMPLETED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_COMPLETED"
         },
         {
           "name": "priority",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PRIORITY",
-          "snowflakeColumn": "PRIORITY",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PRIORITY"
         },
         {
           "name": "submitter",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SUBMITTER",
-          "snowflakeColumn": "SUBMITTER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SUBMITTER"
         },
         {
           "name": "project_reference",
-          "dataType": "VARCHAR",
+          "origin": "manually overridden",
           "present": false,
-          "origin": "manually mapped"
+          "dataType": "VARCHAR"
         },
         {
           "name": "result_value",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "RESULT_VALUE",
-          "snowflakeColumn": "RESULT_VALUE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "RESULT_VALUE"
         },
         {
           "name": "result_unit",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "RESULT_UNIT",
-          "snowflakeColumn": "RESULT_UNIT",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "RESULT_UNIT"
         },
         {
           "name": "spec_lower_limit",
-          "dataType": "NUMBER",
+          "origin": "manually overridden",
           "present": false,
-          "origin": "manually mapped"
+          "dataType": "NUMBER"
         },
         {
           "name": "spec_upper_limit",
-          "dataType": "NUMBER",
+          "origin": "manually overridden",
           "present": false,
-          "origin": "manually mapped"
+          "dataType": "NUMBER"
         },
         {
           "name": "sample_status",
-          "dataType": "TEXT",
-          "stagedColumn": "STATUS_AMOSTRA",
-          "snowflakeColumn": "STATUS_AMOSTRA",
-          "present": true,
-          "origin": "manually overridden"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "approval_status",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "APPROVAL_STATUS",
-          "snowflakeColumn": "APPROVAL_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVAL_STATUS"
         },
         {
           "name": "approval_date",
-          "dataType": "TIMESTAMP_NTZ",
+          "origin": "manually overridden",
           "present": false,
-          "origin": "manually mapped"
+          "dataType": "TIMESTAMP_NTZ"
         },
         {
           "name": "storage_location",
-          "dataType": "VARCHAR",
+          "origin": "manually overridden",
           "present": false,
-          "origin": "manually mapped"
+          "dataType": "VARCHAR"
         },
         {
           "name": "retest_flag",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "BOOLEAN",
           "stagedColumn": "RETEST_FLAG",
-          "snowflakeColumn": "RETEST_FLAG",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "RETEST_FLAG"
         },
         {
           "name": "comments",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "COMMENTS",
-          "snowflakeColumn": "COMMENTS",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "COMMENTS"
         },
         {
           "name": "site_code",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SITE_CODE",
-          "snowflakeColumn": "SITE_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SITE_CODE"
         }
-      ]
+      ],
+      "siteId": "lims_curitiba_amostras",
+      "siteName": "LIMS_CURITIBA_AMOSTRAS",
+      "sourceTable": "LIMS_CURITIBA_AMOSTRAS",
+      "sourceSystem": "lims"
     },
     {
-      "sourceSystem": "lims",
-      "siteId": "buenos_aires",
-      "siteName": "Buenos Aires",
-      "sourceTable": "LAB_MUESTRAS_BA",
-      "dateFormats": {
-        "date_requested": "YYYY-MM-DD HH24:MI:SS",
-        "date_received": "YYYY-MM-DD HH24:MI:SS",
-        "date_started": "YYYY-MM-DD HH24:MI:SS",
-        "date_completed": "YYYY-MM-DD HH24:MI:SS",
-        "approval_date": "YYYY-MM-DD HH24:MI:SS"
-      },
       "fields": [
         {
           "name": "sample_id",
-          "dataType": "TEXT",
-          "stagedColumn": "SAMPLE_ID",
-          "snowflakeColumn": "SAMPLE_ID",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "product_line",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PRODUCT_LINE",
-          "snowflakeColumn": "PRODUCT_LINE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PRODUCT_LINE"
         },
         {
           "name": "material_code",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "MATERIAL_CODE",
-          "snowflakeColumn": "MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "MATERIAL_CODE"
         },
         {
           "name": "batch_lot_number",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "BATCH_LOT_NUMBER",
-          "snowflakeColumn": "BATCH_LOT_NUMBER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "BATCH_LOT_NUMBER"
         },
         {
           "name": "container_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "CONTAINER_ID",
-          "snowflakeColumn": "CONTAINER_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "CONTAINER_ID"
         },
         {
           "name": "test_type",
-          "dataType": "TEXT",
-          "stagedColumn": "TEST_TYPE",
-          "snowflakeColumn": "TEST_TYPE",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "test_method_version",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "TEST_METHOD_VERSION",
-          "snowflakeColumn": "TEST_METHOD_VERSION",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "TEST_METHOD_VERSION"
         },
         {
           "name": "instrument_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "INSTRUMENT_ID",
-          "snowflakeColumn": "INSTRUMENT_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "INSTRUMENT_ID"
         },
         {
           "name": "analyst_id",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "ANALYST_ID",
-          "snowflakeColumn": "ANALYST_ID",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "ANALYST_ID"
         },
         {
           "name": "reviewer_id",
-          "dataType": "TEXT",
-          "stagedColumn": "REVISOR_USUARIO",
-          "snowflakeColumn": "REVISOR_USUARIO",
-          "present": true,
-          "origin": "manually overridden"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "date_requested",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_REQUESTED",
-          "snowflakeColumn": "DATE_REQUESTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_REQUESTED"
         },
         {
           "name": "date_received",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_RECEIVED",
-          "snowflakeColumn": "DATE_RECEIVED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_RECEIVED"
         },
         {
           "name": "date_started",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_STARTED",
-          "snowflakeColumn": "DATE_STARTED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_STARTED"
         },
         {
           "name": "date_completed",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "DATE_COMPLETED",
-          "snowflakeColumn": "DATE_COMPLETED",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DATE_COMPLETED"
         },
         {
           "name": "priority",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PRIORITY",
-          "snowflakeColumn": "PRIORITY",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PRIORITY"
         },
         {
           "name": "submitter",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SUBMITTER",
-          "snowflakeColumn": "SUBMITTER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SUBMITTER"
         },
         {
           "name": "project_reference",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "PROJECT_REFERENCE",
-          "snowflakeColumn": "PROJECT_REFERENCE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "PROJECT_REFERENCE"
         },
         {
           "name": "result_value",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "RESULT_VALUE",
-          "snowflakeColumn": "RESULT_VALUE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "RESULT_VALUE"
         },
         {
           "name": "result_unit",
-          "dataType": "TEXT",
-          "stagedColumn": "RESULT_UNIT",
-          "snowflakeColumn": "RESULT_UNIT",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "spec_lower_limit",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "SPEC_LOWER_LIMIT",
-          "snowflakeColumn": "SPEC_LOWER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SPEC_LOWER_LIMIT"
         },
         {
           "name": "spec_upper_limit",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "SPEC_UPPER_LIMIT",
-          "snowflakeColumn": "SPEC_UPPER_LIMIT",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SPEC_UPPER_LIMIT"
         },
         {
           "name": "sample_status",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SAMPLE_STATUS",
-          "snowflakeColumn": "SAMPLE_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SAMPLE_STATUS"
         },
         {
           "name": "approval_status",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "APPROVAL_STATUS",
-          "snowflakeColumn": "APPROVAL_STATUS",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVAL_STATUS"
         },
         {
           "name": "approval_date",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "APPROVAL_DATE",
-          "snowflakeColumn": "APPROVAL_DATE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "APPROVAL_DATE"
         },
         {
           "name": "storage_location",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "STORAGE_LOCATION",
-          "snowflakeColumn": "STORAGE_LOCATION",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "STORAGE_LOCATION"
         },
         {
           "name": "retest_flag",
-          "dataType": "BOOLEAN",
-          "stagedColumn": "RETEST_FLAG",
-          "snowflakeColumn": "RETEST_FLAG",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "BOOLEAN"
         },
         {
           "name": "comments",
-          "dataType": "VARCHAR",
-          "present": false,
-          "origin": "manually mapped"
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "COMMENTS",
+          "snowflakeColumn": "COMMENTS"
         },
         {
           "name": "site_code",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SITE_CODE",
-          "snowflakeColumn": "SITE_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SITE_CODE"
         }
-      ]
+      ],
+      "siteId": "lims_houston_samples",
+      "siteName": "LIMS_HOUSTON_SAMPLES",
+      "sourceTable": "LIMS_HOUSTON_SAMPLES",
+      "sourceSystem": "lims"
     },
     {
-      "sourceSystem": "raw_material_master",
-      "siteName": "RAW_MATERIAL_MASTER",
-      "sourceTable": "RAW_MATERIAL_MASTER",
       "fields": [
         {
           "name": "CanonicalMaterialName",
-          "dataType": "TEXT",
-          "stagedColumn": "CANONICAL_MATERIAL_NAME",
-          "snowflakeColumn": "CANONICAL_MATERIAL_NAME",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "BusinessLine",
-          "dataType": "TEXT",
-          "stagedColumn": "BUSINESS_LINE",
-          "snowflakeColumn": "BUSINESS_LINE",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "SourceMaterialCode",
-          "dataType": "TEXT",
-          "stagedColumn": "SOURCE_MATERIAL_CODE",
-          "snowflakeColumn": "SOURCE_MATERIAL_CODE",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "LegacyMaterialID",
-          "dataType": "TEXT",
-          "stagedColumn": "LEGACY_MATERIAL_ID",
-          "snowflakeColumn": "LEGACY_MATERIAL_ID",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "CASNumber",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "CASNUMBER",
-          "snowflakeColumn": "CASNUMBER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "CASNUMBER"
         },
         {
           "name": "Supplier",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SUPPLIER",
-          "snowflakeColumn": "SUPPLIER",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "SUPPLIER"
         },
         {
           "name": "SupplierGrade",
-          "dataType": "TEXT",
-          "stagedColumn": "SUPPLIER_GRADE",
-          "snowflakeColumn": "SUPPLIER_GRADE",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "UnitOfMeasure",
-          "dataType": "TEXT",
-          "stagedColumn": "UNIT_OF_MEASURE",
-          "snowflakeColumn": "UNIT_OF_MEASURE",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "Density",
+          "origin": "pre-built",
+          "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "DENSITY",
-          "snowflakeColumn": "DENSITY",
-          "present": true,
-          "origin": "pre-built"
+          "snowflakeColumn": "DENSITY"
         },
         {
           "name": "ViscosityGrade",
-          "dataType": "NUMBER",
-          "stagedColumn": "VISCOSITY_GRADE",
-          "snowflakeColumn": "VISCOSITY_GRADE",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "HazardClassification",
-          "dataType": "TEXT",
-          "stagedColumn": "HAZARD_CLASSIFICATION",
-          "snowflakeColumn": "HAZARD_CLASSIFICATION",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "SafetyDataSheetRef",
-          "dataType": "TEXT",
-          "stagedColumn": "SAFETY_DATA_SHEET_REF",
-          "snowflakeColumn": "SAFETY_DATA_SHEET_REF",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "ShelfLifeMonths",
-          "dataType": "NUMBER",
-          "stagedColumn": "SHELF_LIFE_MONTHS",
-          "snowflakeColumn": "SHELF_LIFE_MONTHS",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "INTEGER"
         },
         {
           "name": "StorageConditions",
-          "dataType": "TEXT",
-          "stagedColumn": "STORAGE_CONDITIONS",
-          "snowflakeColumn": "STORAGE_CONDITIONS",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "VARCHAR"
         },
         {
           "name": "ApprovedForUse",
-          "dataType": "BOOLEAN",
-          "stagedColumn": "APPROVED_FOR_USE",
-          "snowflakeColumn": "APPROVED_FOR_USE",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "BOOLEAN"
         },
         {
           "name": "LastReviewDate",
-          "dataType": "TIMESTAMP_NTZ",
-          "stagedColumn": "LAST_REVIEW_DATE",
-          "snowflakeColumn": "LAST_REVIEW_DATE",
-          "present": true,
-          "origin": "pre-built"
+          "origin": "manually overridden",
+          "present": false,
+          "dataType": "DATE"
         }
-      ]
+      ],
+      "siteName": "RAW_MATERIAL_MASTER",
+      "sourceTable": "RAW_MATERIAL_MASTER",
+      "sourceSystem": "raw_material_master"
     }
-  ]
+  ],
+  "_foundation": {
+    "changeReason": "Bronze configuration was locked."
+  }
 }

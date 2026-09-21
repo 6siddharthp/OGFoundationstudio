@@ -12,7 +12,6 @@ CREATE TABLE bronze."lab_muestras_ba" (
 "test_method_version" text,
 "instrument_id" text,
 "analyst_id" text,
-"reviewer_id" text,
 "date_requested" text,
 "date_received" text,
 "date_started" text,
@@ -34,4 +33,4 @@ CREATE TABLE bronze."lab_muestras_ba" (
             );
 
 -- foundation:stage 2
-COMMENT ON TABLE bronze."lab_muestras_ba" IS 'lims: 27 fields defined, 27 source columns, 26 auto-mapped, 1 manually mapped, 0 newly added.';
+COMMENT ON TABLE bronze."lab_muestras_ba" IS 'lims: 26 fields defined, 26 source columns, 26 auto-mapped, 0 manually mapped, 0 newly added.';

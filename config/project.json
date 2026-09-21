@@ -1,7 +1,10 @@
 {
-  "project": "OGFoundationStudio",
-  "owner": "6siddharthp",
-  "repo": "OGFoundationstudio",
-  "branch": "main",
-  "connectedAt": "2026-09-19T22:41:17.525Z"
+  "projectKey": "oil_gas_downstream_rd",
+  "sourceMode": "snowflake",
+  "platform": {
+    "language": "sql",
+    "dataPlatform": "snowflake",
+    "cloudProvider": "azure",
+    "orchestration": "dbt"
+  }
 }
