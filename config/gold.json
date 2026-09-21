@@ -1,5 +1,5 @@
 {
-  "confirmedAt": "2026-09-20T22:57:10.939Z",
+  "confirmedAt": "2026-09-21T18:48:42.605Z",
   "selectedKpis": [
     "Cross-Lab Data Standardization Rate",
     "Cross-Lab Reproducibility Index",
@@ -383,5 +383,60 @@
       ]
     }
   ],
-  "transformations": []
+  "transformations": [],
+  "kpiDataPolicies": [
+    {
+      "kpiName": "First-Time-Right Rate",
+      "mode": "exclude_sites",
+      "requiredFields": [
+        "spec_lower_limit",
+        "spec_upper_limit"
+      ],
+      "sites": [
+        {
+          "siteId": "curitiba",
+          "siteName": "Curitiba",
+          "fields": [
+            "spec_lower_limit",
+            "spec_upper_limit"
+          ],
+          "reason": "Excluded because spec_lower_limit and spec_upper_limit are not captured at source."
+        }
+      ],
+      "summary": "Excludes Curitiba from this KPI calculation."
+    },
+    {
+      "kpiName": "LIMS Data Completeness",
+      "mode": "count_as_gap",
+      "requiredFields": [
+        "*"
+      ],
+      "sites": [
+        {
+          "siteId": "buenos-aires",
+          "siteName": "Buenos Aires",
+          "fields": [
+            "comments"
+          ],
+          "reason": "Not captured at source; counted as 1 completeness gap."
+        },
+        {
+          "siteId": "curitiba",
+          "siteName": "Curitiba",
+          "fields": [
+            "project_reference",
+            "spec_lower_limit",
+            "spec_upper_limit",
+            "approval_date",
+            "storage_location"
+          ],
+          "reason": "Not captured at source; counted as 5 completeness gaps."
+        }
+      ],
+      "summary": "Buenos Aires, Curitiba source gaps are included in the completeness denominator."
+    }
+  ],
+  "_foundation": {
+    "changeReason": "Gold configuration was locked."
+  }
 }
