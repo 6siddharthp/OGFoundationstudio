@@ -1,5 +1,5 @@
 {
-  "lockedAt": "2026-09-21T21:32:46.389Z",
+  "lockedAt": "2026-09-21T21:37:07.871Z",
   "config": {
     "tables": [
       {
@@ -378,7 +378,17 @@
             "sourceCaptured": true,
             "description": "Reconciled from PRODUCT_LINE",
             "pii": false,
-            "rules": []
+            "rules": [
+              {
+                "id": "r_t3ljnslh",
+                "type": "case_normalize",
+                "pillar": "cleanse",
+                "params": {
+                  "mode": "upper"
+                },
+                "enabled": true
+              }
+            ]
           },
           {
             "bronzeColumn": "material_code",
@@ -1611,7 +1621,7 @@
   "identity": {
     "entities": [
       {
-        "id": "z50krz5t",
+        "id": "y4o8iwp3",
         "name": "lims_buenos_aires",
         "description": "Standardized lims buenos-aires",
         "contributingTables": [
@@ -1636,7 +1646,7 @@
         "survivorship": []
       },
       {
-        "id": "sk0thxa3",
+        "id": "0e8hysro",
         "name": "lims_annandale",
         "description": "Standardized lims annandale",
         "contributingTables": [
@@ -1661,7 +1671,7 @@
         "survivorship": []
       },
       {
-        "id": "p76ep90a",
+        "id": "97m2whf8",
         "name": "lims_curitiba",
         "description": "Standardized lims curitiba",
         "contributingTables": [
@@ -1686,7 +1696,7 @@
         "survivorship": []
       },
       {
-        "id": "ohqkohvi",
+        "id": "15yu2gq4",
         "name": "lims_houston",
         "description": "Standardized lims houston",
         "contributingTables": [
@@ -1711,7 +1721,7 @@
         "survivorship": []
       },
       {
-        "id": "7sl202fk",
+        "id": "592mx3c4",
         "name": "raw_material_master",
         "description": "Standardized raw material master",
         "contributingTables": [
