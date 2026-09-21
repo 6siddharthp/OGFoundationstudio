@@ -1,5 +1,5 @@
 {
-  "lockedAt": "2026-09-21T18:53:37.688Z",
+  "lockedAt": "2026-09-21T19:09:18.727Z",
   "config": {
     "tables": [
       {
@@ -118,7 +118,7 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from DATE_REQUESTED",
+            "description": "Reconciled from REVISOR_USUARIO",
             "pii": false,
             "rules": []
           },
@@ -128,7 +128,7 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from DATE_RECEIVED",
+            "description": "Reconciled from DATE_REQUESTED",
             "pii": false,
             "rules": []
           },
@@ -138,7 +138,7 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from DATE_STARTED",
+            "description": "Reconciled from DATE_RECEIVED",
             "pii": false,
             "rules": []
           },
@@ -148,7 +148,7 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from DATE_COMPLETED",
+            "description": "Reconciled from DATE_STARTED",
             "pii": false,
             "rules": []
           },
@@ -158,7 +158,7 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from PRIORITY",
+            "description": "Reconciled from DATE_COMPLETED",
             "pii": false,
             "rules": []
           },
@@ -168,7 +168,7 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from SUBMITTER",
+            "description": "Reconciled from PRIORITY",
             "pii": false,
             "rules": []
           },
@@ -178,13 +178,23 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from PROJECT_REFERENCE",
+            "description": "Reconciled from SUBMITTER",
             "pii": false,
             "rules": []
           },
           {
             "bronzeColumn": "project_reference",
             "name": "project_reference",
+            "dataType": "VARCHAR(255)",
+            "nullable": false,
+            "sourceCaptured": true,
+            "description": "Reconciled from PROJECT_REFERENCE",
+            "pii": false,
+            "rules": []
+          },
+          {
+            "bronzeColumn": "result_value",
+            "name": "result_value",
             "dataType": "NUMBER",
             "nullable": false,
             "sourceCaptured": true,
@@ -193,22 +203,12 @@
             "rules": []
           },
           {
-            "bronzeColumn": "result_value",
-            "name": "result_value",
+            "bronzeColumn": "result_unit",
+            "name": "result_unit",
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
             "description": "Reconciled from RESULT_UNIT",
-            "pii": false,
-            "rules": []
-          },
-          {
-            "bronzeColumn": "result_unit",
-            "name": "result_unit",
-            "dataType": "NUMBER",
-            "nullable": false,
-            "sourceCaptured": true,
-            "description": "Reconciled from SPEC_LOWER_LIMIT",
             "pii": false,
             "rules": [
               {
@@ -231,17 +231,17 @@
             "dataType": "NUMBER",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from SPEC_UPPER_LIMIT",
+            "description": "Reconciled from SPEC_LOWER_LIMIT",
             "pii": false,
             "rules": []
           },
           {
             "bronzeColumn": "spec_upper_limit",
             "name": "spec_upper_limit",
-            "dataType": "VARCHAR(255)",
+            "dataType": "NUMBER",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from SAMPLE_STATUS",
+            "description": "Reconciled from SPEC_UPPER_LIMIT",
             "pii": false,
             "rules": []
           },
@@ -251,7 +251,7 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from APPROVAL_STATUS",
+            "description": "Reconciled from SAMPLE_STATUS",
             "pii": false,
             "rules": [
               {
@@ -274,7 +274,7 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from APPROVAL_DATE",
+            "description": "Reconciled from APPROVAL_STATUS",
             "pii": false,
             "rules": []
           },
@@ -284,27 +284,27 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from STORAGE_LOCATION",
+            "description": "Reconciled from APPROVAL_DATE",
             "pii": false,
             "rules": []
           },
           {
             "bronzeColumn": "storage_location",
             "name": "storage_location",
-            "dataType": "BOOLEAN",
+            "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from RETEST_FLAG",
+            "description": "Reconciled from STORAGE_LOCATION",
             "pii": false,
             "rules": []
           },
           {
             "bronzeColumn": "retest_flag",
             "name": "retest_flag",
-            "dataType": "VARCHAR(255)",
+            "dataType": "BOOLEAN",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from SITE_CODE",
+            "description": "Reconciled from RETEST_FLAG",
             "pii": false,
             "rules": []
           },
@@ -326,7 +326,7 @@
             "dataType": "VARCHAR(255)",
             "nullable": false,
             "sourceCaptured": true,
-            "description": "Reconciled from REVISOR_USUARIO",
+            "description": "Reconciled from SITE_CODE",
             "pii": false,
             "rules": []
           }
@@ -1611,7 +1611,7 @@
   "identity": {
     "entities": [
       {
-        "id": "uw97747a",
+        "id": "cbauv2lz",
         "name": "lims_buenos_aires",
         "description": "Standardized lims buenos-aires",
         "contributingTables": [
@@ -1636,7 +1636,7 @@
         "survivorship": []
       },
       {
-        "id": "bbb8smj6",
+        "id": "svzed3fd",
         "name": "lims_annandale",
         "description": "Standardized lims annandale",
         "contributingTables": [
@@ -1661,7 +1661,7 @@
         "survivorship": []
       },
       {
-        "id": "eubrs36p",
+        "id": "3d1mqz9i",
         "name": "lims_curitiba",
         "description": "Standardized lims curitiba",
         "contributingTables": [
@@ -1686,7 +1686,7 @@
         "survivorship": []
       },
       {
-        "id": "xjbaypuy",
+        "id": "c62fsp5z",
         "name": "lims_houston",
         "description": "Standardized lims houston",
         "contributingTables": [
@@ -1711,7 +1711,7 @@
         "survivorship": []
       },
       {
-        "id": "ojzzp9vv",
+        "id": "fu0ht2u4",
         "name": "raw_material_master",
         "description": "Standardized raw material master",
         "contributingTables": [
