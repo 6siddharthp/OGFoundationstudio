@@ -1,2 +1,0 @@
--- Foundation Studio · generated orchestration
--- Single schedule mode has no independent downstream dispatcher.
