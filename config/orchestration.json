@@ -2,45 +2,45 @@
   "target": "snowflake",
   "mode": "single",
   "singleSchedule": {
+    "cron": "0 6 * * *",
     "kind": "daily",
     "time": "06:00",
-    "cron": "0 6 * * *",
     "timeZone": "America/Chicago"
   },
-  "initialState": "paused",
+  "initialState": "active",
   "retries": 1,
   "cadenceGroups": [
     {
       "id": "lims-1",
       "name": "Lab results",
+      "trigger": "arrival",
+      "schedule": {
+        "cron": "0 6 * * *",
+        "kind": "daily",
+        "time": "06:00",
+        "timeZone": "America/Chicago"
+      },
       "sourceTables": [
         "LAB_MUESTRAS_BA",
         "LIMS_ANNANDALE_SAMPLES",
         "LIMS_CURITIBA_AMOSTRAS",
         "LIMS_HOUSTON_SAMPLES"
       ],
-      "trigger": "arrival",
-      "schedule": {
-        "kind": "daily",
-        "time": "06:00",
-        "cron": "0 6 * * *",
-        "timeZone": "America/Chicago"
-      },
       "freshnessHours": 4
     },
     {
       "id": "raw-material-master-2",
       "name": "Reference data",
+      "trigger": "schedule",
+      "schedule": {
+        "cron": "0 2 * * *",
+        "kind": "daily",
+        "time": "02:00",
+        "timeZone": "America/Chicago"
+      },
       "sourceTables": [
         "RAW_MATERIAL_MASTER"
       ],
-      "trigger": "schedule",
-      "schedule": {
-        "kind": "daily",
-        "time": "02:00",
-        "cron": "0 2 * * *",
-        "timeZone": "America/Chicago"
-      },
       "freshnessHours": 24
     }
   ],
@@ -49,7 +49,7 @@
     "windowHours": 24
   },
   "exceptions": {},
-  "lockedAt": "2026-09-21T22:54:40.052Z",
+  "lockedAt": "2026-09-22T12:25:29.933Z",
   "graph": {
     "nodes": [
       {
