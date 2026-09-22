@@ -1,4 +1,6 @@
 -- Foundation Studio · Snowflake execution SQL
+-- foundation overwrite validation: after
+
 -- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.BRONZE.lab_muestras_ba AS
 SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
@@ -31,4 +33,3 @@ SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS source_row_number,
        SITE_CODE::VARCHAR AS site_code,
        CURRENT_TIMESTAMP() AS loaded_at
 FROM OGFS_DEMO.SOURCE.LAB_MUESTRAS_BA;
--- foundation overwrite validation: after
