@@ -32,11 +32,24 @@ ranked_targets AS (
     OR ((b.normalized_cas IS NULL OR t.normalized_cas IS NULL)
       AND JAROWINKLER_SIMILARITY(b.normalized_name,t.normalized_name) >= 85)
 ),
+current_overrides AS (
+  SELECT *
+  FROM OGFS_DEMO.SILVER.golden_record_overrides
+  QUALIFY ROW_NUMBER() OVER (PARTITION BY item_key ORDER BY decided_at DESC,action_id DESC)=1
+),
 resolved AS (
-  SELECT b.*,r.target_name,r.match_rule
+  SELECT b.*,r.target_name,r.match_rule,o.action override_action,o.golden_key override_golden_key
   FROM base b LEFT JOIN ranked_targets r ON r.source_material_code=b.source_material_code AND r.target_rank=1
+  LEFT JOIN current_overrides o ON LOWER(o.source_material_code)=LOWER(b.source_material_code)
 )
 SELECT source_material_code,canonical_material_name,cas_number,
-  'MAT_'||MD5(COALESCE(target_name,normalized_name)) material_key,
-  COALESCE(match_rule,'unmatched_source_record') match_rule,85 similarity_threshold
+  COALESCE(
+    IFF(override_action IN ('attach','create'),override_golden_key,NULL),
+    IFF(override_action IN ('reject','undo'),'MAT_'||MD5(normalized_name||':'||source_material_code),NULL),
+    'MAT_'||MD5(COALESCE(target_name,normalized_name))
+  ) material_key,
+  CASE WHEN override_action IN ('attach','create') THEN 'golden_record_override'
+       WHEN override_action IN ('reject','undo') THEN 'steward_separate'
+       ELSE COALESCE(match_rule,'unmatched_source_record') END match_rule,
+  85 similarity_threshold
 FROM resolved;

@@ -3,7 +3,7 @@
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lims_annandale AS
 SELECT row_data.source_row_number,
   row_data.sample_id AS sample_id,
-  UPPER(row_data.product_line) AS product_line,
+  row_data.product_line AS product_line,
   row_data.material_code AS material_code,
   row_data.batch_lot_number AS batch_lot_number,
   row_data.container_id AS container_id,
