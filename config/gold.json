@@ -1,5 +1,5 @@
 {
-  "confirmedAt": "2026-09-21T22:54:20.088Z",
+  "confirmedAt": "2026-09-22T12:24:15.855Z",
   "selectedKpis": [
     "Cross-Lab Data Standardization Rate",
     "Cross-Lab Reproducibility Index",
@@ -437,6 +437,6 @@
     }
   ],
   "_foundation": {
-    "changeReason": "Gold configuration was locked."
+    "changeReason": "Gold configuration was saved."
   }
 }
