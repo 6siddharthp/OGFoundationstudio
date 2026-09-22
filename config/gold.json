@@ -1,5 +1,5 @@
 {
-  "confirmedAt": "2026-09-22T12:24:53.671Z",
+  "confirmedAt": "2026-09-22T20:41:34.618Z",
   "selectedKpis": [
     "Cross-Lab Data Standardization Rate",
     "Cross-Lab Reproducibility Index",
@@ -23,12 +23,28 @@
       "name": "Dim_Material",
       "description": "Conformed entity Material. Grain: one row per canonical material.",
       "entityRef": "MATERIAL",
+      "kind": "dimension",
+      "grain": "one row per canonical material",
+      "sourceType": "conformed",
+      "recommendationName": "Dim_Material",
+      "recommendationReason": "Recommended because 16 selected KPI requirements need this dimension.",
+      "recommendedGrain": "one row per canonical material",
+      "scdType": "type2",
+      "recommendedScdType": "type2",
+      "scdReason": "Grade, supplier and specification change over time, so results must use the material definition in force when measured.",
       "columns": [
+        {
+          "name": "material_sk",
+          "dataType": "NUMBER",
+          "description": "Gold model attribute.",
+          "isPrimaryKey": true,
+          "isForeignKey": false
+        },
         {
           "name": "material_key",
           "dataType": "VARCHAR",
           "description": "Gold model attribute.",
-          "isPrimaryKey": true,
+          "isPrimaryKey": false,
           "isForeignKey": false
         },
         {
@@ -72,6 +88,27 @@
           "description": "Gold model attribute.",
           "isPrimaryKey": false,
           "isForeignKey": false
+        },
+        {
+          "name": "valid_from",
+          "dataType": "TIMESTAMP_TZ",
+          "description": "Gold model attribute.",
+          "isPrimaryKey": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "valid_to",
+          "dataType": "TIMESTAMP_TZ",
+          "description": "Gold model attribute.",
+          "isPrimaryKey": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "is_current",
+          "dataType": "BOOLEAN",
+          "description": "Gold model attribute.",
+          "isPrimaryKey": false,
+          "isForeignKey": false
         }
       ]
     },
@@ -79,12 +116,28 @@
       "name": "Dim_Test_Method",
       "description": "Conformed entity Test Method. Grain: one row per governed test standard.",
       "entityRef": "TEST_METHOD",
+      "kind": "dimension",
+      "grain": "one row per governed test standard",
+      "sourceType": "conformed",
+      "recommendationName": "Dim_Test_Method",
+      "recommendationReason": "Recommended because 16 selected KPI requirements need this dimension.",
+      "recommendedGrain": "one row per governed test standard",
+      "scdType": "type2",
+      "recommendedScdType": "type2",
+      "scdReason": "Method revisions change acceptance limits, so historic results must use the method revision in force at the time.",
       "columns": [
+        {
+          "name": "test_method_sk",
+          "dataType": "NUMBER",
+          "description": "Gold model attribute.",
+          "isPrimaryKey": true,
+          "isForeignKey": false
+        },
         {
           "name": "test_method_key",
           "dataType": "VARCHAR",
           "description": "Gold model attribute.",
-          "isPrimaryKey": true,
+          "isPrimaryKey": false,
           "isForeignKey": false
         },
         {
@@ -114,12 +167,42 @@
           "description": "Gold model attribute.",
           "isPrimaryKey": false,
           "isForeignKey": false
+        },
+        {
+          "name": "valid_from",
+          "dataType": "TIMESTAMP_TZ",
+          "description": "Gold model attribute.",
+          "isPrimaryKey": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "valid_to",
+          "dataType": "TIMESTAMP_TZ",
+          "description": "Gold model attribute.",
+          "isPrimaryKey": false,
+          "isForeignKey": false
+        },
+        {
+          "name": "is_current",
+          "dataType": "BOOLEAN",
+          "description": "Gold model attribute.",
+          "isPrimaryKey": false,
+          "isForeignKey": false
         }
       ]
     },
     {
       "name": "Dim_Lab_Site",
       "description": "Derived from site codes across the governed LIMS sources. Grain: one row per governed laboratory site.",
+      "kind": "dimension",
+      "grain": "one row per governed laboratory site",
+      "sourceType": "derived",
+      "recommendationName": "Dim_Lab_Site",
+      "recommendationReason": "Recommended because 16 selected KPI requirements need this dimension.",
+      "recommendedGrain": "one row per governed laboratory site",
+      "scdType": "type1",
+      "recommendedScdType": "type1",
+      "scdReason": "Site renames and supervisor changes carry no analytical value.",
       "columns": [
         {
           "name": "site_key",
@@ -147,6 +230,15 @@
     {
       "name": "Dim_Business_Line",
       "description": "Derived from governed business-line values. Grain: one row per governed business line.",
+      "kind": "dimension",
+      "grain": "one row per governed business line",
+      "sourceType": "derived",
+      "recommendationName": "Dim_Business_Line",
+      "recommendationReason": "Recommended because 8 selected KPI requirements need this dimension.",
+      "recommendedGrain": "one row per governed business line",
+      "scdType": "type1",
+      "recommendedScdType": "type1",
+      "scdReason": "Overwrite by default; consider Type 2 if materials move between business lines and as-was reporting is required.",
       "columns": [
         {
           "name": "business_line_key",
@@ -167,6 +259,15 @@
     {
       "name": "Dim_Date",
       "description": "Generated calendar dimension. Grain: one row per calendar date.",
+      "kind": "dimension",
+      "grain": "one row per calendar date",
+      "sourceType": "generated",
+      "recommendationName": "Dim_Date",
+      "recommendationReason": "Recommended because 8 selected KPI requirements need this dimension.",
+      "recommendedGrain": "one row per calendar date",
+      "scdType": "na",
+      "recommendedScdType": "na",
+      "scdReason": "The conformed calendar is static, so slowly changing dimension handling does not apply.",
       "columns": [
         {
           "name": "date_key",
@@ -230,6 +331,12 @@
       "name": "Fact_Lab_Sample",
       "description": "Conformed entity Lab Sample. Grain: one row per conformed sample.",
       "entityRef": "LAB_SAMPLE",
+      "kind": "fact",
+      "grain": "one row per conformed sample",
+      "sourceType": "conformed",
+      "recommendationName": "Fact_Lab_Sample",
+      "recommendationReason": "Recommended because 16 selected KPI requirements need this fact.",
+      "recommendedGrain": "one row per conformed sample",
       "columns": [
         {
           "name": "lab_sample_key",
@@ -239,20 +346,20 @@
           "isForeignKey": false
         },
         {
-          "name": "material_key",
-          "dataType": "VARCHAR",
-          "description": "Foreign key to Dim_Material.material_key.",
+          "name": "material_sk",
+          "dataType": "NUMBER",
+          "description": "Foreign key to Dim_Material.material_sk.",
           "isPrimaryKey": false,
           "isForeignKey": true,
-          "references": "Dim_Material.material_key"
+          "references": "Dim_Material.material_sk"
         },
         {
-          "name": "test_method_key",
-          "dataType": "VARCHAR",
-          "description": "Foreign key to Dim_Test_Method.test_method_key.",
+          "name": "test_method_sk",
+          "dataType": "NUMBER",
+          "description": "Foreign key to Dim_Test_Method.test_method_sk.",
           "isPrimaryKey": false,
           "isForeignKey": true,
-          "references": "Dim_Test_Method.test_method_key"
+          "references": "Dim_Test_Method.test_method_sk"
         },
         {
           "name": "site_key",
@@ -305,6 +412,12 @@
       "name": "Fact_Test_Result",
       "description": "Conformed entity Test Result. Grain: one row per result.",
       "entityRef": "TEST_RESULT",
+      "kind": "fact",
+      "grain": "one row per result",
+      "sourceType": "conformed",
+      "recommendationName": "Fact_Test_Result",
+      "recommendationReason": "Recommended because 16 selected KPI requirements need this fact.",
+      "recommendedGrain": "one row per result",
       "columns": [
         {
           "name": "test_result_key",
@@ -322,20 +435,20 @@
           "references": "Fact_Lab_Sample.lab_sample_key"
         },
         {
-          "name": "material_key",
-          "dataType": "VARCHAR",
-          "description": "Foreign key to Dim_Material.material_key.",
+          "name": "material_sk",
+          "dataType": "NUMBER",
+          "description": "Foreign key to Dim_Material.material_sk.",
           "isPrimaryKey": false,
           "isForeignKey": true,
-          "references": "Dim_Material.material_key"
+          "references": "Dim_Material.material_sk"
         },
         {
-          "name": "test_method_key",
-          "dataType": "VARCHAR",
-          "description": "Foreign key to Dim_Test_Method.test_method_key.",
+          "name": "test_method_sk",
+          "dataType": "NUMBER",
+          "description": "Foreign key to Dim_Test_Method.test_method_sk.",
           "isPrimaryKey": false,
           "isForeignKey": true,
-          "references": "Dim_Test_Method.test_method_key"
+          "references": "Dim_Test_Method.test_method_sk"
         },
         {
           "name": "date_key",
@@ -381,6 +494,26 @@
           "isForeignKey": false
         }
       ]
+    },
+    {
+      "name": "Dim_New",
+      "description": "User-defined Gold table. Grain: one row per new.",
+      "kind": "dimension",
+      "grain": "one row per new",
+      "sourceType": "generated",
+      "recommendationReason": "Added by the user to extend the AI-generated target model.",
+      "scdType": "type1",
+      "recommendedScdType": "type1",
+      "scdReason": "Its descriptive changes are expected to be corrections or current-state updates without analytical history.",
+      "columns": [
+        {
+          "name": "new_key",
+          "dataType": "VARCHAR",
+          "description": "Gold model attribute.",
+          "isPrimaryKey": true,
+          "isForeignKey": false
+        }
+      ]
     }
   ],
   "transformations": [],
@@ -413,14 +546,6 @@
       ],
       "sites": [
         {
-          "siteId": "buenos-aires",
-          "siteName": "Buenos Aires",
-          "fields": [
-            "comments"
-          ],
-          "reason": "Not captured at source; counted as 1 completeness gap."
-        },
-        {
           "siteId": "curitiba",
           "siteName": "Curitiba",
           "fields": [
@@ -431,12 +556,17 @@
             "storage_location"
           ],
           "reason": "Not captured at source; counted as 5 completeness gaps."
+        },
+        {
+          "siteId": "buenos_aires",
+          "siteName": "Buenos Aires",
+          "fields": [
+            "comments"
+          ],
+          "reason": "Not captured at source; counted as 1 completeness gap."
         }
       ],
-      "summary": "Buenos Aires, Curitiba source gaps are included in the completeness denominator."
+      "summary": "Curitiba, Buenos Aires source gaps are included in the completeness denominator."
     }
-  ],
-  "_foundation": {
-    "changeReason": "Gold configuration was saved."
-  }
+  ]
 }
