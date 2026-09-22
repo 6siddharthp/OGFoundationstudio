@@ -49,4 +49,4 @@ SELECT 'SMP_' || MD5('houston:' || s.source_row_number) lab_sample_key,
  LEFT JOIN OGFS_DEMO.SILVER.conformed_test_method tm
    ON REGEXP_REPLACE(UPPER(TRIM(tm.governed_standard_reference)), '[^A-Z0-9]', '') =
        REGEXP_REPLACE(UPPER(TRIM(s.test_type)), '[^A-Z0-9]', '');
--- foundation overwrite validation: before
+-- foundation overwrite validation: after
