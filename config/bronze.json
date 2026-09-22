@@ -1,251 +1,5 @@
 {
-  "sourceMode": "snowflake",
-  "reconciledAt": "2026-09-21T23:15:36.642Z",
-  "reconciledBy": "Foundation E2E",
-  "lockedAt": "2026-09-21T23:15:38.457Z",
-  "lockedBy": "Foundation E2E",
   "sources": [
-    {
-      "fields": [
-        {
-          "name": "sample_id",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "SAMPLE_ID",
-          "snowflakeColumn": "SAMPLE_ID"
-        },
-        {
-          "name": "product_line",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "PRODUCT_LINE",
-          "snowflakeColumn": "PRODUCT_LINE"
-        },
-        {
-          "name": "material_code",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "MATERIAL_CODE",
-          "snowflakeColumn": "MATERIAL_CODE"
-        },
-        {
-          "name": "batch_lot_number",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "BATCH_LOT_NUMBER",
-          "snowflakeColumn": "BATCH_LOT_NUMBER"
-        },
-        {
-          "name": "container_id",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "CONTAINER_ID",
-          "snowflakeColumn": "CONTAINER_ID"
-        },
-        {
-          "name": "test_type",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "TEST_TYPE",
-          "snowflakeColumn": "TEST_TYPE"
-        },
-        {
-          "name": "test_method_version",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "TEST_METHOD_VERSION",
-          "snowflakeColumn": "TEST_METHOD_VERSION"
-        },
-        {
-          "name": "instrument_id",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "INSTRUMENT_ID",
-          "snowflakeColumn": "INSTRUMENT_ID"
-        },
-        {
-          "name": "analyst_id",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "ANALYST_ID",
-          "snowflakeColumn": "ANALYST_ID"
-        },
-        {
-          "name": "reviewer_id",
-          "origin": "manually overridden",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "REVISOR_USUARIO",
-          "snowflakeColumn": "REVISOR_USUARIO"
-        },
-        {
-          "name": "date_requested",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "inputFormat": "YYYY-MM-DD HH24:MI:SS",
-          "stagedColumn": "DATE_REQUESTED",
-          "snowflakeColumn": "DATE_REQUESTED"
-        },
-        {
-          "name": "date_received",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "inputFormat": "YYYY-MM-DD HH24:MI:SS",
-          "stagedColumn": "DATE_RECEIVED",
-          "snowflakeColumn": "DATE_RECEIVED"
-        },
-        {
-          "name": "date_started",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "inputFormat": "YYYY-MM-DD HH24:MI:SS",
-          "stagedColumn": "DATE_STARTED",
-          "snowflakeColumn": "DATE_STARTED"
-        },
-        {
-          "name": "date_completed",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "inputFormat": "YYYY-MM-DD HH24:MI:SS",
-          "stagedColumn": "DATE_COMPLETED",
-          "snowflakeColumn": "DATE_COMPLETED"
-        },
-        {
-          "name": "priority",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "PRIORITY",
-          "snowflakeColumn": "PRIORITY"
-        },
-        {
-          "name": "submitter",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "SUBMITTER",
-          "snowflakeColumn": "SUBMITTER"
-        },
-        {
-          "name": "project_reference",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "PROJECT_REFERENCE",
-          "snowflakeColumn": "PROJECT_REFERENCE"
-        },
-        {
-          "name": "result_value",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "NUMBER",
-          "stagedColumn": "RESULT_VALUE",
-          "snowflakeColumn": "RESULT_VALUE"
-        },
-        {
-          "name": "result_unit",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "RESULT_UNIT",
-          "snowflakeColumn": "RESULT_UNIT"
-        },
-        {
-          "name": "spec_lower_limit",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "NUMBER",
-          "stagedColumn": "SPEC_LOWER_LIMIT",
-          "snowflakeColumn": "SPEC_LOWER_LIMIT"
-        },
-        {
-          "name": "spec_upper_limit",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "NUMBER",
-          "stagedColumn": "SPEC_UPPER_LIMIT",
-          "snowflakeColumn": "SPEC_UPPER_LIMIT"
-        },
-        {
-          "name": "sample_status",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "SAMPLE_STATUS",
-          "snowflakeColumn": "SAMPLE_STATUS"
-        },
-        {
-          "name": "approval_status",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "APPROVAL_STATUS",
-          "snowflakeColumn": "APPROVAL_STATUS"
-        },
-        {
-          "name": "approval_date",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "APPROVAL_DATE",
-          "snowflakeColumn": "APPROVAL_DATE"
-        },
-        {
-          "name": "storage_location",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "STORAGE_LOCATION",
-          "snowflakeColumn": "STORAGE_LOCATION"
-        },
-        {
-          "name": "retest_flag",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "BOOLEAN",
-          "stagedColumn": "RETEST_FLAG",
-          "snowflakeColumn": "RETEST_FLAG"
-        },
-        {
-          "name": "comments",
-          "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
-        },
-        {
-          "name": "site_code",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "SITE_CODE",
-          "snowflakeColumn": "SITE_CODE"
-        }
-      ],
-      "siteId": "buenos-aires",
-      "siteName": "Buenos Aires",
-      "dateFormats": {
-        "date_started": "YYYY-MM-DD HH24:MI:SS",
-        "approval_date": "YYYY-MM-DD HH24:MI:SS",
-        "date_received": "YYYY-MM-DD HH24:MI:SS",
-        "date_completed": "YYYY-MM-DD HH24:MI:SS",
-        "date_requested": "YYYY-MM-DD HH24:MI:SS"
-      },
-      "sourceTable": "LAB_MUESTRAS_BA",
-      "sourceSystem": "lims"
-    },
     {
       "fields": [
         {
@@ -333,7 +87,6 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
-          "inputFormat": "MM/DD/YYYY",
           "stagedColumn": "DATE_REQUESTED",
           "snowflakeColumn": "DATE_REQUESTED"
         },
@@ -342,7 +95,6 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
-          "inputFormat": "MM/DD/YYYY",
           "stagedColumn": "DATE_RECEIVED",
           "snowflakeColumn": "DATE_RECEIVED"
         },
@@ -351,7 +103,6 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
-          "inputFormat": "MM/DD/YYYY",
           "stagedColumn": "DATE_STARTED",
           "snowflakeColumn": "DATE_STARTED"
         },
@@ -360,7 +111,6 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
-          "inputFormat": "MM/DD/YYYY",
           "stagedColumn": "DATE_COMPLETED",
           "snowflakeColumn": "DATE_COMPLETED"
         },
@@ -496,239 +246,6 @@
           "origin": "manually overridden",
           "present": true,
           "dataType": "TEXT",
-          "stagedColumn": "AMOSTRA_ID",
-          "snowflakeColumn": "AMOSTRA_ID"
-        },
-        {
-          "name": "product_line",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "PRODUCT_LINE",
-          "snowflakeColumn": "PRODUCT_LINE"
-        },
-        {
-          "name": "material_code",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "MATERIAL_CODE",
-          "snowflakeColumn": "MATERIAL_CODE"
-        },
-        {
-          "name": "batch_lot_number",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "BATCH_LOT_NUMBER",
-          "snowflakeColumn": "BATCH_LOT_NUMBER"
-        },
-        {
-          "name": "container_id",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "CONTAINER_ID",
-          "snowflakeColumn": "CONTAINER_ID"
-        },
-        {
-          "name": "test_type",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "TEST_TYPE",
-          "snowflakeColumn": "TEST_TYPE"
-        },
-        {
-          "name": "test_method_version",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "TEST_METHOD_VERSION",
-          "snowflakeColumn": "TEST_METHOD_VERSION"
-        },
-        {
-          "name": "instrument_id",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "INSTRUMENT_ID",
-          "snowflakeColumn": "INSTRUMENT_ID"
-        },
-        {
-          "name": "analyst_id",
-          "origin": "manually overridden",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "TECNICO_ID",
-          "snowflakeColumn": "TECNICO_ID"
-        },
-        {
-          "name": "reviewer_id",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "REVIEWER_ID",
-          "snowflakeColumn": "REVIEWER_ID"
-        },
-        {
-          "name": "date_requested",
-          "origin": "manually overridden",
-          "present": true,
-          "dataType": "TEXT",
-          "inputFormat": "DD/MM/YYYY",
-          "stagedColumn": "DATA_SOLICITADA",
-          "snowflakeColumn": "DATA_SOLICITADA"
-        },
-        {
-          "name": "date_received",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "inputFormat": "DD/MM/YYYY",
-          "stagedColumn": "DATE_RECEIVED",
-          "snowflakeColumn": "DATE_RECEIVED"
-        },
-        {
-          "name": "date_started",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "inputFormat": "DD/MM/YYYY",
-          "stagedColumn": "DATE_STARTED",
-          "snowflakeColumn": "DATE_STARTED"
-        },
-        {
-          "name": "date_completed",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "inputFormat": "DD/MM/YYYY",
-          "stagedColumn": "DATE_COMPLETED",
-          "snowflakeColumn": "DATE_COMPLETED"
-        },
-        {
-          "name": "priority",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "PRIORITY",
-          "snowflakeColumn": "PRIORITY"
-        },
-        {
-          "name": "submitter",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "SUBMITTER",
-          "snowflakeColumn": "SUBMITTER"
-        },
-        {
-          "name": "project_reference",
-          "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
-        },
-        {
-          "name": "result_value",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "NUMBER",
-          "stagedColumn": "RESULT_VALUE",
-          "snowflakeColumn": "RESULT_VALUE"
-        },
-        {
-          "name": "result_unit",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "RESULT_UNIT",
-          "snowflakeColumn": "RESULT_UNIT"
-        },
-        {
-          "name": "spec_lower_limit",
-          "origin": "manually overridden",
-          "present": false,
-          "dataType": "NUMBER"
-        },
-        {
-          "name": "spec_upper_limit",
-          "origin": "manually overridden",
-          "present": false,
-          "dataType": "NUMBER"
-        },
-        {
-          "name": "sample_status",
-          "origin": "manually overridden",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "STATUS_AMOSTRA",
-          "snowflakeColumn": "STATUS_AMOSTRA"
-        },
-        {
-          "name": "approval_status",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "APPROVAL_STATUS",
-          "snowflakeColumn": "APPROVAL_STATUS"
-        },
-        {
-          "name": "approval_date",
-          "origin": "manually overridden",
-          "present": false,
-          "dataType": "TIMESTAMP_NTZ"
-        },
-        {
-          "name": "storage_location",
-          "origin": "manually overridden",
-          "present": false,
-          "dataType": "VARCHAR"
-        },
-        {
-          "name": "retest_flag",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "BOOLEAN",
-          "stagedColumn": "RETEST_FLAG",
-          "snowflakeColumn": "RETEST_FLAG"
-        },
-        {
-          "name": "comments",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "COMMENTS",
-          "snowflakeColumn": "COMMENTS"
-        },
-        {
-          "name": "site_code",
-          "origin": "pre-built",
-          "present": true,
-          "dataType": "TEXT",
-          "stagedColumn": "SITE_CODE",
-          "snowflakeColumn": "SITE_CODE"
-        }
-      ],
-      "siteId": "curitiba",
-      "siteName": "Curitiba",
-      "dateFormats": {
-        "date_started": "DD/MM/YYYY",
-        "approval_date": "DD/MM/YYYY",
-        "date_received": "DD/MM/YYYY",
-        "date_completed": "DD/MM/YYYY",
-        "date_requested": "DD/MM/YYYY"
-      },
-      "sourceTable": "LIMS_CURITIBA_AMOSTRAS",
-      "sourceSystem": "lims"
-    },
-    {
-      "fields": [
-        {
-          "name": "sample_id",
-          "origin": "manually overridden",
-          "present": true,
-          "dataType": "TEXT",
           "stagedColumn": "SAMPLE_NUMBER",
           "snowflakeColumn": "SAMPLE_NUMBER"
         },
@@ -809,7 +326,6 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
-          "inputFormat": "YYYY-MM-DD",
           "stagedColumn": "DATE_REQUESTED",
           "snowflakeColumn": "DATE_REQUESTED"
         },
@@ -818,7 +334,6 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
-          "inputFormat": "YYYY-MM-DD",
           "stagedColumn": "DATE_RECEIVED",
           "snowflakeColumn": "DATE_RECEIVED"
         },
@@ -827,7 +342,6 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
-          "inputFormat": "YYYY-MM-DD",
           "stagedColumn": "DATE_STARTED",
           "snowflakeColumn": "DATE_STARTED"
         },
@@ -836,7 +350,6 @@
           "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
-          "inputFormat": "YYYY-MM-DD",
           "stagedColumn": "DATE_COMPLETED",
           "snowflakeColumn": "DATE_COMPLETED"
         },
@@ -968,8 +481,474 @@
     {
       "fields": [
         {
-          "name": "CanonicalMaterialName",
+          "name": "sample_id",
           "origin": "manually overridden",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "AMOSTRA_ID",
+          "snowflakeColumn": "AMOSTRA_ID"
+        },
+        {
+          "name": "product_line",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "PRODUCT_LINE",
+          "snowflakeColumn": "PRODUCT_LINE"
+        },
+        {
+          "name": "material_code",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "MATERIAL_CODE",
+          "snowflakeColumn": "MATERIAL_CODE"
+        },
+        {
+          "name": "batch_lot_number",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "BATCH_LOT_NUMBER",
+          "snowflakeColumn": "BATCH_LOT_NUMBER"
+        },
+        {
+          "name": "container_id",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "CONTAINER_ID",
+          "snowflakeColumn": "CONTAINER_ID"
+        },
+        {
+          "name": "test_type",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "TEST_TYPE",
+          "snowflakeColumn": "TEST_TYPE"
+        },
+        {
+          "name": "test_method_version",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "TEST_METHOD_VERSION",
+          "snowflakeColumn": "TEST_METHOD_VERSION"
+        },
+        {
+          "name": "instrument_id",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "INSTRUMENT_ID",
+          "snowflakeColumn": "INSTRUMENT_ID"
+        },
+        {
+          "name": "analyst_id",
+          "origin": "manually overridden",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "TECNICO_ID",
+          "snowflakeColumn": "TECNICO_ID"
+        },
+        {
+          "name": "reviewer_id",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "REVIEWER_ID",
+          "snowflakeColumn": "REVIEWER_ID"
+        },
+        {
+          "name": "date_requested",
+          "origin": "manually overridden",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "DATA_SOLICITADA",
+          "snowflakeColumn": "DATA_SOLICITADA"
+        },
+        {
+          "name": "date_received",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "DATE_RECEIVED",
+          "snowflakeColumn": "DATE_RECEIVED"
+        },
+        {
+          "name": "date_started",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "DATE_STARTED",
+          "snowflakeColumn": "DATE_STARTED"
+        },
+        {
+          "name": "date_completed",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "DATE_COMPLETED",
+          "snowflakeColumn": "DATE_COMPLETED"
+        },
+        {
+          "name": "priority",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "PRIORITY",
+          "snowflakeColumn": "PRIORITY"
+        },
+        {
+          "name": "submitter",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SUBMITTER",
+          "snowflakeColumn": "SUBMITTER"
+        },
+        {
+          "name": "project_reference",
+          "origin": "manually mapped",
+          "present": false,
+          "dataType": "VARCHAR"
+        },
+        {
+          "name": "result_value",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "NUMBER",
+          "stagedColumn": "RESULT_VALUE",
+          "snowflakeColumn": "RESULT_VALUE"
+        },
+        {
+          "name": "result_unit",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "RESULT_UNIT",
+          "snowflakeColumn": "RESULT_UNIT"
+        },
+        {
+          "name": "spec_lower_limit",
+          "origin": "manually mapped",
+          "present": false,
+          "dataType": "NUMBER"
+        },
+        {
+          "name": "spec_upper_limit",
+          "origin": "manually mapped",
+          "present": false,
+          "dataType": "NUMBER"
+        },
+        {
+          "name": "sample_status",
+          "origin": "manually overridden",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "STATUS_AMOSTRA",
+          "snowflakeColumn": "STATUS_AMOSTRA"
+        },
+        {
+          "name": "approval_status",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "APPROVAL_STATUS",
+          "snowflakeColumn": "APPROVAL_STATUS"
+        },
+        {
+          "name": "approval_date",
+          "origin": "manually mapped",
+          "present": false,
+          "dataType": "TIMESTAMP_NTZ"
+        },
+        {
+          "name": "storage_location",
+          "origin": "manually mapped",
+          "present": false,
+          "dataType": "VARCHAR"
+        },
+        {
+          "name": "retest_flag",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "BOOLEAN",
+          "stagedColumn": "RETEST_FLAG",
+          "snowflakeColumn": "RETEST_FLAG"
+        },
+        {
+          "name": "comments",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "COMMENTS",
+          "snowflakeColumn": "COMMENTS"
+        },
+        {
+          "name": "site_code",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SITE_CODE",
+          "snowflakeColumn": "SITE_CODE"
+        }
+      ],
+      "siteId": "curitiba",
+      "siteName": "Curitiba",
+      "dateFormats": {
+        "date_started": "DD/MM/YYYY",
+        "approval_date": "DD/MM/YYYY",
+        "date_received": "DD/MM/YYYY",
+        "date_completed": "DD/MM/YYYY",
+        "date_requested": "DD/MM/YYYY"
+      },
+      "sourceTable": "LIMS_CURITIBA_AMOSTRAS",
+      "sourceSystem": "lims"
+    },
+    {
+      "fields": [
+        {
+          "name": "sample_id",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SAMPLE_ID",
+          "snowflakeColumn": "SAMPLE_ID"
+        },
+        {
+          "name": "product_line",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "PRODUCT_LINE",
+          "snowflakeColumn": "PRODUCT_LINE"
+        },
+        {
+          "name": "material_code",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "MATERIAL_CODE",
+          "snowflakeColumn": "MATERIAL_CODE"
+        },
+        {
+          "name": "batch_lot_number",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "BATCH_LOT_NUMBER",
+          "snowflakeColumn": "BATCH_LOT_NUMBER"
+        },
+        {
+          "name": "container_id",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "CONTAINER_ID",
+          "snowflakeColumn": "CONTAINER_ID"
+        },
+        {
+          "name": "test_type",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "TEST_TYPE",
+          "snowflakeColumn": "TEST_TYPE"
+        },
+        {
+          "name": "test_method_version",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "TEST_METHOD_VERSION",
+          "snowflakeColumn": "TEST_METHOD_VERSION"
+        },
+        {
+          "name": "instrument_id",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "INSTRUMENT_ID",
+          "snowflakeColumn": "INSTRUMENT_ID"
+        },
+        {
+          "name": "analyst_id",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "ANALYST_ID",
+          "snowflakeColumn": "ANALYST_ID"
+        },
+        {
+          "name": "reviewer_id",
+          "origin": "manually overridden",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "REVISOR_USUARIO",
+          "snowflakeColumn": "REVISOR_USUARIO"
+        },
+        {
+          "name": "date_requested",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "DATE_REQUESTED",
+          "snowflakeColumn": "DATE_REQUESTED"
+        },
+        {
+          "name": "date_received",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "DATE_RECEIVED",
+          "snowflakeColumn": "DATE_RECEIVED"
+        },
+        {
+          "name": "date_started",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "DATE_STARTED",
+          "snowflakeColumn": "DATE_STARTED"
+        },
+        {
+          "name": "date_completed",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "DATE_COMPLETED",
+          "snowflakeColumn": "DATE_COMPLETED"
+        },
+        {
+          "name": "priority",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "PRIORITY",
+          "snowflakeColumn": "PRIORITY"
+        },
+        {
+          "name": "submitter",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SUBMITTER",
+          "snowflakeColumn": "SUBMITTER"
+        },
+        {
+          "name": "project_reference",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "PROJECT_REFERENCE",
+          "snowflakeColumn": "PROJECT_REFERENCE"
+        },
+        {
+          "name": "result_value",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "NUMBER",
+          "stagedColumn": "RESULT_VALUE",
+          "snowflakeColumn": "RESULT_VALUE"
+        },
+        {
+          "name": "result_unit",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "RESULT_UNIT",
+          "snowflakeColumn": "RESULT_UNIT"
+        },
+        {
+          "name": "spec_lower_limit",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "NUMBER",
+          "stagedColumn": "SPEC_LOWER_LIMIT",
+          "snowflakeColumn": "SPEC_LOWER_LIMIT"
+        },
+        {
+          "name": "spec_upper_limit",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "NUMBER",
+          "stagedColumn": "SPEC_UPPER_LIMIT",
+          "snowflakeColumn": "SPEC_UPPER_LIMIT"
+        },
+        {
+          "name": "sample_status",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SAMPLE_STATUS",
+          "snowflakeColumn": "SAMPLE_STATUS"
+        },
+        {
+          "name": "approval_status",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "APPROVAL_STATUS",
+          "snowflakeColumn": "APPROVAL_STATUS"
+        },
+        {
+          "name": "approval_date",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "APPROVAL_DATE",
+          "snowflakeColumn": "APPROVAL_DATE"
+        },
+        {
+          "name": "storage_location",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "STORAGE_LOCATION",
+          "snowflakeColumn": "STORAGE_LOCATION"
+        },
+        {
+          "name": "retest_flag",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "BOOLEAN",
+          "stagedColumn": "RETEST_FLAG",
+          "snowflakeColumn": "RETEST_FLAG"
+        },
+        {
+          "name": "comments",
+          "origin": "manually mapped",
+          "present": false,
+          "dataType": "VARCHAR"
+        },
+        {
+          "name": "site_code",
+          "origin": "pre-built",
+          "present": true,
+          "dataType": "TEXT",
+          "stagedColumn": "SITE_CODE",
+          "snowflakeColumn": "SITE_CODE"
+        }
+      ],
+      "siteId": "buenos_aires",
+      "siteName": "Buenos Aires",
+      "dateFormats": {
+        "date_started": "YYYY-MM-DD HH24:MI:SS",
+        "approval_date": "YYYY-MM-DD HH24:MI:SS",
+        "date_received": "YYYY-MM-DD HH24:MI:SS",
+        "date_completed": "YYYY-MM-DD HH24:MI:SS",
+        "date_requested": "YYYY-MM-DD HH24:MI:SS"
+      },
+      "sourceTable": "LAB_MUESTRAS_BA",
+      "sourceSystem": "lims"
+    },
+    {
+      "fields": [
+        {
+          "name": "CanonicalMaterialName",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "CANONICAL_MATERIAL_NAME",
@@ -977,7 +956,7 @@
         },
         {
           "name": "BusinessLine",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "BUSINESS_LINE",
@@ -985,7 +964,7 @@
         },
         {
           "name": "SourceMaterialCode",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SOURCE_MATERIAL_CODE",
@@ -993,7 +972,7 @@
         },
         {
           "name": "LegacyMaterialID",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "LEGACY_MATERIAL_ID",
@@ -1017,7 +996,7 @@
         },
         {
           "name": "SupplierGrade",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SUPPLIER_GRADE",
@@ -1025,7 +1004,7 @@
         },
         {
           "name": "UnitOfMeasure",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "UNIT_OF_MEASURE",
@@ -1041,7 +1020,7 @@
         },
         {
           "name": "ViscosityGrade",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "VISCOSITY_GRADE",
@@ -1049,7 +1028,7 @@
         },
         {
           "name": "HazardClassification",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "HAZARD_CLASSIFICATION",
@@ -1057,7 +1036,7 @@
         },
         {
           "name": "SafetyDataSheetRef",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "SAFETY_DATA_SHEET_REF",
@@ -1065,7 +1044,7 @@
         },
         {
           "name": "ShelfLifeMonths",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "NUMBER",
           "stagedColumn": "SHELF_LIFE_MONTHS",
@@ -1073,7 +1052,7 @@
         },
         {
           "name": "StorageConditions",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TEXT",
           "stagedColumn": "STORAGE_CONDITIONS",
@@ -1081,7 +1060,7 @@
         },
         {
           "name": "ApprovedForUse",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "BOOLEAN",
           "stagedColumn": "APPROVED_FOR_USE",
@@ -1089,7 +1068,7 @@
         },
         {
           "name": "LastReviewDate",
-          "origin": "manually overridden",
+          "origin": "pre-built",
           "present": true,
           "dataType": "TIMESTAMP_NTZ",
           "stagedColumn": "LAST_REVIEW_DATE",
@@ -1101,7 +1080,18 @@
       "sourceSystem": "raw_material_master"
     }
   ],
-  "_foundation": {
-    "changeReason": "Bronze configuration was locked."
-  }
+  "sourceMode": "snowflake",
+  "reconciledAt": "2026-09-22T20:34:00.544Z",
+  "reconciledBy": "studioadmin@polestaranalytics.com",
+  "inclusionAudit": [],
+  "instanceInclusion": {
+    "LAB_MUESTRAS_BA": true,
+    "RAW_MATERIAL_MASTER": true,
+    "LIMS_HOUSTON_SAMPLES": true,
+    "LIMS_ANNANDALE_SAMPLES": true,
+    "LIMS_CURITIBA_AMOSTRAS": true
+  },
+  "extraColumnChoices": {},
+  "lockedAt": "2026-09-22T20:39:51.269Z",
+  "lockedBy": "studioadmin@polestaranalytics.com"
 }
