@@ -1,7 +1,7 @@
 -- Foundation Studio · Snowflake execution SQL
 -- foundation:stage 2
 CREATE OR REPLACE TABLE OGFS_DEMO.SILVER.silver_lims_curitiba AS
-SELECT row_data.source_row_number,
+ SELECT row_data.source_row_number,
   row_data.sample_id AS sample_id,
   row_data.product_line AS product_line,
   row_data.material_code AS material_code,
@@ -20,7 +20,7 @@ SELECT row_data.source_row_number,
   row_data.submitter AS submitter,
   NULL AS project_reference,
   row_data.result_value AS result_value,
-  COALESCE((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))), NULL) AS result_unit,
+  COALESCE((SELECT MAX(ref.canonical_code) FROM OGFS_DEMO.SILVER.unit_registry AS ref JOIN OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference method_ref ON method_ref.quantity_type=ref.quantity_type WHERE REGEXP_REPLACE(UPPER(TRIM(method_ref.source_method_name)),'[^A-Z0-9]','')=REGEXP_REPLACE(UPPER(TRIM(row_data.test_type)),'[^A-Z0-9]','') AND LOWER(TRIM(CAST(ref.accepted_alias AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))), NULL) AS result_unit,
   NULL AS spec_lower_limit,
   NULL AS spec_upper_limit,
   COALESCE((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))), NULL) AS sample_status,
@@ -31,7 +31,7 @@ SELECT row_data.source_row_number,
   row_data.comments AS comments,
   row_data.site_code AS site_code,
   'lims_curitiba_amostras' AS source_table
-FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data;
+FROM (SELECT row_data.* FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data WHERE NOT (COALESCE(((SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.canonical_code) FROM OGFS_DEMO.SILVER.unit_registry AS ref JOIN OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference method_ref ON method_ref.quantity_type=ref.quantity_type WHERE REGEXP_REPLACE(UPPER(TRIM(method_ref.source_method_name)),'[^A-Z0-9]','')=REGEXP_REPLACE(UPPER(TRIM(row_data.test_type)),'[^A-Z0-9]','') AND LOWER(TRIM(CAST(ref.accepted_alias AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL), FALSE) OR COALESCE(((SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL), FALSE))) AS row_data;
 
 -- foundation:stage 3
 INSERT INTO OGFS_DEMO.SILVER.quarantine_records
@@ -39,25 +39,25 @@ INSERT INTO OGFS_DEMO.SILVER.quarantine_records
 SELECT source_table,source_row_number,rule_name,reason,site_code,review_status,source_data,CURRENT_TIMESTAMP()
 FROM (
 SELECT 'LIMS_CURITIBA_AMOSTRAS' source_table, row_data.source_row_number,
-       'test_method_vocabulary' rule_name, 'test_type: Code lookup failed' reason,
+        'test_method_vocabulary' rule_name, 'test_type: Code lookup failed' reason,
        'curitiba' site_code,
        'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data
-WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL
+ WHERE (SELECT MAX(ref.governed_standard_reference) FROM OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_method_name AS VARCHAR))) = LOWER(TRIM(CAST(row_data.test_type AS VARCHAR)))) IS NULL
 UNION ALL
 
 SELECT 'LIMS_CURITIBA_AMOSTRAS' source_table, row_data.source_row_number,
-       'uom_vocabulary' rule_name, 'result_unit: Code lookup failed' reason,
+        'uom_vocabulary' rule_name, 'Unit cannot be resolved in unit_registry: '||COALESCE(TO_VARCHAR(row_data.result_unit),'(missing)')||' (test method: '||COALESCE(TO_VARCHAR(row_data.test_type),'(missing)')||')' reason,
        'curitiba' site_code,
        'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data
-WHERE (SELECT MAX(ref.governed_unit) FROM OGFS_DEMO.SILVER.governed_uom_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_unit AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL
+ WHERE (SELECT MAX(ref.canonical_code) FROM OGFS_DEMO.SILVER.unit_registry AS ref JOIN OGFS_DEMO.SILVER.governed_astm_ilsac_test_method_reference method_ref ON method_ref.quantity_type=ref.quantity_type WHERE REGEXP_REPLACE(UPPER(TRIM(method_ref.source_method_name)),'[^A-Z0-9]','')=REGEXP_REPLACE(UPPER(TRIM(row_data.test_type)),'[^A-Z0-9]','') AND LOWER(TRIM(CAST(ref.accepted_alias AS VARCHAR))) = LOWER(TRIM(CAST(row_data.result_unit AS VARCHAR)))) IS NULL
 UNION ALL
 
 SELECT 'LIMS_CURITIBA_AMOSTRAS' source_table, row_data.source_row_number,
-       'status_vocabulary' rule_name, 'sample_status: Code lookup failed' reason,
+        'status_vocabulary' rule_name, 'sample_status: Code lookup failed' reason,
        'curitiba' site_code,
        'quarantined' review_status, OBJECT_CONSTRUCT_KEEP_NULL(row_data.*) source_data
 FROM OGFS_DEMO.BRONZE.lims_curitiba_amostras AS row_data
-WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
+ WHERE (SELECT MAX(ref.governed_status) FROM OGFS_DEMO.SILVER.governed_sample_status_reference AS ref WHERE LOWER(TRIM(CAST(ref.source_value AS VARCHAR))) = LOWER(TRIM(CAST(row_data.sample_status AS VARCHAR)))) IS NULL)
 QUALIFY ROW_NUMBER() OVER (PARTITION BY source_table,source_row_number,rule_name ORDER BY reason)=1;
